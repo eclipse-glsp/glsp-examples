@@ -1,0 +1,54 @@
+{
+  "private": true,
+  "name": "parent",
+  "version": "0.7.0",
+  "engines": {
+    "yarn": "1.0.x || >=1.2.1",
+    "node": ">=7.9.0"
+  },
+  "scripts": {
+    "test": "yarn",
+    "prepare": "lerna run prepare",
+    "watch": "lerna run --parallel watch",
+    "rebuild:browser": "theia rebuild:browser",
+    "publish": "yarn && yarn publish:latest",
+    "publish:latest": "lerna publish",
+    "publish:next": "lerna publish --exact --canary=next --npm-tag=next --yes"
+  },
+  "resolutions": {
+    "**/@theia/editor": "^0.11.0",
+    "**/@theia/filesystem": "^0.11.0",
+    "**/@theia/languages": "^0.11.0",
+    "**/@theia/monaco": "^0.11.0",
+    "**/@theia/process": "^0.11.0",
+    "**/@theia/application-manager": "^0.11.0",
+    "**/@theia/application-package": "^0.11.0",
+    "**/@theia/callhierarchy": "^0.11.0",
+    "**/@theia/json": "^0.11.0",
+    "**/@theia/markers": "^0.11.0",
+    "**/@theia/navigator": "^0.11.0",
+    "**/@theia/outline-view": "^0.11.0",
+    "**/@theia/output": "^0.11.0",
+    "**/@theia/userstorage": "^0.11.0",
+    "**/@theia/variable-resolver": "^0.11.0",
+    "**/@theia/workspace": "^0.11.0",
+    "**/@theia/java": "^0.11.0",
+    "**/@theia/java-debug": "^0.11.0",
+    "**/@theia/terminal": "^0.11.0",
+    "**/@theia/debug": "^0.11.0",
+    "**/@theia/console": "^0.11.0",
+    "**/@theia/preferences": "^0.11.0",
+    "**/@theia/core": "^0.11.0",
+    "**/sprotty": "0.7.0",
+    "**/sprotty-theia": "0.7.0"
+  },
+  "devDependencies": {
+    "lerna": "^2.2.0",
+    "tslint": "^5.5.0",
+    "tslint-loader": "^3.4.3",
+    "typescript": "3.6.4"
+  },
+  "workspaces": [
+    "workflow/*"
+  ]
+}

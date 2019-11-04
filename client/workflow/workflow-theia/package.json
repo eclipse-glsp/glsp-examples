@@ -1,0 +1,43 @@
+{
+  "name": "@eclipse-glsp-examples/workflow-theia",
+  "version": "0.7.1",
+  "keywords": [
+    "theia-extension"
+  ],
+  "description": "Theia extension for the workflow GLSP example",
+  "license": "(EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0)",
+  "files": [
+    "lib",
+    "src"
+  ],
+  "author": {
+    "name": "EclipseSource"
+  },
+  "dependencies": {
+    "@eclipse-glsp-examples/workflow-sprotty": "0.7.0",
+    "@eclipse-glsp/theia-integration": "0.7.0",
+    "@theia/core": "^0.11.0",
+    "@theia/editor": "^0.11.0",
+    "@theia/filesystem": "^0.11.0",
+    "@theia/languages": "^0.11.0",
+    "@theia/monaco": "^0.11.0"
+  },
+  "devDependencies": {
+    "rimraf": "^2.6.1",
+    "tslint": "^5.5.0",
+    "typescript": "3.4.3"
+  },
+  "scripts": {
+    "prepare": "yarn run clean && yarn run build",
+    "clean": "rimraf lib",
+    "build": "tsc && yarn run lint",
+    "lint": "tslint -c ../../configs/tslint.json --project ./tsconfig.json",
+    "watch": "tsc -w"
+  },
+  "theiaExtensions": [
+    {
+      "frontend": "lib/browser/frontend-module",
+      "backend": "lib/node/backend-module"
+    }
+  ]
+}

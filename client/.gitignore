@@ -1,0 +1,11 @@
+node_modules
+node_modules/.yarn-integrity
+.browser_modules
+
+lib
+
+*.log
+
+workflow/browser-app/ 
+
+!workflow/browser-app/package.json 

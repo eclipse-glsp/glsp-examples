@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<fileset-config file-format-version="1.2.0" simple-config="false" sync-formatter="false">
+  <local-check-config name="org.eclipse.glsp.checkstyle" location="/org.eclipse.glsp.codestyle/checkstyle/glsp-checkstyle.xml" type="project" description="">
+    <additional-data name="protect-config-file" value="false"/>
+  </local-check-config>
+  <fileset name="all" enabled="false" check-config-name="org.eclipse.glsp.checkstyle" local="true">
+    <file-match-pattern match-pattern="." include-pattern="true"/>
+  </fileset>
+  <fileset name="All Non-generated" enabled="true" check-config-name="org.eclipse.glsp.checkstyle" local="true">
+    <file-match-pattern match-pattern=".java$" include-pattern="true"/>
+    <file-match-pattern match-pattern="src/main/java-gen" include-pattern="false"/>
+  </fileset>
+</fileset-config>
