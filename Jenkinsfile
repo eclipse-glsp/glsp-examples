@@ -3,16 +3,30 @@ apiVersion: v1
 kind: Pod
 spec:
   containers:
-  - name: node
-    image: node:8.12
+  - name: maven
+    image: maven:3.6.2-jdk-11
     tty: true
     resources:
       limits:
-        memory: "2Gi"
-        cpu: "1"
+        memory: "1Gi"
+        cpu: "0.5"
       requests:
-        memory: "2Gi"
-        cpu: "1"
+        memory: "1Gi"
+        cpu: "0.5"
+    command:
+    - cat
+  - name: node
+    image: node:10.17.0
+    tty: true
+    resources:
+      limits:
+        memory: "1Gi"
+        cpu: "0.5"
+      requests:
+        memory: "1Gi"
+        cpu: "0.5"
+    command:
+    - cat
 """
 
 pipeline {
@@ -27,18 +41,48 @@ pipeline {
     }
     
     stages {
-        stage('Build package') {
+        stage('Build client & server') {
             steps {
-                container('node') {
-                    sh "yarn  install"
-                }
+                parallel(
+                    client: {
+                        container('node') {
+                            dir('client') {
+                                sh 'yarn  install'
+                            }
+                        }
+                    },
+                    server: {
+                        container('maven'){
+                            dir('server'){
+                                sh 'mvn clean verify -DskipTests --batch-mode package'
+                            }
+                        }
+                    }
+                )
             }
         }
-        stage('Deploy (master)') {
+
+         stage('Deploy client & server (master only)') {
             when { branch 'master'}
             steps {
-                sh 'echo "TODO deploy artifacts"'
+                parallel(
+                    client: {
+                        container('node') {
+                            dir('client') {
+                                withCredentials([string(credentialsId: 'npmjs-token', variable: 'NPM_AUTH_TOKEN')]) {
+                                    sh 'printf "//registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}\n" >> /home/jenkins/.npmrc'
+                                }
+                                sh  'git config  user.email "eclipse-glsp-bot@eclipse.org"'
+                                sh  'git config  user.name "eclipse-glsp-bot"'
+                                sh 'yarn publish:next'
+                            }
+                        }
+                    },
+                    server: {
+                       build 'glsp-examples-deploy-server'
+                    }
+                )
             }
-        }
+        } 
     }
 }
