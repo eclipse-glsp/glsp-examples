@@ -8,4 +8,6 @@ lib
 
 workflow/browser-app/ 
 
+workflow/workflow-standalone/app/bundle.js
+workflow/workflow-standalone/app/bundle.js.map
 !workflow/browser-app/package.json 

@@ -1,4 +1,4 @@
-/*******************************************************************************
+/********************************************************************************
  * Copyright (c) 2019 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
@@ -12,7 +12,7 @@
  * https://www.gnu.org/software/classpath/license.html.
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
- ******************************************************************************/
+ ********************************************************************************/
 package org.eclipse.glsp.example.workflow;
 
 import static org.eclipse.glsp.graph.DefaultTypes.EDGE;
@@ -20,6 +20,7 @@ import static org.eclipse.glsp.graph.util.GraphUtil.point;
 
 import java.util.Iterator;
 import java.util.List;
+import java.util.Map;
 import java.util.Optional;
 import java.util.Set;
 
@@ -43,8 +44,7 @@ public class WorkflowCommandPaletteActionProvider implements CommandPaletteActio
    @Override
    @SuppressWarnings("checkstyle:CyclomaticComplexity")
    public Set<LabeledAction> getActions(final GraphicalModelState modelState, final List<String> selectedIds,
-      final String text,
-      final Optional<GPoint> lastMousePosition) {
+      final Optional<GPoint> lastMousePosition, final Map<String, String> args) {
       Set<LabeledAction> actions = Sets.newLinkedHashSet();
 
       GModelIndex index = modelState.getIndex();

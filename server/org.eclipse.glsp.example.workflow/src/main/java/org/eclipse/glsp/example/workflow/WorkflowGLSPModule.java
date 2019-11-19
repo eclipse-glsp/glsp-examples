@@ -1,4 +1,4 @@
-/*******************************************************************************
+/********************************************************************************
  * Copyright (c) 2019 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
@@ -12,7 +12,7 @@
  * https://www.gnu.org/software/classpath/license.html.
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
- ******************************************************************************/
+ ********************************************************************************/
 package org.eclipse.glsp.example.workflow;
 
 import java.util.ArrayList;
@@ -32,6 +32,7 @@ import org.eclipse.glsp.api.model.ModelElementOpenListener;
 import org.eclipse.glsp.api.model.ModelExpansionListener;
 import org.eclipse.glsp.api.model.ModelSelectionListener;
 import org.eclipse.glsp.api.provider.CommandPaletteActionProvider;
+import org.eclipse.glsp.api.provider.ContextMenuItemProvider;
 import org.eclipse.glsp.example.workflow.handler.CreateAutomatedTaskHandler;
 import org.eclipse.glsp.example.workflow.handler.CreateDecisionNodeHandler;
 import org.eclipse.glsp.example.workflow.handler.CreateEdgeHandler;
@@ -68,7 +69,7 @@ public class WorkflowGLSPModule extends DefaultGLSPModule {
 
    @Override
    protected Collection<Class<? extends DiagramConfiguration>> bindDiagramConfigurations() {
-      return Arrays.asList(WorfklowDiagramConfiguration.class);
+      return Arrays.asList(WorkflowDiagramConfiguration.class);
    }
 
    @Override
@@ -121,6 +122,11 @@ public class WorkflowGLSPModule extends DefaultGLSPModule {
    @Override
    protected Class<? extends CommandPaletteActionProvider> bindCommandPaletteActionProvider() {
       return WorkflowCommandPaletteActionProvider.class;
+   }
+
+   @Override
+   protected Class<? extends ContextMenuItemProvider> bindContextMenuItemProvider() {
+      return WorkflowContextMenuItemProvider.class;
    }
 
    @Override
