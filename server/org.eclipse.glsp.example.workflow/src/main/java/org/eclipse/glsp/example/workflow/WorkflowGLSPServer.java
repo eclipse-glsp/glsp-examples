@@ -1,4 +1,4 @@
-/*******************************************************************************
+/********************************************************************************
  * Copyright (c) 2019 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
@@ -12,7 +12,7 @@
  * https://www.gnu.org/software/classpath/license.html.
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
- ******************************************************************************/
+ ********************************************************************************/
 package org.eclipse.glsp.example.workflow;
 
 import java.util.concurrent.CompletableFuture;
@@ -21,7 +21,7 @@ import org.apache.log4j.Logger;
 import org.eclipse.glsp.server.jsonrpc.DefaultGLSPServer;
 
 public class WorkflowGLSPServer extends DefaultGLSPServer<WorkflowInitializeOptions> {
-   private static Logger log = Logger.getLogger(WorkflowGLSPServer.class);
+   private static final Logger LOGGER = Logger.getLogger(WorkflowGLSPServer.class);
 
    public WorkflowGLSPServer() {
       super(WorkflowInitializeOptions.class);
@@ -30,7 +30,7 @@ public class WorkflowGLSPServer extends DefaultGLSPServer<WorkflowInitializeOpti
    @Override
    public CompletableFuture<Boolean> handleOptions(final WorkflowInitializeOptions options) {
       if (options != null) {
-         log.debug(options.getTimestamp() + ": " + options.getMessage());
+         LOGGER.debug(options.getTimestamp() + ": " + options.getMessage());
       }
       return CompletableFuture.completedFuture(true);
    }

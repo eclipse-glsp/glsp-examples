@@ -1,4 +1,4 @@
-/*******************************************************************************
+/********************************************************************************
  * Copyright (c) 2019 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
@@ -12,7 +12,7 @@
  * https://www.gnu.org/software/classpath/license.html.
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
- ******************************************************************************/
+ ********************************************************************************/
 package org.eclipse.glsp.example.workflow;
 
 import static org.eclipse.glsp.api.operations.Operation.Kind.CREATE_CONNECTION;
@@ -41,12 +41,12 @@ import org.eclipse.glsp.api.diagram.DiagramConfiguration;
 import org.eclipse.glsp.api.operations.Group;
 import org.eclipse.glsp.api.operations.Operation;
 import org.eclipse.glsp.api.types.EdgeTypeHint;
-import org.eclipse.glsp.api.types.NodeTypeHint;
+import org.eclipse.glsp.api.types.ShapeTypeHint;
 import org.eclipse.glsp.example.workflow.wfgraph.WfgraphPackage;
 import org.eclipse.glsp.graph.DefaultTypes;
 import org.eclipse.glsp.graph.GraphPackage;
 
-public class WorfklowDiagramConfiguration implements DiagramConfiguration {
+public class WorkflowDiagramConfiguration implements DiagramConfiguration {
 
    @Override
    public String getDiagramType() { return "workflow-diagram"; }
@@ -86,14 +86,14 @@ public class WorfklowDiagramConfiguration implements DiagramConfiguration {
    }
 
    @Override
-   public List<NodeTypeHint> getNodeTypeHints() {
-      List<NodeTypeHint> nodeHints = new ArrayList<>();
+   public List<ShapeTypeHint> getNodeTypeHints() {
+      List<ShapeTypeHint> nodeHints = new ArrayList<>();
+      nodeHints.add(new ShapeTypeHint(MANUAL_TASK, true, true, false, false));
+      nodeHints.add(new ShapeTypeHint(AUTOMATED_TASK, true, true, false, false));
+      nodeHints.add(new ShapeTypeHint(FORK_NODE, true, true, false, false));
+      nodeHints.add(createDefaultNodeTypeHint(JOIN_NODE));
       nodeHints.add(createDefaultNodeTypeHint(DECISION_NODE));
       nodeHints.add(createDefaultNodeTypeHint(MERGE_NODE));
-      nodeHints.add(createDefaultNodeTypeHint(FORK_NODE));
-      nodeHints.add(createDefaultNodeTypeHint(JOIN_NODE));
-      nodeHints.add(createDefaultNodeTypeHint(MANUAL_TASK));
-      nodeHints.add(createDefaultNodeTypeHint(AUTOMATED_TASK));
       return nodeHints;
    }
 
