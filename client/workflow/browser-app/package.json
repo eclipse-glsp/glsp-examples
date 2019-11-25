@@ -4,22 +4,22 @@
   "version": "0.1.0",
   "dependencies": {
     "@eclipse-glsp-examples/workflow-theia": "0.7.1",
-    "@theia/core": "^0.11.0",
-    "@theia/editor": "^0.11.0",
-    "@theia/filesystem": "^0.11.0",
-    "@theia/languages": "^0.11.0",
-    "@theia/markers": "^0.11.0",
-    "@theia/messages": "^0.11.0",
-    "@theia/monaco": "^0.11.0",
-    "@theia/navigator": "^0.11.0",
-    "@theia/preferences": "^0.11.0",
-    "@theia/process": "^0.11.0",
-    "@theia/terminal": "^0.11.0",
-    "@theia/typescript": "^0.11.0",
-    "@theia/workspace": "^0.11.0"
+    "@theia/core": "next",
+    "@theia/editor": "next",
+    "@theia/filesystem": "next",
+    "@theia/languages": "next",
+    "@theia/markers": "next",
+    "@theia/messages": "next",
+    "@theia/monaco": "next",
+    "@theia/navigator": "next",
+    "@theia/preferences": "next",
+    "@theia/process": "next",
+    "@theia/terminal": "next",
+    "@theia/typescript": "next",
+    "@theia/workspace": "next"
   },
   "devDependencies": {
-    "@theia/cli": "^0.11.0"
+    "@theia/cli": "next"
   },
   "scripts": {
     "prepare": "theia build --mode development",
