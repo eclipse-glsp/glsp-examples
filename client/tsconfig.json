@@ -4,17 +4,11 @@
     "skipLibCheck": false,
     "baseUrl": ".",
     "paths": {
-      "@eclipse-glsp/theia-integration": [
-        "packages/theia-integration/src/*"
-      ],
-      "@eclipse-glsp/client": [
-        "packages/client/src/*"
-      ],
       "@eclipse-glsp-examples/workflow-theia": [
-        "examples/workflow/workflow-theia/src/*"
+        "workflow/workflow-theia/src/*"
       ],
       "@eclipse-glsp-examples/workflow-sprotty": [
-        "examples/workflow/workflow-sprotty/src/*"
+        "workflow/workflow-sprotty/src/*"
       ]
     },
     "plugins": [
@@ -24,7 +18,6 @@
     ]
   },
   "include": [
-    "packages/*/src",
-    "examples/*/src"
+    "workflow/*/src"
   ]
 }
