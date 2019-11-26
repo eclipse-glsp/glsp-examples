@@ -26,6 +26,7 @@ import {
     decorationModule,
     defaultGLSPModule,
     defaultModule,
+    DeleteContextMenuProviderRegistry,
     DiamondNodeView,
     edgeLayoutModule,
     editLabelFeature,
@@ -35,6 +36,7 @@ import {
     fadeModule,
     GLSP_TYPES,
     glspCommandPaletteModule,
+    glspContextMenuModule,
     glspEditLabelValidationModule,
     GLSPGraph,
     glspMouseToolModule,
@@ -55,6 +57,7 @@ import {
     PreRenderedElement,
     PreRenderedView,
     requestResponseModule,
+    RevealNamedElementActionProvider,
     routingModule,
     saveModule,
     SButton,
@@ -82,13 +85,13 @@ const workflowDiagramModule = new ContainerModule((bind, unbind, isBound, rebind
     rebind(TYPES.ILogger).to(ConsoleLogger).inSingletonScope();
     rebind(TYPES.LogLevel).toConstantValue(LogLevel.warn);
     bind(GLSP_TYPES.IMovementRestrictor).to(NoCollisionMovementRestrictor).inSingletonScope();
+    bind(TYPES.ICommandPaletteActionProvider).to(RevealNamedElementActionProvider);
+    bind(GLSP_TYPES.IContextMenuProvider).to(DeleteContextMenuProviderRegistry);
     const context = { bind, unbind, isBound, rebind };
     configureModelElement(context, 'graph', GLSPGraph, SGraphView);
     configureModelElement(context, 'task:automated', TaskNode, TaskNodeView);
     configureModelElement(context, 'task:manual', TaskNode, TaskNodeView);
-    configureModelElement(context, 'label:heading', SLabel, SLabelView, {
-        enable: [editLabelFeature]
-    });
+    configureModelElement(context, 'label:heading', SLabel, SLabelView, { enable: [editLabelFeature] });
     configureModelElement(context, 'comp:comp', SCompartment, SCompartmentView);
     configureModelElement(context, 'comp:header', SCompartment, SCompartmentView);
     configureModelElement(context, 'label:icon', SLabel, SLabelView);
@@ -111,7 +114,7 @@ export default function createContainer(widgetId: string): Container {
 
     container.load(decorationModule, validationModule, defaultModule, glspMouseToolModule, defaultGLSPModule, glspSelectModule, boundsModule, viewportModule,
         hoverModule, fadeModule, exportModule, expandModule, openModule, buttonModule, modelSourceModule, labelEditModule, labelEditUiModule, glspEditLabelValidationModule,
-        workflowDiagramModule, saveModule, executeCommandModule, toolFeedbackModule, modelHintsModule,
+        workflowDiagramModule, saveModule, executeCommandModule, toolFeedbackModule, modelHintsModule, glspContextMenuModule,
         commandPaletteModule, glspCommandPaletteModule, paletteModule, requestResponseModule, routingModule, edgeLayoutModule, zorderModule,
         layoutCommandsModule);
 
