@@ -25,5 +25,6 @@
   "[json]": {
     "editor.tabSize": 2
   },
+  "task.autoDetect": "off",
   "typescript.tsdk": "node_modules/typescript/lib"
 }
