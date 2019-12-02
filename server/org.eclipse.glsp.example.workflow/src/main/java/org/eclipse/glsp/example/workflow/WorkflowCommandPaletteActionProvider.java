@@ -37,15 +37,16 @@ import org.eclipse.glsp.graph.GModelIndex;
 import org.eclipse.glsp.graph.GNode;
 import org.eclipse.glsp.graph.GPoint;
 
+import com.google.common.collect.Lists;
 import com.google.common.collect.Sets;
 
 public class WorkflowCommandPaletteActionProvider implements CommandPaletteActionProvider {
 
    @Override
    @SuppressWarnings("checkstyle:CyclomaticComplexity")
-   public Set<LabeledAction> getActions(final GraphicalModelState modelState, final List<String> selectedIds,
+   public List<LabeledAction> getActions(final GraphicalModelState modelState, final List<String> selectedIds,
       final Optional<GPoint> lastMousePosition, final Map<String, String> args) {
-      Set<LabeledAction> actions = Sets.newLinkedHashSet();
+      List<LabeledAction> actions = Lists.newArrayList();
 
       GModelIndex index = modelState.getIndex();
       Set<GModelElement> selectedElements = index.getAll(selectedIds);
