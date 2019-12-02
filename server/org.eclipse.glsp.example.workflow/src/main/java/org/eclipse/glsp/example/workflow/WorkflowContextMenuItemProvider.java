@@ -23,7 +23,6 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
-import java.util.Set;
 
 import org.eclipse.glsp.api.action.kind.CreateNodeOperationAction;
 import org.eclipse.glsp.api.model.GraphicalModelState;
@@ -31,19 +30,19 @@ import org.eclipse.glsp.api.provider.ContextMenuItemProvider;
 import org.eclipse.glsp.api.types.MenuItem;
 import org.eclipse.glsp.graph.GPoint;
 
-import com.google.common.collect.Sets;
+import com.google.common.collect.Lists;
 
 public class WorkflowContextMenuItemProvider implements ContextMenuItemProvider {
 
    @Override
-   public Set<MenuItem> getItems(final GraphicalModelState modelState, final List<String> selectedElementIds,
+   public List<MenuItem> getItems(final GraphicalModelState modelState, final List<String> selectedElementIds,
       final Optional<GPoint> position, final Map<String, String> args) {
       MenuItem newAutTask = new MenuItem("newAutoTask", "Automated Task",
          Arrays.asList(new CreateNodeOperationAction(AUTOMATED_TASK, position.orElse(point(0, 0)))), true);
       MenuItem newManTask = new MenuItem("newManualTask", "Manual Task",
          Arrays.asList(new CreateNodeOperationAction(MANUAL_TASK, position.orElse(point(0, 0)))), true);
       MenuItem newChildMenu = new MenuItem("new", "New", Arrays.asList(newAutTask, newManTask), "add", "0_new");
-      return Sets.newHashSet(newChildMenu);
+      return Lists.newArrayList(newChildMenu);
    }
 
 }
