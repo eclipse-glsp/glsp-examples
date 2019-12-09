@@ -86,7 +86,7 @@ pipeline {
                         }
                     },
                     server: {
-                       build 'glsp-examples-deploy-server'
+                       build 'deploy-m2-glsp-examples'
                     }
                 )
             }
