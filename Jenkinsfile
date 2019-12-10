@@ -8,11 +8,11 @@ spec:
     tty: true
     resources:
       limits:
-        memory: "1Gi"
-        cpu: "0.5"
+        memory: "2Gi"
+        cpu: "1.3"
       requests:
-        memory: "1Gi"
-        cpu: "0.5"
+        memory: "2Gi"
+        cpu: "1.3"
     command:
     - cat
   - name: node
