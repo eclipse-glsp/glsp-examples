@@ -41,7 +41,7 @@
 	</developers>
 	<scm>
 		<url>https://github.com/eclipsesource/graphical-lsp</url>
-		<connection>scm:git@github.com:eclipsesource/graphical-lsp.git</connection>
+		<connection>scm:git@github.com:eclipse-glsp/glsp-examples.git</connection>
 		<developerConnection>scm:git@github.com:eclipsesource/graphical-lsp.git</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
