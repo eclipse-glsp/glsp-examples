@@ -4,7 +4,7 @@
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.eclipse.glsp.example</groupId>
 	<artifactId>org.eclipse.glsp.example.parent</artifactId>
-	<name>org.eclipse.glsp.exmapleparent</name>
+	<name>org.eclipse.glsp.example.parent</name>
 	<description>parent for all glsp example modules</description>
 	<version>0.7.0-SNAPSHOT</version>
 	<packaging>pom</packaging>
