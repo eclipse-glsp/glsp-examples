@@ -28,8 +28,9 @@ import org.eclipse.glsp.graph.builder.AbstractGEdgeBuilder;
 import org.eclipse.glsp.graph.builder.AbstractGNodeBuilder;
 import org.eclipse.glsp.graph.builder.impl.GCompartmentBuilder;
 import org.eclipse.glsp.graph.builder.impl.GLabelBuilder;
-import org.eclipse.glsp.graph.builder.impl.GLayoutOptionsBuilder;
+import org.eclipse.glsp.graph.builder.impl.GLayoutOptions;
 import org.eclipse.glsp.graph.util.GConstants;
+import org.eclipse.glsp.graph.util.GConstants.HAlign;
 
 public final class WorkflowBuilder {
 
@@ -143,10 +144,9 @@ public final class WorkflowBuilder {
             .id(taskNode.getId() + "_icon") //
             .layout(GConstants.Layout.STACK) //
             .commandId(SimulateCommandHandler.SIMULATE_COMMAND_ID) //
-            .layoutOptions(new GLayoutOptionsBuilder() //
-               .hAlign("center") //
-               .resizeContainer(false) //
-               .build()) //
+            .layoutOptions(new GLayoutOptions() //
+               .hAlign(HAlign.CENTER) //
+               .resizeContainer(false)) //
             .add(createCompartmentIconLabel(taskNode)).build();
       }
 

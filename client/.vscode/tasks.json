@@ -24,6 +24,17 @@
         "panel": "new"
       },
       "problemMatcher": []
+    },
+    {
+      "label": "Start Workflow Theia Backend Example",
+      "type": "shell",
+      "group": "test",
+      "command": "cd workflow/browser-app && yarn start:debug",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": []
     }
   ]
 }
