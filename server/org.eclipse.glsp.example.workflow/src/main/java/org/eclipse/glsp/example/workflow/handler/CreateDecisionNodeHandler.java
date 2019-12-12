@@ -15,12 +15,28 @@
  ********************************************************************************/
 package org.eclipse.glsp.example.workflow.handler;
 
+import java.util.Optional;
+
+import org.eclipse.glsp.api.model.GraphicalModelState;
 import org.eclipse.glsp.example.workflow.utils.ModelTypes;
+import org.eclipse.glsp.example.workflow.utils.WorkflowBuilder.ActivityNodeBuilder;
+import org.eclipse.glsp.graph.GNode;
+import org.eclipse.glsp.graph.GPoint;
+import org.eclipse.glsp.graph.builder.impl.GLayoutOptions;
 
 public class CreateDecisionNodeHandler extends CreateActivityNodeHandler {
 
    public CreateDecisionNodeHandler() {
       super(ModelTypes.DECISION_NODE);
+   }
+
+   @Override
+   protected GNode createNode(final Optional<GPoint> point, final GraphicalModelState modelState) {
+      String nodeType = ModelTypes.toNodeType(elementTypeId);
+      return new ActivityNodeBuilder(elementTypeId, nodeType) //
+         .layoutOptions(new GLayoutOptions().minHeight(32d).minWidth(32d)) //
+         .position(point.orElse(null)) //
+         .build();
    }
 
 }

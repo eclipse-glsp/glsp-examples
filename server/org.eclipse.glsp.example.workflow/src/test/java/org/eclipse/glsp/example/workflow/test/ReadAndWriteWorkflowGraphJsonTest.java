@@ -30,12 +30,13 @@ import org.eclipse.glsp.example.workflow.wfgraph.WfgraphFactory;
 import org.eclipse.glsp.graph.GCompartment;
 import org.eclipse.glsp.graph.GGraph;
 import org.eclipse.glsp.graph.GLabel;
-import org.eclipse.glsp.graph.GLayoutOptions;
 import org.eclipse.glsp.graph.GModelElement;
 import org.eclipse.glsp.graph.GPoint;
 import org.eclipse.glsp.graph.GraphFactory;
+import org.eclipse.glsp.graph.builder.impl.GLayoutOptions;
 import org.eclipse.glsp.graph.gson.GGraphGsonConfigurator;
 import org.eclipse.glsp.graph.util.GConstants;
+import org.eclipse.glsp.graph.util.GConstants.HAlign;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -71,8 +72,9 @@ class ReadAndWriteWorkflowGraphJsonTest {
       GCompartment pushHeader = (GCompartment) getChildById(push, "task1_header").get();
       Icon iconCompartement = (Icon) getChildById(pushHeader, "task1_icon").get();
       assertEquals("simulate-command", iconCompartement.getCommandId());
-      assertEquals("center", iconCompartement.getLayoutOptions().getHAlign());
-      assertEquals(false, iconCompartement.getLayoutOptions().isResizeContainer());
+      GLayoutOptions layoutOptions = new GLayoutOptions(iconCompartement.getLayoutOptions());
+      assertEquals("center", layoutOptions.getHAlign());
+      assertEquals(false, layoutOptions.getResizeContainer());
 
       GLabel labelIcon = (GLabel) getChildById(iconCompartement, "task1_ticon").get();
       assertEquals("M", labelIcon.getText());
@@ -121,10 +123,10 @@ class ReadAndWriteWorkflowGraphJsonTest {
 
       Icon icon = WfgraphFactory.eINSTANCE.createIcon();
       icon.setLayout("stack");
-      GLayoutOptions layoutOptions = GraphFactory.eINSTANCE.createGLayoutOptions();
-      layoutOptions.setResizeContainer(false);
-      layoutOptions.setHAlign("center");
-      icon.setLayoutOptions(layoutOptions);
+      GLayoutOptions layoutOptions = new GLayoutOptions();
+      layoutOptions.resizeContainer(false);
+      layoutOptions.hAlign(HAlign.CENTER);
+      icon.getLayoutOptions().putAll(layoutOptions);
       icon.setType(ModelTypes.ICON);
       compHeader.getChildren().add(icon);
 
