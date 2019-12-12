@@ -48,26 +48,26 @@ pipeline {
     }
     
     stages {
-        stage('Build client & server') {
+        stage('Build client') {
             steps {
-                parallel(
-                    client: {
-                        container('node') {
-                            dir('client') {
-                                sh 'yarn  install'
-                            }
-                        }
-                    },
-                    server: {
-                        container('maven'){
-                            dir('server'){
-                                sh 'mvn clean verify -DskipTests --batch-mode package'
-                            }
-                        }
+                container('node') {
+                    dir('client') {
+                        sh 'yarn  install'
                     }
-                )
+                }
             }
         }
+
+        stage('Build server'){
+            steps{
+                container('maven'){
+                        dir('server'){
+                            sh 'mvn clean verify -DskipTests --batch-mode package'
+                        }
+                }
+            }
+        }
+        
 
          stage('Deploy client & server (master only)') {
             when { branch 'master'}
