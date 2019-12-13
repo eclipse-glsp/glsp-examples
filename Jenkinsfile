@@ -8,11 +8,11 @@ spec:
     tty: true
     resources:
       limits:
-        memory: "2Gi"
-        cpu: "1.3"
+        memory: "1Gi"
+        cpu: "0.5"
       requests:
-        memory: "2Gi"
-        cpu: "1.3"
+        memory: "1Gi"
+        cpu: "0.5"
     command:
     - cat
   - name: node
@@ -20,11 +20,11 @@ spec:
     tty: true
     resources:
       limits:
-        memory: "2Gi"
-        cpu: "1.3"
+        memory: "1Gi"
+        cpu: "0.5"
       requests:
-        memory: "2Gi"
-        cpu: "1.3"
+        memory: "1Gi"
+        cpu: "0.5"
     command:
     - cat
     volumeMounts:
@@ -82,14 +82,8 @@ pipeline {
          stage('Deploy client & server (master only)') {
             when { branch 'master'}
             steps {
-                parallel(
-                    client: {
-                      build job: 'deploy-npm-glsp-examples', wait: false
-                    },
-                    server: {
-                       build job: 'deploy-m2-glsp-examples', wait: false
-                    }
-                )
+                 build job: 'deploy-npm-glsp-examples', wait: false
+                 build job: 'deploy-m2-glsp-examples', wait: false
             }
         } 
     }
