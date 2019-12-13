@@ -20,19 +20,24 @@ spec:
     tty: true
     resources:
       limits:
-        memory: "1Gi"
-        cpu: "0.5"
+        memory: "2Gi"
+        cpu: "1.3"
       requests:
-        memory: "1Gi"
-        cpu: "0.5"
+        memory: "2Gi"
+        cpu: "1.3"
     command:
     - cat
     volumeMounts:
     - mountPath: "/home/jenkins"
       name: "jenkins-home"
       readOnly: false
+    - mountPath: "/.yarn"
+      name: "yarn-global"
+      readOnly: false
   volumes:
   - name: "jenkins-home"
+    emptyDir: {}
+  - name: "yarn-global"
     emptyDir: {}
 """
 
@@ -45,6 +50,11 @@ pipeline {
     }
     options {
         buildDiscarder logRotator(numToKeepStr: '15')
+    }
+
+    environment {
+        YARN_CACHE_FOLDER = "${env.WORKSPACE}/yarn-cache"
+        SPAWN_WRAP_SHIM_ROOT = "${env.WORKSPACE}"
     }
     
     stages {
@@ -74,16 +84,7 @@ pipeline {
             steps {
                 parallel(
                     client: {
-                        container('node') {
-                            dir('client') {
-                                withCredentials([string(credentialsId: 'npmjs-token', variable: 'NPM_AUTH_TOKEN')]) {
-                                    sh 'printf "//registry.npmjs.org/:_authToken=${NPM_AUTH_TOKEN}\n" >> /home/jenkins/.npmrc'
-                                }
-                                sh  'git config  user.email "eclipse-glsp-bot@eclipse.org"'
-                                sh  'git config  user.name "eclipse-glsp-bot"'
-                                sh 'yarn publish:next'
-                            }
-                        }
+                      build job: 'deploy-npm-glsp-examples', wait: false
                     },
                     server: {
                        build job: 'deploy-m2-glsp-examples', wait: false
