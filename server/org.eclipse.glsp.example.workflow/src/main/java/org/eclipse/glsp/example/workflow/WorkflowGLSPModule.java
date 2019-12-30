@@ -42,8 +42,6 @@ import org.eclipse.glsp.example.workflow.handler.CreateManualTaskHandler;
 import org.eclipse.glsp.example.workflow.handler.CreateMergeNodeHandler;
 import org.eclipse.glsp.example.workflow.handler.CreateWeightedEdgeHandler;
 import org.eclipse.glsp.example.workflow.handler.DeleteWorkflowElementHandler;
-import org.eclipse.glsp.example.workflow.handler.ReconnectEdgeHandler;
-import org.eclipse.glsp.example.workflow.handler.RerouteEdgeHandler;
 import org.eclipse.glsp.example.workflow.handler.SimulateCommandHandler;
 import org.eclipse.glsp.example.workflow.labeledit.WorkflowLabelEditValidator;
 import org.eclipse.glsp.example.workflow.layout.WorkflowLayoutEngine;
@@ -53,6 +51,8 @@ import org.eclipse.glsp.server.di.DefaultGLSPModule;
 import org.eclipse.glsp.server.operationhandler.ApplyLabelEditOperationHandler;
 import org.eclipse.glsp.server.operationhandler.ChangeBoundsOperationHandler;
 import org.eclipse.glsp.server.operationhandler.DeleteOperationHandler;
+import org.eclipse.glsp.server.operationhandler.ReconnectEdgeHandler;
+import org.eclipse.glsp.server.operationhandler.RerouteEdgeHandler;
 
 @SuppressWarnings("serial")
 public class WorkflowGLSPModule extends DefaultGLSPModule {
