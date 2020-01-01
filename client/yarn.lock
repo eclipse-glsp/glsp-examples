@@ -10452,9 +10452,9 @@ sprintf-js@~1.0.2:
   integrity sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=
 
 sprotty-theia@next:
-  version "0.8.0-next.f8d72b4"
-  resolved "https://registry.yarnpkg.com/sprotty-theia/-/sprotty-theia-0.8.0-next.f8d72b4.tgz#7fd1946dfac517641b11ba29a5b683ba5d994db0"
-  integrity sha512-/YwyPBURlSP/K1yQDNVsVX6GxLm+cl6qptbywHOrh7BGQPfUT3VuGQ9RUx1EllTuI6u8mO8SP1j2fmfOJoMXvw==
+  version "0.8.0-next.fec87e7"
+  resolved "https://registry.yarnpkg.com/sprotty-theia/-/sprotty-theia-0.8.0-next.fec87e7.tgz#3c052822096097faa1e358883d437c41dc85d84d"
+  integrity sha512-3NGZNSWtBzyXy5PZza6IiSrEWpnqnmpHrUxb7Pe2qxm2M/Land0PvfQ334kMt7iQ+5c7kx/zpXFZs/3VKMglmQ==
   dependencies:
     "@theia/core" next
     "@theia/editor" next
@@ -10464,9 +10464,9 @@ sprotty-theia@next:
     sprotty next
 
 sprotty@next:
-  version "0.8.0-next.60603d1"
-  resolved "https://registry.yarnpkg.com/sprotty/-/sprotty-0.8.0-next.60603d1.tgz#fd79c20691432d047f5a486c5882159786175a6a"
-  integrity sha512-lw+rhBTGhGPQMsS4LwElKuukFt9lrGmnhsEP9/t1EOzzloFcpCny5j50DtY0p4xWFwidfJL0BSataxdTKfuKAw==
+  version "0.8.0-next.78d7bc3"
+  resolved "https://registry.yarnpkg.com/sprotty/-/sprotty-0.8.0-next.78d7bc3.tgz#af424cc0a01847a9e71e30af1f8a7e0876ecefe9"
+  integrity sha512-pgVng9NfGvoh4uAa8dkLxt2mE+8KdLdNGQjjaG6EEFwnq4mSDy5d32E0f+Dkke0g+erViBqD6GH9lhzylaHLiw==
   dependencies:
     autocompleter "5.1.0"
     file-saver "2.0.2"
