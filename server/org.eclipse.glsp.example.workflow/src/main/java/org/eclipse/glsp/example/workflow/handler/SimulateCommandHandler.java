@@ -15,6 +15,8 @@
  ********************************************************************************/
 package org.eclipse.glsp.example.workflow.handler;
 
+import java.util.Collections;
+import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 import java.util.concurrent.ThreadLocalRandom;
@@ -37,9 +39,8 @@ public class SimulateCommandHandler implements ServerCommandHandler {
    }
 
    @Override
-   public Optional<Action> execute(final String commandId, final Map<String, String> options,
+   public List<Action> execute(final String commandId, final Map<String, String> options,
       final GraphicalModelState modelState) {
-      Optional<Action> result = Optional.empty();
       if (SIMULATE_COMMAND_ID.equals(commandId)) {
          ClientOptions.getValue(options, OPTIONS_INVOKER_ID).ifPresent(id -> {
             Optional<GModelElement> invoker = modelState.getIndex().get(id);
@@ -48,11 +49,9 @@ public class SimulateCommandHandler implements ServerCommandHandler {
                double duration = ThreadLocalRandom.current().nextDouble(0d, 10d);
                logger.info("Task simulation finished within " + duration + " seconds");
             }
-
          });
       }
-
-      return result;
+      return Collections.emptyList();
    }
 
 }
