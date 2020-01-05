@@ -42,6 +42,7 @@ import {
     GLSPGraph,
     glspMouseToolModule,
     glspSelectModule,
+    glspServerCopyPasteModule,
     GridSnapper,
     hoverModule,
     HtmlRoot,
@@ -119,7 +120,7 @@ export default function createContainer(widgetId: string): Container {
 
     container.load(decorationModule, validationModule, defaultModule, glspMouseToolModule, defaultGLSPModule, glspSelectModule, boundsModule, viewportModule,
         hoverModule, fadeModule, exportModule, expandModule, openModule, buttonModule, modelSourceModule, labelEditModule, labelEditUiModule, glspEditLabelValidationModule,
-        workflowDiagramModule, saveModule, executeCommandModule, toolFeedbackModule, modelHintsModule, contextMenuModule, glspContextMenuModule,
+        workflowDiagramModule, saveModule, executeCommandModule, toolFeedbackModule, modelHintsModule, contextMenuModule, glspContextMenuModule, glspServerCopyPasteModule,
         commandPaletteModule, glspCommandPaletteModule, paletteModule, requestResponseModule, routingModule, edgeLayoutModule, zorderModule,
         layoutCommandsModule);
 
