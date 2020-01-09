@@ -23,10 +23,11 @@ import {
     commandPaletteModule,
     configureModelElement,
     ConsoleLogger,
+    contextMenuModule,
     decorationModule,
     defaultGLSPModule,
     defaultModule,
-    DeleteContextMenuProviderRegistry,
+    DeleteContextMenuItemProvider,
     DiamondNodeView,
     edgeLayoutModule,
     editLabelFeature,
@@ -86,7 +87,7 @@ const workflowDiagramModule = new ContainerModule((bind, unbind, isBound, rebind
     rebind(TYPES.LogLevel).toConstantValue(LogLevel.warn);
     bind(GLSP_TYPES.IMovementRestrictor).to(NoCollisionMovementRestrictor).inSingletonScope();
     bind(TYPES.ICommandPaletteActionProvider).to(RevealNamedElementActionProvider);
-    bind(GLSP_TYPES.IContextMenuProvider).to(DeleteContextMenuProviderRegistry);
+    bind(TYPES.IContextMenuItemProvider).to(DeleteContextMenuItemProvider);
     const context = { bind, unbind, isBound, rebind };
     configureModelElement(context, 'graph', GLSPGraph, SGraphView);
     configureModelElement(context, 'task:automated', TaskNode, TaskNodeView);
@@ -114,7 +115,7 @@ export default function createContainer(widgetId: string): Container {
 
     container.load(decorationModule, validationModule, defaultModule, glspMouseToolModule, defaultGLSPModule, glspSelectModule, boundsModule, viewportModule,
         hoverModule, fadeModule, exportModule, expandModule, openModule, buttonModule, modelSourceModule, labelEditModule, labelEditUiModule, glspEditLabelValidationModule,
-        workflowDiagramModule, saveModule, executeCommandModule, toolFeedbackModule, modelHintsModule, glspContextMenuModule,
+        workflowDiagramModule, saveModule, executeCommandModule, toolFeedbackModule, modelHintsModule, contextMenuModule, glspContextMenuModule,
         commandPaletteModule, glspCommandPaletteModule, paletteModule, requestResponseModule, routingModule, edgeLayoutModule, zorderModule,
         layoutCommandsModule);
 
