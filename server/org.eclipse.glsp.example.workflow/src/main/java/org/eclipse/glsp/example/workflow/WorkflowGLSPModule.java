@@ -52,7 +52,7 @@ import org.eclipse.glsp.server.operationhandler.ApplyLabelEditOperationHandler;
 import org.eclipse.glsp.server.operationhandler.ChangeBoundsOperationHandler;
 import org.eclipse.glsp.server.operationhandler.DeleteOperationHandler;
 import org.eclipse.glsp.server.operationhandler.ReconnectEdgeHandler;
-import org.eclipse.glsp.server.operationhandler.RerouteEdgeHandler;
+import org.eclipse.glsp.server.operationhandler.ChangeRoutingPointsHandler;
 
 @SuppressWarnings("serial")
 public class WorkflowGLSPModule extends DefaultGLSPModule {
@@ -90,7 +90,7 @@ public class WorkflowGLSPModule extends DefaultGLSPModule {
             add(CreateWeightedEdgeHandler.class);
             add(CreateEdgeHandler.class);
             add(ReconnectEdgeHandler.class);
-            add(RerouteEdgeHandler.class);
+            add(ChangeRoutingPointsHandler.class);
             add(DeleteWorkflowElementHandler.class);
             add(ChangeBoundsOperationHandler.class);
             add(DeleteOperationHandler.class);
