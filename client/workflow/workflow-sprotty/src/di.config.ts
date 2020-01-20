@@ -27,7 +27,7 @@ import {
     decorationModule,
     defaultGLSPModule,
     defaultModule,
-    DeleteContextMenuItemProvider,
+    DeleteElementContextMenuItemProvider,
     DiamondNodeView,
     edgeLayoutModule,
     editLabelFeature,
@@ -92,7 +92,7 @@ const workflowDiagramModule = new ContainerModule((bind, unbind, isBound, rebind
     bind(GLSP_TYPES.IMovementRestrictor).to(NoOverlapMovmentRestrictor).inSingletonScope();
     bind(TYPES.ISnapper).to(GridSnapper);
     bind(TYPES.ICommandPaletteActionProvider).to(RevealNamedElementActionProvider);
-    bind(TYPES.IContextMenuItemProvider).to(DeleteContextMenuItemProvider);
+    bind(TYPES.IContextMenuItemProvider).to(DeleteElementContextMenuItemProvider);
     const context = { bind, unbind, isBound, rebind };
     configureModelElement(context, 'graph', GLSPGraph, SGraphView);
     configureModelElement(context, 'task:automated', TaskNode, TaskNodeView);
