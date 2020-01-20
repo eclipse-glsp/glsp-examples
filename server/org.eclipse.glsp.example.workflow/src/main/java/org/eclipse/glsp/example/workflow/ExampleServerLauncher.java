@@ -15,7 +15,10 @@
  ********************************************************************************/
 package org.eclipse.glsp.example.workflow;
 
-import org.apache.log4j.BasicConfigurator;
+import org.apache.log4j.ConsoleAppender;
+import org.apache.log4j.Level;
+import org.apache.log4j.Logger;
+import org.apache.log4j.PatternLayout;
 import org.eclipse.elk.alg.layered.options.LayeredMetaDataProvider;
 import org.eclipse.glsp.layout.ElkLayoutEngine;
 import org.eclipse.glsp.server.launch.DefaultGLSPServerLauncher;
@@ -26,7 +29,7 @@ public final class ExampleServerLauncher {
    private ExampleServerLauncher() {}
 
    public static void main(final String[] args) {
-      BasicConfigurator.configure();
+      configureLogger();
       ElkLayoutEngine.initialize(new LayeredMetaDataProvider());
       GLSPServerLauncher launcher;
 
@@ -38,6 +41,16 @@ public final class ExampleServerLauncher {
          launcher = new DefaultGLSPServerLauncher(new WorkflowGLSPModule());
          launcher.start("localhost", 5007);
       }
+
+   }
+
+   public static void configureLogger() {
+      Logger root = Logger.getRootLogger();
+      if (!root.getAllAppenders().hasMoreElements()) {
+         root.addAppender(new ConsoleAppender(
+            new PatternLayout(PatternLayout.TTCC_CONVERSION_PATTERN)));
+      }
+      root.setLevel(Level.DEBUG);
 
    }
 }

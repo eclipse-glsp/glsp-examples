@@ -20,6 +20,7 @@ import "sprotty/css/edit-label.css";
 import {
     boundsModule,
     buttonModule,
+    CenterGridSnapper,
     commandPaletteModule,
     configureModelElement,
     ConsoleLogger,
@@ -51,7 +52,7 @@ import {
     LogLevel,
     modelHintsModule,
     modelSourceModule,
-    NoCollisionMovementRestrictor,
+    NoOverlapMovmentRestrictor,
     openModule,
     overrideViewerOptions,
     paletteModule,
@@ -85,7 +86,8 @@ import { ForkOrJoinNodeView, IconView, TaskNodeView, WeightedEdgeView, WorkflowE
 const workflowDiagramModule = new ContainerModule((bind, unbind, isBound, rebind) => {
     rebind(TYPES.ILogger).to(ConsoleLogger).inSingletonScope();
     rebind(TYPES.LogLevel).toConstantValue(LogLevel.warn);
-    bind(GLSP_TYPES.IMovementRestrictor).to(NoCollisionMovementRestrictor).inSingletonScope();
+    bind(GLSP_TYPES.IMovementRestrictor).to(NoOverlapMovmentRestrictor).inSingletonScope();
+    bind(TYPES.ISnapper).to(CenterGridSnapper);
     bind(TYPES.ICommandPaletteActionProvider).to(RevealNamedElementActionProvider);
     bind(TYPES.IContextMenuItemProvider).to(DeleteContextMenuItemProvider);
     const context = { bind, unbind, isBound, rebind };
