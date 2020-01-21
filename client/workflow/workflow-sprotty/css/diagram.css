@@ -16,7 +16,6 @@
 
 .sprotty-graph {
     font-size: 15pt;
-    background: rgb(179, 196, 202);
     border: none;
     height: 100%;
 }
@@ -31,8 +30,6 @@
 }
 
 .sprotty-node {
-    fill: #cdc;
-    stroke: rgb(0, 0, 0);
     stroke-width: 0;
     font-weight: bold;
 }
@@ -75,16 +72,10 @@
 
 .sprotty-edge {
     fill: none;
-    stroke: black;
     stroke-width: 2px;
 }
 
-.sprotty-edge.arrow {
-    fill: black;
-}
-
 .sprotty-edge.selected {
-    stroke: #844;
     stroke-width: 4px;
 }
 
@@ -120,9 +111,8 @@
     text-anchor: middle;
 }
 
-.sprotty-node.task {
+.sprotty-node:not(.selected) {
     stroke-width: 1px;
-    stroke: black;
 }
 
 .sprotty-node.task.automated {
@@ -131,14 +121,6 @@
 
 .sprotty-node.task.manual {
     fill: lightblue;
-}
-
-.sprotty-node.forkOrJoin {
-    fill: black;
-}
-
-.sprotty-node.forkOrJoin.selected {
-    stroke: rgb(87, 87, 214);
 }
 
 text {
@@ -176,13 +158,11 @@ text {
 
 polygon.sprotty-node {
     fill: white;
-    stroke: black;
     stroke-width: 1pt;
 }
 
 .sprotty-node.selected {
     stroke-width: 5;
-    stroke: rgb(87, 87, 214);
 }
 
 svg {
