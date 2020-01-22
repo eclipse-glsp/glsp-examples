@@ -15,11 +15,8 @@
  ********************************************************************************/
 package org.eclipse.glsp.example.workflow;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.Collection;
-
 import org.eclipse.glsp.api.configuration.ServerConfiguration;
+import org.eclipse.glsp.api.di.MultiBindings;
 import org.eclipse.glsp.api.diagram.DiagramConfiguration;
 import org.eclipse.glsp.api.factory.PopupModelFactory;
 import org.eclipse.glsp.api.handler.OperationHandler;
@@ -33,6 +30,8 @@ import org.eclipse.glsp.api.model.ModelExpansionListener;
 import org.eclipse.glsp.api.model.ModelSelectionListener;
 import org.eclipse.glsp.api.provider.CommandPaletteActionProvider;
 import org.eclipse.glsp.api.provider.ContextMenuItemProvider;
+import org.eclipse.glsp.api.provider.OperationHandlerProvider;
+import org.eclipse.glsp.api.provider.ServerCommandHandlerProvider;
 import org.eclipse.glsp.example.workflow.handler.CreateAutomatedTaskHandler;
 import org.eclipse.glsp.example.workflow.handler.CreateDecisionNodeHandler;
 import org.eclipse.glsp.example.workflow.handler.CreateEdgeHandler;
@@ -41,20 +40,13 @@ import org.eclipse.glsp.example.workflow.handler.CreateJoinNodeHandler;
 import org.eclipse.glsp.example.workflow.handler.CreateManualTaskHandler;
 import org.eclipse.glsp.example.workflow.handler.CreateMergeNodeHandler;
 import org.eclipse.glsp.example.workflow.handler.CreateWeightedEdgeHandler;
-import org.eclipse.glsp.example.workflow.handler.DeleteWorkflowElementHandler;
 import org.eclipse.glsp.example.workflow.handler.SimulateCommandHandler;
 import org.eclipse.glsp.example.workflow.labeledit.WorkflowLabelEditValidator;
 import org.eclipse.glsp.example.workflow.layout.WorkflowLayoutEngine;
 import org.eclipse.glsp.example.workflow.marker.WorkflowModelValidator;
 import org.eclipse.glsp.graph.GraphExtension;
 import org.eclipse.glsp.server.di.DefaultGLSPModule;
-import org.eclipse.glsp.server.operationhandler.ApplyLabelEditOperationHandler;
-import org.eclipse.glsp.server.operationhandler.ChangeBoundsOperationHandler;
-import org.eclipse.glsp.server.operationhandler.DeleteOperationHandler;
-import org.eclipse.glsp.server.operationhandler.ReconnectEdgeHandler;
-import org.eclipse.glsp.server.operationhandler.ChangeRoutingPointsHandler;
 
-@SuppressWarnings("serial")
 public class WorkflowGLSPModule extends DefaultGLSPModule {
 
    @Override
@@ -68,8 +60,29 @@ public class WorkflowGLSPModule extends DefaultGLSPModule {
    }
 
    @Override
-   protected Collection<Class<? extends DiagramConfiguration>> bindDiagramConfigurations() {
-      return Arrays.asList(WorkflowDiagramConfiguration.class);
+   protected void configureDiagramConfigurations(
+      final MultiBindings<DiagramConfiguration> bindings) {
+      bindings.add(WorkflowDiagramConfiguration.class);
+   }
+
+   @Override
+   protected void configureServerCommandHandlers(final MultiBindings<ServerCommandHandler> bindings) {
+      super.configureServerCommandHandlers(bindings);
+      bindings.add(SimulateCommandHandler.class);
+   }
+
+   @Override
+   protected void configureOperationHandlers(final MultiBindings<OperationHandler> bindings) {
+      super.configureOperationHandlers(bindings);
+      bindings.add(CreateAutomatedTaskHandler.class);
+      bindings.add(CreateManualTaskHandler.class);
+      bindings.add(CreateDecisionNodeHandler.class);
+      bindings.add(CreateMergeNodeHandler.class);
+      bindings.add(CreateForkNodeHandler.class);
+      bindings.add(CreateJoinNodeHandler.class);
+      bindings.add(CreateEdgeHandler.class);
+      bindings.add(CreateWeightedEdgeHandler.class);
+
    }
 
    @Override
@@ -78,25 +91,15 @@ public class WorkflowGLSPModule extends DefaultGLSPModule {
    }
 
    @Override
-   protected Collection<Class<? extends OperationHandler>> bindOperationHandlers() {
-      return new ArrayList<>() {
-         {
-            add(CreateAutomatedTaskHandler.class);
-            add(CreateManualTaskHandler.class);
-            add(CreateDecisionNodeHandler.class);
-            add(CreateMergeNodeHandler.class);
-            add(CreateForkNodeHandler.class);
-            add(CreateJoinNodeHandler.class);
-            add(CreateWeightedEdgeHandler.class);
-            add(CreateEdgeHandler.class);
-            add(ReconnectEdgeHandler.class);
-            add(ChangeRoutingPointsHandler.class);
-            add(DeleteWorkflowElementHandler.class);
-            add(ChangeBoundsOperationHandler.class);
-            add(DeleteOperationHandler.class);
-            add(ApplyLabelEditOperationHandler.class);
-         }
-      };
+   protected Class<? extends OperationHandlerProvider> bindOperatioHandlerProvider() {
+      // TODO Auto-generated method stub
+      return super.bindOperatioHandlerProvider();
+   }
+
+   @Override
+   protected Class<? extends ServerCommandHandlerProvider> bindServerCommandHandlerProvider() {
+      // TODO Auto-generated method stub
+      return super.bindServerCommandHandlerProvider();
    }
 
    @Override
@@ -127,11 +130,6 @@ public class WorkflowGLSPModule extends DefaultGLSPModule {
    @Override
    protected Class<? extends ContextMenuItemProvider> bindContextMenuItemProvider() {
       return WorkflowContextMenuItemProvider.class;
-   }
-
-   @Override
-   protected Collection<Class<? extends ServerCommandHandler>> bindServerCommandHandlers() {
-      return Arrays.asList(SimulateCommandHandler.class);
    }
 
    @Override
