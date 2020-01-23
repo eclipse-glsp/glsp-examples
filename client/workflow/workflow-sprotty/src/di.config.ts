@@ -42,6 +42,7 @@ import {
     GLSPGraph,
     glspMouseToolModule,
     glspSelectModule,
+    GridSnapper,
     hoverModule,
     HtmlRoot,
     HtmlRootView,
@@ -51,7 +52,7 @@ import {
     LogLevel,
     modelHintsModule,
     modelSourceModule,
-    NoCollisionMovementRestrictor,
+    NoOverlapMovmentRestrictor,
     openModule,
     overrideViewerOptions,
     paletteModule,
@@ -82,10 +83,13 @@ import { Container, ContainerModule } from "inversify";
 import { ActivityNode, Icon, TaskNode, WeightedEdge } from "./model";
 import { ForkOrJoinNodeView, IconView, TaskNodeView, WeightedEdgeView, WorkflowEdgeView } from "./workflow-views";
 
+
+
 const workflowDiagramModule = new ContainerModule((bind, unbind, isBound, rebind) => {
     rebind(TYPES.ILogger).to(ConsoleLogger).inSingletonScope();
     rebind(TYPES.LogLevel).toConstantValue(LogLevel.warn);
-    bind(GLSP_TYPES.IMovementRestrictor).to(NoCollisionMovementRestrictor).inSingletonScope();
+    bind(GLSP_TYPES.IMovementRestrictor).to(NoOverlapMovmentRestrictor).inSingletonScope();
+    bind(TYPES.ISnapper).to(GridSnapper);
     bind(TYPES.ICommandPaletteActionProvider).to(RevealNamedElementActionProvider);
     bind(TYPES.IContextMenuItemProvider).to(DeleteContextMenuItemProvider);
     const context = { bind, unbind, isBound, rebind };

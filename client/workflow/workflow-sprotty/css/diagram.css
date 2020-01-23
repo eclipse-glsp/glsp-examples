@@ -175,3 +175,12 @@ svg {
     margin-top: -1px;
     margin-left: -5px;
 }
+
+g .movement-not-allowed>.sprotty-node {
+    stroke: darkred!important;
+}
+
+.sprotty-resize-handle.movement-not-allowed {
+    stroke: darkred!important;
+    fill: darkred!important;
+}
