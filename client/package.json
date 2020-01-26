@@ -13,7 +13,8 @@
     "rebuild:browser": "theia rebuild:browser",
     "publish": "yarn && yarn publish:latest",
     "publish:latest": "lerna publish",
-    "publish:next": "lerna publish --exact --canary=next --npm-tag=next --yes"
+    "publish:next": "lerna publish --exact --canary=next --npm-tag=next --yes",
+    "update:next": "yarn upgrade -p \"@eclipse-glsp/.*|@theia/.*|sprotty-theia|sprotty\" --next "
   },
   "devDependencies": {
     "lerna": "^2.2.0",
