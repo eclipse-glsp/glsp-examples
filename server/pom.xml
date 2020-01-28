@@ -147,6 +147,11 @@
 					</dependency>
 				</dependencies>
 			</plugin>
+			<plugin>
+				<groupId>org.codehaus.mojo</groupId>
+				<artifactId>versions-maven-plugin</artifactId>
+				<version>2.7</version>
+			</plugin>
 		</plugins>
 	</build>
 
@@ -176,40 +181,39 @@
 					</plugin>
 					<!-- To generate javadoc -->
 
-					<!-- Deactivate for now. Not needed for snapshot deployments -->
-					<!-- <plugin> -->
-					<!-- <groupId>org.apache.maven.plugins</groupId> -->
-					<!-- <artifactId>maven-javadoc-plugin</artifactId> -->
-					<!-- <version>3.1.0</version> -->
-					<!-- <executions> -->
-					<!-- <execution> -->
-					<!-- <id>attach-javadocs</id> -->
-					<!-- <goals> -->
-					<!-- <goal>jar</goal> -->
-					<!-- </goals> -->
-					<!-- <configuration> -->
-					<!-- <additionalJOption>-Xdoclint:none</additionalJOption> -->
-					<!-- <tags> -->
-					<!-- <tag> -->
-					<!-- <name>generated</name> -->
-					<!-- <placement>a</placement> -->
-					<!-- <head></head> -->
-					<!-- </tag> -->
-					<!-- <tag> -->
-					<!-- <name>ordered</name> -->
-					<!-- <placement>a</placement> -->
-					<!-- <head></head> -->
-					<!-- </tag> -->
-					<!-- <tag> -->
-					<!-- <name>model</name> -->
-					<!-- <placement>a</placement> -->
-					<!-- <head>Model:</head> -->
-					<!-- </tag> -->
-					<!-- </tags> -->
-					<!-- </configuration> -->
-					<!-- </execution> -->
-					<!-- </executions> -->
-					<!-- </plugin> -->
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-javadoc-plugin</artifactId>
+						<version>3.1.0</version>
+						<executions>
+							<execution>
+								<id>attach-javadocs</id>
+								<goals>
+									<goal>jar</goal>
+								</goals>
+								<configuration>
+									<additionalJOption>-Xdoclint:none</additionalJOption>
+									<tags>
+										<tag>
+											<name>generated</name>
+											<placement>a</placement>
+											<head></head>
+										</tag>
+										<tag>
+											<name>ordered</name>
+											<placement>a</placement>
+											<head></head>
+										</tag>
+										<tag>
+											<name>model</name>
+											<placement>a</placement>
+											<head>Model:</head>
+										</tag>
+									</tags>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
 
 					<!-- To sign the artifacts -->
 					<plugin>
@@ -321,5 +325,5 @@
 			</repositories>
 		</profile>
 	</profiles>
-	
+
 </project>
