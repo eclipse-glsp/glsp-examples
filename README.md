@@ -2,7 +2,7 @@
 
 An example diagram client and server that has been built with the [Graphical Language Server Platform (GLSP)](https://github.com/eclipse-glsp/glsp). The example editor has been integrated with the cloud-based [Eclipse Theia IDE](https://github.com/theia-ide/theia) using the [GLSP theia integration](https://github.com/eclipse-glsp/glsp-theia-integration).
 
-For more information on building and running the GLSP examples, see the [GLSP umbrella project](https://github.com/eclipse-glsp/glsp) and please visit the [Eclipse GLSP Website](https://www.eclipse.org/glsp).
+For more information, please visit the [Eclipse GLSP Umbrella repository](https://github.com/eclipse-glsp/glsp) and the [Eclipse GLSP Website](https://www.eclipse.org/glsp/). If you have questions, contact us on our [spectrum chat](https://spectrum.chat/glsp/) and have a look at our [communication and support options](https://www.eclipse.org/glsp/contact/).
 
 ![alt](https://www.eclipse.org/glsp/images/diagramanimated.gif)
 
