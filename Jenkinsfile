@@ -61,8 +61,10 @@ pipeline {
         stage('Build client') {
             steps {
                 container('node') {
-                    dir('client') {
-                        sh 'yarn  install'
+                    timeout(30){
+                        dir('client') {
+                            sh 'yarn  install'
+                        }
                     }
                 }
             }
@@ -71,9 +73,11 @@ pipeline {
         stage('Build server'){
             steps{
                 container('maven'){
+                    timeout(30){
                         dir('server'){
                             sh 'mvn clean verify -DskipTests --batch-mode package'
                         }
+                    }
                 }
             }
         }
