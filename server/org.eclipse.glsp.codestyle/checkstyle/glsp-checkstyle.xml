@@ -16,9 +16,9 @@
     <module name="CyclomaticComplexity">
       <property name="max" value="7"/>
     </module>
+    
     <module name="JavadocMethod">
       <property name="scope" value="package"/>
-      <property name="allowMissingJavadoc" value="true"/>
     </module>
     <module name="SuppressionCommentFilter">
       <property name="offCommentFormat" value="(@generated$)|(// end of custom code$)"/>
@@ -69,10 +69,6 @@
     <module name="IllegalImport"/>
     <module name="RedundantImport"/>
     <module name="UnusedImports"/>
-    <module name="LineLength">
-      <property name="severity" value="ignore"/>
-      <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
-    </module>
     <module name="MethodLength"/>
     <module name="ParameterNumber"/>
     <module name="EmptyForIteratorPad">
@@ -211,6 +207,10 @@
     </module>
     <module name="SuppressWarnings"/>
   </module>
+  <module name="LineLength">
+   <property name="severity" value="ignore"/>
+   <metadata name="net.sf.eclipsecs.core.lastEnabledSeverity" value="inherit"/>
+ </module>	
   <module name="FileLength">
     <property name="severity" value="info"/>
     <property name="max" value="3000"/>
@@ -225,7 +225,7 @@
   </module>
   <module name="Translation"/>
   <module name="RegexpHeader">
-    <property name="header" value="^\/\*{2,80}$\n^ \* Copyright( \(c\))? \d\d\d\d(-\d\d\d\d)? EclipseSource and others\.$\n^ \*$\n^ \* This program and the accompanying materials are made available under the$\n^ \* terms of the Eclipse Public License v\. 2\.0 which is available at$\n^ \* https\:\/\/www\.eclipse\.org\/legal\/epl-2\.0\.$\n^ \*$\n^ \* This Source Code may also be made available under the following Secondary$\n^ \* Licenses when the conditions for such availability set forth in the Eclipse$\n^ \* Public License v\. 2\.0 are satisfied\: GNU General Public License, version 2$\n^ \* with the GNU Classpath Exception which is available at$\n^ \* https\:\/\/www\.gnu\.org\/software\/classpath\/license\.html\.$\n^ \*$\n^ \* SPDX-License-Identifier\: EPL-2\.0 OR GPL-2\.0 WITH Classpath-exception-2\.0$\n^ \*{1,80}\/$"/>
+    <property name="header" value="^\/\*{2,80}$\n^ \* Copyright( \(c\))? \d\d\d\d(-\d\d\d\d)?.+\.$\n^ \*$\n^ \* This program and the accompanying materials are made available under the$\n^ \* terms of the Eclipse Public License v\. 2\.0 which is available at$\n^ \* https\:\/\/www\.eclipse\.org\/legal\/epl-2\.0\.$\n^ \*$\n^ \* This Source Code may also be made available under the following Secondary$\n^ \* Licenses when the conditions for such availability set forth in the Eclipse$\n^ \* Public License v\. 2\.0 are satisfied\: GNU General Public License, version 2$\n^ \* with the GNU Classpath Exception which is available at$\n^ \* https\:\/\/www\.gnu\.org\/software\/classpath\/license\.html\.$\n^ \*$\n^ \* SPDX-License-Identifier\: EPL-2\.0 OR GPL-2\.0 WITH Classpath-exception-2\.0$\n^ \*{1,80}\/$"/>
     <property name="fileExtensions" value="java"/>
   </module>
   <module name="SuppressWarningsFilter"/>
