@@ -67,7 +67,7 @@ public class WorkflowModelValidator implements ModelValidator {
       TaskNode taskNode = (TaskNode) element;
       if ("automated".equals(taskNode.getTaskType())) {
          return Optional
-            .of(new Marker("Automated task", "This is an automated taks", element.getId(), MarkerKind.INFO));
+            .of(new Marker("Automated task", "This is an automated task", element.getId(), MarkerKind.INFO));
       }
       return Optional.empty();
    }

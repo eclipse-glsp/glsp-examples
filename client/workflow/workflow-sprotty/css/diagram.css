@@ -184,3 +184,7 @@ g .movement-not-allowed>.sprotty-node {
     stroke: darkred!important;
     fill: darkred!important;
 }
+
+.error>.sprotty-node {
+    stroke: darkred!important;
+}
