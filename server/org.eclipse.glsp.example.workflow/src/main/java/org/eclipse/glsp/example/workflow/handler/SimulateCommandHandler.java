@@ -15,6 +15,7 @@
  ********************************************************************************/
 package org.eclipse.glsp.example.workflow.handler;
 
+import java.util.Arrays;
 import java.util.Collections;
 import java.util.List;
 import java.util.Map;
@@ -34,11 +35,6 @@ public class SimulateCommandHandler implements ServerCommandHandler {
    public static final String OPTIONS_INVOKER_ID = "invokerId";
 
    @Override
-   public boolean handles(final String commandId) {
-      return SIMULATE_COMMAND_ID.equals(commandId);
-   }
-
-   @Override
    public List<Action> execute(final String commandId, final Map<String, String> options,
       final GraphicalModelState modelState) {
       if (SIMULATE_COMMAND_ID.equals(commandId)) {
@@ -52,6 +48,11 @@ public class SimulateCommandHandler implements ServerCommandHandler {
          });
       }
       return Collections.emptyList();
+   }
+
+   @Override
+   public List<String> handledCommandIds() {
+      return Arrays.asList(SIMULATE_COMMAND_ID);
    }
 
 }

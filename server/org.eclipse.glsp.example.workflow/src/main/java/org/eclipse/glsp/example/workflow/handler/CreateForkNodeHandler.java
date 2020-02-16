@@ -20,7 +20,7 @@ import org.eclipse.glsp.example.workflow.utils.ModelTypes;
 public class CreateForkNodeHandler extends CreateActivityNodeHandler {
 
    public CreateForkNodeHandler() {
-      super(ModelTypes.FORK_NODE);
+      super(ModelTypes.FORK_NODE, "Fork Node");
    }
 
 }

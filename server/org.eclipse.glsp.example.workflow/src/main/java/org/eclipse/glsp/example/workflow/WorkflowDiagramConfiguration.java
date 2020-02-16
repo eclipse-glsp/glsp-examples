@@ -15,8 +15,6 @@
  ********************************************************************************/
 package org.eclipse.glsp.example.workflow;
 
-import static org.eclipse.glsp.api.operations.Operation.Kind.CREATE_CONNECTION;
-import static org.eclipse.glsp.api.operations.Operation.Kind.CREATE_NODE;
 import static org.eclipse.glsp.example.workflow.utils.ModelTypes.AUTOMATED_TASK;
 import static org.eclipse.glsp.example.workflow.utils.ModelTypes.COMP_HEADER;
 import static org.eclipse.glsp.example.workflow.utils.ModelTypes.DECISION_NODE;
@@ -38,8 +36,6 @@ import java.util.Map;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.glsp.api.diagram.DiagramConfiguration;
-import org.eclipse.glsp.api.operations.Group;
-import org.eclipse.glsp.api.operations.Operation;
 import org.eclipse.glsp.api.types.EdgeTypeHint;
 import org.eclipse.glsp.api.types.ShapeTypeHint;
 import org.eclipse.glsp.example.workflow.wfgraph.WfgraphPackage;
@@ -50,22 +46,6 @@ public class WorkflowDiagramConfiguration implements DiagramConfiguration {
 
    @Override
    public String getDiagramType() { return "workflow-diagram"; }
-
-   @Override
-   public List<Operation> getOperations() {
-      Group nodeGroup = new Group("workflow.nodes", "Nodes");
-      Group edgeGroup = new Group("workflow.edges", "Edges");
-      Operation createAutomatedTask = new Operation("Automated Task", AUTOMATED_TASK, CREATE_NODE, nodeGroup);
-      Operation createManualTask = new Operation("Manual Task", MANUAL_TASK, CREATE_NODE, nodeGroup);
-      Operation createDecisionNode = new Operation("Decision Node", DECISION_NODE, CREATE_NODE, nodeGroup);
-      Operation createMergeNode = new Operation("Merge Node", MERGE_NODE, CREATE_NODE, nodeGroup);
-      Operation createForkNode = new Operation("Fork Node", FORK_NODE, CREATE_NODE, nodeGroup);
-      Operation createJoinNode = new Operation("Join Node", JOIN_NODE, CREATE_NODE, nodeGroup);
-      Operation createWeightedEdge = new Operation("Weighted Edge", WEIGHTED_EDGE, CREATE_CONNECTION, edgeGroup);
-      Operation createEdge = new Operation("Edge", EDGE, CREATE_CONNECTION, edgeGroup);
-      return Arrays.asList(createAutomatedTask, createManualTask, createDecisionNode, createMergeNode, createForkNode,
-         createJoinNode, createWeightedEdge, createEdge);
-   }
 
    @Override
    public Map<String, EClass> getTypeMappings() {

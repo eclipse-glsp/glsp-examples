@@ -16,7 +16,7 @@
 import "reflect-metadata";
 import "sprotty-theia/css/theia-sprotty.css";
 
-import { GLSPWebsocketDiagramServer, RequestOperationsAction, RequestTypeHintsAction } from "@eclipse-glsp/client/lib";
+import { EnableToolPaletteAction, GLSPWebsocketDiagramServer, RequestTypeHintsAction } from "@eclipse-glsp/client";
 import { join, resolve } from "path";
 import { IActionDispatcher, RequestModelAction, TYPES } from "sprotty";
 
@@ -37,6 +37,6 @@ websocket.addEventListener('open', event => {
         sourceUri: `file://${examplePath}`,
         diagramType: "workflow-diagram",
     }));
-    actionDispatcher.dispatch(new RequestOperationsAction());
     actionDispatcher.dispatch(new RequestTypeHintsAction("workflow-diagram"));
+    actionDispatcher.dispatch(new EnableToolPaletteAction());
 });

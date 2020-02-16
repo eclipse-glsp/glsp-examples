@@ -16,11 +16,11 @@
 import "sprotty-theia/css/theia-sprotty.css";
 
 import { createWorkflowDiagramContainer } from "@eclipse-glsp-examples/workflow-sprotty/lib";
-import { CommandPalette, GLSP_TYPES, IActionDispatcher, registerDefaultTools, TYPES } from "@eclipse-glsp/client/lib";
+import { CommandPalette, GLSP_TYPES, IActionDispatcher, TYPES } from "@eclipse-glsp/client";
 import { GLSPTheiaDiagramServer, TheiaCommandPalette } from "@eclipse-glsp/theia-integration/lib/browser";
 import { SelectionService } from "@theia/core";
 import { Container, inject, injectable } from "inversify";
-import { DiagramConfiguration, TheiaDiagramServer, TheiaSprottySelectionForwarder } from "sprotty-theia/lib";
+import { DiagramConfiguration, TheiaDiagramServer, TheiaSprottySelectionForwarder } from "sprotty-theia";
 import { TheiaContextMenuService } from "sprotty-theia/lib/sprotty/theia-sprotty-context-menu-service";
 
 import { WorkflowLanguage } from "../../common/workflow-language";
@@ -43,7 +43,6 @@ export class WorkflowDiagramConfiguration implements DiagramConfiguration {
         if (this.contextMenuService instanceof TheiaContextMenuService) {
             this.contextMenuService.connect(container.get<IActionDispatcher>(TYPES.IActionDispatcher));
         }
-        registerDefaultTools(container);
         return container;
     }
 }

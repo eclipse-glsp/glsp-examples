@@ -30,5 +30,7 @@
     "src",
     "build",
     "css"
-  ]
+  ],
+  "main": "lib/index",
+  "types": "lib/index"
 }

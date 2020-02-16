@@ -13,19 +13,17 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
-package org.eclipse.glsp.example.workflow;
+package org.eclipse.glsp.example.workflow.provider;
 
 import static org.eclipse.glsp.example.workflow.utils.ModelTypes.AUTOMATED_TASK;
 import static org.eclipse.glsp.example.workflow.utils.ModelTypes.MANUAL_TASK;
-import static org.eclipse.glsp.graph.util.GraphUtil.point;
 
 import java.util.Arrays;
 import java.util.List;
 import java.util.Map;
-import java.util.Optional;
 
-import org.eclipse.glsp.api.action.kind.CreateNodeOperationAction;
 import org.eclipse.glsp.api.model.GraphicalModelState;
+import org.eclipse.glsp.api.operation.kind.CreateNodeOperation;
 import org.eclipse.glsp.api.provider.ContextMenuItemProvider;
 import org.eclipse.glsp.api.types.MenuItem;
 import org.eclipse.glsp.graph.GPoint;
@@ -35,12 +33,13 @@ import com.google.common.collect.Lists;
 public class WorkflowContextMenuItemProvider implements ContextMenuItemProvider {
 
    @Override
-   public List<MenuItem> getItems(final GraphicalModelState modelState, final List<String> selectedElementIds,
-      final Optional<GPoint> position, final Map<String, String> args) {
+   public List<MenuItem> getItems(final List<String> selectedElementIds, final GPoint position,
+      final Map<String, String> args,
+      final GraphicalModelState modelState) {
       MenuItem newAutTask = new MenuItem("newAutoTask", "Automated Task",
-         Arrays.asList(new CreateNodeOperationAction(AUTOMATED_TASK, position.orElse(point(0, 0)))), true);
+         Arrays.asList(new CreateNodeOperation(AUTOMATED_TASK, position)), true);
       MenuItem newManTask = new MenuItem("newManualTask", "Manual Task",
-         Arrays.asList(new CreateNodeOperationAction(MANUAL_TASK, position.orElse(point(0, 0)))), true);
+         Arrays.asList(new CreateNodeOperation(MANUAL_TASK, position)), true);
       MenuItem newChildMenu = new MenuItem("new", "New", Arrays.asList(newAutTask, newManTask), "add", "0_new");
       return Lists.newArrayList(newChildMenu);
    }

@@ -22,16 +22,16 @@ import org.eclipse.glsp.graph.DefaultTypes;
 import org.eclipse.glsp.graph.GEdge;
 import org.eclipse.glsp.graph.GModelElement;
 import org.eclipse.glsp.graph.builder.impl.GEdgeBuilder;
-import org.eclipse.glsp.server.operationhandler.CreateConnectionOperationHandler;
+import org.eclipse.glsp.server.operationhandler.CreateEdgeOperationHandler;
 
-public class CreateEdgeHandler extends CreateConnectionOperationHandler {
+public class CreateEdgeHandler extends CreateEdgeOperationHandler {
 
    public CreateEdgeHandler() {
-      super(DefaultTypes.EDGE);
+      super(DefaultTypes.EDGE, "Edge");
    }
 
    @Override
-   protected Optional<GEdge> createConnection(final GModelElement source, final GModelElement target,
+   protected Optional<GEdge> createEdge(final GModelElement source, final GModelElement target,
       final GraphicalModelState modelState) {
       return Optional.of(new GEdgeBuilder() //
          .source(source) //

@@ -18,7 +18,7 @@ import { MessageService } from "@theia/core";
 import { WidgetManager } from "@theia/core/lib/browser";
 import { EditorManager } from "@theia/editor/lib/browser";
 import { inject, injectable } from "inversify";
-import { TheiaFileSaver } from "sprotty-theia/lib";
+import { TheiaFileSaver } from "sprotty-theia";
 
 import { WorkflowLanguage } from "../../common/workflow-language";
 import { WorkflowGLSPDiagramClient } from "./workflow-glsp-diagram-client";
