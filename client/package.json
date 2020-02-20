@@ -22,6 +22,16 @@
     "tslint-loader": "^3.4.3",
     "typescript": "3.6.4"
   },
+  "resolutions": {
+    "**/sprotty-theia": "0.8.0-next.a3b3621",
+    "**/@theia/core": "0.15.0",
+    "**/@theia/editor": "0.15.0",
+    "**/@theia/filesystem": "0.15.0",
+    "**/@theia/languages": "0.15.0",
+    "**/@theia/monaco": "0.15.0",
+    "**/@theia/process": "0.15.0",
+    "**/sprotty": "0.8.0-next.666cfe0"
+  },
   "workspaces": [
     "workflow/*"
   ]

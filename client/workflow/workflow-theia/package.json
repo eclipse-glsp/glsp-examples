@@ -1,6 +1,6 @@
 {
   "name": "@eclipse-glsp-examples/workflow-theia",
-  "version": "0.7.1",
+  "version": "0.8.0-rc-01",
   "keywords": [
     "theia-extension"
   ],
@@ -14,13 +14,13 @@
     "name": "EclipseSource"
   },
   "dependencies": {
-    "@eclipse-glsp-examples/workflow-sprotty": "0.7.0",
-    "@eclipse-glsp/theia-integration": "next",
-    "@theia/core": "next",
-    "@theia/editor": "next",
-    "@theia/filesystem": "next",
-    "@theia/languages": "next",
-    "@theia/monaco": "next"
+    "@eclipse-glsp-examples/workflow-sprotty": "0.8.0-rc-01",
+    "@eclipse-glsp/theia-integration": "0.8.0-rc-01",
+    "@theia/core": "0.15.0",
+    "@theia/editor": "0.15.0",
+    "@theia/filesystem": "0.15.0",
+    "@theia/languages": "0.15.0",
+    "@theia/monaco": "0.15.0"
   },
   "devDependencies": {
     "rimraf": "^2.6.1",

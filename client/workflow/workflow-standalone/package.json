@@ -1,11 +1,11 @@
 {
   "private": true,
   "name": "workflow-standalone",
-  "version": "0.7.0",
+  "version": "0.8.0-rc-01",
   "description": "Standalone browser-app for the Workflow example",
   "dependencies": {
-    "@eclipse-glsp-examples/workflow-sprotty": "next",
-    "@eclipse-glsp/client": "next",
+    "@eclipse-glsp-examples/workflow-sprotty": "0.8.0-rc-01",
+    "@eclipse-glsp/client": "0.8.0-rc-01",
     "reconnecting-websocket": "^4.1.10"
   },
   "devDependencies": {

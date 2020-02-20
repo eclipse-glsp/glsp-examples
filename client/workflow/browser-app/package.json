@@ -3,23 +3,23 @@
   "name": "browser-app",
   "version": "0.1.0",
   "dependencies": {
-    "@eclipse-glsp-examples/workflow-theia": "0.7.1",
-    "@theia/core": "next",
-    "@theia/editor": "next",
+    "@eclipse-glsp-examples/workflow-theia": "0.8.0-rc-01",
+    "@theia/core": "0.15.0",
+    "@theia/editor": "0.15.0",
     "@theia/filesystem": "next",
-    "@theia/languages": "next",
-    "@theia/markers": "next",
-    "@theia/messages": "next",
-    "@theia/monaco": "next",
-    "@theia/navigator": "next",
-    "@theia/preferences": "next",
-    "@theia/process": "next",
-    "@theia/terminal": "next",
-    "@theia/typescript": "next",
-    "@theia/workspace": "next"
+    "@theia/languages": "0.15.0",
+    "@theia/markers": "0.15.0",
+    "@theia/messages": "0.15.0",
+    "@theia/monaco": "0.15.0",
+    "@theia/navigator": "0.15.0",
+    "@theia/preferences": "0.15.0",
+    "@theia/process": "0.15.0",
+    "@theia/terminal": "0.15.0",
+    "@theia/typescript": "0.15.0",
+    "@theia/workspace": "0.15.0"
   },
   "devDependencies": {
-    "@theia/cli": "next"
+    "@theia/cli": "0.15.0"
   },
   "scripts": {
     "prepare": "theia build --mode development",
