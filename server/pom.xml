@@ -100,8 +100,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.0</version>
 				<configuration>
-					<source>11</source>
-					<target>11</target>
+					<source>1.8</source>
+					<target>1.8</target>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -181,39 +181,39 @@
 					</plugin>
 					<!-- To generate javadoc -->
 
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-javadoc-plugin</artifactId>
-						<version>3.1.0</version>
-						<executions>
-							<execution>
-								<id>attach-javadocs</id>
-								<goals>
-									<goal>jar</goal>
-								</goals>
-								<configuration>
-									<additionalJOption>-Xdoclint:none</additionalJOption>
-									<tags>
-										<tag>
-											<name>generated</name>
-											<placement>a</placement>
-											<head></head>
-										</tag>
-										<tag>
-											<name>ordered</name>
-											<placement>a</placement>
-											<head></head>
-										</tag>
-										<tag>
-											<name>model</name>
-											<placement>a</placement>
-											<head>Model:</head>
-										</tag>
-									</tags>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
+<!-- 					<plugin> -->
+<!-- 						<groupId>org.apache.maven.plugins</groupId> -->
+<!-- 						<artifactId>maven-javadoc-plugin</artifactId> -->
+<!-- 						<version>3.1.0</version> -->
+<!-- 						<executions> -->
+<!-- 							<execution> -->
+<!-- 								<id>attach-javadocs</id> -->
+<!-- 								<goals> -->
+<!-- 									<goal>jar</goal> -->
+<!-- 								</goals> -->
+<!-- 								<configuration> -->
+<!-- 									<additionalJOption>-Xdoclint:none</additionalJOption> -->
+<!-- 									<tags> -->
+<!-- 										<tag> -->
+<!-- 											<name>generated</name> -->
+<!-- 											<placement>a</placement> -->
+<!-- 											<head></head> -->
+<!-- 										</tag> -->
+<!-- 										<tag> -->
+<!-- 											<name>ordered</name> -->
+<!-- 											<placement>a</placement> -->
+<!-- 											<head></head> -->
+<!-- 										</tag> -->
+<!-- 										<tag> -->
+<!-- 											<name>model</name> -->
+<!-- 											<placement>a</placement> -->
+<!-- 											<head>Model:</head> -->
+<!-- 										</tag> -->
+<!-- 									</tags> -->
+<!-- 								</configuration> -->
+<!-- 							</execution> -->
+<!-- 						</executions> -->
+<!-- 					</plugin> -->
 
 					<!-- To sign the artifacts -->
 					<plugin>
