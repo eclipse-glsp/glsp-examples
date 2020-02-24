@@ -18,7 +18,6 @@ package org.eclipse.glsp.example.workflow.handler;
 import java.util.Optional;
 import java.util.function.Function;
 
-import org.eclipse.glsp.api.action.kind.AbstractOperationAction;
 import org.eclipse.glsp.api.model.GraphicalModelState;
 import org.eclipse.glsp.example.workflow.utils.ModelTypes;
 import org.eclipse.glsp.example.workflow.utils.WorkflowBuilder.TaskNodeBuilder;
@@ -26,7 +25,7 @@ import org.eclipse.glsp.example.workflow.wfgraph.WfgraphPackage;
 import org.eclipse.glsp.graph.GNode;
 import org.eclipse.glsp.graph.GPoint;
 import org.eclipse.glsp.server.operationhandler.CreateNodeOperationHandler;
-import org.eclipse.glsp.server.util.GModelUtil;
+import org.eclipse.glsp.server.utils.GModelUtil;
 
 public abstract class CreateTaskHandler extends CreateNodeOperationHandler {
 
@@ -41,15 +40,10 @@ public abstract class CreateTaskHandler extends CreateNodeOperationHandler {
    protected GNode createNode(final Optional<GPoint> point, final GraphicalModelState modelState) {
       int nodeCounter = GModelUtil.generateId(WfgraphPackage.Literals.TASK_NODE, "task", modelState);
       String name = labelProvider.apply(nodeCounter);
-      String taskType = ModelTypes.toNodeType(elementTypeId);
-      return new TaskNodeBuilder(elementTypeId, name, taskType, 0) //
+      String taskType = ModelTypes.toNodeType(getElementTypeId());
+      return new TaskNodeBuilder(getElementTypeId(), name, taskType, 0) //
          .position(point.orElse(null)) //
          .build();
-   }
-
-   @Override
-   public String getLabel(final AbstractOperationAction action) {
-      return "Create task";
    }
 
 }

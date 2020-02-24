@@ -16,7 +16,7 @@
 import { GLSPClientContribution } from "@eclipse-glsp/theia-integration/lib/browser";
 import { FrontendApplicationContribution, OpenHandler, WidgetFactory } from "@theia/core/lib/browser";
 import { ContainerModule, interfaces } from "inversify";
-import { DiagramConfiguration, DiagramManager, DiagramManagerProvider } from "sprotty-theia/lib";
+import { DiagramConfiguration, DiagramManager, DiagramManagerProvider } from "sprotty-theia";
 
 import { WorkflowDiagramConfiguration } from "./diagram/workflow-diagram-configuration";
 import { WorkflowDiagramManager } from "./diagram/workflow-diagram-manager";

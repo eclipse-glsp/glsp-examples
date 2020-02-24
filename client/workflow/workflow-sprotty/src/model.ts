@@ -37,7 +37,7 @@ import {
     SShapeElement,
     WithEditableLabel,
     withEditLabelFeature
-} from "@eclipse-glsp/client/lib";
+} from "@eclipse-glsp/client";
 
 import { ActivityNodeSchema } from "./model-schema";
 

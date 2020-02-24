@@ -23,7 +23,7 @@ import {
     SEdge,
     SShapeElement,
     toDegrees
-} from "@eclipse-glsp/client/lib";
+} from "@eclipse-glsp/client";
 import { injectable } from "inversify";
 import * as snabbdom from "snabbdom-jsx";
 import { VNode } from "snabbdom/vnode";

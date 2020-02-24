@@ -16,7 +16,6 @@
 package org.eclipse.glsp.example.workflow;
 
 import org.eclipse.glsp.api.configuration.ServerConfiguration;
-import org.eclipse.glsp.api.di.MultiBindings;
 import org.eclipse.glsp.api.diagram.DiagramConfiguration;
 import org.eclipse.glsp.api.factory.PopupModelFactory;
 import org.eclipse.glsp.api.handler.OperationHandler;
@@ -25,9 +24,6 @@ import org.eclipse.glsp.api.jsonrpc.GLSPServer;
 import org.eclipse.glsp.api.labeledit.LabelEditValidator;
 import org.eclipse.glsp.api.layout.ILayoutEngine;
 import org.eclipse.glsp.api.markers.ModelValidator;
-import org.eclipse.glsp.api.model.ModelElementOpenListener;
-import org.eclipse.glsp.api.model.ModelExpansionListener;
-import org.eclipse.glsp.api.model.ModelSelectionListener;
 import org.eclipse.glsp.api.provider.CommandPaletteActionProvider;
 import org.eclipse.glsp.api.provider.ContextMenuItemProvider;
 import org.eclipse.glsp.example.workflow.handler.CreateAutomatedTaskHandler;
@@ -42,8 +38,11 @@ import org.eclipse.glsp.example.workflow.handler.SimulateCommandHandler;
 import org.eclipse.glsp.example.workflow.labeledit.WorkflowLabelEditValidator;
 import org.eclipse.glsp.example.workflow.layout.WorkflowLayoutEngine;
 import org.eclipse.glsp.example.workflow.marker.WorkflowModelValidator;
+import org.eclipse.glsp.example.workflow.provider.WorkflowCommandPaletteActionProvider;
+import org.eclipse.glsp.example.workflow.provider.WorkflowContextMenuItemProvider;
 import org.eclipse.glsp.graph.GraphExtension;
 import org.eclipse.glsp.server.di.DefaultGLSPModule;
+import org.eclipse.glsp.server.di.MultiBindConfig;
 
 public class WorkflowGLSPModule extends DefaultGLSPModule {
 
@@ -59,18 +58,18 @@ public class WorkflowGLSPModule extends DefaultGLSPModule {
 
    @Override
    protected void configureDiagramConfigurations(
-      final MultiBindings<DiagramConfiguration> bindings) {
+      final MultiBindConfig<DiagramConfiguration> bindings) {
       bindings.add(WorkflowDiagramConfiguration.class);
    }
 
    @Override
-   protected void configureServerCommandHandlers(final MultiBindings<ServerCommandHandler> bindings) {
+   protected void configureServerCommandHandlers(final MultiBindConfig<ServerCommandHandler> bindings) {
       super.configureServerCommandHandlers(bindings);
       bindings.add(SimulateCommandHandler.class);
    }
 
    @Override
-   protected void configureOperationHandlers(final MultiBindings<OperationHandler> bindings) {
+   protected void configureOperationHandlers(final MultiBindConfig<OperationHandler> bindings) {
       super.configureOperationHandlers(bindings);
       bindings.add(CreateAutomatedTaskHandler.class);
       bindings.add(CreateManualTaskHandler.class);
@@ -94,31 +93,6 @@ public class WorkflowGLSPModule extends DefaultGLSPModule {
    }
 
    @Override
-   public Class<? extends ModelSelectionListener> bindModelSelectionListener() {
-      return WorkflowServerListener.class;
-   }
-
-   @Override
-   public Class<? extends ModelElementOpenListener> bindModelElementOpenListener() {
-      return WorkflowServerListener.class;
-   }
-
-   @Override
-   public Class<? extends ModelExpansionListener> bindModelExpansionListener() {
-      return WorkflowServerListener.class;
-   }
-
-   @Override
-   protected Class<? extends CommandPaletteActionProvider> bindCommandPaletteActionProvider() {
-      return WorkflowCommandPaletteActionProvider.class;
-   }
-
-   @Override
-   protected Class<? extends ContextMenuItemProvider> bindContextMenuItemProvider() {
-      return WorkflowContextMenuItemProvider.class;
-   }
-
-   @Override
    protected Class<? extends ModelValidator> bindModelValidator() {
       return WorkflowModelValidator.class;
    }
@@ -131,6 +105,16 @@ public class WorkflowGLSPModule extends DefaultGLSPModule {
    @Override
    protected Class<? extends ILayoutEngine> bindLayoutEngine() {
       return WorkflowLayoutEngine.class;
+   }
+
+   @Override
+   protected Class<? extends ContextMenuItemProvider> bindContextMenuItemProvider() {
+      return WorkflowContextMenuItemProvider.class;
+   }
+
+   @Override
+   protected Class<? extends CommandPaletteActionProvider> bindCommandPaletteActionProvider() {
+      return WorkflowCommandPaletteActionProvider.class;
    }
 
 }

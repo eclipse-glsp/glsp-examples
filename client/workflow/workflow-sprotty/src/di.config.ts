@@ -32,6 +32,7 @@ import {
     DiamondNodeView,
     edgeLayoutModule,
     editLabelFeature,
+    executeCommandModule,
     ExpandButtonView,
     expandModule,
     exportModule,
@@ -74,18 +75,16 @@ import {
     SRoutingHandle,
     SRoutingHandleView,
     toolFeedbackModule,
+    toolsModule,
     TYPES,
     validationModule,
     viewportModule,
     zorderModule
-} from "@eclipse-glsp/client/lib";
-import executeCommandModule from "@eclipse-glsp/client/lib/features/execute/di.config";
+} from "@eclipse-glsp/client";
 import { Container, ContainerModule } from "inversify";
 
 import { ActivityNode, Icon, TaskNode, WeightedEdge } from "./model";
 import { ForkOrJoinNodeView, IconView, TaskNodeView, WeightedEdgeView, WorkflowEdgeView } from "./workflow-views";
-
-
 
 const workflowDiagramModule = new ContainerModule((bind, unbind, isBound, rebind) => {
     rebind(TYPES.ILogger).to(ConsoleLogger).inSingletonScope();
@@ -119,7 +118,7 @@ const workflowDiagramModule = new ContainerModule((bind, unbind, isBound, rebind
 export default function createContainer(widgetId: string): Container {
     const container = new Container();
 
-    container.load(decorationModule, validationModule, defaultModule, glspMouseToolModule, defaultGLSPModule, glspSelectModule, boundsModule, viewportModule,
+    container.load(decorationModule, validationModule, defaultModule, glspMouseToolModule, defaultGLSPModule, glspSelectModule, boundsModule, viewportModule, toolsModule,
         glspHoverModule, fadeModule, exportModule, expandModule, openModule, buttonModule, modelSourceModule, labelEditModule, labelEditUiModule, glspEditLabelValidationModule,
         workflowDiagramModule, saveModule, executeCommandModule, toolFeedbackModule, modelHintsModule, contextMenuModule, glspContextMenuModule, glspServerCopyPasteModule,
         copyPasteContextMenuModule, commandPaletteModule, glspCommandPaletteModule, paletteModule, requestResponseModule, routingModule, edgeLayoutModule, zorderModule,

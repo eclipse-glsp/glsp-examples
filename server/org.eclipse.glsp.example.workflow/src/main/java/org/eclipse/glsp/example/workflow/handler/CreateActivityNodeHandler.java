@@ -24,18 +24,24 @@ import org.eclipse.glsp.graph.GNode;
 import org.eclipse.glsp.graph.GPoint;
 import org.eclipse.glsp.server.operationhandler.CreateNodeOperationHandler;
 
-public class CreateActivityNodeHandler extends CreateNodeOperationHandler {
+public abstract class CreateActivityNodeHandler extends CreateNodeOperationHandler {
 
-   public CreateActivityNodeHandler(final String elementTypeId) {
+   private final String label;
+
+   public CreateActivityNodeHandler(final String elementTypeId, final String label) {
       super(elementTypeId);
+      this.label = label;
    }
 
    @Override
    protected GNode createNode(final Optional<GPoint> point, final GraphicalModelState modelState) {
-      String nodeType = ModelTypes.toNodeType(elementTypeId);
-      return new ActivityNodeBuilder(elementTypeId, nodeType) //
+      String nodeType = ModelTypes.toNodeType(getElementTypeId());
+      return new ActivityNodeBuilder(getElementTypeId(), nodeType) //
          .position(point.orElse(null)) //
          .build();
    }
+
+   @Override
+   public String getLabel() { return label; }
 
 }

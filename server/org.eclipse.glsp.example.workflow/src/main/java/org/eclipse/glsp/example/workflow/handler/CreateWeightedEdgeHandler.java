@@ -22,16 +22,16 @@ import org.eclipse.glsp.example.workflow.utils.ModelTypes;
 import org.eclipse.glsp.example.workflow.utils.WorkflowBuilder.WeightedEdgeBuilder;
 import org.eclipse.glsp.graph.GEdge;
 import org.eclipse.glsp.graph.GModelElement;
-import org.eclipse.glsp.server.operationhandler.CreateConnectionOperationHandler;
+import org.eclipse.glsp.server.operationhandler.CreateEdgeOperationHandler;
 
-public class CreateWeightedEdgeHandler extends CreateConnectionOperationHandler {
+public class CreateWeightedEdgeHandler extends CreateEdgeOperationHandler {
 
    public CreateWeightedEdgeHandler() {
-      super(ModelTypes.WEIGHTED_EDGE);
+      super(ModelTypes.WEIGHTED_EDGE, "Weighted edge");
    }
 
    @Override
-   protected Optional<GEdge> createConnection(final GModelElement source, final GModelElement target,
+   protected Optional<GEdge> createEdge(final GModelElement source, final GModelElement target,
       final GraphicalModelState modelState) {
       return Optional.of(new WeightedEdgeBuilder() //
          .source(source) //

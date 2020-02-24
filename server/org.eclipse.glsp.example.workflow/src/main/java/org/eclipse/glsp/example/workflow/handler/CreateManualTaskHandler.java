@@ -23,4 +23,7 @@ public class CreateManualTaskHandler extends CreateTaskHandler {
       super(ModelTypes.MANUAL_TASK, i -> "ManualTask" + i);
    }
 
+   @Override
+   public String getLabel() { return "Manual Task"; }
+
 }

@@ -23,4 +23,7 @@ public class CreateAutomatedTaskHandler extends CreateTaskHandler {
       super(ModelTypes.AUTOMATED_TASK, i -> "AutomatedTask" + i);
    }
 
+   @Override
+   public String getLabel() { return "Automated Task"; }
+
 }

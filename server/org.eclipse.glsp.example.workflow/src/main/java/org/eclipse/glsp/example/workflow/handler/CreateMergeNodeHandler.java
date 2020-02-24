@@ -20,7 +20,7 @@ import org.eclipse.glsp.example.workflow.utils.ModelTypes;
 public class CreateMergeNodeHandler extends CreateActivityNodeHandler {
 
    public CreateMergeNodeHandler() {
-      super(ModelTypes.MERGE_NODE);
+      super(ModelTypes.MERGE_NODE, "Merge Node");
    }
 
 }

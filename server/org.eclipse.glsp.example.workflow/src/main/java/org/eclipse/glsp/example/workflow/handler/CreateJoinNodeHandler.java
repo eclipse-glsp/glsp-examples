@@ -20,7 +20,7 @@ import org.eclipse.glsp.example.workflow.utils.ModelTypes;
 public class CreateJoinNodeHandler extends CreateActivityNodeHandler {
 
    public CreateJoinNodeHandler() {
-      super(ModelTypes.JOIN_NODE);
+      super(ModelTypes.JOIN_NODE, "Join Node");
    }
 
 }
