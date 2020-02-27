@@ -10,11 +10,13 @@ This project is governed by the [Eclipse Community Code of Conduct](https://gith
 
 The following communication channels are available:
 
- * [GitHub issues](https://github.com/eclipse-glsp/glsp-examples/issues) - for bug reports, feature requests, etc.
+ * [GitHub issues](https://github.com/eclipse-glsp/glsp/issues) - for bug reports, feature requests, etc.
  * [Eclipse community forum](https://www.eclipse.org/forums/index.php/f/443/) - for questions
  * [Developer mailing list](https://accounts.eclipse.org/mailing-list/glsp-dev) - for organizational issues (e.g. elections of new committers)
 
-In case you have a question, please look into the [documentation in the Wiki](https://github.com/eclipse-glsp/glsp-examples/wiki) first. If you don't find any answer there, feel free to use the chat, forum or issues to get help.
+In case you have a question, please look into the [documentation in the Wiki](https://github.com/eclipse-glsp/glsp/wiki) first. If you don't find any answer there, feel free to use the chat, forum or issues to get help.
+
+Please create new issues only in the [GLSP umbrella project](https://github.com/eclipse-glsp/glsp), as we are tracking the issues for all components of GLSP there.
 
 ## How to Contribute
 
