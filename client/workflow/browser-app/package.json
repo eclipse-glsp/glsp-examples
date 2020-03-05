@@ -3,7 +3,6 @@
   "name": "browser-app",
   "version": "0.1.0",
   "dependencies": {
-    "@eclipse-glsp-examples/workflow-theia": "0.7.1",
     "@theia/core": "next",
     "@theia/editor": "next",
     "@theia/filesystem": "next",
@@ -16,7 +15,8 @@
     "@theia/process": "next",
     "@theia/terminal": "next",
     "@theia/typescript": "next",
-    "@theia/workspace": "next"
+    "@theia/workspace": "next",
+    "@eclipse-glsp-examples/workflow-theia": "0.7.1"
   },
   "devDependencies": {
     "@theia/cli": "next"

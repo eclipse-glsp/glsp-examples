@@ -17,6 +17,7 @@ package org.eclipse.glsp.example.workflow;
 
 import org.eclipse.glsp.api.configuration.ServerConfiguration;
 import org.eclipse.glsp.api.diagram.DiagramConfiguration;
+import org.eclipse.glsp.api.factory.ModelFactory;
 import org.eclipse.glsp.api.factory.PopupModelFactory;
 import org.eclipse.glsp.api.handler.OperationHandler;
 import org.eclipse.glsp.api.handler.ServerCommandHandler;
@@ -38,6 +39,7 @@ import org.eclipse.glsp.example.workflow.handler.SimulateCommandHandler;
 import org.eclipse.glsp.example.workflow.labeledit.WorkflowLabelEditValidator;
 import org.eclipse.glsp.example.workflow.layout.WorkflowLayoutEngine;
 import org.eclipse.glsp.example.workflow.marker.WorkflowModelValidator;
+import org.eclipse.glsp.example.workflow.model.WorkflowModelFactory;
 import org.eclipse.glsp.example.workflow.provider.WorkflowCommandPaletteActionProvider;
 import org.eclipse.glsp.example.workflow.provider.WorkflowContextMenuItemProvider;
 import org.eclipse.glsp.graph.GraphExtension;
@@ -117,4 +119,8 @@ public class WorkflowGLSPModule extends DefaultGLSPModule {
       return WorkflowCommandPaletteActionProvider.class;
    }
 
+   @Override
+   protected Class<? extends ModelFactory> bindModelFactory() {
+      return WorkflowModelFactory.class;
+   }
 }
