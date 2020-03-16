@@ -734,9 +734,9 @@
     balloon-css "^0.5.0"
 
 "@eclipse-glsp/client@next":
-  version "0.8.0-next.9bb05b9"
-  resolved "https://registry.yarnpkg.com/@eclipse-glsp/client/-/client-0.8.0-next.9bb05b9.tgz#e20bbed2c2405717ba2a6ebdd20989c8e98e3401"
-  integrity sha512-BSMu4YjGcymp+SgiX5zhbdC6tN41JP1Y+jaJKis4MrnK4X2EBI+rg9vgNjz6QsVYqw+UxVG/BPEaqYPoZudveA==
+  version "0.8.0-next.7324d57"
+  resolved "https://registry.yarnpkg.com/@eclipse-glsp/client/-/client-0.8.0-next.7324d57.tgz#f74c8919ed0adb7dccd8fb5e267bb1391259d392"
+  integrity sha512-OJzWpRo5JPjFvDfIAjZN/XNzk73J40hLfUzLhgjEa3nM7MKex0KOfrmYSjasCw2e2CFAT2J7m5V9CqZzS0mnyQ==
   dependencies:
     autocompleter "^4.0.2"
     sprotty next
@@ -744,15 +744,16 @@
     vscode-ws-jsonrpc "^0.0.2-1"
 
 "@eclipse-glsp/theia-integration@next":
-  version "0.8.0-next.9149e1d"
-  resolved "https://registry.yarnpkg.com/@eclipse-glsp/theia-integration/-/theia-integration-0.8.0-next.9149e1d.tgz#6f1fa2a14a6b2ec0c8cef8b82225a3c9d058f704"
-  integrity sha512-YdOV/F4nVgwQGQI6lS+NElXrd4HhAajdmdLIjuYfK8GadefoaFvQ7wjDbwtyh6hg3bgU8giiGTZ29/hagUWI/A==
+  version "0.8.0-next.50370b5"
+  resolved "https://registry.yarnpkg.com/@eclipse-glsp/theia-integration/-/theia-integration-0.8.0-next.50370b5.tgz#3ed99d776e4e2d0604a1a112a379328968d1c9d5"
+  integrity sha512-6BoHT/RHWuuoGOPwIx2jjVnvM+gmu8tqoepc13NSqJzQ3WZ0k//cxgdVpc5oi6fYRK5WOUj95GSZ4rb/zhMAuw==
   dependencies:
     "@eclipse-glsp/client" next
     "@theia/core" next
     "@theia/editor" next
     "@theia/filesystem" next
     "@theia/languages" next
+    "@theia/messages" next
     "@theia/monaco" next
     "@theia/process" next
     "@theia/workspace" next
