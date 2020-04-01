@@ -83,6 +83,7 @@ import {
 } from "@eclipse-glsp/client";
 import { Container, ContainerModule } from "inversify";
 
+import { directTaskEditor } from "./direct-task-editing/di.config";
 import { ActivityNode, Icon, TaskNode, WeightedEdge } from "./model";
 import { ForkOrJoinNodeView, IconView, TaskNodeView, WeightedEdgeView, WorkflowEdgeView } from "./workflow-views";
 
@@ -122,7 +123,7 @@ export default function createContainer(widgetId: string): Container {
         glspHoverModule, fadeModule, exportModule, expandModule, openModule, buttonModule, modelSourceModule, labelEditModule, labelEditUiModule, glspEditLabelValidationModule,
         workflowDiagramModule, saveModule, executeCommandModule, toolFeedbackModule, modelHintsModule, contextMenuModule, glspContextMenuModule, glspServerCopyPasteModule,
         copyPasteContextMenuModule, commandPaletteModule, glspCommandPaletteModule, paletteModule, requestResponseModule, routingModule, edgeLayoutModule, zorderModule,
-        layoutCommandsModule);
+        layoutCommandsModule, directTaskEditor);
 
     overrideViewerOptions(container, {
         baseDiv: widgetId,

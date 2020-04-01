@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2019 EclipseSource and others.
+ * Copyright (c) 2020 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -34,6 +34,7 @@ import {
     RectangularNode,
     SEdge,
     selectFeature,
+    SModelElement,
     SShapeElement,
     WithEditableLabel,
     withEditLabelFeature
@@ -59,6 +60,10 @@ export class TaskNode extends RectangularNode implements Nameable, WithEditableL
         }
         return undefined;
     }
+}
+
+export function isTaskNode(element: SModelElement): element is TaskNode {
+    return element instanceof TaskNode || false;
 }
 
 export class WeightedEdge extends SEdge {

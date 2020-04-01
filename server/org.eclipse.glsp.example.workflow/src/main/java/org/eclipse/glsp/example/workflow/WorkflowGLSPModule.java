@@ -19,6 +19,7 @@ import org.eclipse.glsp.api.configuration.ServerConfiguration;
 import org.eclipse.glsp.api.diagram.DiagramConfiguration;
 import org.eclipse.glsp.api.factory.ModelFactory;
 import org.eclipse.glsp.api.factory.PopupModelFactory;
+import org.eclipse.glsp.api.handler.ActionHandler;
 import org.eclipse.glsp.api.handler.OperationHandler;
 import org.eclipse.glsp.api.handler.ServerCommandHandler;
 import org.eclipse.glsp.api.jsonrpc.GLSPServer;
@@ -26,6 +27,7 @@ import org.eclipse.glsp.api.labeledit.LabelEditValidator;
 import org.eclipse.glsp.api.layout.ILayoutEngine;
 import org.eclipse.glsp.api.markers.ModelValidator;
 import org.eclipse.glsp.api.provider.CommandPaletteActionProvider;
+import org.eclipse.glsp.api.provider.ContextActionsProvider;
 import org.eclipse.glsp.api.provider.ContextMenuItemProvider;
 import org.eclipse.glsp.example.workflow.handler.CreateAutomatedTaskHandler;
 import org.eclipse.glsp.example.workflow.handler.CreateDecisionNodeHandler;
@@ -42,6 +44,10 @@ import org.eclipse.glsp.example.workflow.marker.WorkflowModelValidator;
 import org.eclipse.glsp.example.workflow.model.WorkflowModelFactory;
 import org.eclipse.glsp.example.workflow.provider.WorkflowCommandPaletteActionProvider;
 import org.eclipse.glsp.example.workflow.provider.WorkflowContextMenuItemProvider;
+import org.eclipse.glsp.example.workflow.taskedit.ApplyTaskEditOperationHandler;
+import org.eclipse.glsp.example.workflow.taskedit.EditTaskOperationHandler;
+import org.eclipse.glsp.example.workflow.taskedit.TaskEditContextActionProvider;
+import org.eclipse.glsp.example.workflow.taskedit.TaskEditValidator;
 import org.eclipse.glsp.graph.GraphExtension;
 import org.eclipse.glsp.server.di.DefaultGLSPModule;
 import org.eclipse.glsp.server.di.MultiBindConfig;
@@ -56,6 +62,18 @@ public class WorkflowGLSPModule extends DefaultGLSPModule {
    @Override
    protected Class<? extends ServerConfiguration> bindServerConfiguration() {
       return WorkflowServerConfiguration.class;
+   }
+
+   @Override
+   protected void configureContextActionsProviders(final MultiBindConfig<ContextActionsProvider> config) {
+      super.configureContextActionsProviders(config);
+      config.add(TaskEditContextActionProvider.class);
+   }
+
+   @Override
+   protected void configureActionHandlers(final MultiBindConfig<ActionHandler> bindings) {
+      super.configureActionHandlers(bindings);
+      bindings.add(TaskEditValidator.class);
    }
 
    @Override
@@ -81,7 +99,8 @@ public class WorkflowGLSPModule extends DefaultGLSPModule {
       bindings.add(CreateJoinNodeHandler.class);
       bindings.add(CreateEdgeHandler.class);
       bindings.add(CreateWeightedEdgeHandler.class);
-
+      bindings.add(EditTaskOperationHandler.class);
+      bindings.add(ApplyTaskEditOperationHandler.class);
    }
 
    @Override
