@@ -85,11 +85,11 @@ export class TaskEditor extends AbstractUIExtension {
     protected initializeContents(containerElement: HTMLElement): void {
         this.autoSuggestion = new AutoCompleteWidget(
             this.autoSuggestionSettings,
-            { provideSuggestions: (input: string) => this.retrieveSuggestions(input) },
-            { executeFromSuggestion: (input: string) => this.executeFromSuggestion(input) },
+            { provideSuggestions: input => this.retrieveSuggestions(input) },
+            { executeFromSuggestion: input => this.executeFromSuggestion(input) },
             () => this.hide(), this.logger);
         this.autoSuggestion.configureValidation(
-            { validate: (input: string) => this.validateInput(input) },
+            { validate: input => this.validateInput(input) },
             new ValidationDecorator(containerElement)
         );
         this.autoSuggestion.configureTextSubmitHandler(
