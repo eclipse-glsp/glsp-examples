@@ -134,7 +134,7 @@ export class TaskEditor extends AbstractUIExtension {
     }
 
     protected async validateInput(input: string): Promise<ValidationStatus> {
-        const response = await this.actionDispatcher.request(new RequestEditValidationAction(this.task.id, input));
+        const response = await this.actionDispatcher.request(new RequestEditValidationAction(TaskEditor.ID, this.task.id, input));
         if (isSetEditValidationResultAction(response)) {
             return response.status;
         }

@@ -15,19 +15,18 @@
  ********************************************************************************/
 package org.eclipse.glsp.example.workflow.taskedit;
 
-import java.util.List;
-
-import org.eclipse.glsp.api.action.Action;
 import org.eclipse.glsp.api.action.kind.RequestEditValidationAction;
-import org.eclipse.glsp.api.action.kind.SetEditValidationResultAction;
 import org.eclipse.glsp.api.model.GraphicalModelState;
+import org.eclipse.glsp.api.provider.ContextEditValidator;
 import org.eclipse.glsp.api.types.ValidationStatus;
-import org.eclipse.glsp.server.actionhandler.BasicActionHandler;
 
-public class TaskEditValidator extends BasicActionHandler<RequestEditValidationAction> {
+public class TaskEditValidator implements ContextEditValidator {
 
    @Override
-   protected List<Action> executeAction(final RequestEditValidationAction action,
+   public String getContextId() { return "task-editor"; }
+
+   @Override
+   public ValidationStatus validate(final RequestEditValidationAction action,
       final GraphicalModelState modelState) {
       String text = action.getText();
       if (text.startsWith(TaskEditContextActionProvider.DURATION_PREFIX)) {
@@ -35,22 +34,19 @@ public class TaskEditValidator extends BasicActionHandler<RequestEditValidationA
          try {
             int duration = Integer.parseInt(durationString);
             if (duration < 0 || duration > 100) {
-               return listOf(new SetEditValidationResultAction(
-                  ValidationStatus.warning("'" + durationString + "' should be between 0 and 100.")));
+               return ValidationStatus.warning("'" + durationString + "' should be between 0 and 100.");
             }
          } catch (NumberFormatException e) {
-            return listOf(new SetEditValidationResultAction(
-               ValidationStatus.error("'" + durationString + "' is not a valid number.")));
+            return ValidationStatus.error("'" + durationString + "' is not a valid number.");
          }
       } else if (text.startsWith(TaskEditContextActionProvider.TYPE_PREFIX)) {
          String typeString = text.substring(TaskEditContextActionProvider.TYPE_PREFIX.length());
          if (!typeString.equals("automated") && !typeString.equals("manual")) {
-            return listOf(new SetEditValidationResultAction(
-               ValidationStatus
-                  .error("Type of task can only be manual or automatic. You entered '" + typeString + "'.")));
+            return ValidationStatus
+               .error("Type of task can only be manual or automatic. You entered '" + typeString + "'.");
          }
       }
-      return listOf(new SetEditValidationResultAction(ValidationStatus.ok()));
+      return ValidationStatus.ok();
    }
 
 }

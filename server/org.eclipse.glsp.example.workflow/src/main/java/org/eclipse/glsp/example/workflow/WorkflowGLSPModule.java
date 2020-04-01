@@ -19,7 +19,6 @@ import org.eclipse.glsp.api.configuration.ServerConfiguration;
 import org.eclipse.glsp.api.diagram.DiagramConfiguration;
 import org.eclipse.glsp.api.factory.ModelFactory;
 import org.eclipse.glsp.api.factory.PopupModelFactory;
-import org.eclipse.glsp.api.handler.ActionHandler;
 import org.eclipse.glsp.api.handler.OperationHandler;
 import org.eclipse.glsp.api.handler.ServerCommandHandler;
 import org.eclipse.glsp.api.jsonrpc.GLSPServer;
@@ -28,6 +27,7 @@ import org.eclipse.glsp.api.layout.ILayoutEngine;
 import org.eclipse.glsp.api.markers.ModelValidator;
 import org.eclipse.glsp.api.provider.CommandPaletteActionProvider;
 import org.eclipse.glsp.api.provider.ContextActionsProvider;
+import org.eclipse.glsp.api.provider.ContextEditValidator;
 import org.eclipse.glsp.api.provider.ContextMenuItemProvider;
 import org.eclipse.glsp.example.workflow.handler.CreateAutomatedTaskHandler;
 import org.eclipse.glsp.example.workflow.handler.CreateDecisionNodeHandler;
@@ -71,9 +71,9 @@ public class WorkflowGLSPModule extends DefaultGLSPModule {
    }
 
    @Override
-   protected void configureActionHandlers(final MultiBindConfig<ActionHandler> bindings) {
-      super.configureActionHandlers(bindings);
-      bindings.add(TaskEditValidator.class);
+   protected void configureContextEditValidators(final MultiBindConfig<ContextEditValidator> config) {
+      super.configureContextEditValidators(config);
+      config.add(TaskEditValidator.class);
    }
 
    @Override
