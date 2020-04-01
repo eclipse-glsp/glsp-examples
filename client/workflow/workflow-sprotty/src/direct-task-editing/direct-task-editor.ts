@@ -164,6 +164,9 @@ function getTask(ids: string[], element: SModelElement): TaskNode[] {
 export class TaskEditContextMenuItemProvider implements IContextMenuItemProvider {
     getItems(root: Readonly<SModelRoot>, lastMousePosition?: Point): Promise<MenuItem[]> {
         const selectedElements = getTasksFromSelection(root);
+        if (selectedElements.length !== 1) {
+            return Promise.resolve([]);
+        }
         return Promise.resolve([
             {
                 id: "edit-task",
