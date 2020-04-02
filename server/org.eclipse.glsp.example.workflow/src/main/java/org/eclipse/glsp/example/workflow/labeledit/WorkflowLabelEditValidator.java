@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2019 EclipseSource and others.
+ * Copyright (c) 2019-2020 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -17,20 +17,19 @@ package org.eclipse.glsp.example.workflow.labeledit;
 
 import java.util.Set;
 
-import org.eclipse.glsp.api.labeledit.EditLabelValidationResult;
 import org.eclipse.glsp.api.labeledit.LabelEditValidator;
-import org.eclipse.glsp.api.labeledit.SeverityKind;
 import org.eclipse.glsp.api.model.GraphicalModelState;
+import org.eclipse.glsp.api.types.ValidationStatus;
 import org.eclipse.glsp.example.workflow.wfgraph.TaskNode;
 import org.eclipse.glsp.graph.GModelElement;
 
 public class WorkflowLabelEditValidator implements LabelEditValidator {
 
    @Override
-   public EditLabelValidationResult validate(final GraphicalModelState modelState, final String label,
+   public ValidationStatus validate(final GraphicalModelState modelState, final String label,
       final GModelElement element) {
       if (label.length() < 1) {
-         return new EditLabelValidationResult(SeverityKind.ERROR, "Name must not be empty");
+         return ValidationStatus.error("Name must not be empty");
       }
 
       Set<TaskNode> taskNodes = modelState.getIndex().getAllByClass(TaskNode.class);
@@ -38,10 +37,10 @@ public class WorkflowLabelEditValidator implements LabelEditValidator {
          .filter(e -> !e.getId().equals(element.getId()))
          .map(TaskNode::getName).anyMatch(name -> name.equals(label));
       if (hasDuplicate) {
-         return new EditLabelValidationResult(SeverityKind.WARNING, "Name should be unique");
+         return ValidationStatus.warning("Name should be unique");
       }
 
-      return EditLabelValidationResult.OK_RESULT;
+      return ValidationStatus.ok();
    }
 
 }
