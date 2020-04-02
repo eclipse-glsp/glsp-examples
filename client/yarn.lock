@@ -734,19 +734,19 @@
     balloon-css "^0.5.0"
 
 "@eclipse-glsp/client@next":
-  version "0.8.0-next.7324d57"
-  resolved "https://registry.yarnpkg.com/@eclipse-glsp/client/-/client-0.8.0-next.7324d57.tgz#f74c8919ed0adb7dccd8fb5e267bb1391259d392"
-  integrity sha512-OJzWpRo5JPjFvDfIAjZN/XNzk73J40hLfUzLhgjEa3nM7MKex0KOfrmYSjasCw2e2CFAT2J7m5V9CqZzS0mnyQ==
+  version "0.8.0-next.9d50a30"
+  resolved "https://registry.yarnpkg.com/@eclipse-glsp/client/-/client-0.8.0-next.9d50a30.tgz#250065af1cc84bfaafcf17d4c10ae8f795581d76"
+  integrity sha512-qEIfNjPvR8p3ZBhGb0ht+te4PkXREoCcAPElEEDAFXxMLenkJ5CgFKzRYVZeHR6RU+DDK3QqmrCfZDyxL11jcg==
   dependencies:
-    autocompleter "^4.0.2"
+    autocompleter "5.1.0"
     sprotty next
     uuid latest
     vscode-ws-jsonrpc "^0.0.2-1"
 
 "@eclipse-glsp/theia-integration@next":
-  version "0.8.0-next.50370b5"
-  resolved "https://registry.yarnpkg.com/@eclipse-glsp/theia-integration/-/theia-integration-0.8.0-next.50370b5.tgz#3ed99d776e4e2d0604a1a112a379328968d1c9d5"
-  integrity sha512-6BoHT/RHWuuoGOPwIx2jjVnvM+gmu8tqoepc13NSqJzQ3WZ0k//cxgdVpc5oi6fYRK5WOUj95GSZ4rb/zhMAuw==
+  version "0.8.0-next.ef7ffa6"
+  resolved "https://registry.yarnpkg.com/@eclipse-glsp/theia-integration/-/theia-integration-0.8.0-next.ef7ffa6.tgz#583f7324cdfb01dafcaafc131cbe438b47bc5493"
+  integrity sha512-8J7DUZmmLdyQgdgCqOnGhhG/2bu+L9rD9Vv7uL8C6W/64Xz8hvuQGnwcrgVcXFs967sufcrDBcGu5PxT0rWkmA==
   dependencies:
     "@eclipse-glsp/client" next
     "@theia/core" next
@@ -2100,11 +2100,6 @@ autocompleter@5.1.0:
   version "5.1.0"
   resolved "https://registry.yarnpkg.com/autocompleter/-/autocompleter-5.1.0.tgz#da80488ddf1f1d89b0a8f5d36cab24439de18ab8"
   integrity sha512-xFZla6guwywqFJutoi5xrhAmaKw4/TU8CcLuNep/3OtiUfpNXtgzuBkkXJ6ysJIfG6MEEXFtUBg3PREN6HUVyw==
-
-autocompleter@^4.0.2:
-  version "4.0.2"
-  resolved "https://registry.yarnpkg.com/autocompleter/-/autocompleter-4.0.2.tgz#74fd9eaa733258e5ac2a72362c4bab0951ab6a01"
-  integrity sha512-joYpKB3gsYSVIzBdiuUU/LOpvNEN68rSTPlroH+RQ38Ff8OmSUE0ue+C6aSc+powTRrSUnZfvYGvOsa++3HRtA==
 
 autoprefixer@^6.3.1:
   version "6.7.7"
