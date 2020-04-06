@@ -55,8 +55,6 @@ export class ApplyTaskEditOperation implements Action {
 export class TaskEditor extends AbstractUIExtension {
 
     static readonly ID = 'task-editor';
-    readonly id = TaskEditor.ID;
-    readonly containerClass: string = 'command-palette';
     readonly autoSuggestionSettings = {
         noSuggestionsMessage: 'No suggestions available',
         suggestionsClass: 'command-palette-suggestions',
@@ -81,6 +79,9 @@ export class TaskEditor extends AbstractUIExtension {
 
     protected task: TaskNode;
     protected autoSuggestion: AutoCompleteWidget;
+
+    id() { return TaskEditor.ID; }
+    containerClass() { return 'command-palette'; }
 
     protected initializeContents(containerElement: HTMLElement): void {
         this.autoSuggestion = new AutoCompleteWidget(
