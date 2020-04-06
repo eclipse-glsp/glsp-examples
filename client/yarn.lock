@@ -734,9 +734,9 @@
     balloon-css "^0.5.0"
 
 "@eclipse-glsp/client@next":
-  version "0.8.0-next.9d50a30"
-  resolved "https://registry.yarnpkg.com/@eclipse-glsp/client/-/client-0.8.0-next.9d50a30.tgz#250065af1cc84bfaafcf17d4c10ae8f795581d76"
-  integrity sha512-qEIfNjPvR8p3ZBhGb0ht+te4PkXREoCcAPElEEDAFXxMLenkJ5CgFKzRYVZeHR6RU+DDK3QqmrCfZDyxL11jcg==
+  version "0.8.0-next.a936491"
+  resolved "https://registry.yarnpkg.com/@eclipse-glsp/client/-/client-0.8.0-next.a936491.tgz#87d6d46a3abee98e93b73c926ccecc387febe537"
+  integrity sha512-fIy5b4UriPj1kc2xIC4+mh/1GBIx3l9Fsuu7E1tNisJaLV1lV6WTasbyqfTjsLolqOvzwjhrW+63pxj1wb4XIQ==
   dependencies:
     autocompleter "5.1.0"
     sprotty next
@@ -744,9 +744,9 @@
     vscode-ws-jsonrpc "^0.0.2-1"
 
 "@eclipse-glsp/theia-integration@next":
-  version "0.8.0-next.ef7ffa6"
-  resolved "https://registry.yarnpkg.com/@eclipse-glsp/theia-integration/-/theia-integration-0.8.0-next.ef7ffa6.tgz#583f7324cdfb01dafcaafc131cbe438b47bc5493"
-  integrity sha512-8J7DUZmmLdyQgdgCqOnGhhG/2bu+L9rD9Vv7uL8C6W/64Xz8hvuQGnwcrgVcXFs967sufcrDBcGu5PxT0rWkmA==
+  version "0.8.0-next.06f8d8d"
+  resolved "https://registry.yarnpkg.com/@eclipse-glsp/theia-integration/-/theia-integration-0.8.0-next.06f8d8d.tgz#bdd9cff35edfd4c79061f101c1d80c6e4271b2af"
+  integrity sha512-+pxLOrgxMhOCKsos4rx5/cD3ZvcX07BkcIskHEgto2PpzhiIx2FeYSq+x5XBDnag0CATd9Mudc6bn+FQDJDlZw==
   dependencies:
     "@eclipse-glsp/client" next
     "@theia/core" next
@@ -10890,9 +10890,9 @@ sprotty-theia@next:
     sprotty next
 
 sprotty@next:
-  version "0.8.0-next.666cfe0"
-  resolved "https://registry.yarnpkg.com/sprotty/-/sprotty-0.8.0-next.666cfe0.tgz#a28991e7601bb466857ca076570a2b16db851a55"
-  integrity sha512-Yh04DIYMCEKHWBk44TWxZduBeDlQWTldddiFjvpjyrFS2r2VJk68RM2s1FI2vmMtGRdB4XTuLQ3ICznqiyqghg==
+  version "0.8.0-next.b8a6e44"
+  resolved "https://registry.yarnpkg.com/sprotty/-/sprotty-0.8.0-next.b8a6e44.tgz#4d05bef1274787555a664520ebd18bc3ce73a90d"
+  integrity sha512-S6zj7lIJg9RGRMa4bCvsCUR1MM4sqOT6lssfMSy3XYhtwEgWhFzlzm+5poQsEKz9mMVEu4L/QWeLgCHGH4jYnA==
   dependencies:
     autocompleter "5.1.0"
     file-saver "2.0.2"
