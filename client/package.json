@@ -14,18 +14,27 @@
     "publish": "yarn && yarn publish:latest",
     "publish:latest": "lerna publish",
     "publish:next": "lerna publish --exact --canary=next --npm-tag=next --yes",
-    "update:next": "yarn upgrade -p \"@eclipse-glsp/.*|sprotty-theia|sprotty\" --next "
+    "update:next": "yarn upgrade -p \"@eclipse-glsp/.*|@theia/.*|sprotty-theia|sprotty\" --next ",
+    "ui-tests": "wdio ./configs/wdio.conf.js --theia-port 62313",
+    "ui-tests-visual": "wdio ./configs/wdio-visual.conf.js --theia-port 62313"
   },
   "devDependencies": {
+    "@types/chai": "^4.2.11",
+    "@types/mocha": "^7.0.2",
     "@wdio/cli": "^6.0.14",
+    "@wdio/junit-reporter": "^6.0.14",
     "@wdio/local-runner": "^6.0.14",
     "@wdio/mocha-framework": "^6.0.13",
     "@wdio/selenium-standalone-service": "^6.0.12",
     "@wdio/sync": "^6.0.14",
+    "chai": "^4.2.0",
+    "chromedriver": "^80.0.2",
     "lerna": "^2.2.0",
+    "ts-node": "^8.8.2",
     "tslint": "^5.5.0",
     "tslint-loader": "^3.4.3",
-    "typescript": "3.6.4"
+    "typescript": "3.6.4",
+    "wdio-chromedriver-service": "^6.0.1"
   },
   "resolutions": {
     "**/@theia/application-manager": "1.0.0",

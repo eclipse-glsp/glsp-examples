@@ -82,6 +82,17 @@ pipeline {
             }
         }
         
+        stage('Run e2e tests'){
+            steps{
+                container('node'){
+                    timeout(30){
+                        dir('client'){
+                            sh 'yarn run ui-tests'
+                        }
+                    }
+                }
+            }
+        }
 
          stage('Deploy client & server (master only)') {
             when { branch 'master'}

@@ -1,0 +1,7 @@
+{
+  "defaultLevel": "error",
+  "levels": {
+    "root": "info",
+    "languages": "info"
+  }
+}
