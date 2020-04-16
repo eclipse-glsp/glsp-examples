@@ -16,8 +16,12 @@
 import "sprotty-theia/css/theia-sprotty.css";
 
 import { createWorkflowDiagramContainer } from "@eclipse-glsp-examples/workflow-sprotty/lib";
-import { CommandPalette, GLSP_TYPES, IActionDispatcher, TYPES } from "@eclipse-glsp/client";
+import { CommandPalette, TYPES } from "@eclipse-glsp/client";
 import { TheiaCommandPalette } from "@eclipse-glsp/theia-integration/lib/browser";
+import {
+    connectTheiaDiagramService,
+    TheiaContextMenuServiceFactory
+} from "@eclipse-glsp/theia-integration/lib/browser/diagram/glsp-theia-context-menu-service";
 import { SelectionService } from "@theia/core";
 import { Container, inject, injectable } from "inversify";
 import { DiagramConfiguration, TheiaDiagramServer, TheiaSprottySelectionForwarder } from "sprotty-theia";
@@ -28,8 +32,10 @@ import { WorkflowDiagramServer } from "./workflow-diagram-server";
 
 @injectable()
 export class WorkflowDiagramConfiguration implements DiagramConfiguration {
+
     @inject(SelectionService) protected selectionService: SelectionService;
-    @inject(TheiaContextMenuService) protected readonly contextMenuService: TheiaContextMenuService;
+    @inject(TheiaContextMenuServiceFactory) protected readonly contextMenuServiceFactory: () => TheiaContextMenuService;
+
     diagramType: string = WorkflowLanguage.DiagramType;
 
     createContainer(widgetId: string): Container {
@@ -40,10 +46,7 @@ export class WorkflowDiagramConfiguration implements DiagramConfiguration {
         container.bind(TYPES.IActionHandlerInitializer).to(TheiaSprottySelectionForwarder);
         container.bind(SelectionService).toConstantValue(this.selectionService);
         container.rebind(CommandPalette).to(TheiaCommandPalette);
-        container.bind(GLSP_TYPES.IContextMenuService).toConstantValue(this.contextMenuService);
-        if (this.contextMenuService instanceof TheiaContextMenuService) {
-            this.contextMenuService.connect(container.get<IActionDispatcher>(TYPES.IActionDispatcher));
-        }
+        connectTheiaDiagramService(container, this.contextMenuServiceFactory);
         return container;
     }
 }
