@@ -16,11 +16,11 @@
   "dependencies": {
     "@eclipse-glsp-examples/workflow-sprotty": "0.7.0",
     "@eclipse-glsp/theia-integration": "next",
-    "@theia/core": "next",
-    "@theia/editor": "next",
-    "@theia/filesystem": "next",
-    "@theia/languages": "next",
-    "@theia/monaco": "next"
+    "@theia/core": "1.0.0",
+    "@theia/editor": "1.0.0",
+    "@theia/filesystem": "1.0.0",
+    "@theia/languages": "1.0.0",
+    "@theia/monaco": "1.0.0"
   },
   "devDependencies": {
     "rimraf": "^2.6.1",
