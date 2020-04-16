@@ -27,11 +27,15 @@ import org.eclipse.glsp.server.operationhandler.CreateNodeOperationHandler;
 public abstract class CreateActivityNodeHandler extends CreateNodeOperationHandler {
 
    private final String label;
+   private final String elementTypeId;
 
    public CreateActivityNodeHandler(final String elementTypeId, final String label) {
       super(elementTypeId);
+      this.elementTypeId = elementTypeId;
       this.label = label;
    }
+
+   protected String getElementTypeId() { return elementTypeId; }
 
    @Override
    protected GNode createNode(final Optional<GPoint> point, final GraphicalModelState modelState) {

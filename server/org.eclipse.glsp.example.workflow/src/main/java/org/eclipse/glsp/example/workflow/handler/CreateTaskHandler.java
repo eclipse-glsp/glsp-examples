@@ -30,11 +30,15 @@ import org.eclipse.glsp.server.utils.GModelUtil;
 public abstract class CreateTaskHandler extends CreateNodeOperationHandler {
 
    private final Function<Integer, String> labelProvider;
+   private final String elementTypeId;
 
    public CreateTaskHandler(final String elementTypeId, final Function<Integer, String> labelProvider) {
       super(elementTypeId);
+      this.elementTypeId = elementTypeId;
       this.labelProvider = labelProvider;
    }
+
+   protected String getElementTypeId() { return elementTypeId; }
 
    @Override
    protected GNode createNode(final Optional<GPoint> point, final GraphicalModelState modelState) {
