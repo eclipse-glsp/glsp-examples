@@ -1,6 +1,6 @@
 {
   "name": "@eclipse-glsp-examples/workflow-sprotty",
-  "version": "0.7.0",
+  "version": "0.8.0-rc-02",
   "description": "GLSP sprotty diagrams for the Workflow DSL",
   "license": "(EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0)",
   "author": "EclipseSource",
@@ -10,7 +10,7 @@
     "diagram"
   ],
   "dependencies": {
-    "@eclipse-glsp/client": "next",
+    "@eclipse-glsp/client": "0.8.0-rc-02",
     "balloon-css": "^0.5.0"
   },
   "devDependencies": {

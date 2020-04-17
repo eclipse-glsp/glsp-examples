@@ -753,30 +753,22 @@
     lodash "^4.17.13"
     to-fast-properties "^2.0.0"
 
-"@eclipse-glsp-examples/workflow-sprotty@next":
-  version "0.8.0-next.30870a05"
-  resolved "https://registry.yarnpkg.com/@eclipse-glsp-examples/workflow-sprotty/-/workflow-sprotty-0.8.0-next.30870a05.tgz#df9df00746cc21a3b4a56f0e96e5bd4c375e6c99"
-  integrity sha512-Y+4M4CcAHmPq0qpHwKFNFtpDtRw8vlXzGpOmRrHt5/51cIXABXX3hnlkXfBPpZiZaDhbWkLtxTMrlL5xCjPHkA==
-  dependencies:
-    "@eclipse-glsp/client" next
-    balloon-css "^0.5.0"
-
-"@eclipse-glsp/client@next":
-  version "0.8.0-next.ac6451c"
-  resolved "https://registry.yarnpkg.com/@eclipse-glsp/client/-/client-0.8.0-next.ac6451c.tgz#ee7711dce7a295727d5386e76daf22ce2e4b801c"
-  integrity sha512-uyJzVWH39DYnupYHSiBYITh7YiHHJEtHNioDC04gz2jtmpTDVXRY633Kt91Hi8RACPBFaXHMNdgqbaEkXrhlJA==
+"@eclipse-glsp/client@0.8.0-rc-02":
+  version "0.8.0-rc-02"
+  resolved "https://registry.yarnpkg.com/@eclipse-glsp/client/-/client-0.8.0-rc-02.tgz#3a5777671e5aacbe04ef75af7755a809ca26bd45"
+  integrity sha512-YJrBfxSZKnR94MsPdqd1ZcbcdBVaq5vsu0WLk9xrrFIktKMAheIFImSy7qDwhnl95y53z5QCPoe+U3SXEciTLw==
   dependencies:
     autocompleter "5.1.0"
-    sprotty next
-    uuid latest
+    sprotty "0.9.0-next.7028f2a"
+    uuid "7.0.3"
     vscode-ws-jsonrpc "^0.0.2-1"
 
-"@eclipse-glsp/theia-integration@next":
-  version "0.8.0-next.509311e"
-  resolved "https://registry.yarnpkg.com/@eclipse-glsp/theia-integration/-/theia-integration-0.8.0-next.509311e.tgz#e896342654226a8d51c8157b0004cc8ba4a17851"
-  integrity sha512-jEEb58ut/Q1SzkSf1kIvEaj0Nh/W1UvEU6p9eEFhfWSLd45tZzePncasL+5mnwrivhbxiXLBHweSvgY/Isc51w==
+"@eclipse-glsp/theia-integration@0.8.0-rc-02":
+  version "0.8.0-rc-02"
+  resolved "https://registry.yarnpkg.com/@eclipse-glsp/theia-integration/-/theia-integration-0.8.0-rc-02.tgz#d6ff574034d67252b1e5d6f6003f8fbe6aab10e0"
+  integrity sha512-BJnMLhhAMOqk+FDICWWbKHEwr5vuI2QLZxGlek6ov0goNhkJjQvmSSM3xCHJejvLE2io79T7qZ//+NOhgN/HCA==
   dependencies:
-    "@eclipse-glsp/client" next
+    "@eclipse-glsp/client" "0.8.0-rc-02"
     "@theia/core" "1.0.0"
     "@theia/editor" "1.0.0"
     "@theia/filesystem" "1.0.0"
@@ -785,7 +777,7 @@
     "@theia/monaco" "1.0.0"
     "@theia/process" "1.0.0"
     "@theia/workspace" "1.0.0"
-    sprotty-theia next
+    sprotty-theia "0.9.0-next.72ba049"
 
 "@improved/node@^1.0.0":
   version "1.1.1"
@@ -12049,7 +12041,7 @@ sprintf-js@~1.0.2:
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
   integrity sha1-BOaSb2YolTVPPdAVIDYzuFcpfiw=
 
-sprotty-theia@next:
+sprotty-theia@0.9.0-next.72ba049:
   version "0.9.0-next.72ba049"
   resolved "https://registry.yarnpkg.com/sprotty-theia/-/sprotty-theia-0.9.0-next.72ba049.tgz#bc75767a7bd8927fc934d476236f6a9e03e99042"
   integrity sha512-Ipr8MYz+zoL/q4y45RoOjWznVASeO318+4b1HqQ0w25D6k46kSZWwjXVy+ShaQ2oTWwO0AWYyFjYzq8Kyik/bA==
@@ -12061,7 +12053,7 @@ sprotty-theia@next:
     "@theia/monaco" "1.0.0"
     sprotty next
 
-sprotty@next:
+sprotty@0.9.0-next.7028f2a, sprotty@next:
   version "0.9.0-next.7028f2a"
   resolved "https://registry.yarnpkg.com/sprotty/-/sprotty-0.9.0-next.7028f2a.tgz#48bae07b119f561b225159d66c43ada8174fb6f3"
   integrity sha512-XiI/8WXqjJM8KXu68wujwJRC8V2hqusgyTHu2XdAANLngbpWPRYhFCqvmtMiH7lsFLSHSdv1JYp5KvUaI3YoWA==
@@ -13271,6 +13263,11 @@ utils-merge@1.0.1:
   resolved "https://registry.yarnpkg.com/utils-merge/-/utils-merge-1.0.1.tgz#9f95710f50a267947b2ccc124741c1028427e713"
   integrity sha1-n5VxD1CiZ5R7LMwSR0HBAoQn5xM=
 
+uuid@7.0.3, uuid@^7.0.2:
+  version "7.0.3"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-7.0.3.tgz#c5c9f2c8cf25dc0a372c4df1441c41f5bd0c680b"
+  integrity sha512-DPSke0pXhTZgoF/d+WSt2QaKMCFSfx7QegxEWT+JOuHF5aWrKEn0G+ztjuJg/gG8/ItK+rbPCD/yNv8yyih6Cg==
+
 uuid@^2.0.1:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-2.0.3.tgz#67e2e863797215530dff318e5bf9dcebfd47b21a"
@@ -13280,11 +13277,6 @@ uuid@^3.0.1, uuid@^3.1.0, uuid@^3.2.1, uuid@^3.3.2:
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.4.0.tgz#b23e4358afa8a202fe7a100af1f5f883f02007ee"
   integrity sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==
-
-uuid@^7.0.2, uuid@latest:
-  version "7.0.3"
-  resolved "https://registry.yarnpkg.com/uuid/-/uuid-7.0.3.tgz#c5c9f2c8cf25dc0a372c4df1441c41f5bd0c680b"
-  integrity sha512-DPSke0pXhTZgoF/d+WSt2QaKMCFSfx7QegxEWT+JOuHF5aWrKEn0G+ztjuJg/gG8/ItK+rbPCD/yNv8yyih6Cg==
 
 v8-compile-cache@2.0.3:
   version "2.0.3"
