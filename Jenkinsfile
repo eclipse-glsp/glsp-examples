@@ -16,7 +16,7 @@ spec:
     command:
     - cat
   - name: node
-    image: node:10.17.0
+    image: node:10.20.1
     tty: true
     resources:
       limits:
