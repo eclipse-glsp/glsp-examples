@@ -762,13 +762,13 @@
     balloon-css "^0.5.0"
 
 "@eclipse-glsp/client@next":
-  version "0.8.0-next.ac6451c"
-  resolved "https://registry.yarnpkg.com/@eclipse-glsp/client/-/client-0.8.0-next.ac6451c.tgz#ee7711dce7a295727d5386e76daf22ce2e4b801c"
-  integrity sha512-uyJzVWH39DYnupYHSiBYITh7YiHHJEtHNioDC04gz2jtmpTDVXRY633Kt91Hi8RACPBFaXHMNdgqbaEkXrhlJA==
+  version "0.8.0-next.a3b5ba6"
+  resolved "https://registry.yarnpkg.com/@eclipse-glsp/client/-/client-0.8.0-next.a3b5ba6.tgz#9894ef6cc961ea566032f5f9a5171b0f6b9e772f"
+  integrity sha512-zkV6eTHlfF+cIys5ybDCjBzEe8am/MVK6PBCzJJfjlldzCH6gxoKajuZeHBagEplV3uZm7oFIkcRlbbInTn2MQ==
   dependencies:
     autocompleter "5.1.0"
     sprotty next
-    uuid latest
+    uuid "7.0.3"
     vscode-ws-jsonrpc "^0.0.2-1"
 
 "@eclipse-glsp/theia-integration@next":
@@ -13271,6 +13271,11 @@ utils-merge@1.0.1:
   resolved "https://registry.yarnpkg.com/utils-merge/-/utils-merge-1.0.1.tgz#9f95710f50a267947b2ccc124741c1028427e713"
   integrity sha1-n5VxD1CiZ5R7LMwSR0HBAoQn5xM=
 
+uuid@7.0.3, uuid@^7.0.2:
+  version "7.0.3"
+  resolved "https://registry.yarnpkg.com/uuid/-/uuid-7.0.3.tgz#c5c9f2c8cf25dc0a372c4df1441c41f5bd0c680b"
+  integrity sha512-DPSke0pXhTZgoF/d+WSt2QaKMCFSfx7QegxEWT+JOuHF5aWrKEn0G+ztjuJg/gG8/ItK+rbPCD/yNv8yyih6Cg==
+
 uuid@^2.0.1:
   version "2.0.3"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-2.0.3.tgz#67e2e863797215530dff318e5bf9dcebfd47b21a"
@@ -13280,11 +13285,6 @@ uuid@^3.0.1, uuid@^3.1.0, uuid@^3.2.1, uuid@^3.3.2:
   version "3.4.0"
   resolved "https://registry.yarnpkg.com/uuid/-/uuid-3.4.0.tgz#b23e4358afa8a202fe7a100af1f5f883f02007ee"
   integrity sha512-HjSDRw6gZE5JMggctHBcjVak08+KEVhSIiDzFnT9S9aegmp85S/bReBVTb4QTFaRNptJ9kuYaNhnbNEOkbKb/A==
-
-uuid@^7.0.2, uuid@latest:
-  version "7.0.3"
-  resolved "https://registry.yarnpkg.com/uuid/-/uuid-7.0.3.tgz#c5c9f2c8cf25dc0a372c4df1441c41f5bd0c680b"
-  integrity sha512-DPSke0pXhTZgoF/d+WSt2QaKMCFSfx7QegxEWT+JOuHF5aWrKEn0G+ztjuJg/gG8/ItK+rbPCD/yNv8yyih6Cg==
 
 v8-compile-cache@2.0.3:
   version "2.0.3"
