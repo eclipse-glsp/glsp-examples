@@ -62,7 +62,6 @@ import {
     paletteModule,
     PreRenderedElement,
     PreRenderedView,
-    requestResponseModule,
     RevealNamedElementActionProvider,
     routingModule,
     saveModule,
@@ -123,7 +122,7 @@ export default function createContainer(widgetId: string): Container {
     container.load(decorationModule, validationModule, defaultModule, glspMouseToolModule, defaultGLSPModule, glspSelectModule, boundsModule, viewportModule, toolsModule,
         glspHoverModule, fadeModule, exportModule, expandModule, openModule, buttonModule, modelSourceModule, labelEditModule, labelEditUiModule, glspEditLabelValidationModule,
         workflowDiagramModule, saveModule, executeCommandModule, toolFeedbackModule, modelHintsModule, glspContextMenuModule, glspServerCopyPasteModule,
-        copyPasteContextMenuModule, commandPaletteModule, glspCommandPaletteModule, paletteModule, requestResponseModule, routingModule, edgeLayoutModule, zorderModule,
+        copyPasteContextMenuModule, commandPaletteModule, glspCommandPaletteModule, paletteModule, routingModule, edgeLayoutModule, zorderModule,
         layoutCommandsModule, directTaskEditor, markerNavigatorModule, markerNavigatorContextMenuModule);
 
     overrideViewerOptions(container, {
