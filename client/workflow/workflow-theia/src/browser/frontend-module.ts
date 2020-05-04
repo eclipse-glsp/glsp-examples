@@ -23,7 +23,7 @@ import { WorkflowDiagramManager } from "./diagram/workflow-diagram-manager";
 import { WorkflowGLSPDiagramClient } from "./diagram/workflow-glsp-diagram-client";
 import { WorkflowGLSPClientContribution } from "./language/workflow-glsp-client-contribution";
 
-export default new ContainerModule((bind: interfaces.Bind, unbind: interfaces.Unbind, isBound: interfaces.IsBound, rebind: interfaces.Rebind) => {
+export default new ContainerModule((bind: interfaces.Bind) => {
     bind(WorkflowGLSPClientContribution).toSelf().inSingletonScope();
     bind(GLSPClientContribution).toService(WorkflowGLSPClientContribution);
 

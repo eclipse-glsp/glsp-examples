@@ -22,6 +22,11 @@ import {
     connectTheiaDiagramService,
     TheiaContextMenuServiceFactory
 } from "@eclipse-glsp/theia-integration/lib/browser/diagram/glsp-theia-context-menu-service";
+import {
+    connectTheiaMarkerManager,
+    TheiaMarkerManager,
+    TheiaMarkerManagerFactory
+} from "@eclipse-glsp/theia-integration/lib/browser/diagram/glsp-theia-marker-manager";
 import { SelectionService } from "@theia/core";
 import { Container, inject, injectable } from "inversify";
 import { DiagramConfiguration, TheiaDiagramServer, TheiaSprottySelectionForwarder } from "sprotty-theia";
@@ -35,6 +40,7 @@ export class WorkflowDiagramConfiguration implements DiagramConfiguration {
 
     @inject(SelectionService) protected selectionService: SelectionService;
     @inject(TheiaContextMenuServiceFactory) protected readonly contextMenuServiceFactory: () => TheiaContextMenuService;
+    @inject(TheiaMarkerManagerFactory) protected readonly theiaMarkerManager: () => TheiaMarkerManager;
 
     diagramType: string = WorkflowLanguage.DiagramType;
 
@@ -47,6 +53,7 @@ export class WorkflowDiagramConfiguration implements DiagramConfiguration {
         container.bind(SelectionService).toConstantValue(this.selectionService);
         container.rebind(CommandPalette).to(TheiaCommandPalette);
         connectTheiaDiagramService(container, this.contextMenuServiceFactory);
+        connectTheiaMarkerManager(container, this.theiaMarkerManager, this.diagramType);
         return container;
     }
 }
