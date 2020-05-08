@@ -15,6 +15,7 @@
  ********************************************************************************/
 package org.eclipse.glsp.example.workflow;
 
+import static org.eclipse.glsp.example.workflow.utils.ModelTypes.ACTIVITY_NODE;
 import static org.eclipse.glsp.example.workflow.utils.ModelTypes.AUTOMATED_TASK;
 import static org.eclipse.glsp.example.workflow.utils.ModelTypes.COMP_HEADER;
 import static org.eclipse.glsp.example.workflow.utils.ModelTypes.DECISION_NODE;
@@ -26,6 +27,7 @@ import static org.eclipse.glsp.example.workflow.utils.ModelTypes.LABEL_ICON;
 import static org.eclipse.glsp.example.workflow.utils.ModelTypes.LABEL_TEXT;
 import static org.eclipse.glsp.example.workflow.utils.ModelTypes.MANUAL_TASK;
 import static org.eclipse.glsp.example.workflow.utils.ModelTypes.MERGE_NODE;
+import static org.eclipse.glsp.example.workflow.utils.ModelTypes.TASK;
 import static org.eclipse.glsp.example.workflow.utils.ModelTypes.WEIGHTED_EDGE;
 import static org.eclipse.glsp.graph.DefaultTypes.EDGE;
 
@@ -56,12 +58,8 @@ public class WorkflowDiagramConfiguration implements DiagramConfiguration {
       mappings.put(LABEL_ICON, GraphPackage.Literals.GLABEL);
       mappings.put(WEIGHTED_EDGE, GraphPackage.Literals.GEDGE);
       mappings.put(ICON, WfgraphPackage.Literals.ICON);
-      mappings.put(MERGE_NODE, WfgraphPackage.Literals.ACTIVITY_NODE);
-      mappings.put(DECISION_NODE, WfgraphPackage.Literals.ACTIVITY_NODE);
-      mappings.put(FORK_NODE, WfgraphPackage.Literals.ACTIVITY_NODE);
-      mappings.put(JOIN_NODE, WfgraphPackage.Literals.ACTIVITY_NODE);
-      mappings.put(MANUAL_TASK, WfgraphPackage.Literals.TASK_NODE);
-      mappings.put(AUTOMATED_TASK, WfgraphPackage.Literals.TASK_NODE);
+      mappings.put(ACTIVITY_NODE, WfgraphPackage.Literals.ACTIVITY_NODE);
+      mappings.put(TASK, WfgraphPackage.Literals.TASK_NODE);
       return mappings;
    }
 
