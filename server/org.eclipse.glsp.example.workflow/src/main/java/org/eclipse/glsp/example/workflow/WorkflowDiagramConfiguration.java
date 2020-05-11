@@ -16,7 +16,6 @@
 package org.eclipse.glsp.example.workflow;
 
 import static org.eclipse.glsp.example.workflow.utils.ModelTypes.ACTIVITY_NODE;
-import static org.eclipse.glsp.example.workflow.utils.ModelTypes.AUTOMATED_TASK;
 import static org.eclipse.glsp.example.workflow.utils.ModelTypes.COMP_HEADER;
 import static org.eclipse.glsp.example.workflow.utils.ModelTypes.DECISION_NODE;
 import static org.eclipse.glsp.example.workflow.utils.ModelTypes.FORK_NODE;
@@ -25,8 +24,6 @@ import static org.eclipse.glsp.example.workflow.utils.ModelTypes.JOIN_NODE;
 import static org.eclipse.glsp.example.workflow.utils.ModelTypes.LABEL_HEADING;
 import static org.eclipse.glsp.example.workflow.utils.ModelTypes.LABEL_ICON;
 import static org.eclipse.glsp.example.workflow.utils.ModelTypes.LABEL_TEXT;
-import static org.eclipse.glsp.example.workflow.utils.ModelTypes.MANUAL_TASK;
-import static org.eclipse.glsp.example.workflow.utils.ModelTypes.MERGE_NODE;
 import static org.eclipse.glsp.example.workflow.utils.ModelTypes.TASK;
 import static org.eclipse.glsp.example.workflow.utils.ModelTypes.WEIGHTED_EDGE;
 import static org.eclipse.glsp.graph.DefaultTypes.EDGE;
@@ -66,12 +63,10 @@ public class WorkflowDiagramConfiguration implements DiagramConfiguration {
    @Override
    public List<ShapeTypeHint> getNodeTypeHints() {
       List<ShapeTypeHint> nodeHints = new ArrayList<>();
-      nodeHints.add(new ShapeTypeHint(MANUAL_TASK, true, true, false, false));
-      nodeHints.add(new ShapeTypeHint(AUTOMATED_TASK, true, true, false, false));
+      nodeHints.add(new ShapeTypeHint(TASK, true, true, false, false));
       nodeHints.add(new ShapeTypeHint(FORK_NODE, true, true, false, false));
-      nodeHints.add(createDefaultNodeTypeHint(JOIN_NODE));
-      nodeHints.add(createDefaultNodeTypeHint(DECISION_NODE));
-      nodeHints.add(createDefaultNodeTypeHint(MERGE_NODE));
+      nodeHints.add(new ShapeTypeHint(JOIN_NODE, true, true, false, false));
+      nodeHints.add(createDefaultNodeTypeHint(ACTIVITY_NODE));
       return nodeHints;
    }
 
@@ -81,7 +76,7 @@ public class WorkflowDiagramConfiguration implements DiagramConfiguration {
       edgeHints.add(createDefaultEdgeTypeHint(EDGE));
       EdgeTypeHint weightedEdgeHint = DiagramConfiguration.super.createDefaultEdgeTypeHint(WEIGHTED_EDGE);
       weightedEdgeHint.setSourceElementTypeIds(Arrays.asList(DECISION_NODE));
-      weightedEdgeHint.setTargetElementTypeIds(Arrays.asList(MANUAL_TASK, AUTOMATED_TASK, FORK_NODE, JOIN_NODE));
+      weightedEdgeHint.setTargetElementTypeIds(Arrays.asList(TASK, FORK_NODE, JOIN_NODE));
       edgeHints.add(weightedEdgeHint);
       return edgeHints;
    }
@@ -90,9 +85,9 @@ public class WorkflowDiagramConfiguration implements DiagramConfiguration {
    public EdgeTypeHint createDefaultEdgeTypeHint(final String elementId) {
       EdgeTypeHint hint = DiagramConfiguration.super.createDefaultEdgeTypeHint(elementId);
       hint.setSourceElementTypeIds(
-         Arrays.asList(MANUAL_TASK, AUTOMATED_TASK, DECISION_NODE, MERGE_NODE, FORK_NODE, JOIN_NODE));
+         Arrays.asList(ACTIVITY_NODE, TASK));
       hint.setTargetElementTypeIds(
-         Arrays.asList(MANUAL_TASK, AUTOMATED_TASK, DECISION_NODE, MERGE_NODE, FORK_NODE, JOIN_NODE));
+         Arrays.asList(ACTIVITY_NODE, TASK));
       return hint;
    }
 

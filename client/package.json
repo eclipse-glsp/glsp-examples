@@ -17,15 +17,15 @@
     "update:next": "yarn upgrade -p \"@eclipse-glsp/.*|sprotty-theia|sprotty\" --next "
   },
   "devDependencies": {
-    "lerna": "^2.2.0",
-    "tslint": "^5.5.0",
-    "tslint-loader": "^3.4.3",
-    "typescript": "3.6.4",
     "@wdio/cli": "^6.0.14",
     "@wdio/local-runner": "^6.0.14",
     "@wdio/mocha-framework": "^6.0.13",
     "@wdio/selenium-standalone-service": "^6.0.12",
-    "@wdio/sync": "^6.0.14"
+    "@wdio/sync": "^6.0.14",
+    "lerna": "^2.2.0",
+    "tslint": "^5.5.0",
+    "tslint-loader": "^3.4.3",
+    "typescript": "3.6.4"
   },
   "resolutions": {
     "**/@theia/application-manager": "1.0.0",
