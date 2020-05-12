@@ -17,9 +17,10 @@ import "sprotty-theia/css/theia-sprotty.css";
 
 import { createWorkflowDiagramContainer } from "@eclipse-glsp-examples/workflow-sprotty/lib";
 import { CommandPalette, TYPES } from "@eclipse-glsp/client";
+import { ExternalNavigateToTargetHandler } from "@eclipse-glsp/client/lib";
 import { TheiaCommandPalette } from "@eclipse-glsp/theia-integration/lib/browser";
 import {
-    connectTheiaDiagramService,
+    connectTheiaContextMenuService,
     TheiaContextMenuServiceFactory
 } from "@eclipse-glsp/theia-integration/lib/browser/diagram/glsp-theia-context-menu-service";
 import {
@@ -27,6 +28,7 @@ import {
     TheiaMarkerManager,
     TheiaMarkerManagerFactory
 } from "@eclipse-glsp/theia-integration/lib/browser/diagram/glsp-theia-marker-manager";
+import { TheiaNavigateToTargetHandler } from "@eclipse-glsp/theia-integration/lib/browser/theia-navigate-to-target-handler";
 import { SelectionService } from "@theia/core";
 import { Container, inject, injectable } from "inversify";
 import { DiagramConfiguration, TheiaDiagramServer, TheiaSprottySelectionForwarder } from "sprotty-theia";
@@ -39,6 +41,7 @@ import { WorkflowDiagramServer } from "./workflow-diagram-server";
 export class WorkflowDiagramConfiguration implements DiagramConfiguration {
 
     @inject(SelectionService) protected selectionService: SelectionService;
+    @inject(TheiaNavigateToTargetHandler) protected navigateToTargetHandler: TheiaNavigateToTargetHandler;
     @inject(TheiaContextMenuServiceFactory) protected readonly contextMenuServiceFactory: () => TheiaContextMenuService;
     @inject(TheiaMarkerManagerFactory) protected readonly theiaMarkerManager: () => TheiaMarkerManager;
 
@@ -51,8 +54,9 @@ export class WorkflowDiagramConfiguration implements DiagramConfiguration {
         // container.rebind(KeyTool).to(TheiaKeyTool).inSingletonScope()
         container.bind(TYPES.IActionHandlerInitializer).to(TheiaSprottySelectionForwarder);
         container.bind(SelectionService).toConstantValue(this.selectionService);
+        container.bind(ExternalNavigateToTargetHandler).toConstantValue(this.navigateToTargetHandler);
         container.rebind(CommandPalette).to(TheiaCommandPalette);
-        connectTheiaDiagramService(container, this.contextMenuServiceFactory);
+        connectTheiaContextMenuService(container, this.contextMenuServiceFactory);
         connectTheiaMarkerManager(container, this.theiaMarkerManager, this.diagramType);
         return container;
     }

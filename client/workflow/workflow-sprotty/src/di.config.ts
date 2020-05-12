@@ -56,6 +56,7 @@ import {
     markerNavigatorModule,
     modelHintsModule,
     modelSourceModule,
+    navigationModule,
     NoOverlapMovmentRestrictor,
     openModule,
     overrideViewerOptions,
@@ -85,6 +86,7 @@ import { Container, ContainerModule } from "inversify";
 
 import { directTaskEditor } from "./direct-task-editing/di.config";
 import { ActivityNode, Icon, TaskNode, WeightedEdge } from "./model";
+import { GotoContextMenuItemProvider } from "./navigation";
 import { ForkOrJoinNodeView, IconView, TaskNodeView, WeightedEdgeView, WorkflowEdgeView } from "./workflow-views";
 
 const workflowDiagramModule = new ContainerModule((bind, unbind, isBound, rebind) => {
@@ -94,6 +96,7 @@ const workflowDiagramModule = new ContainerModule((bind, unbind, isBound, rebind
     bind(TYPES.ISnapper).to(GridSnapper);
     bind(TYPES.ICommandPaletteActionProvider).to(RevealNamedElementActionProvider);
     bind(TYPES.IContextMenuItemProvider).to(DeleteElementContextMenuItemProvider);
+    bind(TYPES.IContextMenuItemProvider).to(GotoContextMenuItemProvider);
     const context = { bind, unbind, isBound, rebind };
     configureModelElement(context, 'graph', GLSPGraph, SGraphView);
     configureModelElement(context, 'task:automated', TaskNode, TaskNodeView);
@@ -123,7 +126,7 @@ export default function createContainer(widgetId: string): Container {
         glspHoverModule, fadeModule, exportModule, expandModule, openModule, buttonModule, modelSourceModule, labelEditModule, labelEditUiModule, glspEditLabelValidationModule,
         workflowDiagramModule, saveModule, executeCommandModule, toolFeedbackModule, modelHintsModule, glspContextMenuModule, glspServerCopyPasteModule,
         copyPasteContextMenuModule, commandPaletteModule, glspCommandPaletteModule, paletteModule, routingModule, edgeLayoutModule, zorderModule,
-        layoutCommandsModule, directTaskEditor, markerNavigatorModule, markerNavigatorContextMenuModule);
+        layoutCommandsModule, directTaskEditor, navigationModule, markerNavigatorModule, markerNavigatorContextMenuModule);
 
     overrideViewerOptions(container, {
         baseDiv: widgetId,

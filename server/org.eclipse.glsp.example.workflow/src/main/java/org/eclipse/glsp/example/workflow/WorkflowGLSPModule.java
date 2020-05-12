@@ -25,10 +25,12 @@ import org.eclipse.glsp.api.jsonrpc.GLSPServer;
 import org.eclipse.glsp.api.labeledit.LabelEditValidator;
 import org.eclipse.glsp.api.layout.ILayoutEngine;
 import org.eclipse.glsp.api.markers.ModelValidator;
+import org.eclipse.glsp.api.model.NavigationTargetResolver;
 import org.eclipse.glsp.api.provider.CommandPaletteActionProvider;
 import org.eclipse.glsp.api.provider.ContextActionsProvider;
 import org.eclipse.glsp.api.provider.ContextEditValidator;
 import org.eclipse.glsp.api.provider.ContextMenuItemProvider;
+import org.eclipse.glsp.api.provider.NavigationTargetProvider;
 import org.eclipse.glsp.example.workflow.handler.CreateAutomatedTaskHandler;
 import org.eclipse.glsp.example.workflow.handler.CreateDecisionNodeHandler;
 import org.eclipse.glsp.example.workflow.handler.CreateEdgeHandler;
@@ -42,6 +44,10 @@ import org.eclipse.glsp.example.workflow.labeledit.WorkflowLabelEditValidator;
 import org.eclipse.glsp.example.workflow.layout.WorkflowLayoutEngine;
 import org.eclipse.glsp.example.workflow.marker.WorkflowModelValidator;
 import org.eclipse.glsp.example.workflow.model.WorkflowModelFactory;
+import org.eclipse.glsp.example.workflow.model.WorkflowNavigationTargetResolver;
+import org.eclipse.glsp.example.workflow.provider.NextNodeNavigationTargetProvider;
+import org.eclipse.glsp.example.workflow.provider.NodeDocumentationNavigationTargetProvider;
+import org.eclipse.glsp.example.workflow.provider.PreviousNodeNavigationTargetProvider;
 import org.eclipse.glsp.example.workflow.provider.WorkflowCommandPaletteActionProvider;
 import org.eclipse.glsp.example.workflow.provider.WorkflowContextMenuItemProvider;
 import org.eclipse.glsp.example.workflow.taskedit.ApplyTaskEditOperationHandler;
@@ -77,30 +83,37 @@ public class WorkflowGLSPModule extends DefaultGLSPModule {
    }
 
    @Override
-   protected void configureDiagramConfigurations(
-      final MultiBindConfig<DiagramConfiguration> bindings) {
-      bindings.add(WorkflowDiagramConfiguration.class);
+   protected void configureDiagramConfigurations(final MultiBindConfig<DiagramConfiguration> config) {
+      config.add(WorkflowDiagramConfiguration.class);
    }
 
    @Override
-   protected void configureServerCommandHandlers(final MultiBindConfig<ServerCommandHandler> bindings) {
-      super.configureServerCommandHandlers(bindings);
-      bindings.add(SimulateCommandHandler.class);
+   protected void configureServerCommandHandlers(final MultiBindConfig<ServerCommandHandler> config) {
+      super.configureServerCommandHandlers(config);
+      config.add(SimulateCommandHandler.class);
    }
 
    @Override
-   protected void configureOperationHandlers(final MultiBindConfig<OperationHandler> bindings) {
-      super.configureOperationHandlers(bindings);
-      bindings.add(CreateAutomatedTaskHandler.class);
-      bindings.add(CreateManualTaskHandler.class);
-      bindings.add(CreateDecisionNodeHandler.class);
-      bindings.add(CreateMergeNodeHandler.class);
-      bindings.add(CreateForkNodeHandler.class);
-      bindings.add(CreateJoinNodeHandler.class);
-      bindings.add(CreateEdgeHandler.class);
-      bindings.add(CreateWeightedEdgeHandler.class);
-      bindings.add(EditTaskOperationHandler.class);
-      bindings.add(ApplyTaskEditOperationHandler.class);
+   protected void configureNavigationTargetProviders(final MultiBindConfig<NavigationTargetProvider> config) {
+      super.configureNavigationTargetProviders(config);
+      config.add(NextNodeNavigationTargetProvider.class);
+      config.add(PreviousNodeNavigationTargetProvider.class);
+      config.add(NodeDocumentationNavigationTargetProvider.class);
+   }
+
+   @Override
+   protected void configureOperationHandlers(final MultiBindConfig<OperationHandler> config) {
+      super.configureOperationHandlers(config);
+      config.add(CreateAutomatedTaskHandler.class);
+      config.add(CreateManualTaskHandler.class);
+      config.add(CreateDecisionNodeHandler.class);
+      config.add(CreateMergeNodeHandler.class);
+      config.add(CreateForkNodeHandler.class);
+      config.add(CreateJoinNodeHandler.class);
+      config.add(CreateEdgeHandler.class);
+      config.add(CreateWeightedEdgeHandler.class);
+      config.add(EditTaskOperationHandler.class);
+      config.add(ApplyTaskEditOperationHandler.class);
    }
 
    @Override
@@ -136,6 +149,11 @@ public class WorkflowGLSPModule extends DefaultGLSPModule {
    @Override
    protected Class<? extends CommandPaletteActionProvider> bindCommandPaletteActionProvider() {
       return WorkflowCommandPaletteActionProvider.class;
+   }
+
+   @Override
+   protected Class<? extends NavigationTargetResolver> bindNavigationTargetResolver() {
+      return WorkflowNavigationTargetResolver.class;
    }
 
    @Override
