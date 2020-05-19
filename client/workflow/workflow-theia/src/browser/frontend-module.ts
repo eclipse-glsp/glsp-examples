@@ -14,6 +14,7 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
 import { GLSPClientContribution } from "@eclipse-glsp/theia-integration/lib/browser";
+import { CommandContribution } from "@theia/core";
 import { FrontendApplicationContribution, OpenHandler, WidgetFactory } from "@theia/core/lib/browser";
 import { ContainerModule, interfaces } from "inversify";
 import { DiagramConfiguration, DiagramManager, DiagramManagerProvider } from "sprotty-theia";
@@ -21,6 +22,7 @@ import { DiagramConfiguration, DiagramManager, DiagramManagerProvider } from "sp
 import { WorkflowDiagramConfiguration } from "./diagram/workflow-diagram-configuration";
 import { WorkflowDiagramManager } from "./diagram/workflow-diagram-manager";
 import { WorkflowGLSPDiagramClient } from "./diagram/workflow-glsp-diagram-client";
+import { ExampleNavigationCommandContribution } from "./external-navigation-example/external-navigation-example";
 import { WorkflowGLSPClientContribution } from "./language/workflow-glsp-client-contribution";
 
 export default new ContainerModule((bind: interfaces.Bind) => {
@@ -42,4 +44,7 @@ export default new ContainerModule((bind: interfaces.Bind) => {
             });
         };
     });
+
+    // Example for a command that navigates to an element in a diagram with a query resolved by the server
+    bind(CommandContribution).to(ExampleNavigationCommandContribution).inSingletonScope();
 });

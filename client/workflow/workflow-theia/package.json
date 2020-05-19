@@ -16,6 +16,7 @@
   "dependencies": {
     "@eclipse-glsp-examples/workflow-sprotty": "0.7.0",
     "@eclipse-glsp/theia-integration": "next",
+    "@eclipse-glsp/client": "next",
     "@theia/core": "1.0.0",
     "@theia/editor": "1.0.0",
     "@theia/filesystem": "1.0.0",

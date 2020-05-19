@@ -2,7 +2,7 @@
   "id": "sprotty",
   "children": [
     {
-      "name": "ManualTask0",
+      "name": "Push",
       "taskType": "manual",
       "id": "task0",
       "children": [
