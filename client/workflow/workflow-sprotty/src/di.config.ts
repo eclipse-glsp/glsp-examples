@@ -24,7 +24,6 @@ import {
     configureModelElement,
     ConsoleLogger,
     copyPasteContextMenuModule,
-    decorationModule,
     defaultGLSPModule,
     defaultModule,
     DeleteElementContextMenuItemProvider,
@@ -39,6 +38,7 @@ import {
     GLSP_TYPES,
     glspCommandPaletteModule,
     glspContextMenuModule,
+    glspDecorationModule,
     glspEditLabelValidationModule,
     GLSPGraph,
     glspHoverModule,
@@ -122,10 +122,10 @@ const workflowDiagramModule = new ContainerModule((bind, unbind, isBound, rebind
 export default function createContainer(widgetId: string): Container {
     const container = new Container();
 
-    container.load(decorationModule, validationModule, defaultModule, glspMouseToolModule, defaultGLSPModule, glspSelectModule, boundsModule, viewportModule, toolsModule,
+    container.load(validationModule, defaultModule, glspMouseToolModule, defaultGLSPModule, glspSelectModule, boundsModule, viewportModule, toolsModule,
         glspHoverModule, fadeModule, exportModule, expandModule, openModule, buttonModule, modelSourceModule, labelEditModule, labelEditUiModule, glspEditLabelValidationModule,
         workflowDiagramModule, saveModule, executeCommandModule, toolFeedbackModule, modelHintsModule, glspContextMenuModule, glspServerCopyPasteModule,
-        copyPasteContextMenuModule, commandPaletteModule, glspCommandPaletteModule, paletteModule, routingModule, edgeLayoutModule, zorderModule,
+        copyPasteContextMenuModule, commandPaletteModule, glspCommandPaletteModule, paletteModule, routingModule, glspDecorationModule, edgeLayoutModule, zorderModule,
         layoutCommandsModule, directTaskEditor, navigationModule, markerNavigatorModule, markerNavigatorContextMenuModule);
 
     overrideViewerOptions(container, {
