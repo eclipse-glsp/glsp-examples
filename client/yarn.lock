@@ -808,9 +808,9 @@
     balloon-css "^0.5.0"
 
 "@eclipse-glsp/client@next":
-  version "0.8.0-next.2e30486"
-  resolved "https://registry.yarnpkg.com/@eclipse-glsp/client/-/client-0.8.0-next.2e30486.tgz#169a529773b312ce724115380dd65d2e6aec5f24"
-  integrity sha512-laqKGxfDRrTKbCjbUhiJ+uOv5Ym8u2fObCPax7IZF39c5FE7hIV9jQGd9ashJZIG4nZUZnIPfPgPfyZwEhMwrw==
+  version "0.8.0-next.a032f9b"
+  resolved "https://registry.yarnpkg.com/@eclipse-glsp/client/-/client-0.8.0-next.a032f9b.tgz#538c07c0089465691528929eb802a176cbe627d9"
+  integrity sha512-ztgtKBO8p4ZloBUpVCsTnuu2jp9OciUyWzeTSKC1OYV5TUlXfZJrZc8fptO/a83ZnONQYTt0QKrsdBtAxI283w==
   dependencies:
     autocompleter "5.1.0"
     sprotty next
