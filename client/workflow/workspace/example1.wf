@@ -346,7 +346,7 @@
       "layout": "vbox"
     },
     {
-      "name": "manualTask4",
+      "name": "ManualTask4",
       "taskType": "manual",
       "id": "task4",
       "children": [
@@ -518,7 +518,7 @@
       "layout": "vbox"
     },
     {
-      "name": "automatedTask8",
+      "name": "AutomatedTask8",
       "taskType": "automated",
       "id": "task8",
       "children": [
