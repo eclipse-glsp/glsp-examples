@@ -162,7 +162,7 @@ polygon.sprotty-node {
 }
 
 .sprotty-node.selected {
-    stroke-width: 5;
+    stroke-width: 4;
 }
 
 svg {
@@ -177,14 +177,22 @@ svg {
 }
 
 g .movement-not-allowed>.sprotty-node {
-    stroke: darkred!important;
+    stroke: var(--glsp-error-foreground)!important;
 }
 
 .sprotty-resize-handle.movement-not-allowed {
-    stroke: darkred!important;
-    fill: darkred!important;
+    stroke: var(--glsp-error-foreground)!important;
+    fill: var(--glsp-error-foreground)!important;
 }
 
 .error>.sprotty-node {
-    stroke: darkred!important;
+    stroke: var(--glsp-error-foreground)!important;
+}
+
+.warning>.sprotty-node {
+    stroke: var(--glsp-warning-foreground)!important;
+}
+
+.info>.sprotty-node {
+    stroke: var(--glsp-info-foreground)!important;
 }
