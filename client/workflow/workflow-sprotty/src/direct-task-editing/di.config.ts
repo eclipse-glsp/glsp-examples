@@ -16,10 +16,9 @@
 import { ContainerModule } from "inversify";
 import { TYPES } from "sprotty";
 
-import { TaskEditContextMenuItemProvider, TaskEditor } from "./direct-task-editor";
+import { TaskEditor } from "./direct-task-editor";
 
 export const directTaskEditor = new ContainerModule((bind, _unbind, isBound) => {
     bind(TaskEditor).toSelf().inSingletonScope();
     bind(TYPES.IUIExtension).toService(TaskEditor);
-    bind(TYPES.IContextMenuItemProvider).to(TaskEditContextMenuItemProvider);
 });

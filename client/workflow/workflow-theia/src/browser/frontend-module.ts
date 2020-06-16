@@ -13,37 +13,48 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
-import { GLSPClientContribution } from "@eclipse-glsp/theia-integration/lib/browser";
-import { CommandContribution } from "@theia/core";
-import { FrontendApplicationContribution, OpenHandler, WidgetFactory } from "@theia/core/lib/browser";
+import {
+    GLSPClientContribution,
+    registerCopyPasteContextMenu,
+    registerDiagramLayoutCommands,
+    registerDiagramManager,
+    registerMarkerNavigationCommands
+} from "@eclipse-glsp/theia-integration/lib/browser";
+import { CommandContribution, MenuContribution } from "@theia/core";
 import { ContainerModule, interfaces } from "inversify";
-import { DiagramConfiguration, DiagramManager, DiagramManagerProvider } from "sprotty-theia";
+import { DiagramConfiguration } from "sprotty-theia";
 
 import { WorkflowDiagramConfiguration } from "./diagram/workflow-diagram-configuration";
 import { WorkflowDiagramManager } from "./diagram/workflow-diagram-manager";
 import { WorkflowGLSPDiagramClient } from "./diagram/workflow-glsp-diagram-client";
+import {
+    WorkflowNavigationCommandContribution,
+    WorkflowNavigationMenuContribution
+} from "./diagram/workflow-navigation-context-menu";
+import {
+    WorkflowTaskEditCommandContribution,
+    WorkflowTaskEditMenuContribution
+} from "./diagram/workflow-task-editing-context-menu";
 import { ExampleNavigationCommandContribution } from "./external-navigation-example/external-navigation-example";
 import { WorkflowGLSPClientContribution } from "./language/workflow-glsp-client-contribution";
 
 export default new ContainerModule((bind: interfaces.Bind) => {
     bind(WorkflowGLSPClientContribution).toSelf().inSingletonScope();
     bind(GLSPClientContribution).toService(WorkflowGLSPClientContribution);
-
-    bind(WorkflowGLSPDiagramClient).toSelf().inSingletonScope();
-
     bind(DiagramConfiguration).to(WorkflowDiagramConfiguration).inSingletonScope();
-    bind(WorkflowDiagramManager).toSelf().inSingletonScope();
-    bind(FrontendApplicationContribution).toService(WorkflowDiagramManager);
-    bind(OpenHandler).toService(WorkflowDiagramManager);
-    bind(WidgetFactory).toService(WorkflowDiagramManager);
-    bind(DiagramManagerProvider).toProvider<DiagramManager>((context) => {
-        return () => {
-            return new Promise<DiagramManager>((resolve) => {
-                const diagramManager = context.container.get<WorkflowDiagramManager>(WorkflowDiagramManager);
-                resolve(diagramManager);
-            });
-        };
-    });
+    bind(WorkflowGLSPDiagramClient).toSelf().inSingletonScope();
+    registerDiagramManager(bind, WorkflowDiagramManager);
+
+    // Optional default commands and menus
+    registerDiagramLayoutCommands(bind);
+    registerCopyPasteContextMenu(bind);
+    registerMarkerNavigationCommands(bind);
+
+    // Custom workflow commands and menus
+    bind(CommandContribution).to(WorkflowTaskEditCommandContribution);
+    bind(MenuContribution).to(WorkflowTaskEditMenuContribution);
+    bind(CommandContribution).to(WorkflowNavigationCommandContribution);
+    bind(MenuContribution).to(WorkflowNavigationMenuContribution);
 
     // Example for a command that navigates to an element in a diagram with a query resolved by the server
     bind(CommandContribution).to(ExampleNavigationCommandContribution).inSingletonScope();
