@@ -21,6 +21,11 @@ const fse = require('fs-extra');
 const cliPortKey = '--theia-port';
 const cliPortIndex = process.argv.indexOf(cliPortKey);
 const masterPort = cliPortIndex > -1 ? process.argv[cliPortIndex + 1] : 0; // 0 if master
+// utils for parsing the server path
+const defaultServerPath = '../server/org.eclipse.glsp.example.workflow/target/org.eclipse.glsp.example.workflow-0.8.0-SNAPSHOT-glsp.jar';
+const serverPathKey = '--server-path';
+const serverPathIndex = process.argv.indexOf(serverPathKey);
+const serverPath = serverPathIndex > -1 ? process.argv[serverPathIndex + 1] : defaultServerPath;
 if (typeof masterPort === 'undefined') {
     throw new Error(`${cliPortKey} expects a number as following argument`);
 }
@@ -211,7 +216,7 @@ export const createConfig = (headless: boolean): WebdriverIO.Config => {
 
             // start backend server
             const spawn = require('child_process').spawn;
-            backendServer = spawn('java', ['-jar', '../server/org.eclipse.glsp.example.workflow/target/org.eclipse.glsp.example.workflow-0.8.0-SNAPSHOT-glsp.jar']);
+            // backendServer = spawn('java', ['-jar', serverPath]);
         },
         /**
          * Gets executed before a worker process is spawned and can be used to initialise specific service
@@ -353,7 +358,7 @@ export const createConfig = (headless: boolean): WebdriverIO.Config => {
          * @param {<Object>} results object containing test results
          */
         onComplete: (exitCode, config, capabilities, results) => {
-            backendServer.kill();
+            // backendServer.kill();
         },
         /**
         * Gets executed when a refresh happens.
