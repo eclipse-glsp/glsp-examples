@@ -4,7 +4,7 @@ kind: Pod
 spec:
   containers:
   - name: ci
-    image: eclipseglsp/ci:0.0.2
+    image: eclipseglsp/ci:0.0.4
     tty: true
     resources:
       limits:
@@ -79,7 +79,14 @@ pipeline {
                 container('ci'){
                     timeout(30){
                         dir('client'){
-                            sh "java -jar ${env.GLSP_SERVER_PATH} && yarn run ui-tests"
+                            script{
+                                withEnv(['JENKINS_NODE_COOKIE=dontkill']) {
+                                    sh "java -jar ${env.GLSP_SERVER_PATH} > ${env.WORKSPACE}/server-build/server.log &"
+                                }
+                            }   
+                                sh "lsof -i:5007"
+                                sh "yarn run ui-tests"
+                                
                         }
                     }
                 }
@@ -97,7 +104,8 @@ pipeline {
 
     post {
         always {
-             archiveArtifacts artifacts: 'server-build/org.eclipse.glsp.example.workflow-0.8.0-SNAPSHOT-glsp.jar', onlyIfSuccessful: false
+             archiveArtifacts artifacts: 'server-build/**', onlyIfSuccessful: false
+             
         }
     }
 }
