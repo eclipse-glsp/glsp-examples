@@ -24,6 +24,7 @@
     "types": [
       "node",
       "@wdio/sync",
+      "@wdio/mocha-framework",
       "mocha"
     ]
   }
