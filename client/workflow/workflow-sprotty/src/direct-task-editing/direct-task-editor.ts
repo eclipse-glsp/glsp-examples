@@ -20,17 +20,12 @@ import {
     EditorContextService,
     getAbsoluteClientBounds,
     GLSPActionDispatcher,
-    IContextMenuItemProvider,
     ILogger,
-    isSelectable,
     isSetContextActionsAction,
     isSetEditValidationResultAction,
     LabeledAction,
-    MenuItem,
-    Point,
     RequestContextActions,
     RequestEditValidationAction,
-    SetUIExtensionVisibilityAction,
     SModelElement,
     SModelRoot,
     toActionArray,
@@ -41,7 +36,6 @@ import {
 import { inject, injectable } from "inversify";
 import { TYPES } from "sprotty/lib";
 import { DOMHelper } from "sprotty/lib/base/views/dom-helper";
-import { toArray } from "sprotty/lib/utils/iterable";
 
 import { isTaskNode, TaskNode } from "../model";
 
@@ -159,28 +153,4 @@ export class TaskEditor extends AbstractUIExtension {
 
 function getTask(ids: string[], element: SModelElement): TaskNode[] {
     return ids.map(id => element.index.getById(id)).filter(isTaskNode);
-}
-
-@injectable()
-export class TaskEditContextMenuItemProvider implements IContextMenuItemProvider {
-    getItems(root: Readonly<SModelRoot>, lastMousePosition?: Point): Promise<MenuItem[]> {
-        const selectedElements = getTasksFromSelection(root);
-        if (selectedElements.length !== 1) {
-            return Promise.resolve([]);
-        }
-        return Promise.resolve([
-            {
-                id: "edit-task",
-                label: "Direct Edit Task",
-                sortString: "d",
-                group: "edit",
-                actions: [new SetUIExtensionVisibilityAction(TaskEditor.ID, true, [selectedElements[0].id])],
-                isEnabled: () => selectedElements.length === 1
-            }
-        ]);
-    }
-}
-
-function getTasksFromSelection(element: SModelElement): TaskNode[] {
-    return toArray(element.index.all().filter(e => isSelectable(e) && e.selected)).filter(isTaskNode);
 }

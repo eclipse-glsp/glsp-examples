@@ -23,7 +23,6 @@ import {
     commandPaletteModule,
     configureModelElement,
     ConsoleLogger,
-    copyPasteContextMenuModule,
     defaultGLSPModule,
     defaultModule,
     DeleteElementContextMenuItemProvider,
@@ -52,7 +51,6 @@ import {
     labelEditUiModule,
     layoutCommandsModule,
     LogLevel,
-    markerNavigatorContextMenuModule,
     markerNavigatorModule,
     modelHintsModule,
     modelSourceModule,
@@ -65,7 +63,6 @@ import {
     PreRenderedView,
     RevealNamedElementActionProvider,
     routingModule,
-    saveModule,
     SButton,
     SCompartment,
     SCompartmentView,
@@ -86,7 +83,6 @@ import { Container, ContainerModule } from "inversify";
 
 import { directTaskEditor } from "./direct-task-editing/di.config";
 import { ActivityNode, Icon, TaskNode, WeightedEdge } from "./model";
-import { GotoContextMenuItemProvider } from "./navigation";
 import { ForkOrJoinNodeView, IconView, TaskNodeView, WeightedEdgeView, WorkflowEdgeView } from "./workflow-views";
 
 const workflowDiagramModule = new ContainerModule((bind, unbind, isBound, rebind) => {
@@ -96,7 +92,6 @@ const workflowDiagramModule = new ContainerModule((bind, unbind, isBound, rebind
     bind(TYPES.ISnapper).to(GridSnapper);
     bind(TYPES.ICommandPaletteActionProvider).to(RevealNamedElementActionProvider);
     bind(TYPES.IContextMenuItemProvider).to(DeleteElementContextMenuItemProvider);
-    bind(TYPES.IContextMenuItemProvider).to(GotoContextMenuItemProvider);
     const context = { bind, unbind, isBound, rebind };
     configureModelElement(context, 'graph', GLSPGraph, SGraphView);
     configureModelElement(context, 'task:automated', TaskNode, TaskNodeView);
@@ -124,9 +119,9 @@ export default function createContainer(widgetId: string): Container {
 
     container.load(validationModule, defaultModule, glspMouseToolModule, defaultGLSPModule, glspSelectModule, boundsModule, viewportModule, toolsModule,
         glspHoverModule, fadeModule, exportModule, expandModule, openModule, buttonModule, modelSourceModule, labelEditModule, labelEditUiModule, glspEditLabelValidationModule,
-        workflowDiagramModule, saveModule, executeCommandModule, toolFeedbackModule, modelHintsModule, glspContextMenuModule, glspServerCopyPasteModule,
-        copyPasteContextMenuModule, commandPaletteModule, glspCommandPaletteModule, paletteModule, routingModule, glspDecorationModule, edgeLayoutModule, zorderModule,
-        layoutCommandsModule, directTaskEditor, navigationModule, markerNavigatorModule, markerNavigatorContextMenuModule);
+        workflowDiagramModule, executeCommandModule, toolFeedbackModule, modelHintsModule, glspContextMenuModule, glspServerCopyPasteModule,
+        commandPaletteModule, glspCommandPaletteModule, paletteModule, routingModule, glspDecorationModule, edgeLayoutModule, zorderModule,
+        layoutCommandsModule, directTaskEditor, navigationModule, markerNavigatorModule);
 
     overrideViewerOptions(container, {
         baseDiv: widgetId,
