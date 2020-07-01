@@ -22,9 +22,8 @@ import org.eclipse.glsp.example.workflow.utils.ModelTypes;
 import org.eclipse.glsp.example.workflow.utils.WorkflowBuilder.ActivityNodeBuilder;
 import org.eclipse.glsp.graph.GNode;
 import org.eclipse.glsp.graph.GPoint;
-import org.eclipse.glsp.server.operationhandler.CreateNodeOperationHandler;
 
-public abstract class CreateActivityNodeHandler extends CreateNodeOperationHandler {
+public abstract class CreateActivityNodeHandler extends CreateWorkflowNodeOperationHandler {
 
    private final String label;
    private final String elementTypeId;
