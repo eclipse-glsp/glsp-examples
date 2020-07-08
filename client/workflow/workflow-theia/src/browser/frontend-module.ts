@@ -21,12 +21,17 @@ import {
     registerMarkerNavigationCommands
 } from "@eclipse-glsp/theia-integration/lib/browser";
 import { CommandContribution, MenuContribution } from "@theia/core";
+import { KeybindingContext, KeybindingContribution } from "@theia/core/lib/browser";
 import { ContainerModule, interfaces } from "inversify";
 import { DiagramConfiguration } from "sprotty-theia";
 
 import { WorkflowDiagramConfiguration } from "./diagram/workflow-diagram-configuration";
 import { WorkflowDiagramManager } from "./diagram/workflow-diagram-manager";
 import { WorkflowGLSPDiagramClient } from "./diagram/workflow-glsp-diagram-client";
+import {
+    WorkflowDiagramKeybindingContext,
+    WorkflowKeybindingContribution
+} from "./diagram/workflow-keybinding-contribution";
 import {
     WorkflowNavigationCommandContribution,
     WorkflowNavigationMenuContribution
@@ -51,11 +56,13 @@ export default new ContainerModule((bind: interfaces.Bind) => {
     registerMarkerNavigationCommands(bind);
 
     // Custom workflow commands and menus
-    bind(CommandContribution).to(WorkflowTaskEditCommandContribution);
-    bind(MenuContribution).to(WorkflowTaskEditMenuContribution);
-    bind(CommandContribution).to(WorkflowNavigationCommandContribution);
-    bind(MenuContribution).to(WorkflowNavigationMenuContribution);
+    bind(CommandContribution).to(WorkflowTaskEditCommandContribution).inSingletonScope();
+    bind(MenuContribution).to(WorkflowTaskEditMenuContribution).inSingletonScope();
+    bind(CommandContribution).to(WorkflowNavigationCommandContribution).inSingletonScope();
+    bind(MenuContribution).to(WorkflowNavigationMenuContribution).inSingletonScope();
+    bind(KeybindingContext).to(WorkflowDiagramKeybindingContext).inSingletonScope();
+    bind(KeybindingContribution).to(WorkflowKeybindingContribution).inSingletonScope();
 
     // Example for a command that navigates to an element in a diagram with a query resolved by the server
-    bind(CommandContribution).to(ExampleNavigationCommandContribution).inSingletonScope();
+    bind(CommandContribution).to(ExampleNavigationCommandContribution).inSingletonScope();;
 });
