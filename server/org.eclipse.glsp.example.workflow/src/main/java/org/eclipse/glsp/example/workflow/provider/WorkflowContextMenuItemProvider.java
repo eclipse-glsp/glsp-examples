@@ -27,6 +27,7 @@ import org.eclipse.glsp.api.model.GraphicalModelState;
 import org.eclipse.glsp.api.operation.kind.CreateNodeOperation;
 import org.eclipse.glsp.api.provider.ContextMenuItemProvider;
 import org.eclipse.glsp.api.types.MenuItem;
+import org.eclipse.glsp.example.workflow.handler.GridSnapper;
 import org.eclipse.glsp.graph.GPoint;
 
 import com.google.common.collect.Lists;
@@ -40,10 +41,11 @@ public class WorkflowContextMenuItemProvider implements ContextMenuItemProvider 
       if (modelState.isReadonly()) {
          return Collections.emptyList();
       }
+      GPoint snappedPosition = GridSnapper.snap(position);
       MenuItem newAutTask = new MenuItem("newAutoTask", "Automated Task",
-         Arrays.asList(new CreateNodeOperation(AUTOMATED_TASK, position)), true);
+         Arrays.asList(new CreateNodeOperation(AUTOMATED_TASK, snappedPosition)), true);
       MenuItem newManTask = new MenuItem("newManualTask", "Manual Task",
-         Arrays.asList(new CreateNodeOperation(MANUAL_TASK, position)), true);
+         Arrays.asList(new CreateNodeOperation(MANUAL_TASK, snappedPosition)), true);
       MenuItem newChildMenu = new MenuItem("new", "New", Arrays.asList(newAutTask, newManTask), "add", "0_new");
       return Lists.newArrayList(newChildMenu);
    }

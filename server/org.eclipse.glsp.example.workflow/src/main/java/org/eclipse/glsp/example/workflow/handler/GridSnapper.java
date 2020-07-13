@@ -17,19 +17,23 @@ package org.eclipse.glsp.example.workflow.handler;
 
 import java.util.Optional;
 
-import org.eclipse.glsp.api.operation.kind.CreateNodeOperation;
 import org.eclipse.glsp.graph.GPoint;
-import org.eclipse.glsp.server.operationhandler.CreateNodeOperationHandler;
+import org.eclipse.glsp.graph.util.GraphUtil;
 
-public abstract class CreateWorkflowNodeOperationHandler extends CreateNodeOperationHandler {
+public final class GridSnapper {
+   public static final double GRID_X = 10.0;
+   public static final double GRID_Y = 10.0;
 
-   public CreateWorkflowNodeOperationHandler(final String elementTypeId) {
-      super(elementTypeId);
+   private GridSnapper() {}
+
+   public static GPoint snap(final GPoint originalpoint) {
+      double snappedX = Math.round(originalpoint.getX() / GRID_X) * GRID_X;
+      double snappedY = Math.round(originalpoint.getY() / GRID_Y) * GRID_Y;
+      return GraphUtil.point(snappedX, snappedY);
    }
 
-   @Override
-   protected Optional<GPoint> getLocation(final CreateNodeOperation operation) {
-      return GridSnapper.snap(operation.getLocation());
+   public static Optional<GPoint> snap(final Optional<GPoint> originalPoint) {
+      return originalPoint.map(GridSnapper::snap);
    }
 
 }
