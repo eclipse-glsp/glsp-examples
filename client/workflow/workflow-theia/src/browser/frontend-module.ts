@@ -64,5 +64,5 @@ export default new ContainerModule((bind: interfaces.Bind) => {
     bind(KeybindingContribution).to(WorkflowKeybindingContribution).inSingletonScope();
 
     // Example for a command that navigates to an element in a diagram with a query resolved by the server
-    bind(CommandContribution).to(ExampleNavigationCommandContribution).inSingletonScope();;
+    bind(CommandContribution).to(ExampleNavigationCommandContribution).inSingletonScope();
 });
