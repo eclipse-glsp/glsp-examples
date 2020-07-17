@@ -38,6 +38,7 @@
     "**/@theia/messages": "1.0.0",
     "**/@theia/monaco": "1.0.0",
     "**/@theia/navigator": "1.0.0",
+    "**/@theia/output": "1.0.0",
     "**/@theia/preferences": "1.0.0",
     "**/@theia/process": "1.0.0",
     "**/@theia/terminal": "1.0.0",
