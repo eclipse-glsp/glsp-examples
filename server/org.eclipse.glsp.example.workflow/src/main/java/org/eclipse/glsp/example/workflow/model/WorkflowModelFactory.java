@@ -21,11 +21,11 @@ import org.eclipse.glsp.api.model.GraphicalModelState;
 import org.eclipse.glsp.api.utils.ServerMessageUtil;
 import org.eclipse.glsp.api.utils.ServerStatusUtil;
 import org.eclipse.glsp.graph.GModelRoot;
-import org.eclipse.glsp.server.model.FileBasedModelFactory;
+import org.eclipse.glsp.server.model.JsonFileModelFactory;
 
 import com.google.inject.Inject;
 
-public class WorkflowModelFactory extends FileBasedModelFactory {
+public class WorkflowModelFactory extends JsonFileModelFactory {
    @Inject
    private ActionProcessor actionProcessor;
 

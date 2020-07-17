@@ -27,6 +27,7 @@ import { DiagramConfiguration } from "sprotty-theia";
 
 import { WorkflowDiagramConfiguration } from "./diagram/workflow-diagram-configuration";
 import { WorkflowDiagramManager } from "./diagram/workflow-diagram-manager";
+import { WorkflowDiagramReadonlyViewContribution } from "./diagram/workflow-diagram-readonly-view";
 import { WorkflowGLSPDiagramClient } from "./diagram/workflow-glsp-diagram-client";
 import {
     WorkflowDiagramKeybindingContext,
@@ -65,4 +66,9 @@ export default new ContainerModule((bind: interfaces.Bind) => {
 
     // Example for a command that navigates to an element in a diagram with a query resolved by the server
     bind(CommandContribution).to(ExampleNavigationCommandContribution).inSingletonScope();
+
+    // Readonly workflow diagram view
+    bind(WorkflowDiagramReadonlyViewContribution).toSelf().inSingletonScope();
+    bind(MenuContribution).toService(WorkflowDiagramReadonlyViewContribution);
+    bind(CommandContribution).toService(WorkflowDiagramReadonlyViewContribution);
 });

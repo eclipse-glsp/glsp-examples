@@ -805,7 +805,7 @@
     "@eclipse-glsp/client" next
     balloon-css "^0.5.0"
 
-"@eclipse-glsp/client@0.8.0-next.182b274", "@eclipse-glsp/client@next":
+"@eclipse-glsp/client@next":
   version "0.8.0-next.182b274"
   resolved "https://registry.yarnpkg.com/@eclipse-glsp/client/-/client-0.8.0-next.182b274.tgz#918509db7129fc0e9cfe3e72865e612bd58aff0b"
   integrity sha512-/FCLagJpQAy0zOVcZpON8NEDAix5KC9ADDuR7h78bz4WRFbcCWmvioS5wR3cQsbGcyyOJmk0VO2pA4LDAXxh5g==
@@ -815,7 +815,7 @@
     uuid "7.0.3"
     vscode-ws-jsonrpc "^0.0.2-1"
 
-"@eclipse-glsp/theia-integration@0.8.0-next.0b7d765":
+"@eclipse-glsp/theia-integration@next":
   version "0.8.0-next.0b7d765"
   resolved "https://registry.yarnpkg.com/@eclipse-glsp/theia-integration/-/theia-integration-0.8.0-next.0b7d765.tgz#2229a48532f5502249fd23453626775b57647598"
   integrity sha512-xKia8D2p16T/F9PdgLBT7jnQsaCziSN/9XMyqmDth8SIcl2dDTgtq9kO47e7wwNqewFJUU4ONrfHlIEgvIzs+g==

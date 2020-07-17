@@ -20,7 +20,6 @@ import "sprotty/css/edit-label.css";
 import {
     boundsModule,
     buttonModule,
-    commandPaletteModule,
     configureModelElement,
     ConsoleLogger,
     defaultGLSPModule,
@@ -38,7 +37,7 @@ import {
     glspCommandPaletteModule,
     glspContextMenuModule,
     glspDecorationModule,
-    glspEditLabelValidationModule,
+    glspEditLabelModule,
     GLSPGraph,
     glspHoverModule,
     glspMouseToolModule,
@@ -47,7 +46,6 @@ import {
     GridSnapper,
     HtmlRoot,
     HtmlRootView,
-    labelEditModule,
     labelEditUiModule,
     layoutCommandsModule,
     LogLevel,
@@ -118,9 +116,9 @@ export default function createContainer(widgetId: string): Container {
     const container = new Container();
 
     container.load(validationModule, defaultModule, glspMouseToolModule, defaultGLSPModule, glspSelectModule, boundsModule, viewportModule, toolsModule,
-        glspHoverModule, fadeModule, exportModule, expandModule, openModule, buttonModule, modelSourceModule, labelEditModule, labelEditUiModule, glspEditLabelValidationModule,
+        glspHoverModule, fadeModule, exportModule, expandModule, openModule, buttonModule, modelSourceModule, labelEditUiModule, glspEditLabelModule,
         workflowDiagramModule, executeCommandModule, toolFeedbackModule, modelHintsModule, glspContextMenuModule, glspServerCopyPasteModule,
-        commandPaletteModule, glspCommandPaletteModule, paletteModule, routingModule, glspDecorationModule, edgeLayoutModule, zorderModule,
+        glspCommandPaletteModule, paletteModule, routingModule, glspDecorationModule, edgeLayoutModule, zorderModule,
         layoutCommandsModule, directTaskEditor, navigationModule, markerNavigatorModule);
 
     overrideViewerOptions(container, {
