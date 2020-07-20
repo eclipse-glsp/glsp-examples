@@ -46,7 +46,9 @@ public class WorkflowCommandPaletteActionProvider implements CommandPaletteActio
    @SuppressWarnings("checkstyle:CyclomaticComplexity")
    public List<LabeledAction> getActions(final EditorContext editorContext, final GraphicalModelState modelState) {
       List<LabeledAction> actions = Lists.newArrayList();
-
+      if (modelState.isReadonly()) {
+         return actions;
+      }
       GModelIndex index = modelState.getIndex();
       List<String> selectedIds = editorContext.getSelectedElementIds();
       Optional<GPoint> lastMousePosition = editorContext.getLastMousePosition();

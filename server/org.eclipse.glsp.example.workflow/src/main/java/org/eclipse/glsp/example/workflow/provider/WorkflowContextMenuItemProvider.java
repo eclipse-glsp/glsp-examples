@@ -19,6 +19,7 @@ import static org.eclipse.glsp.example.workflow.utils.ModelTypes.AUTOMATED_TASK;
 import static org.eclipse.glsp.example.workflow.utils.ModelTypes.MANUAL_TASK;
 
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 
@@ -36,6 +37,9 @@ public class WorkflowContextMenuItemProvider implements ContextMenuItemProvider 
    public List<MenuItem> getItems(final List<String> selectedElementIds, final GPoint position,
       final Map<String, String> args,
       final GraphicalModelState modelState) {
+      if (modelState.isReadonly()) {
+         return Collections.emptyList();
+      }
       MenuItem newAutTask = new MenuItem("newAutoTask", "Automated Task",
          Arrays.asList(new CreateNodeOperation(AUTOMATED_TASK, position)), true);
       MenuItem newManTask = new MenuItem("newManualTask", "Manual Task",
