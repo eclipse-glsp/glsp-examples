@@ -17,17 +17,17 @@
                   "id": "task0_ticon",
                   "type": "label:icon",
                   "position": {
-                    "x": 7.4921875,
-                    "y": 5.0
+                    "x": 7.65625,
+                    "y": 4.796875
                   },
                   "size": {
-                    "width": 17.015625,
-                    "height": 22.0
+                    "width": 16.6875,
+                    "height": 22.40625
                   },
                   "text": "M",
                   "alignment": {
                     "x": 8.34375,
-                    "y": 18.0
+                    "y": 18.40625
                   }
                 }
               ],
@@ -51,16 +51,16 @@
               "type": "label:heading",
               "position": {
                 "x": 38.0,
-                "y": 10.0
+                "y": 9.796875
               },
               "size": {
                 "width": 48.90625,
-                "height": 22.0
+                "height": 22.40625
               },
               "text": "Push",
               "alignment": {
                 "x": 24.453125,
-                "y": 18.0
+                "y": 18.40625
               }
             }
           ],
@@ -78,8 +78,8 @@
       ],
       "type": "task:manual",
       "position": {
-        "x": 440.0,
-        "y": 253.00347137451172
+        "x": 470.0,
+        "y": 250.0
       },
       "size": {
         "width": 101.90625,
@@ -103,17 +103,17 @@
                   "id": "task1_ticon",
                   "type": "label:icon",
                   "position": {
-                    "x": 7.4921875,
-                    "y": 5.0
+                    "x": 7.65625,
+                    "y": 4.796875
                   },
                   "size": {
-                    "width": 17.015625,
-                    "height": 22.0
+                    "width": 16.6875,
+                    "height": 22.40625
                   },
                   "text": "M",
                   "alignment": {
                     "x": 8.34375,
-                    "y": 18.0
+                    "y": 18.40625
                   }
                 }
               ],
@@ -137,16 +137,16 @@
               "type": "label:heading",
               "position": {
                 "x": 38.0,
-                "y": 10.0
+                "y": 9.796875
               },
               "size": {
                 "width": 53.5625,
-                "height": 22.0
+                "height": 22.40625
               },
               "text": "RflWt",
               "alignment": {
                 "x": 26.109375,
-                "y": 18.0
+                "y": 18.40625
               }
             }
           ],
@@ -164,7 +164,7 @@
       ],
       "type": "task:manual",
       "position": {
-        "x": 931.6953125,
+        "x": 930.0,
         "y": 110.0
       },
       "size": {
@@ -189,17 +189,17 @@
                   "id": "task2_ticon",
                   "type": "label:icon",
                   "position": {
-                    "x": 7.4921875,
-                    "y": 5.0
+                    "x": 7.65625,
+                    "y": 4.796875
                   },
                   "size": {
-                    "width": 17.015625,
-                    "height": 22.0
+                    "width": 16.6875,
+                    "height": 22.40625
                   },
                   "text": "M",
                   "alignment": {
                     "x": 8.34375,
-                    "y": 18.0
+                    "y": 18.40625
                   }
                 }
               ],
@@ -223,16 +223,16 @@
               "type": "label:heading",
               "position": {
                 "x": 38.0,
-                "y": 10.0
+                "y": 9.796875
               },
               "size": {
-                "width": 64.015625,
-                "height": 22.0
+                "width": 62.8125,
+                "height": 22.40625
               },
               "text": "ChkTp",
               "alignment": {
-                "x": 32.109375,
-                "y": 18.0
+                "x": 31.109375,
+                "y": 18.40625
               }
             }
           ],
@@ -242,7 +242,7 @@
             "y": 5.0
           },
           "size": {
-            "width": 107.015625,
+            "width": 105.8125,
             "height": 42.0
           },
           "layout": "hbox"
@@ -250,11 +250,11 @@
       ],
       "type": "task:manual",
       "position": {
-        "x": 680.828125,
+        "x": 670.0,
         "y": 350.0
       },
       "size": {
-        "width": 117.015625,
+        "width": 115.8125,
         "height": 52.0
       },
       "layout": "vbox"
@@ -275,17 +275,17 @@
                   "id": "task3_ticon",
                   "type": "label:icon",
                   "position": {
-                    "x": 7.4921875,
-                    "y": 5.0
+                    "x": 7.65625,
+                    "y": 4.796875
                   },
                   "size": {
-                    "width": 17.015625,
-                    "height": 22.0
+                    "width": 16.6875,
+                    "height": 22.40625
                   },
                   "text": "M",
                   "alignment": {
                     "x": 8.34375,
-                    "y": 18.0
+                    "y": 18.40625
                   }
                 }
               ],
@@ -309,16 +309,16 @@
               "type": "label:heading",
               "position": {
                 "x": 38.0,
-                "y": 10.0
+                "y": 9.796875
               },
               "size": {
                 "width": 76.953125,
-                "height": 22.0
+                "height": 22.40625
               },
               "text": "PreHeat",
               "alignment": {
                 "x": 37.8125,
-                "y": 18.0
+                "y": 18.40625
               }
             }
           ],
@@ -361,17 +361,17 @@
                   "id": "task4_ticon",
                   "type": "label:icon",
                   "position": {
-                    "x": 7.4921875,
-                    "y": 5.0
+                    "x": 7.65625,
+                    "y": 4.796875
                   },
                   "size": {
-                    "width": 17.015625,
-                    "height": 22.0
+                    "width": 16.6875,
+                    "height": 22.40625
                   },
                   "text": "M",
                   "alignment": {
                     "x": 8.34375,
-                    "y": 18.0
+                    "y": 18.40625
                   }
                 }
               ],
@@ -395,16 +395,16 @@
               "type": "label:heading",
               "position": {
                 "x": 38.0,
-                "y": 10.0
+                "y": 9.796875
               },
               "size": {
-                "width": 50.359375,
-                "height": 22.0
+                "width": 50.15625,
+                "height": 22.40625
               },
               "text": "Brew",
               "alignment": {
                 "x": 24.453125,
-                "y": 18.0
+                "y": 18.40625
               }
             }
           ],
@@ -414,7 +414,7 @@
             "y": 5.0
           },
           "size": {
-            "width": 93.359375,
+            "width": 93.15625,
             "height": 42.0
           },
           "layout": "hbox"
@@ -422,11 +422,11 @@
       ],
       "type": "task:manual",
       "position": {
-        "x": 1278.0138549804688,
-        "y": 253.00347137451172
+        "x": 1280.0,
+        "y": 260.0
       },
       "size": {
-        "width": 103.359375,
+        "width": 103.15625,
         "height": 52.0
       },
       "layout": "vbox"
@@ -447,17 +447,17 @@
                   "id": "task6_ticon",
                   "type": "label:icon",
                   "position": {
-                    "x": 7.4921875,
-                    "y": 5.0
+                    "x": 7.65625,
+                    "y": 4.796875
                   },
                   "size": {
-                    "width": 17.015625,
-                    "height": 22.0
+                    "width": 16.6875,
+                    "height": 22.40625
                   },
                   "text": "M",
                   "alignment": {
                     "x": 8.34375,
-                    "y": 18.0
+                    "y": 18.40625
                   }
                 }
               ],
@@ -481,16 +481,16 @@
               "type": "label:heading",
               "position": {
                 "x": 38.0,
-                "y": 10.0
+                "y": 9.796875
               },
               "size": {
-                "width": 74.125,
-                "height": 22.0
+                "width": 73.9375,
+                "height": 22.40625
               },
               "text": "KeepTp",
               "alignment": {
                 "x": 36.671875,
-                "y": 18.0
+                "y": 18.40625
               }
             }
           ],
@@ -500,7 +500,7 @@
             "y": 5.0
           },
           "size": {
-            "width": 117.125,
+            "width": 116.9375,
             "height": 42.0
           },
           "layout": "hbox"
@@ -508,11 +508,11 @@
       ],
       "type": "task:manual",
       "position": {
-        "x": 921.4140625,
+        "x": 920.0,
         "y": 300.0
       },
       "size": {
-        "width": 127.125,
+        "width": 126.9375,
         "height": 52.0
       },
       "layout": "vbox"
@@ -533,17 +533,17 @@
                   "id": "task8_ticon",
                   "type": "label:icon",
                   "position": {
-                    "x": 7.4921875,
-                    "y": 5.0
+                    "x": 7.9921875,
+                    "y": 4.796875
                   },
                   "size": {
-                    "width": 17.015625,
-                    "height": 22.0
+                    "width": 16.015625,
+                    "height": 22.40625
                   },
                   "text": "A",
                   "alignment": {
-                    "x": 8.671875,
-                    "y": 18.0
+                    "x": 8.28125,
+                    "y": 18.40625
                   }
                 }
               ],
@@ -567,16 +567,16 @@
               "type": "label:heading",
               "position": {
                 "x": 38.0,
-                "y": 10.0
+                "y": 9.796875
               },
               "size": {
-                "width": 65.671875,
-                "height": 22.0
+                "width": 64.671875,
+                "height": 22.40625
               },
               "text": "ChkWt",
               "alignment": {
-                "x": 32.671875,
-                "y": 18.0
+                "x": 31.671875,
+                "y": 18.40625
               }
             }
           ],
@@ -586,7 +586,7 @@
             "y": 5.0
           },
           "size": {
-            "width": 108.671875,
+            "width": 107.671875,
             "height": 42.0
           },
           "layout": "hbox"
@@ -598,7 +598,7 @@
         "y": 160.0
       },
       "size": {
-        "width": 118.671875,
+        "width": 117.671875,
         "height": 52.0
       },
       "layout": "vbox"
@@ -619,17 +619,17 @@
                   "id": "task9_ticon",
                   "type": "label:icon",
                   "position": {
-                    "x": 7.4921875,
-                    "y": 5.0
+                    "x": 7.9921875,
+                    "y": 4.796875
                   },
                   "size": {
-                    "width": 17.015625,
-                    "height": 22.0
+                    "width": 16.015625,
+                    "height": 22.40625
                   },
                   "text": "A",
                   "alignment": {
-                    "x": 8.671875,
-                    "y": 18.0
+                    "x": 8.28125,
+                    "y": 18.40625
                   }
                 }
               ],
@@ -653,16 +653,16 @@
               "type": "label:heading",
               "position": {
                 "x": 38.0,
-                "y": 10.0
+                "y": 9.796875
               },
               "size": {
-                "width": 58.109375,
-                "height": 22.0
+                "width": 57.109375,
+                "height": 22.40625
               },
               "text": "WtOK",
               "alignment": {
-                "x": 28.78125,
-                "y": 18.0
+                "x": 28.578125,
+                "y": 18.40625
               }
             }
           ],
@@ -672,7 +672,7 @@
             "y": 5.0
           },
           "size": {
-            "width": 101.109375,
+            "width": 100.109375,
             "height": 42.0
           },
           "layout": "hbox"
@@ -680,11 +680,11 @@
       ],
       "type": "task:automated",
       "position": {
-        "x": 929.421875,
+        "x": 930.0,
         "y": 190.0
       },
       "size": {
-        "width": 111.109375,
+        "width": 110.109375,
         "height": 52.0
       },
       "layout": "vbox"
@@ -804,8 +804,8 @@
       "id": "bb2709f5-0ff0-4438-8853-b7e934b506d7",
       "type": "activityNode:fork",
       "position": {
-        "x": 584.0,
-        "y": 254.00347137451172
+        "x": 590.0,
+        "y": 250.0
       },
       "size": {
         "width": 10.0,
@@ -841,8 +841,8 @@
       "id": "bd94e44e-19f9-446e-89d4-97ca1a63c17b",
       "type": "activityNode:join",
       "position": {
-        "x": 1219.0,
-        "y": 254.00347137451172
+        "x": 1220.0,
+        "y": 260.0
       },
       "size": {
         "width": 10.0,

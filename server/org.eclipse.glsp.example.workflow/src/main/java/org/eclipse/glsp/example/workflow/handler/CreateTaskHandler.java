@@ -24,10 +24,9 @@ import org.eclipse.glsp.example.workflow.utils.WorkflowBuilder.TaskNodeBuilder;
 import org.eclipse.glsp.example.workflow.wfgraph.WfgraphPackage;
 import org.eclipse.glsp.graph.GNode;
 import org.eclipse.glsp.graph.GPoint;
-import org.eclipse.glsp.server.operationhandler.CreateNodeOperationHandler;
 import org.eclipse.glsp.server.utils.GModelUtil;
 
-public abstract class CreateTaskHandler extends CreateNodeOperationHandler {
+public abstract class CreateTaskHandler extends CreateWorkflowNodeOperationHandler {
 
    private final Function<Integer, String> labelProvider;
    private final String elementTypeId;

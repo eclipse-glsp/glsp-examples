@@ -30,6 +30,7 @@ import org.eclipse.glsp.api.operation.kind.DeleteOperation;
 import org.eclipse.glsp.api.provider.CommandPaletteActionProvider;
 import org.eclipse.glsp.api.types.EditorContext;
 import org.eclipse.glsp.api.types.LabeledAction;
+import org.eclipse.glsp.example.workflow.handler.GridSnapper;
 import org.eclipse.glsp.example.workflow.utils.ModelTypes;
 import org.eclipse.glsp.example.workflow.wfgraph.TaskNode;
 import org.eclipse.glsp.graph.GModelElement;
@@ -51,7 +52,7 @@ public class WorkflowCommandPaletteActionProvider implements CommandPaletteActio
       }
       GModelIndex index = modelState.getIndex();
       List<String> selectedIds = editorContext.getSelectedElementIds();
-      Optional<GPoint> lastMousePosition = editorContext.getLastMousePosition();
+      Optional<GPoint> lastMousePosition = GridSnapper.snap(editorContext.getLastMousePosition());
       Set<GModelElement> selectedElements = index.getAll(selectedIds);
 
       // Create node actions are always possible
