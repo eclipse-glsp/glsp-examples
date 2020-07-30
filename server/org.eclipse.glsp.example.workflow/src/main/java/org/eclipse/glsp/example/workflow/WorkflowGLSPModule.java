@@ -19,6 +19,7 @@ import org.eclipse.glsp.api.configuration.ServerConfiguration;
 import org.eclipse.glsp.api.diagram.DiagramConfiguration;
 import org.eclipse.glsp.api.factory.ModelFactory;
 import org.eclipse.glsp.api.factory.PopupModelFactory;
+import org.eclipse.glsp.api.handler.ActionHandler;
 import org.eclipse.glsp.api.handler.OperationHandler;
 import org.eclipse.glsp.api.handler.ServerCommandHandler;
 import org.eclipse.glsp.api.jsonrpc.GLSPServer;
@@ -39,7 +40,9 @@ import org.eclipse.glsp.example.workflow.handler.CreateJoinNodeHandler;
 import org.eclipse.glsp.example.workflow.handler.CreateManualTaskHandler;
 import org.eclipse.glsp.example.workflow.handler.CreateMergeNodeHandler;
 import org.eclipse.glsp.example.workflow.handler.CreateWeightedEdgeHandler;
+import org.eclipse.glsp.example.workflow.handler.LogActionHandler;
 import org.eclipse.glsp.example.workflow.handler.SimulateCommandHandler;
+import org.eclipse.glsp.example.workflow.handler.WorkflowRequestContextActionsHandler;
 import org.eclipse.glsp.example.workflow.labeledit.WorkflowLabelEditValidator;
 import org.eclipse.glsp.example.workflow.layout.WorkflowLayoutEngine;
 import org.eclipse.glsp.example.workflow.marker.WorkflowModelValidator;
@@ -55,6 +58,7 @@ import org.eclipse.glsp.example.workflow.taskedit.EditTaskOperationHandler;
 import org.eclipse.glsp.example.workflow.taskedit.TaskEditContextActionProvider;
 import org.eclipse.glsp.example.workflow.taskedit.TaskEditValidator;
 import org.eclipse.glsp.graph.GraphExtension;
+import org.eclipse.glsp.server.actionhandler.RequestContextActionsHandler;
 import org.eclipse.glsp.server.di.DefaultGLSPModule;
 import org.eclipse.glsp.server.di.MultiBindConfig;
 
@@ -114,6 +118,13 @@ public class WorkflowGLSPModule extends DefaultGLSPModule {
       config.add(CreateWeightedEdgeHandler.class);
       config.add(EditTaskOperationHandler.class);
       config.add(ApplyTaskEditOperationHandler.class);
+   }
+
+   @Override
+   protected void configureActionHandlers(final MultiBindConfig<ActionHandler> bindings) {
+      super.configureActionHandlers(bindings);
+      bindings.rebind(RequestContextActionsHandler.class, WorkflowRequestContextActionsHandler.class);
+      bindings.add(LogActionHandler.class);
    }
 
    @Override
