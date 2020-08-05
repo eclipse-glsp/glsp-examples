@@ -15,7 +15,7 @@
  ********************************************************************************/
 package org.eclipse.glsp.example.workflow.model;
 
-import org.eclipse.glsp.api.action.ActionProcessor;
+import org.eclipse.glsp.api.action.ActionDispatcher;
 import org.eclipse.glsp.api.action.kind.RequestModelAction;
 import org.eclipse.glsp.api.model.GraphicalModelState;
 import org.eclipse.glsp.api.utils.ServerMessageUtil;
@@ -27,18 +27,18 @@ import com.google.inject.Inject;
 
 public class WorkflowModelFactory extends JsonFileModelFactory {
    @Inject
-   private ActionProcessor actionProcessor;
+   private ActionDispatcher actionDispatcher;
 
    @Override
    public GModelRoot loadModel(final RequestModelAction action, final GraphicalModelState modelState) {
       String clientId = modelState.getClientId();
-      actionProcessor.send(clientId, ServerStatusUtil.info("Model loading in progress!"));
-      actionProcessor.send(clientId, ServerMessageUtil.info("Model loading in progress!"));
+      actionDispatcher.dispatch(clientId, ServerStatusUtil.info("Model loading in progress!"));
+      actionDispatcher.dispatch(clientId, ServerMessageUtil.info("Model loading in progress!"));
 
       GModelRoot modelRoot = super.loadModel(action, modelState);
 
-      actionProcessor.send(clientId, ServerStatusUtil.clear());
-      actionProcessor.send(clientId, ServerMessageUtil.clear());
+      actionDispatcher.dispatch(clientId, ServerStatusUtil.clear());
+      actionDispatcher.dispatch(clientId, ServerMessageUtil.clear());
       return modelRoot;
    }
 }
