@@ -15,7 +15,7 @@
  ********************************************************************************/
 package org.eclipse.glsp.example.workflow.taskedit;
 
-import org.eclipse.glsp.api.action.ActionProcessor;
+import org.eclipse.glsp.api.action.ActionDispatcher;
 import org.eclipse.glsp.api.jsonrpc.GLSPServerException;
 import org.eclipse.glsp.api.model.GraphicalModelState;
 import org.eclipse.glsp.server.operationhandler.BasicOperationHandler;
@@ -25,18 +25,18 @@ import com.google.inject.Inject;
 public class ApplyTaskEditOperationHandler extends BasicOperationHandler<ApplyTaskEditOperation> {
 
    @Inject
-   private ActionProcessor actionProcessor;
+   private ActionDispatcher actionProcessor;
 
    @Override
    protected void executeOperation(final ApplyTaskEditOperation operation, final GraphicalModelState modelState) {
       String text = operation.getExpression();
       if (text.startsWith(TaskEditContextActionProvider.DURATION_PREFIX)) {
          String durationString = text.substring(TaskEditContextActionProvider.DURATION_PREFIX.length());
-         actionProcessor.process(modelState.getClientId(),
+         actionProcessor.dispatch(modelState.getClientId(),
             new EditTaskOperation(operation.getTaskId(), "duration", durationString));
       } else if (text.startsWith(TaskEditContextActionProvider.TYPE_PREFIX)) {
          String typeString = text.substring(TaskEditContextActionProvider.TYPE_PREFIX.length());
-         actionProcessor.process(modelState.getClientId(),
+         actionProcessor.dispatch(modelState.getClientId(),
             new EditTaskOperation(operation.getTaskId(), "taskType", typeString));
       } else {
          throw new GLSPServerException(
