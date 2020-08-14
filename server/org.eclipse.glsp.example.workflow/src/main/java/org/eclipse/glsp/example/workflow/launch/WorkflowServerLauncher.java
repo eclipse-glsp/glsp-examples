@@ -13,44 +13,42 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
-package org.eclipse.glsp.example.workflow;
+package org.eclipse.glsp.example.workflow.launch;
 
-import org.apache.log4j.ConsoleAppender;
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
-import org.apache.log4j.PatternLayout;
+import java.io.IOException;
+
+import org.apache.commons.cli.ParseException;
 import org.eclipse.elk.alg.layered.options.LayeredMetaDataProvider;
+import org.eclipse.glsp.example.workflow.WorkflowGLSPModule;
 import org.eclipse.glsp.layout.ElkLayoutEngine;
 import org.eclipse.glsp.server.launch.DefaultGLSPServerLauncher;
 import org.eclipse.glsp.server.launch.GLSPServerLauncher;
+import org.eclipse.glsp.server.utils.LaunchUtil;
 import org.eclipse.glsp.server.websocket.WebsocketServerLauncher;
 
-public final class ExampleServerLauncher {
-   private ExampleServerLauncher() {}
+public final class WorkflowServerLauncher {
+   private WorkflowServerLauncher() {}
 
+   @SuppressWarnings("uncommentedmain")
    public static void main(final String[] args) {
-      configureLogger();
-      ElkLayoutEngine.initialize(new LayeredMetaDataProvider());
-      GLSPServerLauncher launcher;
+      String processName = "WorkflowExampleGlspServer";
+      try {
+         WorkflowCLIParser parser = new WorkflowCLIParser(args, processName);
+         LaunchUtil.configure(parser);
+         ElkLayoutEngine.initialize(new LayeredMetaDataProvider());
 
-      if (args.length == 1 && args[0].equals("websocket")) {
-         launcher = new WebsocketServerLauncher(new WorkflowGLSPModule(), "/workflow");
-         launcher.start("localhost", 8081);
+         int port = parser.parsePort();
 
-      } else {
-         launcher = new DefaultGLSPServerLauncher(new WorkflowGLSPModule());
-         launcher.start("localhost", 5007);
+         GLSPServerLauncher launcher = parser.isWebsocket()
+            ? new WebsocketServerLauncher(new WorkflowGLSPModule(), "/workflow")
+            : new DefaultGLSPServerLauncher(new WorkflowGLSPModule());
+
+         launcher.start("localhost", port);
+
+      } catch (ParseException | IOException ex) {
+         ex.printStackTrace();
+         System.out.println();
+         LaunchUtil.printHelp(processName, WorkflowCLIParser.getDefaultOptions());
       }
-
-   }
-
-   public static void configureLogger() {
-      Logger root = Logger.getRootLogger();
-      if (!root.getAllAppenders().hasMoreElements()) {
-         root.addAppender(new ConsoleAppender(
-            new PatternLayout(PatternLayout.TTCC_CONVERSION_PATTERN)));
-      }
-      root.setLevel(Level.DEBUG);
-
    }
 }
