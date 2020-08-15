@@ -160,7 +160,7 @@
 							<transformers>
 								<transformer
 									implementation="org.apache.maven.plugins.shade.resource.ManifestResourceTransformer">
-									<mainClass>org.eclipse.glsp.example.workflow.WorkflowServerLauncher</mainClass>
+									<mainClass>org.eclipse.glsp.example.workflow.launch.WorkflowServerLauncher</mainClass>
 								</transformer>
 							</transformers>
 							<filters>
