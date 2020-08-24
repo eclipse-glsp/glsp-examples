@@ -13,8 +13,7 @@
         "--loglevel=debug",
         "--port=3000",
         "--no-cluster",
-        "--WORKFLOW_LSP=5007",
-        "--WORKFLOW_NOTATION_LSP=5008",
+        "--WF_GLSP=5007",
         "--app-project-path=${workspaceRoot}/workflow/browser-app"
       ],
       "env": {
