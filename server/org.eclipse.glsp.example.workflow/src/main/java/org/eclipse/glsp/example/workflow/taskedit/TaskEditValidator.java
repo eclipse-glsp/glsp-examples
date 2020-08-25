@@ -25,6 +25,7 @@ public class TaskEditValidator implements ContextEditValidator {
    @Override
    public String getContextId() { return "task-editor"; }
 
+   @SuppressWarnings("checkstyle:cyclomaticComplexity")
    @Override
    public ValidationStatus validate(final RequestEditValidationAction action,
       final GraphicalModelState modelState) {

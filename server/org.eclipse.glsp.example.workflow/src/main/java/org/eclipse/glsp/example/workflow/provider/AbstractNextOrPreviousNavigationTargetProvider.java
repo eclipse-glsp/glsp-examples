@@ -51,7 +51,7 @@ public abstract class AbstractNextOrPreviousNavigationTargetProvider implements 
       return map;
    }
 
-   abstract protected Collection<GEdge> getEdges(final TaskNode taskNode, final GraphicalModelState modelState);
+   protected abstract Collection<GEdge> getEdges(TaskNode taskNode, GraphicalModelState modelState);
 
-   abstract protected String getSourceOrTarget(GEdge edge);
+   protected abstract String getSourceOrTarget(GEdge edge);
 }

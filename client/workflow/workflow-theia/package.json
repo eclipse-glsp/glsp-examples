@@ -32,8 +32,8 @@
   },
   "theiaExtensions": [
     {
-      "frontend": "lib/browser/frontend-module",
-      "backend": "lib/node/backend-module"
+      "frontend": "lib/browser/workflow-frontend-module",
+      "backend": "lib/node/workflow-backend-module"
     }
   ]
 }
