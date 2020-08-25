@@ -16,27 +16,41 @@
 import "reflect-metadata";
 import "sprotty-theia/css/theia-sprotty.css";
 
-import { EnableToolPaletteAction, GLSPWebsocketDiagramServer, RequestTypeHintsAction } from "@eclipse-glsp/client";
+import {
+    BaseJsonrpcGLSPClient,
+    EnableToolPaletteAction,
+    GLSPDiagramServer,
+    JsonrpcGLSPClient,
+    RequestTypeHintsAction
+} from "@eclipse-glsp/client";
 import { join, resolve } from "path";
 import { IActionDispatcher, RequestModelAction, TYPES } from "sprotty";
 
 import createContainer from "./di.config";
 
+const port = 8081;
+const id = "workflow";
+const name = "workflow";
+const websocket = new WebSocket(`ws://localhost:${port}/${id}`);
 const container = createContainer();
 
-const websocket = new WebSocket("ws://localhost:8081/workflow");
 const loc = window.location.pathname;
 const currentDir = loc.substring(0, loc.lastIndexOf('/'));
 const examplePath = resolve(join(currentDir, '..', '..', 'workspace', 'example1.wf'));
 
-const diagramServer = container.get<GLSPWebsocketDiagramServer>(TYPES.ModelSource);
-diagramServer.listen(websocket);
+const diagramServer = container.get<GLSPDiagramServer>(TYPES.ModelSource);
 const actionDispatcher = container.get<IActionDispatcher>(TYPES.IActionDispatcher);
-websocket.addEventListener('open', event => {
-    actionDispatcher.dispatch(new RequestModelAction({
-        sourceUri: `file://${examplePath}`,
-        diagramType: "workflow-diagram",
-    }));
-    actionDispatcher.dispatch(new RequestTypeHintsAction("workflow-diagram"));
-    actionDispatcher.dispatch(new EnableToolPaletteAction());
-});
+
+websocket.onopen = () => {
+    const connectionProvider = JsonrpcGLSPClient.createWebsocketConnectionProvider(websocket);
+    const glspClient = new BaseJsonrpcGLSPClient({ id, name, connectionProvider });
+    diagramServer.connect(glspClient).then(client => {
+        actionDispatcher.dispatch(new RequestModelAction({
+            sourceUri: `file://${examplePath}`,
+            diagramType: "workflow-diagram",
+        }));
+        actionDispatcher.dispatch(new RequestTypeHintsAction("workflow-diagram"));
+        actionDispatcher.dispatch(new EnableToolPaletteAction());
+    });
+};
+

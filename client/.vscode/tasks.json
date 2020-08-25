@@ -35,6 +35,39 @@
         "panel": "new"
       },
       "problemMatcher": []
+    },
+    {
+      "label": "Build Workflow Example Server",
+      "type": "shell",
+      "group": "test",
+      "command": "cd ../server && mvn clean install -Pfatjar",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Start Workflow Example Server",
+      "type": "shell",
+      "group": "test",
+      "command": "cd ../server && java -jar org.eclipse.glsp.example.workflow/target/org.eclipse.glsp.example.workflow-0.8.0-SNAPSHOT-glsp.jar --port=5007 --consoleLog=true --logLevel=debug",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": []
+    }
+    {
+      "label": "Start Workflow Example Server (Websocket)",
+      "type": "shell",
+      "group": "test",
+      "command": "cd ../server && java -jar org.eclipse.glsp.example.workflow/target/org.eclipse.glsp.example.workflow-0.8.0-SNAPSHOT-glsp.jar --port=8081 --consoleLog=true --logLevel=debug --websocket",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": []
     }
   ]
 }
