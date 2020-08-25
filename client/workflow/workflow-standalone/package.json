@@ -32,7 +32,7 @@
     "ts-loader": "^4.4.2",
     "tslint": "^5.5.0",
     "tslint-loader": "^3.4.3",
-    "typescript": "3.4.3",
+    "typescript": "^3.9.2",
     "typings": "^2.1.0",
     "webpack": "^4.15.1",
     "webpack-cli": "^3.0.8"

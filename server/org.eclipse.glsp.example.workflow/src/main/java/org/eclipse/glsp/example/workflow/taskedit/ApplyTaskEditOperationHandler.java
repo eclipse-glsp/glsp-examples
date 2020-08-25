@@ -16,8 +16,8 @@
 package org.eclipse.glsp.example.workflow.taskedit;
 
 import org.eclipse.glsp.api.action.ActionDispatcher;
-import org.eclipse.glsp.api.jsonrpc.GLSPServerException;
 import org.eclipse.glsp.api.model.GraphicalModelState;
+import org.eclipse.glsp.api.protocol.GLSPServerException;
 import org.eclipse.glsp.server.operationhandler.BasicOperationHandler;
 
 import com.google.inject.Inject;

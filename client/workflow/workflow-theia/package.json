@@ -16,17 +16,12 @@
   "dependencies": {
     "@eclipse-glsp-examples/workflow-sprotty": "0.7.0",
     "@eclipse-glsp/theia-integration": "next",
-    "@eclipse-glsp/client": "next",
-    "@theia/core": "1.0.0",
-    "@theia/editor": "1.0.0",
-    "@theia/filesystem": "1.0.0",
-    "@theia/languages": "1.0.0",
-    "@theia/monaco": "1.0.0"
+    "@eclipse-glsp/client": "next"
   },
   "devDependencies": {
     "rimraf": "^2.6.1",
     "tslint": "^5.5.0",
-    "typescript": "3.4.3"
+    "typescript": "^3.9.2"
   },
   "scripts": {
     "prepare": "yarn run clean && yarn run build",
@@ -37,8 +32,8 @@
   },
   "theiaExtensions": [
     {
-      "frontend": "lib/browser/frontend-module",
-      "backend": "lib/node/backend-module"
+      "frontend": "lib/browser/workflow-frontend-module",
+      "backend": "lib/node/workflow-backend-module"
     }
   ]
 }

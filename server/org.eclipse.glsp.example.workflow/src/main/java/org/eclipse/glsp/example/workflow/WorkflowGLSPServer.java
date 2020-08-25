@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2019 EclipseSource and others.
+ * Copyright (c) 2019-2020 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -15,8 +15,6 @@
  ********************************************************************************/
 package org.eclipse.glsp.example.workflow;
 
-import java.util.concurrent.CompletableFuture;
-
 import org.apache.log4j.Logger;
 import org.eclipse.glsp.server.jsonrpc.DefaultGLSPServer;
 
@@ -28,10 +26,10 @@ public class WorkflowGLSPServer extends DefaultGLSPServer<WorkflowInitializeOpti
    }
 
    @Override
-   public CompletableFuture<Boolean> handleOptions(final WorkflowInitializeOptions options) {
+   public boolean handleOptions(final WorkflowInitializeOptions options) {
       if (options != null) {
          LOGGER.debug(options.getTimestamp() + ": " + options.getMessage());
       }
-      return CompletableFuture.completedFuture(true);
+      return true;
    }
 }

@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2019 EclipseSource and others.
+ * Copyright (c) 2019-2020 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -22,11 +22,11 @@ import org.eclipse.glsp.api.factory.PopupModelFactory;
 import org.eclipse.glsp.api.handler.ActionHandler;
 import org.eclipse.glsp.api.handler.OperationHandler;
 import org.eclipse.glsp.api.handler.ServerCommandHandler;
-import org.eclipse.glsp.api.jsonrpc.GLSPServer;
 import org.eclipse.glsp.api.labeledit.LabelEditValidator;
 import org.eclipse.glsp.api.layout.ILayoutEngine;
 import org.eclipse.glsp.api.markers.ModelValidator;
 import org.eclipse.glsp.api.model.NavigationTargetResolver;
+import org.eclipse.glsp.api.protocol.GLSPServer;
 import org.eclipse.glsp.api.provider.CommandPaletteActionProvider;
 import org.eclipse.glsp.api.provider.ContextActionsProvider;
 import org.eclipse.glsp.api.provider.ContextEditValidator;
