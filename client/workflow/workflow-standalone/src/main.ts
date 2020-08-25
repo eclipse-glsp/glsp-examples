@@ -17,6 +17,7 @@ import "reflect-metadata";
 import "sprotty-theia/css/theia-sprotty.css";
 
 import {
+    ApplicationIdProvider,
     BaseJsonrpcGLSPClient,
     EnableToolPaletteAction,
     GLSPDiagramServer,
@@ -39,12 +40,15 @@ const currentDir = loc.substring(0, loc.lastIndexOf('/'));
 const examplePath = resolve(join(currentDir, '..', '..', 'workspace', 'example1.wf'));
 
 const diagramServer = container.get<GLSPDiagramServer>(TYPES.ModelSource);
+diagramServer.clientId = ApplicationIdProvider.get() + "_" + examplePath;
+
 const actionDispatcher = container.get<IActionDispatcher>(TYPES.IActionDispatcher);
 
 websocket.onopen = () => {
     const connectionProvider = JsonrpcGLSPClient.createWebsocketConnectionProvider(websocket);
     const glspClient = new BaseJsonrpcGLSPClient({ id, name, connectionProvider });
     diagramServer.connect(glspClient).then(client => {
+        client.initializeServer({ applicationId: ApplicationIdProvider.get() });
         actionDispatcher.dispatch(new RequestModelAction({
             sourceUri: `file://${examplePath}`,
             diagramType: "workflow-diagram",
