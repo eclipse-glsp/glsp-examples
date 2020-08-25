@@ -22,6 +22,8 @@ import { WorkflowLanguage } from "../common/workflow-language";
 
 @injectable()
 export class WorkflowGLServerContribution extends BaseGLSPServerContribution {
+    static readonly DEFAULT_PORT = 5007;
+    static readonly PORT_ARG_KEY = "WF_GLSP";
     readonly id = WorkflowLanguage.Id;
     readonly name = WorkflowLanguage.Name;
 
@@ -35,16 +37,17 @@ export class WorkflowGLServerContribution extends BaseGLSPServerContribution {
     };
 
     start(clientConnection: IConnection): void {
-        const socketPort = getPort("WF_GLSP");
-        if (!isNaN(socketPort)) {
-            const socket = new net.Socket();
-            const serverConnection = createSocketConnection(socket, socket, () => {
-                socket.destroy();
-            });
-            this.forward(clientConnection, serverConnection);
-            socket.connect(socketPort);
-        } else {
-            console.error("Error when trying to connect to Workflow GLSP server");
+        let socketPort = getPort(WorkflowGLServerContribution.PORT_ARG_KEY);
+        if (isNaN(socketPort)) {
+            console.info(`No valid port argument was passed (--${WorkflowGLServerContribution.PORT_ARG_KEY}=xxxx). Default port ${WorkflowGLServerContribution.DEFAULT_PORT} is used.`);
+            socketPort = WorkflowGLServerContribution.DEFAULT_PORT;
         }
+
+        const socket = new net.Socket();
+        const serverConnection = createSocketConnection(socket, socket, () => {
+            socket.destroy();
+        });
+        this.forward(clientConnection, serverConnection);
+        socket.connect(socketPort);
     }
 }
