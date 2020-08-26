@@ -16,7 +16,7 @@ spec:
     command:
     - cat
   - name: node
-    image: node:10.20.1
+    image: node:12.14.1
     tty: true
     resources:
       limits:
@@ -63,7 +63,7 @@ pipeline {
                 container('node') {
                     timeout(30){
                         dir('client') {
-                            sh 'yarn  install'
+                            sh 'yarn  install --ignore-engines'
                         }
                     }
                 }
