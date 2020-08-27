@@ -21,6 +21,7 @@ import {
     BaseJsonrpcGLSPClient,
     EnableToolPaletteAction,
     GLSPDiagramServer,
+    InitializeClientSessionAction,
     JsonrpcGLSPClient,
     RequestTypeHintsAction
 } from "@eclipse-glsp/client";
@@ -49,6 +50,7 @@ websocket.onopen = () => {
     const glspClient = new BaseJsonrpcGLSPClient({ id, name, connectionProvider });
     diagramServer.connect(glspClient).then(client => {
         client.initializeServer({ applicationId: ApplicationIdProvider.get() });
+        actionDispatcher.dispatch(new InitializeClientSessionAction(diagramServer.clientId));
         actionDispatcher.dispatch(new RequestModelAction({
             sourceUri: `file://${examplePath}`,
             diagramType: "workflow-diagram",
