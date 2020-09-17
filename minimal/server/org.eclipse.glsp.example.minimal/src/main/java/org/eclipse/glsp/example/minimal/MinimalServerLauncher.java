@@ -39,10 +39,8 @@ public final class MinimalServerLauncher {
          int port = cliParser.parsePort();
          launcher.start("localhost", port);
       } catch (ParseException | IOException e) {
-         // TODO Auto-generated catch block
          e.printStackTrace();
       }
-
    }
 
    public static void configureLogger() {
@@ -52,6 +50,6 @@ public final class MinimalServerLauncher {
             new PatternLayout(PatternLayout.TTCC_CONVERSION_PATTERN)));
       }
       root.setLevel(Level.DEBUG);
-
    }
+
 }
