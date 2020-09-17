@@ -1,0 +1,20 @@
+{
+  "extends": "./configs/base.tsconfig",
+  "compilerOptions": {
+    "skipLibCheck": false,
+    "baseUrl": ".",
+    "plugins": [
+      {
+        "name": "tslint-language-service"
+      }
+    ]
+  },
+  "include": [
+    "minimal-glsp/*/src",
+    "minimal-theia/*/src"
+  ],
+  "exclude": [
+    "node_modules",
+    "**/*.spec.ts"
+  ]
+}
