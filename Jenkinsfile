@@ -58,11 +58,11 @@ pipeline {
     }
     
     stages {
-        stage('Build client') {
+        stage('Build Minimal Example') {
             steps {
                 container('node') {
                     timeout(30){
-                        dir('client') {
+                        dir('minimal/client') {
                             sh 'yarn  install --ignore-engines'
                         }
                     }
@@ -70,11 +70,11 @@ pipeline {
             }
         }
 
-        stage('Build server'){
+        stage('Build Minimal example server'){
             steps{
                 container('maven'){
                     timeout(30){
-                        dir('server'){
+                        dir('minimal/server/org.eclipse.glsp.example.minimal'){
                             sh 'mvn clean verify -DskipTests --batch-mode package'
                         }
                     }
