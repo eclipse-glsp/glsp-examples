@@ -52,14 +52,12 @@ import {
 } from "@eclipse-glsp/client";
 import { Container, ContainerModule } from "inversify";
 
-
 const minimalDiagramModule = new ContainerModule((bind, unbind, isBound, rebind) => {
     rebind(TYPES.ILogger).to(ConsoleLogger).inSingletonScope();
     rebind(TYPES.LogLevel).toConstantValue(LogLevel.warn);
     const context = { bind, unbind, isBound, rebind };
     configureModelElement(context, 'graph', GLSPGraph, SGraphView);
-    configureModelElement(context, "node", RectangularNode, RectangularNodeView);
-
+    configureModelElement(context, 'node', RectangularNode, RectangularNodeView);
 });
 
 export default function createContainer(widgetId: string): Container {
@@ -72,7 +70,7 @@ export default function createContainer(widgetId: string): Container {
 
     overrideViewerOptions(container, {
         baseDiv: widgetId,
-        hiddenDiv: widgetId + "_hidden",
+        hiddenDiv: widgetId + '_hidden',
         needsClientLayout: true
     });
 
