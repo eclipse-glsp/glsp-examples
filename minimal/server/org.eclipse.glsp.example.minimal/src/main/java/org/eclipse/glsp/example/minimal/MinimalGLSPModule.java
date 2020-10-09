@@ -15,29 +15,30 @@
  ********************************************************************************/
 package org.eclipse.glsp.example.minimal;
 
-import org.eclipse.glsp.api.diagram.DiagramConfiguration;
-import org.eclipse.glsp.api.factory.ModelFactory;
-import org.eclipse.glsp.api.handler.OperationHandler;
 import org.eclipse.glsp.example.minimal.handler.MinimalCreateNodeOperationHandler;
-import org.eclipse.glsp.server.di.DefaultGLSPModule;
-import org.eclipse.glsp.server.di.MultiBindConfig;
-import org.eclipse.glsp.server.model.JsonFileModelFactory;
+import org.eclipse.glsp.server.DefaultGLSPModule;
+import org.eclipse.glsp.server.diagram.DiagramConfiguration;
+import org.eclipse.glsp.server.factory.JsonFileModelFactory;
+import org.eclipse.glsp.server.factory.ModelFactory;
+import org.eclipse.glsp.server.operations.OperationHandler;
+import org.eclipse.glsp.server.utils.MultiBinding;
 
 public class MinimalGLSPModule extends DefaultGLSPModule {
 
    @Override
-   protected void configureDiagramConfigurations(final MultiBindConfig<DiagramConfiguration> config) {
-      config.add(MinimalDiagramConfiguration.class);
+   protected void configureDiagramConfigurations(final MultiBinding<DiagramConfiguration> binding) {
+      binding.add(MinimalDiagramConfiguration.class);
    }
 
    @Override
-   protected void configureOperationHandlers(final MultiBindConfig<OperationHandler> config) {
-      super.configureOperationHandlers(config);
-      config.add(MinimalCreateNodeOperationHandler.class);
+   protected void configureOperationHandlers(final MultiBinding<OperationHandler> binding) {
+      super.configureOperationHandlers(binding);
+      binding.add(MinimalCreateNodeOperationHandler.class);
    }
 
    @Override
    protected Class<? extends ModelFactory> bindModelFactory() {
       return JsonFileModelFactory.class;
    }
+
 }

@@ -17,12 +17,12 @@ package org.eclipse.glsp.example.minimal.handler;
 
 import java.util.Optional;
 
-import org.eclipse.glsp.api.model.GraphicalModelState;
 import org.eclipse.glsp.graph.DefaultTypes;
 import org.eclipse.glsp.graph.GNode;
 import org.eclipse.glsp.graph.GPoint;
 import org.eclipse.glsp.graph.builder.impl.GNodeBuilder;
-import org.eclipse.glsp.server.operationhandler.CreateNodeOperationHandler;
+import org.eclipse.glsp.server.model.GModelState;
+import org.eclipse.glsp.server.operations.gmodel.CreateNodeOperationHandler;
 
 public class MinimalCreateNodeOperationHandler extends CreateNodeOperationHandler {
 
@@ -31,7 +31,7 @@ public class MinimalCreateNodeOperationHandler extends CreateNodeOperationHandle
    }
 
    @Override
-   protected GNode createNode(final Optional<GPoint> point, final GraphicalModelState modelState) {
+   protected GNode createNode(final Optional<GPoint> point, final GModelState modelState) {
       GNodeBuilder builder = new GNodeBuilder(DefaultTypes.NODE)
          .size(40, 20)
          .addCssClass("minimal-node");

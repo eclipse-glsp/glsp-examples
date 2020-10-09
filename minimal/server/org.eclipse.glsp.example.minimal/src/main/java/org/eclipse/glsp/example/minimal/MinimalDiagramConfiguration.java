@@ -20,10 +20,10 @@ import java.util.List;
 import java.util.Map;
 
 import org.eclipse.emf.ecore.EClass;
-import org.eclipse.glsp.api.diagram.DiagramConfiguration;
-import org.eclipse.glsp.api.types.EdgeTypeHint;
-import org.eclipse.glsp.api.types.ShapeTypeHint;
 import org.eclipse.glsp.graph.DefaultTypes;
+import org.eclipse.glsp.server.diagram.DiagramConfiguration;
+import org.eclipse.glsp.server.diagram.EdgeTypeHint;
+import org.eclipse.glsp.server.diagram.ShapeTypeHint;
 
 public class MinimalDiagramConfiguration implements DiagramConfiguration {
 
