@@ -1,8 +1,8 @@
 # Eclipse GLSP Examples ![build-status](https://img.shields.io/jenkins/build?jobUrl=https%3A%2F%2Fci.eclipse.org%2Fglsp%2Fjob%2Feclipse-glsp%2Fjob%2Fglsp-examples%2Fjob%2Fmaster%2F)
 
-This repository contains code examples that demonstrates how build diagram editors with the [Graphical Language Server Platform (GLSP)](https://github.com/eclipse-glsp/glsp). The examples are focused on the integration of GLSP editors with the cloud-based [Eclipse Theia IDE](https://github.com/theia-ide/theia) using the [GLSP theia integration](https://github.com/eclipse-glsp/glsp-theia-integration).
+This repository contains code examples that demonstrate how to build diagram editors with the [Graphical Language Server Platform (GLSP)](https://github.com/eclipse-glsp/glsp). The examples are focused on the integration of GLSP editors with the cloud-based [Eclipse Theia IDE](https://github.com/theia-ide/theia) using the [GLSP Theia integration](https://github.com/eclipse-glsp/glsp-theia-integration).
 
-Each examples is self-contained and provides both, a example diagram client and its corresponding GLSP server. 
+Each example is self-contained and provides both, an example diagram client and its corresponding GLSP server. 
 
 ## Prerequisites
 The following libraries/frameworks need to be installed on your system:
@@ -21,10 +21,11 @@ The web-based/client part of the examples has been developed using [Visual Studi
 - `cd client && yarn && cd ..` (build client)
 - `cd server && mvn clean install && cd ..` (build server)
 
-## Structure
-- [Minimal Example](https://github.com/eclipse-glsp/glsp-examples/tree/master/minimal): A very simple GLSP Editor for rectangular nodes. This demonstrates the core concepts and basic client-server integration into Theia.
+## Examples
+- [Minimal Example](https://github.com/eclipse-glsp/glsp-examples/tree/master/minimal): A very simple GLSP editor for rectangular nodes. This demonstrates the core concepts and basic client-server integration into Theia.
 
 
+## More information
 For more information, please visit the [Eclipse GLSP Umbrella repository](https://github.com/eclipse-glsp/glsp) and the [Eclipse GLSP Website](https://www.eclipse.org/glsp/). If you have questions, contact us on our [spectrum chat](https://spectrum.chat/glsp/) and have a look at our [communication and support options](https://www.eclipse.org/glsp/contact/).
 
 ![alt](https://www.eclipse.org/glsp/images/diagramanimated.gif)
