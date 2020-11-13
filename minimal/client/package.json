@@ -12,7 +12,7 @@
     "watch": "lerna run --parallel watch",
     "rebuild:browser": "theia rebuild:browser",
     "publish": "yarn && yarn publish:latest",
-    "start:browser": "yarn rebuild:electron && cd browser-app && yarn start:debug"
+    "start:browser": "yarn rebuild:browser && cd browser-app && yarn start:debug"
   },
   "devDependencies": {
     "@wdio/cli": "^6.0.14",

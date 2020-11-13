@@ -15,11 +15,22 @@ The following libraries/frameworks need to be installed on your system:
 
 The web-based/client part of the examples has been developed using [Visual Studio Code](https://code.visualstudio.com/) and the server/java part has been developed with the [Eclipse IDE](https://www.eclipse.org/ide/). However, it's of course also possible to use any other IDE or text editor.
 
-## Usage
-- `git clone https://github.com/eclipse-glsp/glsp-examples.git`
-- `cd <any-example-folder>`
-- `cd client && yarn && cd ..` (build client)
-- `cd server && mvn clean install && cd ..` (build server)
+## Building the example
+    git clone https://github.com/eclipse-glsp/glsp-examples.git
+    cd minimal
+    cd client && yarn && cd ..
+    cd server/org.eclipse.glsp.example.minimal && mvn clean install && cd ../..
+
+## Running the example
+Preferably client & server should be started in two separate terminal instances.<br>
+The server can be started with:
+
+    java -jar minimal/server/org.eclipse.glsp.example.minimal/target/org.eclipse.glsp.example.minimal-0.0.1-SNAPSHOT-glsp.jar --port 5013
+
+The client can be started with
+
+    cd minimal/client && yarn start:browser
+to run the example in the browser on [localhost:3000](http://localhost:3000).<br>
 
 ## Examples
 - [Minimal Example](https://github.com/eclipse-glsp/glsp-examples/tree/master/minimal): A very simple GLSP editor for rectangular nodes. This demonstrates the core concepts and basic client-server integration into Theia.
