@@ -81,14 +81,5 @@ pipeline {
                 }
             }
         }
-        
-
-         stage('Deploy client & server (master only)') {
-            when { branch 'master'}
-            steps {
-                 build job: 'deploy-npm-glsp-examples', wait: false
-                 build job: 'deploy-m2-glsp-examples', wait: false
-            }
-        } 
     }
 }
