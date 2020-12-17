@@ -46,4 +46,6 @@ lib
 **/electron-app/**
 !**/electron-app/package.json
 
+**/minimal-theia/server/**
+
 

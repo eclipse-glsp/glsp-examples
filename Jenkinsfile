@@ -3,28 +3,16 @@ apiVersion: v1
 kind: Pod
 spec:
   containers:
-  - name: maven
-    image: maven:3.6.2-jdk-11
+  - name: ci
+    image: eclipseglsp/ci:0.0.4
     tty: true
     resources:
       limits:
-        memory: "1Gi"
-        cpu: "0.5"
+        memory: "4Gi"
+        cpu: "2"
       requests:
-        memory: "1Gi"
-        cpu: "0.5"
-    command:
-    - cat
-  - name: node
-    image: node:12.14.1
-    tty: true
-    resources:
-      limits:
-        memory: "2Gi"
-        cpu: "1.3"
-      requests:
-        memory: "2Gi"
-        cpu: "1.3"
+        memory: "4Gi"
+        cpu: "2"
     command:
     - cat
     volumeMounts:
@@ -40,7 +28,6 @@ spec:
   - name: "yarn-global"
     emptyDir: {}
 """
-
 pipeline {
     agent {
         kubernetes {
@@ -55,27 +42,33 @@ pipeline {
     environment {
         YARN_CACHE_FOLDER = "${env.WORKSPACE}/yarn-cache"
         SPAWN_WRAP_SHIM_ROOT = "${env.WORKSPACE}"
+        JAR_FILE="org.eclipse.glsp.example.minimal-0.8.0-glsp.jar"
+        GLSP_SERVER_PATH= "${env.WORKSPACE}/server-build/${env.JAR_FILE}"
+
     }
     
     stages {
-        stage('Build Minimal Example') {
-            steps {
-                container('node') {
+      stage('Build Minimal example server'){
+            steps{
+                container('ci'){
                     timeout(30){
-                        dir('minimal/client') {
-                            sh 'yarn  install --ignore-engines'
+                        dir('minimal/server/org.eclipse.glsp.example.minimal'){
+                            sh 'mvn clean verify -DskipTests --batch-mode package'
+                            sh "mkdir ${env.WORKSPACE}/server-build"
+                            sh "cp ./target/${env.JAR_FILE} ${env.GLSP_SERVER_PATH}"
                         }
                     }
                 }
             }
         }
 
-        stage('Build Minimal example server'){
-            steps{
-                container('maven'){
+        stage('Build Minimal Example') {
+            steps {
+                container('ci') {
                     timeout(30){
-                        dir('minimal/server/org.eclipse.glsp.example.minimal'){
-                            sh 'mvn clean verify -DskipTests --batch-mode package'
+                        dir('minimal/client') {
+                            sh "cp ${env.GLSP_SERVER_PATH} ../server/org.eclipse.glsp.example.minimal/target/${env.JAR_FILE}"
+                            sh 'yarn  install --ignore-engines'
                         }
                     }
                 }

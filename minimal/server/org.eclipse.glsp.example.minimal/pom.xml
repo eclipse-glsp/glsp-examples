@@ -4,7 +4,7 @@
 	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.eclipse.glsp.example</groupId>
-	<version>0.0.1-SNAPSHOT</version>
+	<version>0.8.0</version>
 	<artifactId>org.eclipse.glsp.example.minimal</artifactId>
 	<description>Server component for the Minimal GLSP example</description>
 	<url>https://github.com/eclipse/glsp-examples</url>
@@ -87,31 +87,6 @@
 					</execution>
 				</executions>
 			</plugin>
-			<!-- to disable use -Dcheckstyle.skip -->
-			<!-- <plugin> -->
-			<!-- <groupId>org.apache.maven.plugins</groupId> -->
-			<!-- <artifactId>maven-checkstyle-plugin</artifactId> -->
-			<!-- <version>3.1.0</version> -->
-			<!-- <configuration> -->
-			<!-- <configLocation>org.eclipse.glsp.codestyle/checkstyle/glsp-checkstyle.xml</configLocation> -->
-			<!-- <consoleOutput>true</consoleOutput> -->
-			<!-- </configuration> -->
-			<!-- <executions> -->
-			<!-- <execution> -->
-			<!-- <goals> -->
-			<!-- <goal>check</goal> -->
-			<!-- </goals> -->
-			<!-- <phase>verify</phase> -->
-			<!-- </execution> -->
-			<!-- </executions> -->
-			<!-- <dependencies> -->
-			<!-- <dependency> -->
-			<!-- <groupId>com.puppycrawl.tools</groupId> -->
-			<!-- <artifactId>checkstyle</artifactId> -->
-			<!-- <version>8.29</version> -->
-			<!-- </dependency> -->
-			<!-- </dependencies> -->
-			<!-- </plugin> -->
 			<plugin>
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>versions-maven-plugin</artifactId>

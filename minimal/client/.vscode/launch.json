@@ -10,12 +10,10 @@
       "name": "Start Browser Backend",
       "program": "${workspaceRoot}//browser-app/src-gen/backend/main.js",
       "args": [
-        "--loglevel=debug",
         "--port=3000",
         "--no-cluster",
-        "--WORKFLOW_LSP=5007",
-        "--WORKFLOW_NOTATION_LSP=5008",
-        "--app-project-path=${workspaceRoot}/workflow/browser-app"
+        "--MINIMAL_GLSP=5013",
+        "--app-project-path=${workspaceRoot}/browser-app"
       ],
       "env": {
         "NODE_ENV": "development"
@@ -23,7 +21,8 @@
       "sourceMaps": true,
       "outFiles": [
         "${workspaceRoot}/node_modules/@theia/*/lib/**/*.js",
-        "${workspaceRoot}/workflow/browser-app/lib/**/*.js",
+        "${workspaceRoot}/browser-app/lib/**/*.js",
+        "${workspaceRoot}/minimal-theia/lib/**/*.js",
         "${workspaceRoot}/workflow/browser-app/src-gen/**/*.js"
       ],
       "smartStep": true,
@@ -37,6 +36,33 @@
       "url": "http://localhost:3000/",
       "sourceMaps": true,
       "webRoot": "${workspaceRoot}/browser-app"
-    }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Debug Browser Backend",
+      "program": "${workspaceRoot}//browser-app/src-gen/backend/main.js",
+      "args": [
+        "--loglevel=debug",
+        "--port=3000",
+        "--no-cluster",
+        "--MINIMAL_GLSP=5013",
+        "--DEBUG",
+        "--app-project-path=${workspaceRoot}/browser-app"
+      ],
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "sourceMaps": true,
+      "outFiles": [
+        "${workspaceRoot}/node_modules/@theia/*/lib/**/*.js",
+        "${workspaceRoot}/browser-app/lib/**/*.js",
+        "${workspaceRoot}/minimal-theia/lib/**/*.js",
+        "${workspaceRoot}/workflow/browser-app/src-gen/**/*.js"
+      ],
+      "smartStep": true,
+      "internalConsoleOptions": "openOnSessionStart",
+      "outputCapture": "std"
+    },
   ]
 }

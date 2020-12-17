@@ -15,7 +15,7 @@
     "@theia/process": "1.4.0",
     "@theia/terminal": "1.4.0",
     "@theia/workspace": "1.4.0",
-    "@eclipse-glsp-examples/minimal-theia": "0.1.0"
+    "@eclipse-glsp-examples/minimal-theia": "0.8.0"
   },
   "devDependencies": {
     "@theia/cli": "1.4.0"
@@ -23,7 +23,7 @@
   "scripts": {
     "prepare": "theia build --mode development",
     "start": "theia start --MINIMAL_GLSP=5013 --root-dir=../workspace",
-    "start:debug": "theia start --MINIMAL_GLSP=5013  --root-dir=../workspace --loglevel=debug",
+    "start:debug": "theia start --MINIMAL_GLSP=5013  --root-dir=../workspace --loglevel=debug --DEBUG",
     "watch": "theia build --watch --mode development"
   },
   "theia": {

@@ -32,6 +32,17 @@
       "label": "Start Minimal Example Backend (Theia)",
       "type": "shell",
       "group": "test",
+      "command": "cd browser-app && yarn start",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Debug Minimal Example Backend (Theia)",
+      "type": "shell",
+      "group": "test",
       "command": "cd browser-app && yarn start:debug",
       "presentation": {
         "reveal": "always",
