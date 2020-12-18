@@ -1,6 +1,6 @@
 {
   "name": "@eclipse-glsp-examples/minimal-theia",
-  "version": "0.1.0",
+  "version": "0.8.0",
   "keywords": [
     "theia-extension"
   ],
@@ -14,9 +14,9 @@
     "name": "Eclipse GLSP"
   },
   "dependencies": {
-    "@eclipse-glsp-examples/minimal-glsp": "0.1.0",
-    "@eclipse-glsp/theia-integration": "next",
-    "@eclipse-glsp/client": "next"
+    "@eclipse-glsp-examples/minimal-glsp": "0.8.0",
+    "@eclipse-glsp/theia-integration": "0.8.0",
+    "@eclipse-glsp/client": "0.8.1"
   },
   "devDependencies": {
     "rimraf": "^2.6.1",
@@ -26,8 +26,9 @@
   "scripts": {
     "prepare": "yarn run clean && yarn run build",
     "clean": "rimraf lib",
-    "build": "tsc && yarn run lint",
+    "build": "tsc && yarn run lint && yarn copy:server",
     "lint": "tslint -c ../configs/tslint.json --project ./tsconfig.json",
+    "copy:server": "cp ../../server/org.eclipse.glsp.example.minimal/target/org.eclipse.glsp.example.minimal-0.8.0-glsp.jar server/org.eclipse.glsp.example.minimal-0.8.0-glsp.jar",
     "watch": "tsc -w"
   },
   "theiaExtensions": [

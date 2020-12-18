@@ -16,10 +16,10 @@
 package org.eclipse.glsp.example.minimal;
 
 import org.eclipse.glsp.example.minimal.handler.MinimalCreateNodeOperationHandler;
-import org.eclipse.glsp.server.DefaultGLSPModule;
+import org.eclipse.glsp.server.di.DefaultGLSPModule;
 import org.eclipse.glsp.server.diagram.DiagramConfiguration;
-import org.eclipse.glsp.server.factory.JsonFileModelFactory;
-import org.eclipse.glsp.server.factory.ModelFactory;
+import org.eclipse.glsp.server.features.core.model.JsonFileModelFactory;
+import org.eclipse.glsp.server.features.core.model.ModelFactory;
 import org.eclipse.glsp.server.operations.OperationHandler;
 import org.eclipse.glsp.server.utils.MultiBinding;
 

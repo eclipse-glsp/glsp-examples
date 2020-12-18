@@ -838,30 +838,30 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
-"@eclipse-glsp/client@next":
-  version "0.8.0-next.197cba73"
-  resolved "https://registry.yarnpkg.com/@eclipse-glsp/client/-/client-0.8.0-next.197cba73.tgz#99b53bdd5e798fd78e8286efd5c8c3f8e0df418b"
-  integrity sha512-wLUmrSOJqbXBypGyZx9Kw84sayOKni4nNbu9pK314Ng37GqzCsGMnoPoQKRzYjUZ7s3WLn1Yiojw8+Y8B0KbiA==
+"@eclipse-glsp/client@0.8.0", "@eclipse-glsp/client@0.8.1":
+  version "0.8.1"
+  resolved "https://registry.yarnpkg.com/@eclipse-glsp/client/-/client-0.8.1.tgz#9b40aa0d68a35963fe5d570f28761c2ea2d6afde"
+  integrity sha512-4O3E02Po7tFAz+SUe2E87GIckQrmUhC8MuXaUs/k0fNb8gW9vZ8pHswWpNbaghzN3SEV5v4wJY+tcTu1FL6agg==
   dependencies:
-    "@eclipse-glsp/protocol" "0.8.0-next.197cba73"
+    "@eclipse-glsp/protocol" "0.8.0"
     autocompleter "5.1.0"
     sprotty "0.9.0"
 
-"@eclipse-glsp/protocol@0.8.0-next.197cba73", "@eclipse-glsp/protocol@next":
-  version "0.8.0-next.197cba73"
-  resolved "https://registry.yarnpkg.com/@eclipse-glsp/protocol/-/protocol-0.8.0-next.197cba73.tgz#7acc288769168881a72a8205dc2e64b6dd757a77"
-  integrity sha512-aQpWg2lUTEUfBMmKk4RYsN0KcnBAtviDx+3CyMAFWncap16yJT4hkYA10g5fz101P9YPx9NfiJDdPO6nr6WIIQ==
+"@eclipse-glsp/protocol@0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@eclipse-glsp/protocol/-/protocol-0.8.0.tgz#28e60a277af5364c8e9071752b9dba08b6f047c1"
+  integrity sha512-nWYMTGtBCD2JQlPZN9b03BcZ4YPIMPCDmm+vpr3nyuPkBVbzf28uwIoVypL3NVJU9P1saMfBP2gzmJ0r5FcZCg==
   dependencies:
     uuid "7.0.3"
     vscode-ws-jsonrpc "0.2.0"
 
-"@eclipse-glsp/theia-integration@next":
-  version "0.8.0-next.cef5529d"
-  resolved "https://registry.yarnpkg.com/@eclipse-glsp/theia-integration/-/theia-integration-0.8.0-next.cef5529d.tgz#a25a06edaea761d2213e6b7ef2c6c9ccac30aa6f"
-  integrity sha512-leGfTkwydrwZDBxgddATVohTsxljAGP/ToeTZhwGzCFL291duuQqceicZrpxISIhxaRRunJzcwXsFdKw1ISkbw==
+"@eclipse-glsp/theia-integration@0.8.0":
+  version "0.8.0"
+  resolved "https://registry.yarnpkg.com/@eclipse-glsp/theia-integration/-/theia-integration-0.8.0.tgz#501cd4b62fd4cc4a8ff54402fc84343f33b3a6ed"
+  integrity sha512-fKR1ZF7AIMA1pqoSSWPyr55bb5KuzZSPfmKmeQIqyT9SEhXjZ2dAup6BXd8ELREhWY9Oe/w7XIvk0B8MNBvohg==
   dependencies:
-    "@eclipse-glsp/client" next
-    "@eclipse-glsp/protocol" next
+    "@eclipse-glsp/client" "0.8.1"
+    "@eclipse-glsp/protocol" "0.8.0"
     "@theia/messages" "^1.0.0"
     sprotty-theia "0.9.0"
 

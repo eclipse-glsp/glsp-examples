@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "parent",
-  "version": "0.1.0",
+  "version": "0.8.0",
   "engines": {
     "yarn": "1.0.x || >=1.2.1",
     "node": ">=10.19.0 <13"
@@ -12,7 +12,8 @@
     "watch": "lerna run --parallel watch",
     "rebuild:browser": "theia rebuild:browser",
     "publish": "yarn && yarn publish:latest",
-    "start:browser": "yarn rebuild:browser && cd browser-app && yarn start:debug"
+    "start:browser": "yarn rebuild:browser && cd browser-app && yarn start",
+    "start:browser:debug": "yarn rebuild:browser && cd browser-app && yarn start:debug"
   },
   "devDependencies": {
     "@wdio/cli": "^6.0.14",
