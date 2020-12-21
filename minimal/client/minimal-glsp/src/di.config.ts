@@ -70,8 +70,7 @@ export default function createContainer(widgetId: string): Container {
 
     overrideViewerOptions(container, {
         baseDiv: widgetId,
-        hiddenDiv: widgetId + '_hidden',
-        needsClientLayout: true
+        hiddenDiv: widgetId + '_hidden'
     });
 
     return container;
