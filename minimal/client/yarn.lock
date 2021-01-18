@@ -838,7 +838,7 @@
     lodash "^4.17.19"
     to-fast-properties "^2.0.0"
 
-"@eclipse-glsp/client@0.8.0", "@eclipse-glsp/client@0.8.1":
+"@eclipse-glsp/client@0.8.1":
   version "0.8.1"
   resolved "https://registry.yarnpkg.com/@eclipse-glsp/client/-/client-0.8.1.tgz#9b40aa0d68a35963fe5d570f28761c2ea2d6afde"
   integrity sha512-4O3E02Po7tFAz+SUe2E87GIckQrmUhC8MuXaUs/k0fNb8gW9vZ8pHswWpNbaghzN3SEV5v4wJY+tcTu1FL6agg==
