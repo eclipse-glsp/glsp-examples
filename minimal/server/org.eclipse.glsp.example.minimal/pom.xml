@@ -55,7 +55,7 @@
 		<dependency>
 			<groupId>org.eclipse.glsp</groupId>
 			<artifactId>org.eclipse.glsp.server</artifactId>
-			<version>0.8.0-SNAPSHOT</version>
+			<version>0.8.0</version>
 		</dependency>
 	</dependencies>
 
