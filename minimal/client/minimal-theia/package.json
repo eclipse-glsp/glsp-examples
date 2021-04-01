@@ -20,14 +20,13 @@
   },
   "devDependencies": {
     "rimraf": "^2.6.1",
-    "tslint": "^5.5.0",
     "typescript": "3.9.2"
   },
   "scripts": {
     "prepare": "yarn run clean && yarn run build",
     "clean": "rimraf lib",
     "build": "tsc && yarn run lint && yarn copy:server",
-    "lint": "tslint -c ../configs/tslint.json --project ./tsconfig.json",
+    "lint": "eslint -c ./.eslintrc.js --ext .ts ./src",
     "copy:server": "cp ../../server/org.eclipse.glsp.example.minimal/target/org.eclipse.glsp.example.minimal-0.8.0-glsp.jar server/org.eclipse.glsp.example.minimal-0.8.0-glsp.jar",
     "watch": "tsc -w"
   },

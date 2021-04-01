@@ -18,14 +18,14 @@ import {
     registerCopyPasteContextMenu,
     registerDiagramLayoutCommands,
     registerDiagramManager
-} from "@eclipse-glsp/theia-integration/lib/browser";
-import { ContainerModule, interfaces } from "inversify";
-import { DiagramConfiguration } from "sprotty-theia";
+} from '@eclipse-glsp/theia-integration/lib/browser';
+import { ContainerModule, interfaces } from 'inversify';
+import { DiagramConfiguration } from 'sprotty-theia';
 
-import { MinimalDiagramConfiguration } from "./diagram/minimal-diagram-configuration";
-import { MinimalDiagramManager } from "./diagram/minimal-diagram-manager";
-import { MinimalGLSPDiagramClient } from "./diagram/minimal-glsp-diagram-client";
-import { MinimalGLSPClientContribution } from "./language/minimal-glsp-client-contribution";
+import { MinimalDiagramConfiguration } from './diagram/minimal-diagram-configuration';
+import { MinimalDiagramManager } from './diagram/minimal-diagram-manager';
+import { MinimalGLSPDiagramClient } from './diagram/minimal-glsp-diagram-client';
+import { MinimalGLSPClientContribution } from './language/minimal-glsp-client-contribution';
 
 export default new ContainerModule((bind: interfaces.Bind) => {
     bind(MinimalGLSPClientContribution).toSelf().inSingletonScope();

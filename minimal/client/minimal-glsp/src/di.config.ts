@@ -13,7 +13,7 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
-import "../css/diagram.css";
+import '../css/diagram.css';
 
 import {
     boundsModule,
@@ -49,8 +49,8 @@ import {
     validationModule,
     viewportModule,
     zorderModule
-} from "@eclipse-glsp/client";
-import { Container, ContainerModule } from "inversify";
+} from '@eclipse-glsp/client';
+import { Container, ContainerModule } from 'inversify';
 
 const minimalDiagramModule = new ContainerModule((bind, unbind, isBound, rebind) => {
     rebind(TYPES.ILogger).to(ConsoleLogger).inSingletonScope();

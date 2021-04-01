@@ -17,21 +17,21 @@ import {
     GLSPDiagramManager,
     GLSPNotificationManager,
     GLSPTheiaSprottyConnector
-} from "@eclipse-glsp/theia-integration/lib/browser";
-import { MessageService } from "@theia/core";
-import { WidgetManager } from "@theia/core/lib/browser";
-import { EditorManager } from "@theia/editor/lib/browser";
-import { inject, injectable } from "inversify";
-import { TheiaFileSaver } from "sprotty-theia";
+} from '@eclipse-glsp/theia-integration/lib/browser';
+import { MessageService } from '@theia/core';
+import { WidgetManager } from '@theia/core/lib/browser';
+import { EditorManager } from '@theia/editor/lib/browser';
+import { inject, injectable } from 'inversify';
+import { TheiaFileSaver } from 'sprotty-theia';
 
-import { MinimalLanguage } from "../../common/minmal-language";
-import { MinimalGLSPDiagramClient } from "./minimal-glsp-diagram-client";
+import { MinimalLanguage } from '../../common/minmal-language';
+import { MinimalGLSPDiagramClient } from './minimal-glsp-diagram-client';
 
 @injectable()
 export class MinimalDiagramManager extends GLSPDiagramManager {
-    iconClass = "fa fa-project";
+    iconClass = 'fa fa-project';
     readonly diagramType = MinimalLanguage.DiagramType;
-    readonly label = MinimalLanguage.Label + " Editor";
+    readonly label = MinimalLanguage.Label + ' Editor';
 
     private _diagramConnector: GLSPTheiaSprottyConnector;
 
@@ -49,10 +49,10 @@ export class MinimalDiagramManager extends GLSPDiagramManager {
         });
     }
 
-    get fileExtensions() {
+    get fileExtensions(): string[] {
         return [MinimalLanguage.FileExtension];
     }
-    get diagramConnector() {
+    get diagramConnector(): GLSPTheiaSprottyConnector {
         return this._diagramConnector;
     }
 }
