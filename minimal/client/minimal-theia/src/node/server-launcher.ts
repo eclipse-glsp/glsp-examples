@@ -13,18 +13,18 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
-import { getPort } from "@eclipse-glsp/protocol";
-import { ILogger } from "@theia/core";
-import { BackendApplicationContribution } from "@theia/core/lib/node";
-import { ProcessErrorEvent } from "@theia/process/lib/node/process";
-import { ProcessManager } from "@theia/process/lib/node/process-manager";
-import { RawProcess, RawProcessFactory } from "@theia/process/lib/node/raw-process";
-import * as cp from "child_process";
-import { inject, injectable } from "inversify";
-import { join, resolve } from "path";
+import { getPort } from '@eclipse-glsp/protocol';
+import { ILogger } from '@theia/core';
+import { BackendApplicationContribution } from '@theia/core/lib/node';
+import { ProcessErrorEvent } from '@theia/process/lib/node/process';
+import { ProcessManager } from '@theia/process/lib/node/process-manager';
+import { RawProcess, RawProcessFactory } from '@theia/process/lib/node/raw-process';
+import * as cp from 'child_process';
+import { inject, injectable } from 'inversify';
+import { join, resolve } from 'path';
 
 const jarPath = resolve(join(__dirname, '..', '..', 'server', 'org.eclipse.glsp.example.minimal-0.8.0-glsp.jar'));
-const serverPort = getPort("MINIMAL_GLSP");
+const serverPort = getPort('MINIMAL_GLSP');
 
 @injectable()
 export class MinimalServerLauncher implements BackendApplicationContribution {
@@ -39,7 +39,7 @@ export class MinimalServerLauncher implements BackendApplicationContribution {
     }
 
     start(): boolean {
-        let args = ['-jar', jarPath, '--port', `${serverPort}`];
+        const args = ['-jar', jarPath, '--port', `${serverPort}`];
         this.spawnProcessAsync('java', args);
         return true;
 
@@ -49,7 +49,7 @@ export class MinimalServerLauncher implements BackendApplicationContribution {
         const rawProcess = this.processFactory({ command, args, options });
         rawProcess.errorStream.on('data', this.logError.bind(this));
         rawProcess.outputStream.on('data', this.logInfo.bind(this));
-        return new Promise<RawProcess>((resolve, reject) => {
+        return new Promise<RawProcess>((resolvePromise, reject) => {
             rawProcess.onError((error: ProcessErrorEvent) => {
                 this.onDidFailSpawnProcess(error);
                 if (error.code === 'ENOENT') {
@@ -61,7 +61,7 @@ export class MinimalServerLauncher implements BackendApplicationContribution {
                 }
                 reject(error);
             });
-            process.nextTick(() => resolve(rawProcess));
+            process.nextTick(() => resolvePromise(rawProcess));
         });
     }
 

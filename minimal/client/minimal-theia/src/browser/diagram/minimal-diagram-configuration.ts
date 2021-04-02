@@ -13,15 +13,15 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
-import "sprotty-theia/css/theia-sprotty.css";
+import 'sprotty-theia/css/theia-sprotty.css';
 
-import { creatMinimalDiagramContainer } from "@eclipse-glsp-examples/minimal-glsp";
-import { TYPES } from "@eclipse-glsp/client";
-import { GLSPTheiaDiagramServer } from "@eclipse-glsp/theia-integration/lib/browser";
-import { Container, injectable } from "inversify";
-import { DiagramConfiguration } from "sprotty-theia";
+import { creatMinimalDiagramContainer } from '@eclipse-glsp-examples/minimal-glsp';
+import { TYPES } from '@eclipse-glsp/client';
+import { GLSPTheiaDiagramServer } from '@eclipse-glsp/theia-integration/lib/browser';
+import { Container, injectable } from 'inversify';
+import { DiagramConfiguration } from 'sprotty-theia';
 
-import { MinimalLanguage } from "../../common/minmal-language";
+import { MinimalLanguage } from '../../common/minmal-language';
 
 @injectable()
 export class MinimalDiagramConfiguration implements DiagramConfiguration {

@@ -14,9 +14,9 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
 export namespace MinimalLanguage {
-    export const Id: string = "Minimal";
-    export const Name: string = "Minimal";
-    export const Label: string = "Minimal diagram";
-    export const DiagramType: string = "minimal-diagram";
-    export const FileExtension: string = ".minimal";
+    export const Id = 'Minimal';
+    export const Name = 'Minimal';
+    export const Label = 'Minimal diagram';
+    export const DiagramType = 'minimal-diagram';
+    export const FileExtension = '.minimal';
 }

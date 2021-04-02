@@ -16,14 +16,18 @@
     "start:browser:debug": "yarn rebuild:browser && cd browser-app && yarn start:debug"
   },
   "devDependencies": {
+    "@typescript-eslint/eslint-plugin": "^2.16.0",
+    "@typescript-eslint/parser": "^2.16.0",
     "@wdio/cli": "^6.0.14",
     "@wdio/local-runner": "^6.0.14",
     "@wdio/mocha-framework": "^6.0.13",
     "@wdio/selenium-standalone-service": "^6.0.12",
     "@wdio/sync": "^6.0.14",
+    "eslint": "^6.8.0",
+    "eslint-plugin-header": "^3.0.0",
+    "eslint-plugin-import": "^2.20.0",
+    "eslint-plugin-no-null": "^1.0.2",
     "lerna": "^2.2.0",
-    "tslint": "^5.5.0",
-    "tslint-loader": "^3.4.3",
     "typescript": "3.9.2"
   },
   "resolutions": {

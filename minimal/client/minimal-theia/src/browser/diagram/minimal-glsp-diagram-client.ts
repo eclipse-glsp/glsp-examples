@@ -13,11 +13,11 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
-import { GLSPDiagramClient } from "@eclipse-glsp/theia-integration/lib/browser";
-import { EditorManager } from "@theia/editor/lib/browser";
-import { inject, injectable } from "inversify";
+import { GLSPDiagramClient } from '@eclipse-glsp/theia-integration/lib/browser';
+import { EditorManager } from '@theia/editor/lib/browser';
+import { inject, injectable } from 'inversify';
 
-import { MinimalGLSPClientContribution } from "../language/minimal-glsp-client-contribution";
+import { MinimalGLSPClientContribution } from '../language/minimal-glsp-client-contribution';
 
 @injectable()
 export class MinimalGLSPDiagramClient extends GLSPDiagramClient {

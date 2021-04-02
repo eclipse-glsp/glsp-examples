@@ -13,10 +13,10 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
-import { BaseGLSPClientContribution } from "@eclipse-glsp/theia-integration/lib/browser";
-import { injectable } from "inversify";
+import { BaseGLSPClientContribution } from '@eclipse-glsp/theia-integration/lib/browser';
+import { injectable } from 'inversify';
 
-import { MinimalLanguage } from "../../common/minmal-language";
+import { MinimalLanguage } from '../../common/minmal-language';
 
 @injectable()
 export class MinimalGLSPClientContribution extends BaseGLSPClientContribution {

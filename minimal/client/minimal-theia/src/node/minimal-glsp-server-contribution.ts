@@ -13,14 +13,14 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
-import { getPort } from "@eclipse-glsp/protocol";
-import { BaseGLSPServerContribution } from "@eclipse-glsp/theia-integration/lib/node";
-import { IConnection } from "@theia/languages/lib/node";
-import { injectable } from "inversify";
-import * as net from "net";
-import { createSocketConnection } from "vscode-ws-jsonrpc/lib/server";
+import { getPort } from '@eclipse-glsp/protocol';
+import { BaseGLSPServerContribution } from '@eclipse-glsp/theia-integration/lib/node';
+import { IConnection } from '@theia/languages/lib/node';
+import { injectable } from 'inversify';
+import * as net from 'net';
+import { createSocketConnection } from 'vscode-ws-jsonrpc/lib/server';
 
-import { MinimalLanguage } from "../common/minmal-language";
+import { MinimalLanguage } from '../common/minmal-language';
 
 @injectable()
 export class MinimalGLSPServerContribution extends BaseGLSPServerContribution {
@@ -28,7 +28,7 @@ export class MinimalGLSPServerContribution extends BaseGLSPServerContribution {
     readonly name = MinimalLanguage.Name;
 
     start(clientConnection: IConnection): void {
-        const socketPort = getPort("MINIMAL_GLSP");
+        const socketPort = getPort('MINIMAL_GLSP');
         if (!isNaN(socketPort)) {
             const socket = new net.Socket();
             const serverConnection = createSocketConnection(socket, socket, () => {
@@ -37,7 +37,7 @@ export class MinimalGLSPServerContribution extends BaseGLSPServerContribution {
             this.forward(clientConnection, serverConnection);
             socket.connect(socketPort);
         } else {
-            console.error("Error when trying to connect to Workflow GLSP server");
+            console.error('Error when trying to connect to Workflow GLSP server');
         }
     }
 }
