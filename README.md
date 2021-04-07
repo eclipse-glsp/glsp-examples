@@ -19,7 +19,7 @@ The web-based/client part of the examples has been developed using [Visual Studi
 The server component of the minimal example has to be built using Maven, the client component has to be built using yarn. This can be done via CLI:
 
     git clone https://github.com/eclipse-glsp/glsp-examples.git
-    cd minimal
+    cd glsp-examples/minimal
     cd server/org.eclipse.glsp.example.minimal && mvn clean install && cd ../..
     cd client && yarn && cd ..
    
