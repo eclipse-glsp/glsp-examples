@@ -11,7 +11,7 @@ The following libraries/frameworks need to be installed on your system:
 - [Java](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) `>=11`
 - [Maven](https://maven.apache.org/) `>=3.6.0`
 
- The examples are heavily interweaved with Eclipse Theia, so please also check the [prerequisites of Theia](https://github.com/eclipse-theia/theia/blob/master/doc/Developing.md#prerequisites).
+ The examples are heavily interwoven with Eclipse Theia, so please also check the [prerequisites of Theia](https://github.com/eclipse-theia/theia/blob/master/doc/Developing.md#prerequisites).
 
 The web-based/client part of the examples has been developed using [Visual Studio Code](https://code.visualstudio.com/) and the server/java part has been developed with the [Eclipse IDE](https://www.eclipse.org/ide/). However, it's of course also possible to use any other IDE or text editor.
 
