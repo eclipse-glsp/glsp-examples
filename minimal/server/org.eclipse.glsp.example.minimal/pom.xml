@@ -8,13 +8,7 @@
 	<artifactId>org.eclipse.glsp.example.minimal</artifactId>
 	<description>Server component for the Minimal GLSP example</description>
 	<url>https://github.com/eclipse/glsp-examples</url>
-	<repositories>
-		<repository>
-			<id>sonatype</id>
-			<name>Sonatype</name>
-			<url>https://oss.sonatype.org/content/groups/public</url>
-		</repository>
-	</repositories>
+
 	<licenses>
 		<license>
 			<name>Eclipse Public License - v 2.0</name>
@@ -22,6 +16,7 @@
 			<distribution>repo</distribution>
 		</license>
 	</licenses>
+
 	<developers>
 		<developer>
 			<name>Philip Langer</name>
@@ -42,15 +37,18 @@
 			<organizationUrl>http://www.eclipsesource.com</organizationUrl>
 		</developer>
 	</developers>
+
 	<scm>
 		<url>https://github.com/eclipse-glsp/glsp-examples</url>
 		<connection>scm:git@github.com:eclipse-glsp/glsp-examples.git</connection>
 		<developerConnection>scm:git@github.com:eclipse-glsp/glsp-examples.git</developerConnection>
 		<tag>HEAD</tag>
 	</scm>
+
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
 	</properties>
+
 	<dependencies>
 		<dependency>
 			<groupId>org.eclipse.glsp</groupId>
@@ -91,6 +89,37 @@
 				<groupId>org.codehaus.mojo</groupId>
 				<artifactId>versions-maven-plugin</artifactId>
 				<version>2.7</version>
+			</plugin>
+			<!-- to disable use -Dcheckstyle.skip -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>3.1.2</version>
+				<configuration>
+					<configLocation>emfcloud-checkstyle.xml</configLocation>
+					<consoleOutput>true</consoleOutput>
+					<sourceDirectories>src</sourceDirectories>
+				</configuration>
+				<executions>
+					<execution>
+						<goals>
+							<goal>check</goal>
+						</goals>
+						<phase>verify</phase>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>org.eclipse.emfcloud</groupId>
+						<artifactId>org.eclipse.emfcloud.checkstyle</artifactId>
+						<version>0.1.0-RC1</version>
+					</dependency>
+					<dependency>
+						<groupId>com.puppycrawl.tools</groupId>
+						<artifactId>checkstyle</artifactId>
+						<version>8.39</version>
+					</dependency>
+				</dependencies>
 			</plugin>
 		</plugins>
 	</build>

@@ -15,6 +15,9 @@ spec:
         cpu: "2"
     command:
     - cat
+    env:
+    - name: "MAVEN_OPTS"
+      value: "-Duser.home=/home/jenkins"
     volumeMounts:
     - mountPath: "/home/jenkins"
       name: "jenkins-home"
@@ -22,10 +25,24 @@ spec:
     - mountPath: "/.yarn"
       name: "yarn-global"
       readOnly: false
+    - name: settings-xml
+      mountPath: /home/jenkins/.m2/settings.xml
+      subPath: settings.xml
+      readOnly: true
+    - name: m2-repo
+      mountPath: /home/jenkins/.m2/repository
   volumes:
   - name: "jenkins-home"
     emptyDir: {}
   - name: "yarn-global"
+    emptyDir: {}
+  - name: settings-xml
+    secret:
+      secretName: m2-secret-dir
+      items:
+      - key: settings.xml
+        path: settings.xml
+  - name: m2-repo
     emptyDir: {}
 """
 pipeline {
@@ -53,7 +70,7 @@ pipeline {
                 container('ci'){
                     timeout(30){
                         dir('minimal/server/org.eclipse.glsp.example.minimal'){
-                            sh 'mvn clean verify -DskipTests --batch-mode package'
+                            sh 'mvn clean verify -DskipTests -B'
                             sh "mkdir ${env.WORKSPACE}/server-build"
                             sh "cp ./target/${env.JAR_FILE} ${env.GLSP_SERVER_PATH}"
                         }
