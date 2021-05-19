@@ -6,8 +6,14 @@
     <additional-data name="cache-file" value="true"/>
     <additional-data name="cache-file-location" value="EMFcloud Checkstyle_1618908540765_cache.xml"/>
   </local-check-config>
-  <fileset name="All Non-generated" enabled="true" check-config-name="EMF.cloud Checkstyle" local="true">
-    <file-match-pattern match-pattern=".java$" include-pattern="true"/>
-    <file-match-pattern match-pattern="src-gen" include-pattern="false"/>
+  <local-check-config name="maven-checkstyle-plugin default" location="jar:file:/home/tobias/.m2/repository/org/eclipse/emfcloud/org.eclipse.emfcloud.checkstyle/0.1.0-RC1/org.eclipse.emfcloud.checkstyle-0.1.0-RC1.jar!/emfcloud-checkstyle.xml" type="remote" description="maven-checkstyle-plugin configuration default">
+    <property name="checkstyle.header.file" value="/home/tobias/OpenSource/GLSP/eclipse-examples/.metadata/.plugins/org.eclipse.core.resources/.projects/org.eclipse.glsp.example.minimal/com.basistech.m2e.code.quality.checkstyleConfigurator/checkstyle-header-default.txt"/>
+    <property name="checkstyle.cache.file" value="${project_loc}/target/checkstyle-cachefile"/>
+  </local-check-config>
+  <fileset name="java-sources-default" enabled="true" check-config-name="maven-checkstyle-plugin default" local="true">
+    <file-match-pattern match-pattern="^src/main/java/.*\/.*\.java" include-pattern="true"/>
+    <file-match-pattern match-pattern="^src/main/java.*.*src-gen/.*\.java" include-pattern="false"/>
+    <file-match-pattern match-pattern="^src/main/resources.*\.properties" include-pattern="true"/>
+    <file-match-pattern match-pattern="^src/test/resources.*\.properties" include-pattern="true"/>
   </fileset>
 </fileset-config>

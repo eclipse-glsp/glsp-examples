@@ -21,10 +21,11 @@
     "@theia/cli": "1.4.0"
   },
   "scripts": {
-    "prepare": "theia build --mode development",
+    "prepare": "yarn build",
+    "build": "theia build --mode development",
     "start": "theia start --MINIMAL_GLSP=5013 --root-dir=../workspace",
     "start:debug": "theia start --MINIMAL_GLSP=5013  --root-dir=../workspace --loglevel=debug --DEBUG",
-    "watch": "theia build --watch --mode development"
+    "watch": "yarn build --mode development"
   },
   "theia": {
     "target": "browser"

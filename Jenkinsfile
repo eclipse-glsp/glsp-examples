@@ -4,15 +4,15 @@ kind: Pod
 spec:
   containers:
   - name: ci
-    image: eclipseglsp/ci:0.0.4
+    image: eclipseglsp/ci:alpine
     tty: true
     resources:
       limits:
-        memory: "4Gi"
-        cpu: "2"
+        memory: "2Gi"
+        cpu: "1"
       requests:
-        memory: "4Gi"
-        cpu: "2"
+        memory: "2Gi"
+        cpu: "1"
     command:
     - cat
     env:
@@ -65,30 +65,67 @@ pipeline {
     }
     
     stages {
-      stage('Build Minimal example server'){
-            steps{
-                container('ci'){
+        stage('Build Examples (Server)'){
+                steps{
                     timeout(30){
-                        dir('minimal/server/org.eclipse.glsp.example.minimal'){
-                            sh 'mvn clean verify -DskipTests -B'
-                            sh "mkdir ${env.WORKSPACE}/server-build"
-                            sh "cp ./target/${env.JAR_FILE} ${env.GLSP_SERVER_PATH}"
+                        container('ci') {
+                            dir('minimal/server/org.eclipse.glsp.example.minimal'){
+                                sh "mvn clean verify -DskipTests -B -Dcheckstyle.skip"
+                                sh "mkdir ${env.WORKSPACE}/server-build"
+                                sh "cp ./target/${env.JAR_FILE} ${env.GLSP_SERVER_PATH}"
+                            }
+                        }
+                    }
+                }
+            }
+
+        stage('Build Examples (Client)') {
+            steps {
+                timeout(30){
+                    container('ci') {
+                        dir('minimal/client') {
+                            sh "cp ${env.GLSP_SERVER_PATH} ../server/org.eclipse.glsp.example.minimal/target/${env.JAR_FILE}"
+                            sh 'yarn build --ignore-engines'
                         }
                     }
                 }
             }
         }
 
-        stage('Build Minimal Example') {
+        stage('Codestyle') {
             steps {
-                container('ci') {
-                    timeout(30){
+                timeout(30){
+                    container('ci') {
+                        // Execute checkstyle checks
+                        dir('minimal/server/org.eclipse.glsp.example.minimal'){
+                            sh 'mvn checkstyle:check'
+                        } 
+
+                        // Execute eslint checks
                         dir('minimal/client') {
-                            sh "cp ${env.GLSP_SERVER_PATH} ../server/org.eclipse.glsp.example.minimal/target/${env.JAR_FILE}"
-                            sh 'yarn  install --ignore-engines'
-                        }
-                    }
+                            sh 'yarn lint -o eslint.xml -f checkstyle'
+                        }     
+                    }   
                 }
+            }
+        }
+    }
+
+    post{
+        always{
+            container('ci') {
+            // Record & publish checkstyle issues
+            recordIssues  enabledForFailure: true, publishAllIssues: true, aggregatingResults: true, 
+            tool: checkStyle(reportEncoding: 'UTF-8'),
+            qualityGates: [[threshold: 1, type: 'TOTAL', unstable: true]]
+
+            // Record & publish esLint issues
+            recordIssues enabledForFailure: true, publishAllIssues: true, aggregatingResults: true, 
+            tools: [esLint(pattern: 'minimal/client/node_modules/**/*/eslint.xml')], 
+            qualityGates: [[threshold: 1, type: 'TOTAL', unstable: true]]
+
+            // Record maven,java warnings
+            recordIssues enabledForFailure: true, skipPublishingChecks:true, tools: [mavenConsole(), java()]    
             }
         }
     }

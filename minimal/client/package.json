@@ -7,9 +7,11 @@
     "node": ">=10.19.0 <13"
   },
   "scripts": {
-    "test": "yarn",
+    "test": "lerna run test",
     "prepare": "lerna run prepare",
     "watch": "lerna run --parallel watch",
+    "build": "yarn install --ignore-scripts && lerna run build",
+    "lint": "lerna run lint --",
     "rebuild:browser": "theia rebuild:browser",
     "publish": "yarn && yarn publish:latest",
     "start:browser": "yarn rebuild:browser && cd browser-app && yarn start",
@@ -52,7 +54,6 @@
   "workspaces": [
     "minimal-glsp",
     "minimal-theia",
-    "browser-app",
-    "electron-app"
+    "browser-app"
   ]
 }
