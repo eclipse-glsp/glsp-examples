@@ -47,6 +47,11 @@
 
 	<properties>
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.source>11</java.source>
+		<java.target>11</java.target>
+		<checkstyle>8.39</checkstyle>
+		<checkstyle.plugin>3.1.2</checkstyle.plugin>
+
 	</properties>
 
 	<dependencies>
@@ -63,8 +68,8 @@
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>3.8.0</version>
 				<configuration>
-					<source>1.8</source>
-					<target>1.8</target>
+					<source>${java.source}</source>
+					<target>${java.target}</target>
 				</configuration>
 			</plugin>
 			<plugin>
@@ -94,18 +99,18 @@
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-checkstyle-plugin</artifactId>
-				<version>3.1.2</version>
+				<version>${checkstyle.plugin}</version>
 				<configuration>
 					<configLocation>emfcloud-checkstyle.xml</configLocation>
 					<consoleOutput>true</consoleOutput>
-					<sourceDirectories>src</sourceDirectories>
+					<excludes>**/src-gen/**/*.java</excludes>
 				</configuration>
 				<executions>
 					<execution>
+						<phase>validate</phase>
 						<goals>
 							<goal>check</goal>
 						</goals>
-						<phase>verify</phase>
 					</execution>
 				</executions>
 				<dependencies>
@@ -117,7 +122,7 @@
 					<dependency>
 						<groupId>com.puppycrawl.tools</groupId>
 						<artifactId>checkstyle</artifactId>
-						<version>8.39</version>
+						<version>${checkstyle}</version>
 					</dependency>
 				</dependencies>
 			</plugin>
@@ -134,48 +139,8 @@
 				<plugins>
 					<plugin>
 						<groupId>org.apache.maven.plugins</groupId>
-						<artifactId>maven-dependency-plugin</artifactId>
-						<executions>
-							<execution>
-								<id>copy-dependencies</id>
-								<phase>package</phase>
-								<goals>
-									<goal>copy-dependencies</goal>
-								</goals>
-								<configuration>
-									<outputDirectory>${project.build.directory}/libs</outputDirectory>
-									<overWriteReleases>false</overWriteReleases>
-									<overWriteSnapshots>false</overWriteSnapshots>
-									<overWriteIfNewer>true</overWriteIfNewer>
-									<excludeTransitive>false</excludeTransitive>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-					<plugin>
-						<groupId>com.googlecode.addjars-maven-plugin</groupId>
-						<artifactId>addjars-maven-plugin</artifactId>
-						<version>1.0.5</version>
-						<executions>
-							<execution>
-								<phase>package</phase>
-								<goals>
-									<goal>add-jars</goal>
-								</goals>
-								<configuration>
-									<resources>
-										<resource>
-											<directory>${project.build.directory}/libs</directory>
-										</resource>
-									</resources>
-								</configuration>
-							</execution>
-						</executions>
-					</plugin>
-					<plugin>
-						<groupId>org.apache.maven.plugins</groupId>
 						<artifactId>maven-shade-plugin</artifactId>
-						<version>3.0.0</version>
+						<version>3.2.4</version>
 						<configuration>
 							<transformers>
 								<transformer
@@ -191,8 +156,13 @@
 										<exclude>META-INF/*.SF</exclude>
 										<exclude>META-INF/*.DSA</exclude>
 										<exclude>META-INF/*.RSA</exclude>
+										<exclude>META-INF/LICENSE</exclude>
+										<exclude>META-INF/NOTICE</exclude>
+										<exclude>META-INF/DEPENDENCIES</exclude>
+										<exclude>META-INF/MANIFEST.MF</exclude>
 										<exclude>.options</exclude>
 										<exclude>.api_description</exclude>
+										<exclude>plugin.properties</exclude>
 										<exclude>*.profile</exclude>
 										<exclude>*.html</exclude>
 										<exclude>about.*</exclude>
