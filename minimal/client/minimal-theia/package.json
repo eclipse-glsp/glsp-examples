@@ -36,9 +36,9 @@
     "typescript": "3.9.2"
   },
   "scripts": {
-    "prepare": "yarn run clean && yarn run build",
+    "prepare": "yarn  clean && yarn build && yarn lint",
     "clean": "rimraf lib",
-    "build": "tsc && yarn run lint && yarn copy:server",
+    "build": "tsc  && yarn copy:server",
     "lint": "eslint -c ./.eslintrc.js --ext .ts ./src",
     "copy:server": "cp ../../server/org.eclipse.glsp.example.minimal/target/org.eclipse.glsp.example.minimal-0.8.0-glsp.jar server/org.eclipse.glsp.example.minimal-0.8.0-glsp.jar",
     "watch": "tsc -w"
