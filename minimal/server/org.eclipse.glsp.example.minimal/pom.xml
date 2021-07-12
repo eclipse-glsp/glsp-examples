@@ -19,22 +19,10 @@
 
 	<developers>
 		<developer>
-			<name>Philip Langer</name>
-			<email>planger@eclipsesource.com</email>
-			<organization>EclipseSource</organization>
-			<organizationUrl>http://www.eclipsesource.com</organizationUrl>
-		</developer>
-		<developer>
-			<name>Tobias Ortmayr</name>
-			<email>tortmayr@eclipsesource.com</email>
-			<organization>EclipseSource</organization>
-			<organizationUrl>http://www.eclipsesource.com</organizationUrl>
-		</developer>
-		<developer>
-			<name>Martin Fleck</name>
-			<email>mfleck@eclipsesource.com</email>
-			<organization>EclipseSource</organization>
-			<organizationUrl>http://www.eclipsesource.com</organizationUrl>
+			<name>Eclipse GLSP Project</name>
+			<email>glsp-dev@eclipse.org</email>
+			<organization>Eclipse GLSP</organization>
+			<organizationUrl>https://projects.eclipse.org/projects/ecd.glsp</organizationUrl>
 		</developer>
 	</developers>
 
