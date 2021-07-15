@@ -20,7 +20,7 @@ The server component of the minimal example has to be built using Maven, the cli
 
     git clone https://github.com/eclipse-glsp/glsp-examples.git
     cd glsp-examples/minimal
-    cd server/org.eclipse.glsp.example.minimal && mvn clean install && cd ../..
+    cd server/org.eclipse.glsp.example.minimal && mvn clean verify && cd ../..
     cd client && yarn && cd ..
    
 
