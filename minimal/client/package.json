@@ -4,7 +4,7 @@
   "version": "0.8.0",
   "engines": {
     "yarn": "1.0.x || >=1.2.1",
-    "node": ">=10.19.0 <13"
+    "node": ">= 12.14.1 <13"
   },
   "scripts": {
     "test": "lerna run test",
