@@ -8,11 +8,11 @@ spec:
     tty: true
     resources:
       limits:
-        memory: "2Gi"
-        cpu: "1"
+        memory: "4Gi"
+        cpu: "2"
       requests:
-        memory: "2Gi"
-        cpu: "1"
+        memory: "4Gi"
+        cpu: "2"
     command:
     - cat
     env:

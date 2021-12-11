@@ -1,0 +1,40 @@
+{
+  "private": true,
+  "name": "parent",
+  "version": "0.9.0",
+  "engines": {
+    "yarn": ">=1.7.0 <2.x.x"
+  },
+  "license": "(EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0)",
+  "author": {
+    "name": "Eclipse GLSP"
+  },
+  "homepage": "https://www.eclipse.org/glsp/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eclipse-glsp/glsp-examples.git"
+  },
+  "bugs": "https://github.com/eclipse-glsp/glsp/issues",
+  "contributors": [
+    {
+      "name": "Eclipse GLSP Project",
+      "email": "glsp-dev@eclipse.org",
+      "url": "https://projects.eclipse.org/projects/ecd.glsp"
+    }
+  ],
+  "scripts": {
+    "build": "yarn build:minimal && yarn build:workflow",
+    "build:minimal": "yarn build:minimal:server && yarn build:minimal:client",
+    "build:minimal:server": "mvn -f minimal/glsp-server/pom.xml clean verify",
+    "build:minimal:client": "yarn --cwd minimal/glsp-client install",
+    "start:minimal": "yarn rebuild:browser && yarn --cwd minimal/glsp-client/minimal-browser-app start",
+    "build:workflow": "yarn build:workflow:server && yarn build:workflow:client",
+    "build:workflow:server": "mvn -f workflow/glsp-server/pom.xml clean verify",
+    "build:workflow:client": "yarn --cwd workflow/glsp-client install",
+    "start:workflow": "yarn rebuild:browser && yarn --cwd workflow/glsp-client/workflow-browser-app start"
+  },
+  "devDependencies": {
+    "@eclipse-glsp/config": "0.9.0",
+    "typescript": "^3.9.2"
+  }
+}
