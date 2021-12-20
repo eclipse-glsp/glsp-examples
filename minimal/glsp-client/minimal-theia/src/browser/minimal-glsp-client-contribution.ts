@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2020 EclipseSource and others.
+ * Copyright (c) 2020-2021 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -13,18 +13,12 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
-import { GLSPDiagramClient } from '@eclipse-glsp/theia-integration/lib/browser';
-import { EditorManager } from '@theia/editor/lib/browser';
-import { inject, injectable } from 'inversify';
-
-import { MinimalGLSPClientContribution } from '../language/minimal-glsp-client-contribution';
+import { BaseGLSPClientContribution } from '@eclipse-glsp/theia-integration/lib/browser';
+import { injectable } from 'inversify';
+import { MinimalLanguage } from '../common/minimal-language';
 
 @injectable()
-export class MinimalGLSPDiagramClient extends GLSPDiagramClient {
-    constructor(
-        @inject(MinimalGLSPClientContribution) glspCLientContribution: MinimalGLSPClientContribution,
-        @inject(EditorManager) editorManager: EditorManager
-    ) {
-        super(glspCLientContribution, editorManager);
-    }
+export class MinimalGLSPClientContribution extends BaseGLSPClientContribution {
+    readonly id = MinimalLanguage.contributionId;
+    readonly fileExtensions = MinimalLanguage.fileExtensions;
 }

@@ -19,39 +19,13 @@ The examples are heavily interwoven with Eclipse Theia, so please also check the
 The web-based/client part of the examples has been developed using [Visual Studio Code](https://code.visualstudio.com/) and the server/java part has been developed with the [Eclipse IDE](https://www.eclipse.org/ide/).
 However, it's of course also possible to use any other IDE or text editor.
 
-## Building the minimal example
-
-The server component of the minimal example has to be built using Maven, the client component has to be built using yarn.
-This can be done via CLI:
-
-```bash
-git clone https://github.com/eclipse-glsp/glsp-examples.git
-cd glsp-examples/minimal
-cd server/org.eclipse.glsp.example.minimal && mvn clean verify && cd ../..
-cd client && yarn && cd ..
-```
-
-## Running the minimal example
-
-To start the Theia web app with the integrated minimal example simply navigate to the client directory :
-
-```bash
-    cd minimal/client
-```
-
-and then execute:
-
-```bash
-    yarn start:browser
-```
-
-This will launch the example in the browser on [localhost:3000](http://localhost:3000).<br>
-
 ## Examples
 
--   [Minimal Example](minimal): A very simple GLSP editor for rectangular nodes.
+This repository offers two example implementations of GLSP. Please see the READMEs in the subdirectories for detailed information regarding building and running the examples:
+
+-   [Minimal Example](./minimal/README.md): A very simple GLSP editor for rectangular nodes.
     This demonstrates the core concepts and basic client-server integration into Theia.
--   [Workflow Example](workflow): A consistent example provided by all GLSP components.
+-   [Workflow Example](./workflow/README.md): A consistent example provided by all GLSP components.
     It implements a simple flow chart diagram editor with different types of nodes and edges.
     The `Workflow Example` is the main example used for development and integrates all GLSP features
 

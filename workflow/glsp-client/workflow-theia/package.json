@@ -40,6 +40,7 @@
     "clean": "rimraf lib",
     "build": "tsc && yarn run lint",
     "lint": "eslint -c ../.eslintrc.js --ext .ts,.tsx ./src",
+    "copy:server": "cp ../../glsp-server/target/org.eclipse.glsp.example.workflow-0.8.0-glsp.jar server/org.eclipse.glsp.example.workflow-0.8.0-glsp.jar",
     "watch": "tsc -w"
   },
   "theiaExtensions": [

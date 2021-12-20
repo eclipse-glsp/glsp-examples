@@ -49,6 +49,17 @@
         "panel": "new"
       },
       "problemMatcher": []
+    },
+    {
+      "label": "Copy Workflow GLSP Server to workflow-theia/server",
+      "type": "shell",
+      "group": "test",
+      "command": "yarn --cwd minimal-theia copy:server",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": []
     }
   ]
 }

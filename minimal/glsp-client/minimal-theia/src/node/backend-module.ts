@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2020 EclipseSource and others.
+ * Copyright (c) 2020-2021 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -14,13 +14,10 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
 import { GLSPServerContribution } from '@eclipse-glsp/theia-integration/lib/node';
-import { BackendApplicationContribution } from '@theia/core/lib/node';
-import { ContainerModule } from 'inversify';
-
+import { ContainerModule } from '@theia/core/shared/inversify';
 import { MinimalGLSPServerContribution } from './minimal-glsp-server-contribution';
-import { MinimalServerLauncher } from './server-launcher';
 
 export default new ContainerModule(bind => {
-    bind(GLSPServerContribution).to(MinimalGLSPServerContribution).inSingletonScope();
-    bind(BackendApplicationContribution).to(MinimalServerLauncher);
+    bind(MinimalGLSPServerContribution).toSelf().inSingletonScope();
+    bind(GLSPServerContribution).toService(MinimalGLSPServerContribution);
 });

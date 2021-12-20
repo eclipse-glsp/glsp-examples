@@ -5,9 +5,6 @@
         },
         {
             "path": "glsp-server"
-        },
-        {
-            "path": "."
         }
     ],
     "settings": {

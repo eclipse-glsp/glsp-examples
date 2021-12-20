@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2020 EclipseSource and others.
+ * Copyright (c) 2020-2021 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -14,30 +14,26 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
 import { getPort } from '@eclipse-glsp/protocol';
-import { BaseGLSPServerContribution } from '@eclipse-glsp/theia-integration/lib/node';
-import { IConnection } from '@theia/languages/lib/node';
-import { injectable } from 'inversify';
-import * as net from 'net';
-import { createSocketConnection } from 'vscode-ws-jsonrpc/lib/server';
+import { JavaSocketServerContribution, JavaSocketServerLaunchOptions } from '@eclipse-glsp/theia-integration/lib/node';
+import { injectable } from '@theia/core/shared/inversify';
+import { join, resolve } from 'path';
+import { MinimalLanguage } from '../common/minimal-language';
 
-import { MinimalLanguage } from '../common/minmal-language';
+export const PORT_ARG_KEY = 'MINIMAL_GLSP';
+export const SERVER_DIR = join(__dirname, '..', '..', 'server');
+export const JAR_FILE = resolve(join(SERVER_DIR, 'org.eclipse.glsp.example.minimal-0.9.0-glsp.jar'));
 
 @injectable()
-export class MinimalGLSPServerContribution extends BaseGLSPServerContribution {
-    readonly id = MinimalLanguage.Id;
-    readonly name = MinimalLanguage.Name;
+export class MinimalGLSPServerContribution extends JavaSocketServerContribution {
+    readonly id = MinimalLanguage.contributionId;
 
-    start(clientConnection: IConnection): void {
-        const socketPort = getPort('MINIMAL_GLSP');
-        if (!isNaN(socketPort)) {
-            const socket = new net.Socket();
-            const serverConnection = createSocketConnection(socket, socket, () => {
-                socket.destroy();
-            });
-            this.forward(clientConnection, serverConnection);
-            socket.connect(socketPort);
-        } else {
-            console.error('Error when trying to connect to Minimal GLSP server');
-        }
+    createLaunchOptions(): Partial<JavaSocketServerLaunchOptions> {
+        return {
+            jarPath: JAR_FILE,
+            additionalArgs: ['--consoleLog', 'true'],
+            socketConnectionOptions: {
+                port: getPort(PORT_ARG_KEY)
+            }
+        };
     }
 }

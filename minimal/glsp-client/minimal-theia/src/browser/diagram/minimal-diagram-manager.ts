@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2020 EclipseSource and others.
+ * Copyright (c) 2020-2021 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -13,48 +13,16 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
-import { GLSPDiagramManager, GLSPNotificationManager, GLSPTheiaSprottyConnector } from '@eclipse-glsp/theia-integration/lib/browser';
-import { MessageService } from '@theia/core';
-import { WidgetManager } from '@theia/core/lib/browser';
-import { EditorManager } from '@theia/editor/lib/browser';
-import { inject, injectable } from 'inversify';
-import { TheiaFileSaver } from 'sprotty-theia';
-
-import { MinimalLanguage } from '../../common/minmal-language';
-import { MinimalGLSPDiagramClient } from './minimal-glsp-diagram-client';
+import { GLSPDiagramManager } from '@eclipse-glsp/theia-integration/lib/browser';
+import { injectable } from 'inversify';
+import { MinimalLanguage } from '../../common/minimal-language';
 
 @injectable()
 export class MinimalDiagramManager extends GLSPDiagramManager {
-    iconClass = 'fa fa-project';
-    readonly diagramType = MinimalLanguage.DiagramType;
-    readonly label = MinimalLanguage.Label + ' Editor';
-
-    private _diagramConnector: GLSPTheiaSprottyConnector;
-
-    constructor(
-        @inject(MinimalGLSPDiagramClient) diagramClient: MinimalGLSPDiagramClient,
-        @inject(TheiaFileSaver) fileSaver: TheiaFileSaver,
-        @inject(WidgetManager) widgetManager: WidgetManager,
-        @inject(EditorManager) editorManager: EditorManager,
-        @inject(MessageService) messageService: MessageService,
-        @inject(GLSPNotificationManager) notificationManager: GLSPNotificationManager
-    ) {
-        super();
-        this._diagramConnector = new GLSPTheiaSprottyConnector({
-            diagramClient,
-            fileSaver,
-            editorManager,
-            widgetManager,
-            diagramManager: this,
-            messageService,
-            notificationManager
-        });
-    }
+    readonly diagramType = MinimalLanguage.diagramType;
+    readonly label = MinimalLanguage.label + ' Editor';
 
     get fileExtensions(): string[] {
-        return [MinimalLanguage.FileExtension];
-    }
-    get diagramConnector(): GLSPTheiaSprottyConnector {
-        return this._diagramConnector;
+        return MinimalLanguage.fileExtensions;
     }
 }

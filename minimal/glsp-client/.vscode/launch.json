@@ -12,7 +12,7 @@
       "args": [
         "--port=3000",
         "--no-cluster",
-        "--MINIMAL_GLSP=5013",
+        "--MINIMAL_GLSP=5007",
         "--app-project-path=${workspaceRoot}/minimal-browser-app",
         "--root-dir=${workspaceRoot}/workspace"
       ],
@@ -40,8 +40,8 @@
       "args": [
         "--port=3000",
         "--no-cluster",
-        "--MINIMAL_GLSP=5013",
-        "--DEBUG",
+        "--MINIMAL_GLSP=5007",
+        "--debug",
         "--app-project-path=${workspaceRoot}/minimal-browser-app",
         "--root-dir=${workspaceRoot}/workspace"
       ],
