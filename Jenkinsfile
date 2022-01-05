@@ -59,7 +59,7 @@ pipeline {
     environment {
         YARN_CACHE_FOLDER = "${env.WORKSPACE}/yarn-cache"
         SPAWN_WRAP_SHIM_ROOT = "${env.WORKSPACE}"
-        JAR_FILE="org.eclipse.glsp.example.minimal-0.8.0-glsp.jar"
+        JAR_FILE="org.eclipse.glsp.example.minimal-0.9.0-glsp.jar"
         GLSP_SERVER_PATH= "${env.WORKSPACE}/server-build/${env.JAR_FILE}"
 
     }
@@ -69,7 +69,7 @@ pipeline {
                 steps{
                     timeout(30){
                         container('ci') {
-                            dir('minimal/server/org.eclipse.glsp.example.minimal'){
+                            dir('minimal/glsp-server/org.eclipse.glsp.example.minimal'){
                                 sh "mvn clean verify -DskipTests -B -Dcheckstyle.skip"
                                 sh "mkdir ${env.WORKSPACE}/server-build"
                                 sh "cp ./target/${env.JAR_FILE} ${env.GLSP_SERVER_PATH}"
@@ -83,8 +83,8 @@ pipeline {
             steps {
                 timeout(30){
                     container('ci') {
-                        dir('minimal/client') {
-                            sh "cp ${env.GLSP_SERVER_PATH} ../server/org.eclipse.glsp.example.minimal/target/${env.JAR_FILE}"
+                        dir('minimal/glsp-client') {
+                            sh "cp ${env.GLSP_SERVER_PATH} ../glsp-server/org.eclipse.glsp.example.minimal/target/${env.JAR_FILE}"
                             sh 'yarn build --ignore-engines'
                         }
                     }
@@ -97,12 +97,12 @@ pipeline {
                 timeout(30){
                     container('ci') {
                         // Execute checkstyle checks
-                        dir('minimal/server/org.eclipse.glsp.example.minimal'){
+                        dir('minimal/glsp-server/org.eclipse.glsp.example.minimal'){
                             sh 'mvn checkstyle:check'
                         } 
 
                         // Execute eslint checks
-                        dir('minimal/client') {
+                        dir('minimal/glsp-client') {
                             sh 'yarn lint -o eslint.xml -f checkstyle'
                         }     
                     }   
@@ -121,7 +121,7 @@ pipeline {
 
             // Record & publish esLint issues
             recordIssues enabledForFailure: true, publishAllIssues: true, aggregatingResults: true, 
-            tools: [esLint(pattern: 'minimal/client/node_modules/**/*/eslint.xml')], 
+            tools: [esLint(pattern: 'minimal/glsp-client/node_modules/**/*/eslint.xml')], 
             qualityGates: [[threshold: 1, type: 'TOTAL', unstable: true]]
 
             // Record maven,java warnings
