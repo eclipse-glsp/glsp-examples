@@ -1,0 +1,8 @@
+blank_issues_enabled: false
+contact_links:
+  - name: Question
+    url: https://github.com/eclipse-glsp/glsp/discussions
+    about: Please ask questions on the Eclipse GLSP discussions page.
+  - name: Create issue in GLSP umbrella project
+    url: https://github.com/eclipse-glsp/glsp/issues/new/choose
+    about: Please create new issues in the GLSP umbrella project, as we are tracking the issues for all components of GLSP there.
