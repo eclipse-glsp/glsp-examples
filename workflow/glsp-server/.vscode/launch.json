@@ -1,0 +1,19 @@
+{
+  // Use IntelliSense to learn about possible attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "type": "java",
+      "name": "Launch Workflow GLSP Server",
+      "request": "launch",
+      "mainClass": "org.eclipse.glsp.example.workflow.launch.WorkflowServerLauncher",
+      "projectName": "org.eclipse.glsp.example.workflow",
+      "args": ["--port", "5014"],
+      "console": "internalConsole",
+      "internalConsoleOptions": "openOnSessionStart",
+      "outputCapture": "std"
+    }
+  ]
+}
