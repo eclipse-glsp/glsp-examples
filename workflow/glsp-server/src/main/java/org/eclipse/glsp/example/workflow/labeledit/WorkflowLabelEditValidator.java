@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2019-2020 EclipseSource and others.
+ * Copyright (c) 2019-2021 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -23,10 +23,15 @@ import org.eclipse.glsp.server.features.directediting.LabelEditValidator;
 import org.eclipse.glsp.server.features.directediting.ValidationStatus;
 import org.eclipse.glsp.server.model.GModelState;
 
+import com.google.inject.Inject;
+
 public class WorkflowLabelEditValidator implements LabelEditValidator {
 
+   @Inject
+   protected GModelState modelState;
+
    @Override
-   public ValidationStatus validate(final GModelState modelState, final String label, final GModelElement element) {
+   public ValidationStatus validate(final String label, final GModelElement element) {
       if (label.length() < 1) {
          return ValidationStatus.error("Name must not be empty");
       }

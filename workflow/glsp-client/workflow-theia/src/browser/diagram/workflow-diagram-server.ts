@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2020 EclipseSource and others.
+ * Copyright (c) 2020-2021 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -15,8 +15,8 @@
  ********************************************************************************/
 import { ApplyTaskEditOperation } from '@eclipse-glsp-examples/workflow-glsp/lib/direct-task-editing/direct-task-editor';
 import { ActionHandlerRegistry } from '@eclipse-glsp/client';
-import { GLSPTheiaDiagramServer } from '@eclipse-glsp/theia-integration/lib/browser';
-import { injectable } from 'inversify';
+import { GLSPTheiaDiagramServer } from '@eclipse-glsp/theia-integration';
+import { injectable } from '@theia/core/shared/inversify';
 
 @injectable()
 export class WorkflowDiagramServer extends GLSPTheiaDiagramServer {

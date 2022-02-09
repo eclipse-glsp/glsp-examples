@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2019-2020 EclipseSource and others.
+ *  Copyright (c) 2019-2021 EclipseSource and others.
  * 
  *  This program and the accompanying materials are made available under the
  *  terms of the Eclipse Public License v. 2.0 which is available at
@@ -23,7 +23,7 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.glsp.example.workflow.wfgraph.*;
-
+import org.eclipse.glsp.graph.GArgumentable;
 import org.eclipse.glsp.graph.GBoundsAware;
 import org.eclipse.glsp.graph.GCompartment;
 import org.eclipse.glsp.graph.GEdge;
@@ -104,6 +104,14 @@ public class WfgraphAdapterFactory extends AdapterFactoryImpl {
          @Override
          public Adapter caseWeightedEdge(WeightedEdge object) {
             return createWeightedEdgeAdapter();
+         }
+         @Override
+         public Adapter caseCategory(Category object) {
+            return createCategoryAdapter();
+         }
+         @Override
+         public Adapter caseGArgumentable(GArgumentable object) {
+            return createGArgumentableAdapter();
          }
          @Override
          public Adapter caseGModelElement(GModelElement object) {
@@ -210,6 +218,34 @@ public class WfgraphAdapterFactory extends AdapterFactoryImpl {
     * @generated
     */
    public Adapter createWeightedEdgeAdapter() {
+      return null;
+   }
+
+   /**
+    * Creates a new adapter for an object of class '{@link org.eclipse.glsp.example.workflow.wfgraph.Category <em>Category</em>}'.
+    * <!-- begin-user-doc -->
+    * This default implementation returns null so that we can easily ignore cases;
+    * it's useful to ignore a case when inheritance will catch all the cases anyway.
+    * <!-- end-user-doc -->
+    * @return the new adapter.
+    * @see org.eclipse.glsp.example.workflow.wfgraph.Category
+    * @generated
+    */
+   public Adapter createCategoryAdapter() {
+      return null;
+   }
+
+   /**
+    * Creates a new adapter for an object of class '{@link org.eclipse.glsp.graph.GArgumentable <em>GArgumentable</em>}'.
+    * <!-- begin-user-doc -->
+    * This default implementation returns null so that we can easily ignore cases;
+    * it's useful to ignore a case when inheritance will catch all the cases anyway.
+    * <!-- end-user-doc -->
+    * @return the new adapter.
+    * @see org.eclipse.glsp.graph.GArgumentable
+    * @generated
+    */
+   public Adapter createGArgumentableAdapter() {
       return null;
    }
 

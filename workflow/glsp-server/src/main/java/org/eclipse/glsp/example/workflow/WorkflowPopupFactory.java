@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2019 EclipseSource and others.
+ * Copyright (c) 2019-2021 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -28,7 +28,6 @@ import org.eclipse.glsp.graph.GPreRenderedElement;
 import org.eclipse.glsp.graph.GraphFactory;
 import org.eclipse.glsp.server.features.popup.PopupModelFactory;
 import org.eclipse.glsp.server.features.popup.RequestPopupModelAction;
-import org.eclipse.glsp.server.model.GModelState;
 
 public class WorkflowPopupFactory implements PopupModelFactory {
 
@@ -41,11 +40,10 @@ public class WorkflowPopupFactory implements PopupModelFactory {
          task.getDuration(), task.getReference());
    }
 
-   private static final String NL = "<br>";
+   private static final String NL = "<br/>";
 
    @Override
-   public Optional<GHtmlRoot> createPopupModel(final GModelElement element, final RequestPopupModelAction action,
-      final GModelState modelState) {
+   public Optional<GHtmlRoot> createPopupModel(final GModelElement element, final RequestPopupModelAction action) {
       if (element != null && element instanceof TaskNode) {
          TaskNode task = (TaskNode) element;
          GHtmlRoot root = GraphFactory.eINSTANCE.createGHtmlRoot();

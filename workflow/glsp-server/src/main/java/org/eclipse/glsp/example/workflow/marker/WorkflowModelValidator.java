@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2019 EclipseSource and others.
+ * Copyright (c) 2019-2021 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -19,20 +19,29 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 import org.eclipse.glsp.example.workflow.wfgraph.ActivityNode;
 import org.eclipse.glsp.example.workflow.wfgraph.TaskNode;
+import org.eclipse.glsp.graph.GCompartment;
 import org.eclipse.glsp.graph.GEdge;
+import org.eclipse.glsp.graph.GLabel;
 import org.eclipse.glsp.graph.GModelElement;
 import org.eclipse.glsp.server.features.validation.Marker;
 import org.eclipse.glsp.server.features.validation.MarkerKind;
 import org.eclipse.glsp.server.features.validation.ModelValidator;
 import org.eclipse.glsp.server.model.GModelState;
+import org.eclipse.glsp.server.utils.GModelUtil;
+
+import com.google.inject.Inject;
 
 public class WorkflowModelValidator implements ModelValidator {
 
+   @Inject
+   protected GModelState modelState;
+
    @Override
-   public List<Marker> validate(final GModelState modelState, final GModelElement... elements) {
+   public List<Marker> validate(final GModelElement... elements) {
       List<Marker> markers = new ArrayList<>();
 
       for (GModelElement element : elements) {
@@ -47,8 +56,7 @@ public class WorkflowModelValidator implements ModelValidator {
             }
          }
          if (element.getChildren() != null) {
-            markers.addAll(validate(modelState,
-               element.getChildren().toArray(new GModelElement[element.getChildren().size()])));
+            markers.addAll(validate(element.getChildren().toArray(new GModelElement[element.getChildren().size()])));
          }
       }
       return markers;
@@ -57,7 +65,7 @@ public class WorkflowModelValidator implements ModelValidator {
    private static List<Marker> validateTaskNode(final GModelState modelState, final GModelElement taskNode) {
       List<Marker> markers = new ArrayList<>();
       validateTaskNode_isAutomated(modelState, taskNode).ifPresent(m -> markers.add(m));
-      validateTaskNode_nameStartsUpperCase(modelState, taskNode).ifPresent(m -> markers.add(m));
+      validateTaskNode_labelStartsUpperCase(modelState, taskNode).ifPresent(m -> markers.add(m));
       return markers;
    }
 
@@ -73,11 +81,15 @@ public class WorkflowModelValidator implements ModelValidator {
    }
 
    @SuppressWarnings("checkstyle:MethodName")
-   private static Optional<Marker> validateTaskNode_nameStartsUpperCase(final GModelState modelState,
+   private static Optional<Marker> validateTaskNode_labelStartsUpperCase(final GModelState modelState,
       final GModelElement element) {
       TaskNode taskNode = (TaskNode) element;
-      if (!Character.isUpperCase(taskNode.getName().charAt(0))) {
-         return Optional.of(new Marker("Task node name in upper case",
+      List<GCompartment> gCompartment = GModelUtil.filterByType(taskNode.getChildren(), GCompartment.class)
+         .collect(Collectors.toList());
+      List<GLabel> gLabels = GModelUtil.filterByType(gCompartment.get(0).getChildren(), GLabel.class)
+         .collect(Collectors.toList());
+      if (gLabels.size() > 0 && !Character.isUpperCase(gLabels.get(0).getText().charAt(0))) {
+         return Optional.of(new Marker("Task node label in upper case",
             "Task node names should start with upper case letters", element.getId(), MarkerKind.WARNING));
       }
       return Optional.empty();

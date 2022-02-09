@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2020 EclipseSource and others.
+ * Copyright (c) 2020-2021 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -13,20 +13,20 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
-import { EditMode } from '@eclipse-glsp/client';
-import { GLSPWidgetOpenerOptions } from '@eclipse-glsp/theia-integration/lib/browser';
+import { codiconCSSString, EditMode } from '@eclipse-glsp/client';
+import { GLSPWidgetOpenerOptions } from '@eclipse-glsp/theia-integration';
 import { Command, CommandContribution, CommandRegistry, MenuContribution, MenuModelRegistry, SelectionService } from '@theia/core';
 import { OpenerService } from '@theia/core/lib/browser';
 import URI from '@theia/core/lib/common/uri';
 import { UriAwareCommandHandler } from '@theia/core/lib/common/uri-command-handler';
+import { inject, injectable } from '@theia/core/shared/inversify';
 import { NavigatorContextMenu } from '@theia/navigator/lib/browser/navigator-contribution';
-import { inject, injectable } from 'inversify';
 
 export const OPEN_READONLY_DIAGRAM_VIEW: Command = {
     id: 'workflow.open.readonly',
     label: 'Open in Workflow Diagram Readonly View',
     category: '2_additional',
-    iconClass: 'fa fa-project-diagram'
+    iconClass: codiconCSSString('type-hierarchy-sub')
 };
 @injectable()
 export class WorkflowDiagramReadonlyViewContribution implements CommandContribution, MenuContribution {

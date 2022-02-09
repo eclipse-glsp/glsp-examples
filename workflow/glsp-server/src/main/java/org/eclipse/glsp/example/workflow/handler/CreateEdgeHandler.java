@@ -20,6 +20,7 @@ import java.util.Optional;
 import org.eclipse.glsp.graph.DefaultTypes;
 import org.eclipse.glsp.graph.GEdge;
 import org.eclipse.glsp.graph.GModelElement;
+import org.eclipse.glsp.graph.builder.impl.GArguments;
 import org.eclipse.glsp.graph.builder.impl.GEdgeBuilder;
 import org.eclipse.glsp.server.model.GModelState;
 import org.eclipse.glsp.server.operations.gmodel.CreateEdgeOperationHandler;
@@ -36,6 +37,7 @@ public class CreateEdgeHandler extends CreateEdgeOperationHandler {
       return Optional.of(new GEdgeBuilder() //
          .source(source) //
          .target(target) //
+         .addArgument(GArguments.edgePadding(10)) //
          .build());
    }
 

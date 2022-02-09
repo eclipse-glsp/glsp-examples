@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2019 EclipseSource and others.
+ * Copyright (c) 2019-2021 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -15,6 +15,7 @@
  ********************************************************************************/
 package org.eclipse.glsp.example.workflow.handler;
 
+import java.util.Map;
 import java.util.Optional;
 import java.util.function.Function;
 
@@ -23,6 +24,7 @@ import org.eclipse.glsp.example.workflow.utils.WorkflowBuilder.TaskNodeBuilder;
 import org.eclipse.glsp.example.workflow.wfgraph.WfgraphPackage;
 import org.eclipse.glsp.graph.GNode;
 import org.eclipse.glsp.graph.GPoint;
+import org.eclipse.glsp.graph.builder.impl.GArguments;
 import org.eclipse.glsp.server.model.GModelState;
 import org.eclipse.glsp.server.utils.GModelUtil;
 
@@ -39,14 +41,19 @@ public abstract class CreateTaskHandler extends CreateWorkflowNodeOperationHandl
 
    protected String getElementTypeId() { return elementTypeId; }
 
-   @Override
-   protected GNode createNode(final Optional<GPoint> point, final GModelState modelState) {
+   protected TaskNodeBuilder builder(final Optional<GPoint> point, final GModelState modelState) {
       int nodeCounter = GModelUtil.generateId(WfgraphPackage.Literals.TASK_NODE, "task", modelState);
       String name = labelProvider.apply(nodeCounter);
       String taskType = ModelTypes.toNodeType(getElementTypeId());
       return new TaskNodeBuilder(getElementTypeId(), name, taskType, 0) //
-         .position(point.orElse(null)) //
-         .build();
+         .position(point.orElse(null))
+         .addArguments(GArguments.cornerRadius(5))
+         .addCssClass("task");
+   }
+
+   @Override
+   protected GNode createNode(final Optional<GPoint> point, final Map<String, String> args) {
+      return builder(point, modelState).build();
    }
 
 }

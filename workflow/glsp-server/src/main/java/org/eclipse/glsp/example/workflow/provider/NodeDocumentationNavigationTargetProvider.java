@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2020 EclipseSource and others.
+ * Copyright (c) 2020-2021 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -16,17 +16,21 @@
 package org.eclipse.glsp.example.workflow.provider;
 
 import java.util.Arrays;
-import java.util.HashMap;
+import java.util.Collections;
 import java.util.List;
 import java.util.Map;
 import java.util.Optional;
 
 import org.eclipse.glsp.example.workflow.wfgraph.TaskNode;
+import org.eclipse.glsp.server.features.navigation.JsonOpenerOptions;
 import org.eclipse.glsp.server.features.navigation.NavigationTarget;
 import org.eclipse.glsp.server.features.navigation.NavigationTargetProvider;
 import org.eclipse.glsp.server.model.GModelState;
 import org.eclipse.glsp.server.types.EditorContext;
-import org.eclipse.glsp.server.utils.ClientOptions;
+import org.eclipse.glsp.server.utils.ClientOptionsUtil;
+import org.eclipse.glsp.server.utils.MapUtil;
+
+import com.google.inject.Inject;
 
 /**
  * An example {@link NavigationTargetProvider} that opens an md file and selects a specified range.
@@ -39,8 +43,11 @@ public class NodeDocumentationNavigationTargetProvider implements NavigationTarg
    @Override
    public String getTargetTypeId() { return "documentation"; }
 
+   @Inject
+   protected GModelState modelState;
+
    @Override
-   public List<? extends NavigationTarget> getTargets(final EditorContext editorContext, final GModelState modelState) {
+   public List<? extends NavigationTarget> getTargets(final EditorContext editorContext) {
       if (editorContext.getSelectedElementIds().size() == 1) {
          Optional<TaskNode> taskNode = modelState.getIndex()
             .findElementByClass(editorContext.getSelectedElementIds().get(0), TaskNode.class);
@@ -48,17 +55,15 @@ public class NodeDocumentationNavigationTargetProvider implements NavigationTarg
             return Arrays.asList();
          }
 
-         Optional<String> sourceUri = ClientOptions.getValue(modelState.getClientOptions(), ClientOptions.SOURCE_URI);
+         Optional<String> sourceUri = MapUtil.getValue(modelState.getClientOptions(), ClientOptionsUtil.SOURCE_URI);
          if (sourceUri.isEmpty()) {
             return Arrays.asList();
          }
 
          String docUri = sourceUri.get().replace(".wf", ".md");
-         Map<String, String> args = new HashMap<>();
-         args.put(JSON_OPENER_OPTIONS, "{"
-            + "\"selection\": { \"start\": { \"line\": 2, \"character\": 3 }, "
-            + "\"end\": { \"line\": 2, \"character\": 7 } } "
-            + "}");
+         Map<String, String> args = Collections.singletonMap(
+            JSON_OPENER_OPTIONS,
+            new JsonOpenerOptions(2, 3, 2, 7).toJson());
          return Arrays.asList(new NavigationTarget(docUri, args));
       }
       return Arrays.asList();

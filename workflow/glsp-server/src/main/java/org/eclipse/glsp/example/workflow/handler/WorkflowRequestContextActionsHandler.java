@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2020 EclipseSource and others.
+ * Copyright (c) 2020-2021 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -23,13 +23,12 @@ import org.eclipse.glsp.server.actions.Action;
 import org.eclipse.glsp.server.features.contextactions.RequestContextActions;
 import org.eclipse.glsp.server.features.contextactions.RequestContextActionsHandler;
 import org.eclipse.glsp.server.features.contextactions.SetContextActions;
-import org.eclipse.glsp.server.model.GModelState;
 import org.eclipse.glsp.server.types.Severity;
 
 public class WorkflowRequestContextActionsHandler extends RequestContextActionsHandler {
    @Override
-   public List<Action> executeAction(final RequestContextActions action, final GModelState modelState) {
-      List<Action> actions = new ArrayList<>(super.executeAction(action, modelState));
+   public List<Action> executeAction(final RequestContextActions action) {
+      List<Action> actions = new ArrayList<>(super.executeAction(action));
       actions.stream()
          .filter(SetContextActions.class::isInstance)
          .map(SetContextActions.class::cast)

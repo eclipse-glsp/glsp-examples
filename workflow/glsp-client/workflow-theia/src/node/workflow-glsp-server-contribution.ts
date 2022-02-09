@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2019-2020 EclipseSource and others.
+ * Copyright (c) 2019-2022 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -14,28 +14,28 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
 import { getPort } from '@eclipse-glsp/protocol';
-import { BaseGLSPServerContribution } from '@eclipse-glsp/theia-integration/lib/node';
-import { injectable } from 'inversify';
-import * as net from 'net';
-import { createSocketConnection, IConnection } from 'vscode-ws-jsonrpc/lib/server';
+import { JavaSocketServerContribution, JavaSocketServerLaunchOptions } from '@eclipse-glsp/theia-integration/lib/node';
+import { injectable } from '@theia/core/shared/inversify';
+import { join, resolve } from 'path';
 import { WorkflowLanguage } from '../common/workflow-language';
 
+export const DEFAULT_PORT = 5007;
+export const PORT_ARG_KEY = 'WF_GLSP';
+export const LOG_DIR = join(__dirname, '..', '..', 'logs');
+const JAR_FILE = resolve(
+    join(__dirname, '..', '..', '..', '..', 'glsp-server', 'target', 'org.eclipse.glsp.example.workflow-0.9.0-glsp.jar')
+);
 @injectable()
-export class WorkflowGLServerContribution extends BaseGLSPServerContribution {
-    readonly id = WorkflowLanguage.Id;
-    readonly name = WorkflowLanguage.Name;
+export class WorkflowGLServerContribution extends JavaSocketServerContribution {
+    readonly id = WorkflowLanguage.contributionId;
 
-    start(clientConnection: IConnection): void {
-        const socketPort = getPort('WF_GLSP');
-        if (!isNaN(socketPort)) {
-            const socket = new net.Socket();
-            const serverConnection = createSocketConnection(socket, socket, () => {
-                socket.destroy();
-            });
-            this.forward(clientConnection, serverConnection);
-            socket.connect(socketPort);
-        } else {
-            console.error('Error when trying to connect to Workflow GLSP server');
-        }
+    createLaunchOptions(): Partial<JavaSocketServerLaunchOptions> {
+        return {
+            jarPath: JAR_FILE,
+            additionalArgs: ['--consoleLog', 'false', '--fileLog', 'true', '--logDir', LOG_DIR],
+            socketConnectionOptions: {
+                port: getPort(PORT_ARG_KEY, DEFAULT_PORT)
+            }
+        };
     }
 }

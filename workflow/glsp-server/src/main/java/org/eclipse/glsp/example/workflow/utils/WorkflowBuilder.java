@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2019 EclipseSource and others.
+ * Copyright (c) 2019-2021 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -15,7 +15,11 @@
  ********************************************************************************/
 package org.eclipse.glsp.example.workflow.utils;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.eclipse.glsp.example.workflow.wfgraph.ActivityNode;
+import org.eclipse.glsp.example.workflow.wfgraph.Category;
 import org.eclipse.glsp.example.workflow.wfgraph.Icon;
 import org.eclipse.glsp.example.workflow.wfgraph.TaskNode;
 import org.eclipse.glsp.example.workflow.wfgraph.WeightedEdge;
@@ -32,6 +36,10 @@ import org.eclipse.glsp.graph.util.GConstants;
 import org.eclipse.glsp.graph.util.GConstants.HAlign;
 
 public final class WorkflowBuilder {
+
+   private static final String V_GRAB = "vGrab";
+   private static final String H_GRAB = "hGrab";
+   private static final String H_ALIGN = "hAlign";
 
    public static class WeightedEdgeBuilder extends AbstractGEdgeBuilder<WeightedEdge, WeightedEdgeBuilder> {
 
@@ -123,9 +131,12 @@ public final class WorkflowBuilder {
       }
 
       private GCompartment createCompartment(final TaskNode taskNode) {
+         Map<String, Object> layoutOptions = new HashMap<>();
+
          return new GCompartmentBuilder(ModelTypes.COMP_HEADER) //
             .id(taskNode.getId() + "_header") //
             .layout(GConstants.Layout.HBOX) //
+            .layoutOptions(layoutOptions) //
             .add(createCompartmentIcon(taskNode)) //
             .add(createCompartmentHeader(taskNode)) //
             .build();
@@ -173,6 +184,71 @@ public final class WorkflowBuilder {
          return this;
       }
 
+   }
+
+   public static class CategoryNodeBuilder extends AbstractGNodeBuilder<Category, CategoryNodeBuilder> {
+      private String name;
+
+      public CategoryNodeBuilder(final String name) {
+         super(ModelTypes.CATEGORY);
+         this.name = name;
+      }
+
+      @Override
+      protected Category instantiate() {
+         return WfgraphFactory.eINSTANCE.createCategory();
+      }
+
+      @Override
+      protected CategoryNodeBuilder self() {
+         return this;
+      }
+
+      public void setName(final String name) { this.name = name; }
+
+      @Override
+      protected void setProperties(final Category node) {
+         super.setProperties(node);
+         node.setName(name);
+         node.setLayout(GConstants.Layout.VBOX);
+         node.getLayoutOptions().put(H_ALIGN, "center");
+         node.getLayoutOptions().put(H_GRAB, false);
+         node.getLayoutOptions().put(V_GRAB, false);
+         node.getCssClasses().add("category");
+         node.getChildren().add(createLabelCompartment(node));
+         node.getChildren().add(createStructCompartment(node));
+      }
+
+      private GCompartment createLabelCompartment(final Category node) {
+         Map<String, Object> layoutOptions = new HashMap<>();
+
+         return new GCompartmentBuilder(ModelTypes.COMP_HEADER) //
+            .id(node.getId() + "_header") //
+            .layout(GConstants.Layout.HBOX) //
+            .layoutOptions(layoutOptions) //
+            .add(createCompartmentHeader(node)) //
+            .build();
+      }
+
+      private GLabel createCompartmentHeader(final Category node) {
+         return new GLabelBuilder(ModelTypes.LABEL_HEADING) //
+            .id(node.getId() + "_classname") //
+            .text(node.getName()) //
+            .build();
+      }
+
+      private GCompartment createStructCompartment(final Category node) {
+         Map<String, Object> layoutOptions = new HashMap<>();
+         layoutOptions.put(H_ALIGN, "left");
+         layoutOptions.put(H_GRAB, true);
+         layoutOptions.put(V_GRAB, true);
+         GCompartmentBuilder structCompartmentBuilder = new GCompartmentBuilder(ModelTypes.STRUCTURE) //
+            .id(node.getId() + "_struct") //
+            .layout(GConstants.Layout.FREEFORM) //
+            .layoutOptions(layoutOptions);
+         return structCompartmentBuilder //
+            .build();
+      }
    }
 
    private WorkflowBuilder() {}

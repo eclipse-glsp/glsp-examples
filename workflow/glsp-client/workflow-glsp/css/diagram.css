@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2019 EclipseSource and others.
+ * Copyright (c) 2019-2021 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -35,12 +35,11 @@
 }
 
 .sprotty-node.mouseover:not(.selected) {
-    stroke-width: 3;
+    stroke-width: 2;
 }
 
 .sprotty-comp {
     line-height: 3px;
-    font-weight: normal;
     text-align: left;
 }
 
@@ -53,16 +52,18 @@
 }
 
 .sprotty-label.heading {
-    font-weight: bold;
+    font-weight: normal;
 }
 
 .sprotty-icon {
-    fill: black;
-    stroke-width: 0;
+    stroke: black;
+    stroke-width: 0.5;
+    fill: #ffffff;
+    opacity: 0.5;
 }
 
 .sprotty-label.icon {
-    fill: #fff;
+    fill: black;
 }
 
 .sprotty-button {
@@ -72,15 +73,15 @@
 
 .sprotty-edge {
     fill: none;
-    stroke-width: 2px;
+    stroke-width: 1px;
 }
 
 .sprotty-edge.selected {
-    stroke-width: 4px;
+    stroke-width: 3px;
 }
 
 .sprotty-edge.mouseover:not(.selected) {
-    stroke-width: 3px;
+    stroke-width: 2px;
 }
 
 .sprotty-edge > .sprotty-routing-handle {
@@ -115,11 +116,20 @@
     stroke-width: 1px;
 }
 
-.sprotty-node.task.automated {
-    fill: gray;
+.sprotty-node.marquee {
+    fill: lightgray;
+    opacity: 0.2;
 }
 
-.sprotty-node.task.manual {
+.task.automated > .sprotty-node {
+    fill: lightgray;
+}
+
+.task.manual > .sprotty-node {
+    fill: lightblue;
+}
+
+.category > .sprotty-node {
     fill: lightblue;
 }
 
@@ -145,12 +155,12 @@ text {
 .sprotty-edge.weighted .arrow,
 .sprotty-edge.weighted.medium,
 .sprotty-edge.weighted.medium .arrow {
-    stroke: rgb(53, 53, 226);
+    stroke: #007fd4;
 }
 
 .sprotty-edge.weighted .arrow,
 .sprotty-edge.weighted.medium .arrow {
-    fill: rgb(53, 53, 226);
+    fill: #007fd4;
 }
 
 .sprotty-edge.weighted.high,
@@ -168,7 +178,16 @@ polygon.sprotty-node {
 }
 
 .sprotty-node.selected {
-    stroke-width: 4;
+    stroke-width: 3px;
+}
+
+.sprotty-comp {
+    stroke: transparent;
+    fill: transparent;
+}
+
+.sprotty-comp.debug {
+    stroke: deepskyblue;
 }
 
 svg {

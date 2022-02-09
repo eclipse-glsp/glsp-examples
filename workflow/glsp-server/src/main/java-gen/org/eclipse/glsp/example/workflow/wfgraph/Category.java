@@ -15,45 +15,44 @@
  */
 package org.eclipse.glsp.example.workflow.wfgraph;
 
-import org.eclipse.glsp.graph.GEdge;
 
 /**
  * <!-- begin-user-doc -->
- * A representation of the model object '<em><b>Weighted Edge</b></em>'.
+ * A representation of the model object '<em><b>Category</b></em>'.
  * <!-- end-user-doc -->
  *
  * <p>
  * The following features are supported:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.glsp.example.workflow.wfgraph.WeightedEdge#getProbability <em>Probability</em>}</li>
+ *   <li>{@link org.eclipse.glsp.example.workflow.wfgraph.Category#getName <em>Name</em>}</li>
  * </ul>
  *
- * @see org.eclipse.glsp.example.workflow.wfgraph.WfgraphPackage#getWeightedEdge()
+ * @see org.eclipse.glsp.example.workflow.wfgraph.WfgraphPackage#getCategory()
  * @model
  * @generated
  */
-public interface WeightedEdge extends GEdge {
+public interface Category extends ActivityNode {
    /**
-    * Returns the value of the '<em><b>Probability</b></em>' attribute.
+    * Returns the value of the '<em><b>Name</b></em>' attribute.
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
-    * @return the value of the '<em>Probability</em>' attribute.
-    * @see #setProbability(String)
-    * @see org.eclipse.glsp.example.workflow.wfgraph.WfgraphPackage#getWeightedEdge_Probability()
+    * @return the value of the '<em>Name</em>' attribute.
+    * @see #setName(String)
+    * @see org.eclipse.glsp.example.workflow.wfgraph.WfgraphPackage#getCategory_Name()
     * @model
     * @generated
     */
-   String getProbability();
+   String getName();
 
    /**
-    * Sets the value of the '{@link org.eclipse.glsp.example.workflow.wfgraph.WeightedEdge#getProbability <em>Probability</em>}' attribute.
+    * Sets the value of the '{@link org.eclipse.glsp.example.workflow.wfgraph.Category#getName <em>Name</em>}' attribute.
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
-    * @param value the new value of the '<em>Probability</em>' attribute.
-    * @see #getProbability()
+    * @param value the new value of the '<em>Name</em>' attribute.
+    * @see #getName()
     * @generated
     */
-   void setProbability(String value);
+   void setName(String value);
 
-} // WeightedEdge
+} // Category

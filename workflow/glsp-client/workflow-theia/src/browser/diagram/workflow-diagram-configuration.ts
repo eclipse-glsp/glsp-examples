@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2019 EclipseSource and others.
+ * Copyright (c) 2019-2021 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -13,49 +13,22 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
-import { createWorkflowDiagramContainer } from '@eclipse-glsp-examples/workflow-glsp/lib';
-import { CommandPalette, ExternalModelSourceChangedHandler, ExternalNavigateToTargetHandler, TYPES } from '@eclipse-glsp/client';
-import { TheiaCommandPalette } from '@eclipse-glsp/theia-integration/lib/browser';
-import {
-    connectTheiaContextMenuService,
-    TheiaContextMenuServiceFactory
-} from '@eclipse-glsp/theia-integration/lib/browser/diagram/glsp-theia-context-menu-service';
-import {
-    connectTheiaMarkerManager,
-    TheiaMarkerManager,
-    TheiaMarkerManagerFactory
-} from '@eclipse-glsp/theia-integration/lib/browser/diagram/glsp-theia-marker-manager';
-import { TheiaModelSourceChangedHandler } from '@eclipse-glsp/theia-integration/lib/browser/theia-model-source-changed-handler';
-import { TheiaNavigateToTargetHandler } from '@eclipse-glsp/theia-integration/lib/browser/theia-navigate-to-target-handler';
-import { SelectionService } from '@theia/core';
-import { Container, inject, injectable } from 'inversify';
-import { DiagramConfiguration, TheiaDiagramServer, TheiaSprottySelectionForwarder } from 'sprotty-theia';
 import 'sprotty-theia/css/theia-sprotty.css';
-import { TheiaContextMenuService } from 'sprotty-theia/lib/sprotty/theia-sprotty-context-menu-service';
+
+import { createWorkflowDiagramContainer } from '@eclipse-glsp-examples/workflow-glsp/lib';
+import { configureDiagramServer, GLSPDiagramConfiguration } from '@eclipse-glsp/theia-integration';
+import { Container, injectable } from '@theia/core/shared/inversify';
+
 import { WorkflowLanguage } from '../../common/workflow-language';
 import { WorkflowDiagramServer } from './workflow-diagram-server';
 
 @injectable()
-export class WorkflowDiagramConfiguration implements DiagramConfiguration {
-    @inject(SelectionService) protected selectionService: SelectionService;
-    @inject(TheiaNavigateToTargetHandler) protected navigateToTargetHandler: TheiaNavigateToTargetHandler;
-    @inject(TheiaModelSourceChangedHandler) protected modelSourceChangedHandler: TheiaModelSourceChangedHandler;
-    @inject(TheiaContextMenuServiceFactory) protected readonly contextMenuServiceFactory: () => TheiaContextMenuService;
-    @inject(TheiaMarkerManagerFactory) protected readonly theiaMarkerManager: () => TheiaMarkerManager;
+export class WorkflowDiagramConfiguration extends GLSPDiagramConfiguration {
+    diagramType: string = WorkflowLanguage.diagramType;
 
-    diagramType: string = WorkflowLanguage.DiagramType;
-
-    createContainer(widgetId: string): Container {
+    doCreateContainer(widgetId: string): Container {
         const container = createWorkflowDiagramContainer(widgetId);
-        container.bind(TYPES.ModelSource).to(WorkflowDiagramServer).inSingletonScope();
-        container.bind(TheiaDiagramServer).toService(WorkflowDiagramServer);
-        container.bind(TYPES.IActionHandlerInitializer).to(TheiaSprottySelectionForwarder);
-        container.bind(SelectionService).toConstantValue(this.selectionService);
-        container.bind(ExternalNavigateToTargetHandler).toConstantValue(this.navigateToTargetHandler);
-        container.bind(ExternalModelSourceChangedHandler).toConstantValue(this.modelSourceChangedHandler);
-        container.rebind(CommandPalette).to(TheiaCommandPalette);
-        connectTheiaContextMenuService(container, this.contextMenuServiceFactory);
-        connectTheiaMarkerManager(container, this.theiaMarkerManager, this.diagramType);
+        configureDiagramServer(container, WorkflowDiagramServer);
         return container;
     }
 }

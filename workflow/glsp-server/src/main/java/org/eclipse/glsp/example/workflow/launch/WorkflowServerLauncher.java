@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2019 EclipseSource and others.
+ * Copyright (c) 2019-2021 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -19,9 +19,10 @@ import java.io.IOException;
 
 import org.apache.commons.cli.ParseException;
 import org.eclipse.elk.alg.layered.options.LayeredMetaDataProvider;
-import org.eclipse.glsp.example.workflow.WorkflowGLSPModule;
+import org.eclipse.glsp.example.workflow.WorkflowDiagramModule;
 import org.eclipse.glsp.layout.ElkLayoutEngine;
-import org.eclipse.glsp.server.launch.DefaultGLSPServerLauncher;
+import org.eclipse.glsp.server.di.ServerModule;
+import org.eclipse.glsp.server.launch.SocketGLSPServerLauncher;
 import org.eclipse.glsp.server.launch.GLSPServerLauncher;
 import org.eclipse.glsp.server.utils.LaunchUtil;
 import org.eclipse.glsp.server.websocket.WebsocketServerLauncher;
@@ -38,9 +39,12 @@ public final class WorkflowServerLauncher {
          ElkLayoutEngine.initialize(new LayeredMetaDataProvider());
 
          int port = parser.parsePort();
+         ServerModule workflowServerModule = new ServerModule()
+            .configureDiagramModule(new WorkflowDiagramModule());
+
          GLSPServerLauncher launcher = parser.isWebsocket()
-            ? new WebsocketServerLauncher(new WorkflowGLSPModule(), "/workflow")
-            : new DefaultGLSPServerLauncher(new WorkflowGLSPModule());
+            ? new WebsocketServerLauncher(workflowServerModule, "/workflow")
+            : new SocketGLSPServerLauncher(workflowServerModule);
 
          launcher.start("localhost", port);
 

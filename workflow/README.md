@@ -4,7 +4,7 @@ This example shows a consistent example provided by all GLSP components.
 It implements a simple flow chart diagram editor with different types of nodes and edges.
 The `Workflow Example` is the main example used for development and integrates all GLSP features.
 
-![GLSP Workflow Example animated](https://www.eclipse.org/glsp/images/diagramanimated.gif)
+![GLSP Workflow Example animated](../documentation/workflow-example-animated.gif)
 
 ## Prerequisites
 
@@ -24,7 +24,7 @@ The web-based/client part of the examples has been developed using [Visual Studi
 The server component of the minimal example has to be built using Maven, the client component has to be built using yarn. This can be done via CLI:
 
     cd glsp-server && mvn clean verify && cd ..
-    cd glsp-client && yarn && cd workflow-theia && yarn copy:server && cd ../..
+    cd glsp-client && yarn
 
 ## Running the example
 

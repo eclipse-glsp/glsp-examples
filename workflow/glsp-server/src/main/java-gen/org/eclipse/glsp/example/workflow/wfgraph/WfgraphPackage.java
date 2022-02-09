@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2019-2020 EclipseSource and others.
+ *  Copyright (c) 2019-2021 EclipseSource and others.
  * 
  *  This program and the accompanying materials are made available under the
  *  terms of the Eclipse Public License v. 2.0 which is available at
@@ -44,7 +44,7 @@ public interface WfgraphPackage extends EPackage {
     * <!-- end-user-doc -->
     * @generated
     */
-   String eNAME = "wfgraph"; //$NON-NLS-1$
+   String eNAME = "wfgraph";
 
    /**
     * The package namespace URI.
@@ -52,7 +52,7 @@ public interface WfgraphPackage extends EPackage {
     * <!-- end-user-doc -->
     * @generated
     */
-   String eNS_URI = "http://www.eclipse.org/glsp/examples/workflow/graph"; //$NON-NLS-1$
+   String eNS_URI = "http://www.eclipse.org/glsp/examples/workflow/graph";
 
    /**
     * The package namespace name.
@@ -60,7 +60,7 @@ public interface WfgraphPackage extends EPackage {
     * <!-- end-user-doc -->
     * @generated
     */
-   String eNS_PREFIX = "wfgraph"; //$NON-NLS-1$
+   String eNS_PREFIX = "wfgraph";
 
    /**
     * The singleton instance of the package.
@@ -79,6 +79,15 @@ public interface WfgraphPackage extends EPackage {
     * @generated
     */
    int ACTIVITY_NODE = 0;
+
+   /**
+    * The feature id for the '<em><b>Args</b></em>' map.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * @generated
+    * @ordered
+    */
+   int ACTIVITY_NODE__ARGS = GraphPackage.GNODE__ARGS;
 
    /**
     * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -215,6 +224,15 @@ public interface WfgraphPackage extends EPackage {
     * @generated
     */
    int TASK_NODE = 1;
+
+   /**
+    * The feature id for the '<em><b>Args</b></em>' map.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * @generated
+    * @ordered
+    */
+   int TASK_NODE__ARGS = ACTIVITY_NODE__ARGS;
 
    /**
     * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -398,6 +416,15 @@ public interface WfgraphPackage extends EPackage {
    int ICON = 2;
 
    /**
+    * The feature id for the '<em><b>Args</b></em>' map.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * @generated
+    * @ordered
+    */
+   int ICON__ARGS = GraphPackage.GCOMPARTMENT__ARGS;
+
+   /**
     * The feature id for the '<em><b>Id</b></em>' attribute.
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
@@ -514,6 +541,15 @@ public interface WfgraphPackage extends EPackage {
     * @generated
     */
    int WEIGHTED_EDGE = 3;
+
+   /**
+    * The feature id for the '<em><b>Args</b></em>' map.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * @generated
+    * @ordered
+    */
+   int WEIGHTED_EDGE__ARGS = GraphPackage.GEDGE__ARGS;
 
    /**
     * The feature id for the '<em><b>Id</b></em>' attribute.
@@ -650,6 +686,160 @@ public interface WfgraphPackage extends EPackage {
     */
    int WEIGHTED_EDGE_OPERATION_COUNT = GraphPackage.GEDGE_OPERATION_COUNT + 0;
 
+   /**
+    * The meta object id for the '{@link org.eclipse.glsp.example.workflow.wfgraph.impl.CategoryImpl <em>Category</em>}' class.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * @see org.eclipse.glsp.example.workflow.wfgraph.impl.CategoryImpl
+    * @see org.eclipse.glsp.example.workflow.wfgraph.impl.WfgraphPackageImpl#getCategory()
+    * @generated
+    */
+   int CATEGORY = 4;
+
+   /**
+    * The feature id for the '<em><b>Args</b></em>' map.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * @generated
+    * @ordered
+    */
+   int CATEGORY__ARGS = ACTIVITY_NODE__ARGS;
+
+   /**
+    * The feature id for the '<em><b>Id</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * @generated
+    * @ordered
+    */
+   int CATEGORY__ID = ACTIVITY_NODE__ID;
+
+   /**
+    * The feature id for the '<em><b>Css Classes</b></em>' attribute list.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * @generated
+    * @ordered
+    */
+   int CATEGORY__CSS_CLASSES = ACTIVITY_NODE__CSS_CLASSES;
+
+   /**
+    * The feature id for the '<em><b>Children</b></em>' containment reference list.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * @generated
+    * @ordered
+    */
+   int CATEGORY__CHILDREN = ACTIVITY_NODE__CHILDREN;
+
+   /**
+    * The feature id for the '<em><b>Parent</b></em>' container reference.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * @generated
+    * @ordered
+    */
+   int CATEGORY__PARENT = ACTIVITY_NODE__PARENT;
+
+   /**
+    * The feature id for the '<em><b>Trace</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * @generated
+    * @ordered
+    */
+   int CATEGORY__TRACE = ACTIVITY_NODE__TRACE;
+
+   /**
+    * The feature id for the '<em><b>Type</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * @generated
+    * @ordered
+    */
+   int CATEGORY__TYPE = ACTIVITY_NODE__TYPE;
+
+   /**
+    * The feature id for the '<em><b>Position</b></em>' containment reference.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * @generated
+    * @ordered
+    */
+   int CATEGORY__POSITION = ACTIVITY_NODE__POSITION;
+
+   /**
+    * The feature id for the '<em><b>Size</b></em>' containment reference.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * @generated
+    * @ordered
+    */
+   int CATEGORY__SIZE = ACTIVITY_NODE__SIZE;
+
+   /**
+    * The feature id for the '<em><b>Edge Placement</b></em>' containment reference.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * @generated
+    * @ordered
+    */
+   int CATEGORY__EDGE_PLACEMENT = ACTIVITY_NODE__EDGE_PLACEMENT;
+
+   /**
+    * The feature id for the '<em><b>Layout</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * @generated
+    * @ordered
+    */
+   int CATEGORY__LAYOUT = ACTIVITY_NODE__LAYOUT;
+
+   /**
+    * The feature id for the '<em><b>Layout Options</b></em>' map.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * @generated
+    * @ordered
+    */
+   int CATEGORY__LAYOUT_OPTIONS = ACTIVITY_NODE__LAYOUT_OPTIONS;
+
+   /**
+    * The feature id for the '<em><b>Node Type</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * @generated
+    * @ordered
+    */
+   int CATEGORY__NODE_TYPE = ACTIVITY_NODE__NODE_TYPE;
+
+   /**
+    * The feature id for the '<em><b>Name</b></em>' attribute.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * @generated
+    * @ordered
+    */
+   int CATEGORY__NAME = ACTIVITY_NODE_FEATURE_COUNT + 0;
+
+   /**
+    * The number of structural features of the '<em>Category</em>' class.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * @generated
+    * @ordered
+    */
+   int CATEGORY_FEATURE_COUNT = ACTIVITY_NODE_FEATURE_COUNT + 1;
+
+   /**
+    * The number of operations of the '<em>Category</em>' class.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * @generated
+    * @ordered
+    */
+   int CATEGORY_OPERATION_COUNT = ACTIVITY_NODE_OPERATION_COUNT + 0;
+
 
    /**
     * Returns the meta object for class '{@link org.eclipse.glsp.example.workflow.wfgraph.ActivityNode <em>Activity Node</em>}'.
@@ -769,6 +959,27 @@ public interface WfgraphPackage extends EPackage {
    EAttribute getWeightedEdge_Probability();
 
    /**
+    * Returns the meta object for class '{@link org.eclipse.glsp.example.workflow.wfgraph.Category <em>Category</em>}'.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * @return the meta object for class '<em>Category</em>'.
+    * @see org.eclipse.glsp.example.workflow.wfgraph.Category
+    * @generated
+    */
+   EClass getCategory();
+
+   /**
+    * Returns the meta object for the attribute '{@link org.eclipse.glsp.example.workflow.wfgraph.Category#getName <em>Name</em>}'.
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * @return the meta object for the attribute '<em>Name</em>'.
+    * @see org.eclipse.glsp.example.workflow.wfgraph.Category#getName()
+    * @see #getCategory()
+    * @generated
+    */
+   EAttribute getCategory_Name();
+
+   /**
     * Returns the factory that creates the instances of the model.
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
@@ -886,6 +1097,24 @@ public interface WfgraphPackage extends EPackage {
        * @generated
        */
       EAttribute WEIGHTED_EDGE__PROBABILITY = eINSTANCE.getWeightedEdge_Probability();
+
+      /**
+       * The meta object literal for the '{@link org.eclipse.glsp.example.workflow.wfgraph.impl.CategoryImpl <em>Category</em>}' class.
+       * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+       * @see org.eclipse.glsp.example.workflow.wfgraph.impl.CategoryImpl
+       * @see org.eclipse.glsp.example.workflow.wfgraph.impl.WfgraphPackageImpl#getCategory()
+       * @generated
+       */
+      EClass CATEGORY = eINSTANCE.getCategory();
+
+      /**
+       * The meta object literal for the '<em><b>Name</b></em>' attribute feature.
+       * <!-- begin-user-doc -->
+       * <!-- end-user-doc -->
+       * @generated
+       */
+      EAttribute CATEGORY__NAME = eINSTANCE.getCategory_Name();
 
    }
 

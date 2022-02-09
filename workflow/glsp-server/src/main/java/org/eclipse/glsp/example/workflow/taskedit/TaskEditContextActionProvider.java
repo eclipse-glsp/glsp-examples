@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2020 EclipseSource and others.
+ * Copyright (c) 2020-2021 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -27,6 +27,7 @@ import org.eclipse.glsp.server.model.GModelState;
 import org.eclipse.glsp.server.types.EditorContext;
 
 import com.google.common.collect.Lists;
+import com.google.inject.Inject;
 
 public class TaskEditContextActionProvider implements ContextActionsProvider {
 
@@ -37,8 +38,11 @@ public class TaskEditContextActionProvider implements ContextActionsProvider {
    @Override
    public String getContextId() { return "task-editor"; }
 
+   @Inject
+   protected GModelState modelState;
+
    @Override
-   public List<? extends LabeledAction> getActions(final EditorContext editorContext, final GModelState modelState) {
+   public List<? extends LabeledAction> getActions(final EditorContext editorContext) {
       String text = editorContext.getArgs().getOrDefault("text", "");
       Optional<TaskNode> taskNode = modelState.getIndex()
          .findElementByClass(editorContext.getSelectedElementIds().get(0), TaskNode.class);

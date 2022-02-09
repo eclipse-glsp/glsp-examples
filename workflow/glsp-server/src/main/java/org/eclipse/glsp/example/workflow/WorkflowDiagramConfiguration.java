@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2019 EclipseSource and others.
+ * Copyright (c) 2019-2021 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -17,6 +17,7 @@ package org.eclipse.glsp.example.workflow;
 
 import static org.eclipse.glsp.example.workflow.utils.ModelTypes.ACTIVITY_NODE;
 import static org.eclipse.glsp.example.workflow.utils.ModelTypes.AUTOMATED_TASK;
+import static org.eclipse.glsp.example.workflow.utils.ModelTypes.CATEGORY;
 import static org.eclipse.glsp.example.workflow.utils.ModelTypes.COMP_HEADER;
 import static org.eclipse.glsp.example.workflow.utils.ModelTypes.DECISION_NODE;
 import static org.eclipse.glsp.example.workflow.utils.ModelTypes.FORK_NODE;
@@ -27,6 +28,7 @@ import static org.eclipse.glsp.example.workflow.utils.ModelTypes.LABEL_ICON;
 import static org.eclipse.glsp.example.workflow.utils.ModelTypes.LABEL_TEXT;
 import static org.eclipse.glsp.example.workflow.utils.ModelTypes.MANUAL_TASK;
 import static org.eclipse.glsp.example.workflow.utils.ModelTypes.MERGE_NODE;
+import static org.eclipse.glsp.example.workflow.utils.ModelTypes.STRUCTURE;
 import static org.eclipse.glsp.example.workflow.utils.ModelTypes.TASK;
 import static org.eclipse.glsp.example.workflow.utils.ModelTypes.WEIGHTED_EDGE;
 import static org.eclipse.glsp.graph.DefaultTypes.EDGE;
@@ -40,14 +42,12 @@ import org.eclipse.emf.ecore.EClass;
 import org.eclipse.glsp.example.workflow.wfgraph.WfgraphPackage;
 import org.eclipse.glsp.graph.DefaultTypes;
 import org.eclipse.glsp.graph.GraphPackage;
-import org.eclipse.glsp.server.diagram.DiagramConfiguration;
-import org.eclipse.glsp.server.diagram.EdgeTypeHint;
-import org.eclipse.glsp.server.diagram.ShapeTypeHint;
+import org.eclipse.glsp.server.diagram.BaseDiagramConfiguration;
+import org.eclipse.glsp.server.layout.ServerLayoutKind;
+import org.eclipse.glsp.server.types.EdgeTypeHint;
+import org.eclipse.glsp.server.types.ShapeTypeHint;
 
-public class WorkflowDiagramConfiguration implements DiagramConfiguration {
-
-   @Override
-   public String getDiagramType() { return "workflow-diagram"; }
+public class WorkflowDiagramConfiguration extends BaseDiagramConfiguration {
 
    @Override
    public Map<String, EClass> getTypeMappings() {
@@ -60,26 +60,39 @@ public class WorkflowDiagramConfiguration implements DiagramConfiguration {
       mappings.put(ICON, WfgraphPackage.Literals.ICON);
       mappings.put(ACTIVITY_NODE, WfgraphPackage.Literals.ACTIVITY_NODE);
       mappings.put(TASK, WfgraphPackage.Literals.TASK_NODE);
+      mappings.put(CATEGORY, WfgraphPackage.Literals.CATEGORY);
+      mappings.put(STRUCTURE, GraphPackage.Literals.GCOMPARTMENT);
       return mappings;
    }
 
    @Override
-   public List<ShapeTypeHint> getNodeTypeHints() {
+   public List<ShapeTypeHint> getShapeTypeHints() {
       List<ShapeTypeHint> nodeHints = new ArrayList<>();
-      nodeHints.add(new ShapeTypeHint(MANUAL_TASK, true, true, false, false));
-      nodeHints.add(new ShapeTypeHint(AUTOMATED_TASK, true, true, false, false));
-      nodeHints.add(new ShapeTypeHint(FORK_NODE, true, true, false, false));
-      nodeHints.add(createDefaultNodeTypeHint(JOIN_NODE));
-      nodeHints.add(createDefaultNodeTypeHint(DECISION_NODE));
-      nodeHints.add(createDefaultNodeTypeHint(MERGE_NODE));
+      nodeHints.add(new ShapeTypeHint(MANUAL_TASK, true, true, true, true));
+      nodeHints.add(new ShapeTypeHint(AUTOMATED_TASK, true, true, true, true));
+      ShapeTypeHint catHint = new ShapeTypeHint(CATEGORY, true, true, true, true);
+      catHint.setContainableElementTypeIds(
+         Arrays.asList(DECISION_NODE, MERGE_NODE, FORK_NODE, JOIN_NODE, AUTOMATED_TASK, MANUAL_TASK, CATEGORY));
+      nodeHints.add(catHint);
+      nodeHints.add(createDefaultShapeTypeHint(FORK_NODE));
+      nodeHints.add(createDefaultShapeTypeHint(JOIN_NODE));
+      nodeHints.add(createDefaultShapeTypeHint(DECISION_NODE));
+      nodeHints.add(createDefaultShapeTypeHint(MERGE_NODE));
       return nodeHints;
+   }
+
+   @Override
+   public ShapeTypeHint createDefaultShapeTypeHint(final String elementId) {
+      // Override the default-default: for the Workflow example, we want all nodes
+      // to be reparentable
+      return new ShapeTypeHint(elementId, true, true, true, true);
    }
 
    @Override
    public List<EdgeTypeHint> getEdgeTypeHints() {
       List<EdgeTypeHint> edgeHints = new ArrayList<>();
       edgeHints.add(createDefaultEdgeTypeHint(EDGE));
-      EdgeTypeHint weightedEdgeHint = DiagramConfiguration.super.createDefaultEdgeTypeHint(WEIGHTED_EDGE);
+      EdgeTypeHint weightedEdgeHint = super.createDefaultEdgeTypeHint(WEIGHTED_EDGE);
       weightedEdgeHint.setSourceElementTypeIds(Arrays.asList(DECISION_NODE));
       weightedEdgeHint.setTargetElementTypeIds(Arrays.asList(MANUAL_TASK, AUTOMATED_TASK, FORK_NODE, JOIN_NODE));
       edgeHints.add(weightedEdgeHint);
@@ -88,12 +101,20 @@ public class WorkflowDiagramConfiguration implements DiagramConfiguration {
 
    @Override
    public EdgeTypeHint createDefaultEdgeTypeHint(final String elementId) {
-      EdgeTypeHint hint = DiagramConfiguration.super.createDefaultEdgeTypeHint(elementId);
+      EdgeTypeHint hint = super.createDefaultEdgeTypeHint(elementId);
       hint.setSourceElementTypeIds(
-         Arrays.asList(MANUAL_TASK, AUTOMATED_TASK, DECISION_NODE, MERGE_NODE, FORK_NODE, JOIN_NODE));
+         Arrays.asList(MANUAL_TASK, AUTOMATED_TASK, DECISION_NODE, MERGE_NODE, FORK_NODE, JOIN_NODE, CATEGORY));
       hint.setTargetElementTypeIds(
-         Arrays.asList(MANUAL_TASK, AUTOMATED_TASK, DECISION_NODE, MERGE_NODE, FORK_NODE, JOIN_NODE));
+         Arrays.asList(MANUAL_TASK, AUTOMATED_TASK, DECISION_NODE, MERGE_NODE, FORK_NODE, JOIN_NODE, CATEGORY));
       return hint;
+   }
+
+   @Override
+   public ServerLayoutKind getLayoutKind() { return ServerLayoutKind.MANUAL; }
+
+   @Override
+   public boolean needsClientLayout() {
+      return true;
    }
 
 }

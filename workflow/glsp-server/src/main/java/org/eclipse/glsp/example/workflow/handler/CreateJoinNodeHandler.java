@@ -17,7 +17,7 @@ package org.eclipse.glsp.example.workflow.handler;
 
 import org.eclipse.glsp.example.workflow.utils.ModelTypes;
 
-public class CreateJoinNodeHandler extends CreateActivityNodeHandler {
+public class CreateJoinNodeHandler extends CreateForkOrJoinNodeHandler {
 
    public CreateJoinNodeHandler() {
       super(ModelTypes.JOIN_NODE, "Join Node");

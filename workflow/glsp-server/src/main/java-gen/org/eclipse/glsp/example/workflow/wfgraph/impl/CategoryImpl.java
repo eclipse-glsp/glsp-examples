@@ -21,51 +21,49 @@ import org.eclipse.emf.ecore.EClass;
 
 import org.eclipse.emf.ecore.impl.ENotificationImpl;
 
-import org.eclipse.glsp.example.workflow.wfgraph.WeightedEdge;
+import org.eclipse.glsp.example.workflow.wfgraph.Category;
 import org.eclipse.glsp.example.workflow.wfgraph.WfgraphPackage;
-
-import org.eclipse.glsp.graph.impl.GEdgeImpl;
 
 /**
  * <!-- begin-user-doc -->
- * An implementation of the model object '<em><b>Weighted Edge</b></em>'.
+ * An implementation of the model object '<em><b>Category</b></em>'.
  * <!-- end-user-doc -->
  * <p>
  * The following features are implemented:
  * </p>
  * <ul>
- *   <li>{@link org.eclipse.glsp.example.workflow.wfgraph.impl.WeightedEdgeImpl#getProbability <em>Probability</em>}</li>
+ *   <li>{@link org.eclipse.glsp.example.workflow.wfgraph.impl.CategoryImpl#getName <em>Name</em>}</li>
  * </ul>
  *
  * @generated
  */
-public class WeightedEdgeImpl extends GEdgeImpl implements WeightedEdge {
+public class CategoryImpl extends ActivityNodeImpl implements Category {
    /**
-    * The default value of the '{@link #getProbability() <em>Probability</em>}' attribute.
+    * The default value of the '{@link #getName() <em>Name</em>}' attribute.
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
-    * @see #getProbability()
+    * @see #getName()
     * @generated
     * @ordered
     */
-   protected static final String PROBABILITY_EDEFAULT = null;
+   protected static final String NAME_EDEFAULT = null;
 
    /**
-    * The cached value of the '{@link #getProbability() <em>Probability</em>}' attribute.
+    * The cached value of the '{@link #getName() <em>Name</em>}' attribute.
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
-    * @see #getProbability()
+    * @see #getName()
     * @generated
     * @ordered
     */
-   protected String probability = PROBABILITY_EDEFAULT;
+   protected String name = NAME_EDEFAULT;
 
    /**
     * <!-- begin-user-doc -->
     * <!-- end-user-doc -->
     * @generated
     */
-   protected WeightedEdgeImpl() {
+   protected CategoryImpl() {
       super();
    }
 
@@ -76,7 +74,7 @@ public class WeightedEdgeImpl extends GEdgeImpl implements WeightedEdge {
     */
    @Override
    protected EClass eStaticClass() {
-      return WfgraphPackage.Literals.WEIGHTED_EDGE;
+      return WfgraphPackage.Literals.CATEGORY;
    }
 
    /**
@@ -85,8 +83,8 @@ public class WeightedEdgeImpl extends GEdgeImpl implements WeightedEdge {
     * @generated
     */
    @Override
-   public String getProbability() {
-      return probability;
+   public String getName() {
+      return name;
    }
 
    /**
@@ -95,11 +93,11 @@ public class WeightedEdgeImpl extends GEdgeImpl implements WeightedEdge {
     * @generated
     */
    @Override
-   public void setProbability(String newProbability) {
-      String oldProbability = probability;
-      probability = newProbability;
+   public void setName(String newName) {
+      String oldName = name;
+      name = newName;
       if (eNotificationRequired())
-         eNotify(new ENotificationImpl(this, Notification.SET, WfgraphPackage.WEIGHTED_EDGE__PROBABILITY, oldProbability, probability));
+         eNotify(new ENotificationImpl(this, Notification.SET, WfgraphPackage.CATEGORY__NAME, oldName, name));
    }
 
    /**
@@ -110,8 +108,8 @@ public class WeightedEdgeImpl extends GEdgeImpl implements WeightedEdge {
    @Override
    public Object eGet(int featureID, boolean resolve, boolean coreType) {
       switch (featureID) {
-         case WfgraphPackage.WEIGHTED_EDGE__PROBABILITY:
-            return getProbability();
+         case WfgraphPackage.CATEGORY__NAME:
+            return getName();
       }
       return super.eGet(featureID, resolve, coreType);
    }
@@ -124,8 +122,8 @@ public class WeightedEdgeImpl extends GEdgeImpl implements WeightedEdge {
    @Override
    public void eSet(int featureID, Object newValue) {
       switch (featureID) {
-         case WfgraphPackage.WEIGHTED_EDGE__PROBABILITY:
-            setProbability((String)newValue);
+         case WfgraphPackage.CATEGORY__NAME:
+            setName((String)newValue);
             return;
       }
       super.eSet(featureID, newValue);
@@ -139,8 +137,8 @@ public class WeightedEdgeImpl extends GEdgeImpl implements WeightedEdge {
    @Override
    public void eUnset(int featureID) {
       switch (featureID) {
-         case WfgraphPackage.WEIGHTED_EDGE__PROBABILITY:
-            setProbability(PROBABILITY_EDEFAULT);
+         case WfgraphPackage.CATEGORY__NAME:
+            setName(NAME_EDEFAULT);
             return;
       }
       super.eUnset(featureID);
@@ -154,8 +152,8 @@ public class WeightedEdgeImpl extends GEdgeImpl implements WeightedEdge {
    @Override
    public boolean eIsSet(int featureID) {
       switch (featureID) {
-         case WfgraphPackage.WEIGHTED_EDGE__PROBABILITY:
-            return PROBABILITY_EDEFAULT == null ? probability != null : !PROBABILITY_EDEFAULT.equals(probability);
+         case WfgraphPackage.CATEGORY__NAME:
+            return NAME_EDEFAULT == null ? name != null : !NAME_EDEFAULT.equals(name);
       }
       return super.eIsSet(featureID);
    }
@@ -170,10 +168,10 @@ public class WeightedEdgeImpl extends GEdgeImpl implements WeightedEdge {
       if (eIsProxy()) return super.toString();
 
       StringBuilder result = new StringBuilder(super.toString());
-      result.append(" (probability: ");
-      result.append(probability);
+      result.append(" (name: ");
+      result.append(name);
       result.append(')');
       return result.toString();
    }
 
-} //WeightedEdgeImpl
+} //CategoryImpl
