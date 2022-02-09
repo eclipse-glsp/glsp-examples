@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2020 EclipseSource and others.
+ * Copyright (c) 2020-2022 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -13,28 +13,18 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
-import {
-    GLSPClientContribution,
-    registerCopyPasteContextMenu,
-    registerDiagramLayoutCommands,
-    registerDiagramManager
-} from '@eclipse-glsp/theia-integration/lib/browser';
-import { ContainerModule, interfaces } from 'inversify';
+import { ContainerContext, GLSPTheiaFrontendModule } from '@eclipse-glsp/theia-integration/lib/browser';
 import { DiagramConfiguration } from 'sprotty-theia';
-
+import { MinimalLanguage } from '../common/minimal-language';
 import { MinimalDiagramConfiguration } from './diagram/minimal-diagram-configuration';
-import { MinimalDiagramManager } from './diagram/minimal-diagram-manager';
-import { MinimalGLSPDiagramClient } from './diagram/minimal-glsp-diagram-client';
-import { MinimalGLSPClientContribution } from './language/minimal-glsp-client-contribution';
 
-export default new ContainerModule((bind: interfaces.Bind) => {
-    bind(MinimalGLSPClientContribution).toSelf().inSingletonScope();
-    bind(GLSPClientContribution).toService(MinimalGLSPClientContribution);
-    bind(DiagramConfiguration).to(MinimalDiagramConfiguration).inSingletonScope();
-    bind(MinimalGLSPDiagramClient).toSelf().inSingletonScope();
-    registerDiagramManager(bind, MinimalDiagramManager);
+export class MinimalTheiaFrontendModule extends GLSPTheiaFrontendModule {
+    protected enableCopyPaste = true;
+    readonly diagramLanguage = MinimalLanguage;
 
-    // Optional default commands and menus
-    registerDiagramLayoutCommands(bind);
-    registerCopyPasteContextMenu(bind);
-});
+    bindDiagramConfiguration(context: ContainerContext): void {
+        context.bind(DiagramConfiguration).to(MinimalDiagramConfiguration);
+    }
+}
+
+export default new MinimalTheiaFrontendModule();

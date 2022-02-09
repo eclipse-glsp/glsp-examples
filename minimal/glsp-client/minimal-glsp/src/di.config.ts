@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2020 EclipseSource and others.
+ * Copyright (c) 2020-2021 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -13,83 +13,32 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
-import '../css/diagram.css';
-
 import {
-    boundsModule,
-    buttonModule,
     configureModelElement,
     ConsoleLogger,
-    defaultGLSPModule,
-    defaultModule,
-    edgeLayoutModule,
-    expandModule,
-    exportModule,
-    fadeModule,
-    glspDecorationModule,
+    createClientContainer,
     GLSPGraph,
-    glspHoverModule,
-    glspMouseToolModule,
-    glspSelectModule,
-    glspServerCopyPasteModule,
-    layoutCommandsModule,
     LogLevel,
-    modelHintsModule,
-    modelSourceModule,
-    openModule,
     overrideViewerOptions,
-    paletteModule,
     RectangularNode,
     RectangularNodeView,
-    routingModule,
     SGraphView,
-    toolFeedbackModule,
-    toolsModule,
-    TYPES,
-    validationModule,
-    viewportModule,
-    zorderModule
+    TYPES
 } from '@eclipse-glsp/client';
+import { DefaultTypes } from '@eclipse-glsp/protocol';
 import { Container, ContainerModule } from 'inversify';
+import '../css/diagram.css';
 
 const minimalDiagramModule = new ContainerModule((bind, unbind, isBound, rebind) => {
     rebind(TYPES.ILogger).to(ConsoleLogger).inSingletonScope();
     rebind(TYPES.LogLevel).toConstantValue(LogLevel.warn);
     const context = { bind, unbind, isBound, rebind };
-    configureModelElement(context, 'graph', GLSPGraph, SGraphView);
-    configureModelElement(context, 'node', RectangularNode, RectangularNodeView);
+    configureModelElement(context, DefaultTypes.GRAPH, GLSPGraph, SGraphView);
+    configureModelElement(context, DefaultTypes.NODE, RectangularNode, RectangularNodeView);
 });
 
 export default function createContainer(widgetId: string): Container {
-    const container = new Container();
-
-    container.load(
-        validationModule,
-        defaultModule,
-        glspMouseToolModule,
-        defaultGLSPModule,
-        glspSelectModule,
-        boundsModule,
-        viewportModule,
-        toolsModule,
-        glspHoverModule,
-        fadeModule,
-        exportModule,
-        expandModule,
-        openModule,
-        buttonModule,
-        modelSourceModule,
-        minimalDiagramModule,
-        toolFeedbackModule,
-        modelHintsModule,
-        glspServerCopyPasteModule,
-        paletteModule,
-        routingModule,
-        glspDecorationModule,
-        edgeLayoutModule,
-        zorderModule,
-        layoutCommandsModule
-    );
+    const container = createClientContainer(minimalDiagramModule);
 
     overrideViewerOptions(container, {
         baseDiv: widgetId,

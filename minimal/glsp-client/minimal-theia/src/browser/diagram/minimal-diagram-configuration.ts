@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2020 EclipseSource and others.
+ * Copyright (c) 2020-2022 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -13,23 +13,25 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
-import 'sprotty-theia/css/theia-sprotty.css';
-
-import { creatMinimalDiagramContainer } from '@eclipse-glsp-examples/minimal-glsp';
-import { TYPES } from '@eclipse-glsp/client';
-import { GLSPTheiaDiagramServer } from '@eclipse-glsp/theia-integration/lib/browser';
+import { createMinimalDiagramContainer } from '@eclipse-glsp-examples/minimal-glsp';
+import {
+    configureDiagramServer,
+    GLSPDiagramConfiguration,
+    GLSPTheiaDiagramServer,
+    TheiaDiagramServer
+} from '@eclipse-glsp/theia-integration/lib/browser';
 import { Container, injectable } from 'inversify';
-import { DiagramConfiguration } from 'sprotty-theia';
-
-import { MinimalLanguage } from '../../common/minmal-language';
+import 'sprotty-theia/css/theia-sprotty.css';
+import { MinimalLanguage } from '../../common/minimal-language';
 
 @injectable()
-export class MinimalDiagramConfiguration implements DiagramConfiguration {
-    diagramType: string = MinimalLanguage.DiagramType;
+export class MinimalDiagramConfiguration extends GLSPDiagramConfiguration {
+    diagramType: string = MinimalLanguage.diagramType;
 
-    createContainer(widgetId: string): Container {
-        const container = creatMinimalDiagramContainer(widgetId);
-        container.bind(TYPES.ModelSource).to(GLSPTheiaDiagramServer).inSingletonScope();
+    doCreateContainer(widgetId: string): Container {
+        const container = createMinimalDiagramContainer(widgetId);
+        configureDiagramServer(container, GLSPTheiaDiagramServer);
+        container.bind(TheiaDiagramServer).toService(GLSPTheiaDiagramServer);
         return container;
     }
 }

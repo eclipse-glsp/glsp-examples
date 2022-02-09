@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2020 EclipseSource and others.
+ * Copyright (c) 2020-2022 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -21,20 +21,17 @@ import java.util.Map;
 
 import org.eclipse.emf.ecore.EClass;
 import org.eclipse.glsp.graph.DefaultTypes;
-import org.eclipse.glsp.server.diagram.DiagramConfiguration;
-import org.eclipse.glsp.server.diagram.EdgeTypeHint;
-import org.eclipse.glsp.server.diagram.ShapeTypeHint;
+import org.eclipse.glsp.server.diagram.BaseDiagramConfiguration;
+import org.eclipse.glsp.server.types.EdgeTypeHint;
+import org.eclipse.glsp.server.types.ShapeTypeHint;
 
-public class MinimalDiagramConfiguration implements DiagramConfiguration {
-
-   @Override
-   public String getDiagramType() { return "minimal-diagram"; }
+public class MinimalDiagramConfiguration extends BaseDiagramConfiguration {
 
    @Override
    public Map<String, EClass> getTypeMappings() { return DefaultTypes.getDefaultTypeMappings(); }
 
    @Override
-   public List<ShapeTypeHint> getNodeTypeHints() {
+   public List<ShapeTypeHint> getShapeTypeHints() {
       return List.of(new ShapeTypeHint(DefaultTypes.NODE, true, true, true, false));
    }
 

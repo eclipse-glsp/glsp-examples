@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2020 EclipseSource and others.
+ * Copyright (c) 2020-2022 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -16,29 +16,34 @@
 package org.eclipse.glsp.example.minimal;
 
 import org.eclipse.glsp.example.minimal.handler.MinimalCreateNodeOperationHandler;
-import org.eclipse.glsp.server.di.DefaultGLSPModule;
+import org.eclipse.glsp.server.di.GModelJsonDiagramModule;
+import org.eclipse.glsp.server.di.MultiBinding;
 import org.eclipse.glsp.server.diagram.DiagramConfiguration;
-import org.eclipse.glsp.server.features.core.model.JsonFileModelFactory;
-import org.eclipse.glsp.server.features.core.model.ModelFactory;
+import org.eclipse.glsp.server.features.core.model.JsonFileGModelLoader;
+import org.eclipse.glsp.server.features.core.model.ModelSourceLoader;
 import org.eclipse.glsp.server.operations.OperationHandler;
-import org.eclipse.glsp.server.utils.MultiBinding;
+import org.eclipse.glsp.server.operations.gmodel.LayoutOperationHandler;
 
-public class MinimalGLSPModule extends DefaultGLSPModule {
+public class MinimalDiagramModule extends GModelJsonDiagramModule {
 
    @Override
-   protected void configureDiagramConfigurations(final MultiBinding<DiagramConfiguration> binding) {
-      binding.add(MinimalDiagramConfiguration.class);
+   protected Class<? extends DiagramConfiguration> bindDiagramConfiguration() {
+      return MinimalDiagramConfiguration.class;
    }
 
    @Override
    protected void configureOperationHandlers(final MultiBinding<OperationHandler> binding) {
       super.configureOperationHandlers(binding);
       binding.add(MinimalCreateNodeOperationHandler.class);
+      binding.remove(LayoutOperationHandler.class);
    }
 
    @Override
-   protected Class<? extends ModelFactory> bindModelFactory() {
-      return JsonFileModelFactory.class;
+   protected Class<? extends ModelSourceLoader> bindSourceModelLoader() {
+      return JsonFileGModelLoader.class;
    }
+
+   @Override
+   public String getDiagramType() { return "minimal-diagram"; }
 
 }
