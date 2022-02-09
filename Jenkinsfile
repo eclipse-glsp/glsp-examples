@@ -8,11 +8,11 @@ spec:
     tty: true
     resources:
       limits:
-        memory: "2Gi"
-        cpu: "1"
+        memory: "4Gi"
+        cpu: "2"
       requests:
-        memory: "2Gi"
-        cpu: "1"
+        memory: "4Gi"
+        cpu: "2"
     command:
     - cat
     env:
@@ -59,33 +59,33 @@ pipeline {
     environment {
         YARN_CACHE_FOLDER = "${env.WORKSPACE}/yarn-cache"
         SPAWN_WRAP_SHIM_ROOT = "${env.WORKSPACE}"
-        JAR_FILE="org.eclipse.glsp.example.minimal-0.8.0-glsp.jar"
-        GLSP_SERVER_PATH= "${env.WORKSPACE}/server-build/${env.JAR_FILE}"
-
     }
     
     stages {
         stage('Build Examples (Server)'){
-                steps{
-                    timeout(30){
-                        container('ci') {
-                            dir('minimal/server/org.eclipse.glsp.example.minimal'){
-                                sh "mvn clean verify -DskipTests -B -Dcheckstyle.skip"
-                                sh "mkdir ${env.WORKSPACE}/server-build"
-                                sh "cp ./target/${env.JAR_FILE} ${env.GLSP_SERVER_PATH}"
-                            }
+            steps{
+                timeout(30){
+                    container('ci') {
+                        dir('minimal/glsp-server/'){
+                            sh "mvn clean verify -DskipTests -B -Dcheckstyle.skip"
+                        }
+                        dir('workflow/glsp-server/'){
+                            sh "mvn clean verify -DskipTests -B -Dcheckstyle.skip"
                         }
                     }
                 }
             }
+        }
 
         stage('Build Examples (Client)') {
             steps {
                 timeout(30){
                     container('ci') {
-                        dir('minimal/client') {
-                            sh "cp ${env.GLSP_SERVER_PATH} ../server/org.eclipse.glsp.example.minimal/target/${env.JAR_FILE}"
-                            sh 'yarn build --ignore-engines'
+                        dir('minimal/glsp-client') {
+                            sh 'yarn build'
+                        }
+                         dir('workflow/glsp-client') {
+                            sh 'yarn build'
                         }
                     }
                 }
@@ -97,14 +97,22 @@ pipeline {
                 timeout(30){
                     container('ci') {
                         // Execute checkstyle checks
-                        dir('minimal/server/org.eclipse.glsp.example.minimal'){
+                        dir('minimal/glsp-server'){
+                            sh 'mvn checkstyle:check'
+                        } 
+
+                        dir('workflow/glsp-server'){
                             sh 'mvn checkstyle:check'
                         } 
 
                         // Execute eslint checks
-                        dir('minimal/client') {
+                        dir('minimal/glsp-client') {
                             sh 'yarn lint -o eslint.xml -f checkstyle'
-                        }     
+                        }    
+
+                        dir('workflow/glsp-client') {
+                            sh 'yarn lint -o eslint.xml -f checkstyle'
+                        }  
                     }   
                 }
             }
@@ -121,7 +129,7 @@ pipeline {
 
             // Record & publish esLint issues
             recordIssues enabledForFailure: true, publishAllIssues: true, aggregatingResults: true, 
-            tools: [esLint(pattern: 'minimal/client/node_modules/**/*/eslint.xml')], 
+            tools: [esLint(pattern: '**/glsp-client/node_modules/**/*/eslint.xml')], 
             qualityGates: [[threshold: 1, type: 'TOTAL', unstable: true]]
 
             // Record maven,java warnings
