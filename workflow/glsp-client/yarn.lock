@@ -5118,38 +5118,6 @@ flatted@^3.1.0:
   resolved "https://registry.yarnpkg.com/flatted/-/flatted-3.2.4.tgz#28d9969ea90661b5134259f312ab6aa7929ac5e2"
   integrity sha512-8/sOawo8tJ4QOBX8YlQBMxL8+RLZfxMQOif9o0KUKTNTjMYElWPE0r/m5VNFxTRd0NSw8qSy8dajrwX4RYI1Hw==
 
-flatten@^1.0.2:
-  version "1.0.3"
-  resolved "https://registry.yarnpkg.com/flatten/-/flatten-1.0.3.tgz#c1283ac9f27b368abc1e36d1ff7b04501a30356b"
-  integrity sha512-dVsPA/UwQ8+2uoFe5GHtiBMu48dWLTdsuEd7CKGlZlD78r1TTWBvDuFaFGKCo/ZfEr95Uk56vZoX86OsHkUeIg==
-
-flow-parser@^0.*:
-  version "0.167.0"
-  resolved "https://registry.yarnpkg.com/flow-parser/-/flow-parser-0.167.0.tgz#78c6a49b2e1aee2735674780c4706c162f9d33f9"
-  integrity sha512-45pjy35viRuzShVdidJi7lk6e+Koa6jmbL1zvl14zVh0nDH2UiIcV3tvunCqwm06r8cK9BUIlKkupxWQpCuTog==
-
-flush-write-stream@^1.0.0:
-  version "1.1.1"
-  resolved "https://registry.yarnpkg.com/flush-write-stream/-/flush-write-stream-1.1.1.tgz#8dd7d873a1babc207d94ead0c2e0e44276ebf2e8"
-  integrity sha512-3Z4XhFZ3992uIq0XOqb9AreonueSYphE6oYbpt5+3u06JWklbsPkNv3ZKkP9Bz/r+1MWCaMoSQ28P85+1Yc77w==
-  dependencies:
-    inherits "^2.0.3"
-    readable-stream "^2.3.6"
-
-follow-redirects@^1.14.0:
-  version "1.14.8"
-  resolved "https://registry.yarnpkg.com/follow-redirects/-/follow-redirects-1.14.8.tgz#016996fb9a11a100566398b1c6839337d7bfa8fc"
-  integrity sha512-1x0S9UVJHsQprFcEC/qnNzBLcIxsjAV905f/UkQxbclCsoTWlacCNOpQa/anodLl2uaEKFhfWOvM2Qg77+15zA==
-
-font-awesome-webpack@0.0.5-beta.2:
-  version "0.0.5-beta.2"
-  resolved "https://registry.yarnpkg.com/font-awesome-webpack/-/font-awesome-webpack-0.0.5-beta.2.tgz#9ea5f22f0615d08e76d8db341563649a726286d6"
-  integrity sha1-nqXyLwYV0I522Ns0FWNkmnJihtY=
-  dependencies:
-    css-loader "~0.26.1"
-    less-loader "~2.2.3"
-    style-loader "~0.13.1"
-
 font-awesome@^4.7.0:
   version "4.7.0"
   resolved "https://registry.yarnpkg.com/font-awesome/-/font-awesome-4.7.0.tgz#8fa8cf0411a1a31afd07b06d2902bb9fc815a133"
