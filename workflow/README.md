@@ -4,7 +4,7 @@ This example shows a consistent example provided by all GLSP components.
 It implements a simple flow chart diagram editor with different types of nodes and edges.
 The `Workflow Example` is the main example used for development and integrates all GLSP features.
 
-![GLSP Workflow Example animated](https://www.eclipse.org/glsp/images/diagramanimated.gif)
+https://user-images.githubusercontent.com/588090/154459938-849ca684-11b3-472c-8a59-98ea6cb0b4c1.mp4
 
 ## Prerequisites
 
