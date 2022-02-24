@@ -24,7 +24,7 @@ The web-based/client part of the examples has been developed using [Visual Studi
 The server component of the minimal example has to be built using Maven, the client component has to be built using yarn. This can be done via CLI:
 
     cd glsp-server && mvn clean verify && cd ..
-    cd glsp-client && yarn && cd workflow-theia && yarn copy:server && cd ../..
+    cd glsp-client && yarn
 
 ## Running the example
 

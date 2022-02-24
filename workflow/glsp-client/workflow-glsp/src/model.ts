@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2020 EclipseSource and others.
+ * Copyright (c) 2020-2021 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -30,6 +30,7 @@ import {
     nameFeature,
     popupFeature,
     RectangularNode,
+    SChildElement,
     SEdge,
     selectFeature,
     SModelElement,
@@ -57,7 +58,7 @@ export class TaskNode extends RectangularNode implements Nameable, WithEditableL
     taskType?: string;
     reference?: string;
 
-    get editableLabel(): (EditableLabel & SModelElement) | undefined {
+    get editableLabel(): (SChildElement & EditableLabel) | undefined {
         const headerComp = this.children.find(element => element.type === 'comp:header');
         if (headerComp) {
             const label = headerComp.children.find(element => element.type === 'label:heading');
@@ -107,4 +108,29 @@ export class Icon extends SShapeElement implements LayoutContainer {
         width: 32,
         height: 32
     };
+}
+
+export class CategoryNode extends RectangularNode implements Nameable, WithEditableLabel {
+    static readonly DEFAULT_FEATURES = [
+        deletableFeature,
+        selectFeature,
+        boundsFeature,
+        moveFeature,
+        layoutContainerFeature,
+        fadeFeature,
+        hoverFeedbackFeature,
+        popupFeature,
+        nameFeature,
+        withEditLabelFeature
+    ];
+
+    name = '';
+
+    get editableLabel(): (SChildElement & EditableLabel) | undefined {
+        const label = this.children.find(element => element.type === 'label:heading');
+        if (label && isEditableLabel(label)) {
+            return label;
+        }
+        return undefined;
+    }
 }

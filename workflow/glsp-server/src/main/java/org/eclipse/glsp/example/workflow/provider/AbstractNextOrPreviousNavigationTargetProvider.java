@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2020 EclipseSource and others.
+ * Copyright (c) 2020-2021 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -28,14 +28,19 @@ import org.eclipse.glsp.server.features.navigation.NavigationTarget;
 import org.eclipse.glsp.server.features.navigation.NavigationTargetProvider;
 import org.eclipse.glsp.server.model.GModelState;
 import org.eclipse.glsp.server.types.EditorContext;
-import org.eclipse.glsp.server.utils.ClientOptions;
+import org.eclipse.glsp.server.utils.ClientOptionsUtil;
+import org.eclipse.glsp.server.utils.MapUtil;
+
+import com.google.inject.Inject;
 
 public abstract class AbstractNextOrPreviousNavigationTargetProvider implements NavigationTargetProvider {
 
+   @Inject
+   protected GModelState modelState;
+
    @Override
-   public List<? extends NavigationTarget> getTargets(final EditorContext editorContext,
-      final GModelState modelState) {
-      Optional<String> sourceUri = ClientOptions.getValue(modelState.getClientOptions(), ClientOptions.SOURCE_URI);
+   public List<? extends NavigationTarget> getTargets(final EditorContext editorContext) {
+      Optional<String> sourceUri = MapUtil.getValue(modelState.getClientOptions(), ClientOptionsUtil.SOURCE_URI);
       return editorContext.getSelectedElementIds().stream()
          .flatMap(id -> modelState.getIndex().get(id).stream())
          .filter(TaskNode.class::isInstance).map(TaskNode.class::cast)

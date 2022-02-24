@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2020 EclipseSource and others.
+ * Copyright (c) 2020-2021 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -22,15 +22,14 @@ import org.apache.log4j.Level;
 import org.apache.log4j.Logger;
 import org.eclipse.glsp.example.workflow.action.LogAction;
 import org.eclipse.glsp.server.actions.Action;
-import org.eclipse.glsp.server.actions.BasicActionHandler;
-import org.eclipse.glsp.server.model.GModelState;
+import org.eclipse.glsp.server.actions.AbstractActionHandler;
 import org.eclipse.glsp.server.types.Severity;
 
-public class LogActionHandler extends BasicActionHandler<LogAction> {
+public class LogActionHandler extends AbstractActionHandler<LogAction> {
    private static Logger LOG = Logger.getLogger(LogActionHandler.class);
 
    @Override
-   protected List<Action> executeAction(final LogAction action, final GModelState modelState) {
+   protected List<Action> executeAction(final LogAction action) {
       LOG.log(toLevel(action.getSeverity()), action.getMessage());
       return Collections.emptyList();
    }

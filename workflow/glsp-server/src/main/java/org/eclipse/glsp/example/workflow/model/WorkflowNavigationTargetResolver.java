@@ -25,10 +25,14 @@ import org.eclipse.glsp.server.features.navigation.NavigationTargetResolution;
 import org.eclipse.glsp.server.features.navigation.NavigationTargetResolver;
 import org.eclipse.glsp.server.model.GModelState;
 
+import com.google.inject.Inject;
+
 public class WorkflowNavigationTargetResolver implements NavigationTargetResolver {
+   @Inject
+   protected GModelState modelState;
+
    @Override
-   public NavigationTargetResolution resolve(final NavigationTarget navigationTarget,
-      final GModelState modelState) {
+   public NavigationTargetResolution resolve(final NavigationTarget navigationTarget) {
       if (navigationTarget.getArgs().containsKey("name")) {
          String name = navigationTarget.getArgs().get("name");
          Set<TaskNode> taskNodes = modelState.getIndex().findAll(modelState.getRoot(), TaskNode.class);

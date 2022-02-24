@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2019-2020 EclipseSource and others.
+ *  Copyright (c) 2019-2021 EclipseSource and others.
  * 
  *  This program and the accompanying materials are made available under the
  *  terms of the Eclipse Public License v. 2.0 which is available at
@@ -73,8 +73,9 @@ public class WfgraphFactoryImpl extends EFactoryImpl implements WfgraphFactory {
          case WfgraphPackage.TASK_NODE: return createTaskNode();
          case WfgraphPackage.ICON: return createIcon();
          case WfgraphPackage.WEIGHTED_EDGE: return createWeightedEdge();
+         case WfgraphPackage.CATEGORY: return createCategory();
          default:
-            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier"); //$NON-NLS-1$ //$NON-NLS-2$
+            throw new IllegalArgumentException("The class '" + eClass.getName() + "' is not a valid classifier");
       }
    }
 
@@ -120,6 +121,17 @@ public class WfgraphFactoryImpl extends EFactoryImpl implements WfgraphFactory {
    public WeightedEdge createWeightedEdge() {
       WeightedEdgeImpl weightedEdge = new WeightedEdgeImpl();
       return weightedEdge;
+   }
+
+   /**
+    * <!-- begin-user-doc -->
+    * <!-- end-user-doc -->
+    * @generated
+    */
+   @Override
+   public Category createCategory() {
+      CategoryImpl category = new CategoryImpl();
+      return category;
    }
 
    /**

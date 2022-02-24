@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2019 EclipseSource and others.
+ * Copyright (c) 2019-2021 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -13,10 +13,12 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
-export namespace WorkflowLanguage {
-    export const Id = 'Workflow';
-    export const Name = 'Workflow';
-    export const Label = 'Workflow diagram';
-    export const DiagramType = 'workflow-diagram';
-    export const FileExtension = '.wf';
-}
+import { GLSPDiagramLanguage } from '@eclipse-glsp/theia-integration/lib/common';
+
+export const WorkflowLanguage: GLSPDiagramLanguage = {
+    contributionId: 'workflow',
+    label: 'Workflow Diagram',
+    diagramType: 'workflow-diagram',
+    fileExtensions: ['.wf'],
+    iconClass: 'codicon codicon-type-hierarchy-sub'
+};

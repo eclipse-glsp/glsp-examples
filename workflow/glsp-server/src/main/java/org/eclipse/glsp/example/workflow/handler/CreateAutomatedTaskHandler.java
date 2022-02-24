@@ -15,7 +15,12 @@
  ********************************************************************************/
 package org.eclipse.glsp.example.workflow.handler;
 
+import java.util.Optional;
+
 import org.eclipse.glsp.example.workflow.utils.ModelTypes;
+import org.eclipse.glsp.example.workflow.utils.WorkflowBuilder.TaskNodeBuilder;
+import org.eclipse.glsp.graph.GPoint;
+import org.eclipse.glsp.server.model.GModelState;
 
 public class CreateAutomatedTaskHandler extends CreateTaskHandler {
 
@@ -25,5 +30,11 @@ public class CreateAutomatedTaskHandler extends CreateTaskHandler {
 
    @Override
    public String getLabel() { return "Automated Task"; }
+
+   @Override
+   protected TaskNodeBuilder builder(final Optional<GPoint> point, final GModelState modelState) {
+      return super.builder(point, modelState)
+         .addCssClass("automated");
+   }
 
 }

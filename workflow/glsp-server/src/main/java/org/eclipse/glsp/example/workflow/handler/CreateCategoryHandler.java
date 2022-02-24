@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2019-2021 EclipseSource and others.
+ * Copyright (c) 2021 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -19,27 +19,25 @@ import java.util.Map;
 import java.util.Optional;
 
 import org.eclipse.glsp.example.workflow.utils.ModelTypes;
-import org.eclipse.glsp.example.workflow.utils.WorkflowBuilder.ActivityNodeBuilder;
+import org.eclipse.glsp.example.workflow.utils.WorkflowBuilder.CategoryNodeBuilder;
+import org.eclipse.glsp.example.workflow.wfgraph.WfgraphPackage;
 import org.eclipse.glsp.graph.GNode;
 import org.eclipse.glsp.graph.GPoint;
 import org.eclipse.glsp.server.model.GModelState;
+import org.eclipse.glsp.server.utils.GModelUtil;
 
-public abstract class CreateActivityNodeHandler extends CreateWorkflowNodeOperationHandler {
+public class CreateCategoryHandler extends CreateWorkflowNodeOperationHandler {
 
-   private final String label;
-   private final String elementTypeId;
-
-   public CreateActivityNodeHandler(final String elementTypeId, final String label) {
-      super(elementTypeId);
-      this.elementTypeId = elementTypeId;
-      this.label = label;
+   public CreateCategoryHandler() {
+      super(ModelTypes.CATEGORY);
    }
 
-   protected String getElementTypeId() { return elementTypeId; }
+   protected CategoryNodeBuilder builder(final Optional<GPoint> point, final GModelState modelState) {
 
-   protected ActivityNodeBuilder builder(final Optional<GPoint> point, final GModelState modelState) {
-      String nodeType = ModelTypes.toNodeType(getElementTypeId());
-      return new ActivityNodeBuilder(getElementTypeId(), nodeType) //
+      int nodeCounter = GModelUtil.generateId(WfgraphPackage.Literals.CATEGORY, "category", modelState);
+      String name = "Category " + nodeCounter;
+
+      return new CategoryNodeBuilder(name) //
          .position(point.orElse(null));
    }
 
@@ -49,6 +47,5 @@ public abstract class CreateActivityNodeHandler extends CreateWorkflowNodeOperat
    }
 
    @Override
-   public String getLabel() { return label; }
-
+   public String getLabel() { return "Category"; }
 }

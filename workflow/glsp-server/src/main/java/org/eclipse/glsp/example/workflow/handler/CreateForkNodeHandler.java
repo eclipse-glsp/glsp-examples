@@ -17,7 +17,7 @@ package org.eclipse.glsp.example.workflow.handler;
 
 import org.eclipse.glsp.example.workflow.utils.ModelTypes;
 
-public class CreateForkNodeHandler extends CreateActivityNodeHandler {
+public class CreateForkNodeHandler extends CreateForkOrJoinNodeHandler {
 
    public CreateForkNodeHandler() {
       super(ModelTypes.FORK_NODE, "Fork Node");

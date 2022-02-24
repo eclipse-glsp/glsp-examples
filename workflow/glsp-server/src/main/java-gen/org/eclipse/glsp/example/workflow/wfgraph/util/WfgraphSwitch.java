@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2019-2020 EclipseSource and others.
+ *  Copyright (c) 2019-2021 EclipseSource and others.
  * 
  *  This program and the accompanying materials are made available under the
  *  terms of the Eclipse Public License v. 2.0 which is available at
@@ -21,7 +21,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
 
 import org.eclipse.glsp.example.workflow.wfgraph.*;
-
+import org.eclipse.glsp.graph.GArgumentable;
 import org.eclipse.glsp.graph.GBoundsAware;
 import org.eclipse.glsp.graph.GCompartment;
 import org.eclipse.glsp.graph.GEdge;
@@ -97,6 +97,7 @@ public class WfgraphSwitch<T> extends Switch<T> {
             if (result == null) result = caseGLayouting(activityNode);
             if (result == null) result = caseGModelElement(activityNode);
             if (result == null) result = caseGBoundsAware(activityNode);
+            if (result == null) result = caseGArgumentable(activityNode);
             if (result == null) result = defaultCase(theEObject);
             return result;
          }
@@ -110,6 +111,7 @@ public class WfgraphSwitch<T> extends Switch<T> {
             if (result == null) result = caseGLayouting(taskNode);
             if (result == null) result = caseGModelElement(taskNode);
             if (result == null) result = caseGBoundsAware(taskNode);
+            if (result == null) result = caseGArgumentable(taskNode);
             if (result == null) result = defaultCase(theEObject);
             return result;
          }
@@ -121,6 +123,7 @@ public class WfgraphSwitch<T> extends Switch<T> {
             if (result == null) result = caseGLayouting(icon);
             if (result == null) result = caseGModelElement(icon);
             if (result == null) result = caseGBoundsAware(icon);
+            if (result == null) result = caseGArgumentable(icon);
             if (result == null) result = defaultCase(theEObject);
             return result;
          }
@@ -129,6 +132,21 @@ public class WfgraphSwitch<T> extends Switch<T> {
             T result = caseWeightedEdge(weightedEdge);
             if (result == null) result = caseGEdge(weightedEdge);
             if (result == null) result = caseGModelElement(weightedEdge);
+            if (result == null) result = caseGArgumentable(weightedEdge);
+            if (result == null) result = defaultCase(theEObject);
+            return result;
+         }
+         case WfgraphPackage.CATEGORY: {
+            Category category = (Category)theEObject;
+            T result = caseCategory(category);
+            if (result == null) result = caseActivityNode(category);
+            if (result == null) result = caseGNode(category);
+            if (result == null) result = caseGShapeElement(category);
+            if (result == null) result = caseGEdgeLayoutable(category);
+            if (result == null) result = caseGLayouting(category);
+            if (result == null) result = caseGModelElement(category);
+            if (result == null) result = caseGBoundsAware(category);
+            if (result == null) result = caseGArgumentable(category);
             if (result == null) result = defaultCase(theEObject);
             return result;
          }
@@ -193,6 +211,36 @@ public class WfgraphSwitch<T> extends Switch<T> {
     * @generated
     */
    public T caseWeightedEdge(WeightedEdge object) {
+      return null;
+   }
+
+   /**
+    * Returns the result of interpreting the object as an instance of '<em>Category</em>'.
+    * <!-- begin-user-doc -->
+    * This implementation returns null;
+    * returning a non-null result will terminate the switch.
+    * <!-- end-user-doc -->
+    * @param object the target of the switch.
+    * @return the result of interpreting the object as an instance of '<em>Category</em>'.
+    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+    * @generated
+    */
+   public T caseCategory(Category object) {
+      return null;
+   }
+
+   /**
+    * Returns the result of interpreting the object as an instance of '<em>GArgumentable</em>'.
+    * <!-- begin-user-doc -->
+    * This implementation returns null;
+    * returning a non-null result will terminate the switch.
+    * <!-- end-user-doc -->
+    * @param object the target of the switch.
+    * @return the result of interpreting the object as an instance of '<em>GArgumentable</em>'.
+    * @see #doSwitch(org.eclipse.emf.ecore.EObject) doSwitch(EObject)
+    * @generated
+    */
+   public T caseGArgumentable(GArgumentable object) {
       return null;
    }
 

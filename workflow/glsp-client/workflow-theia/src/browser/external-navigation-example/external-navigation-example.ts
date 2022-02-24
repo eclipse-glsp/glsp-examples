@@ -16,8 +16,8 @@
 import { CommandContribution, CommandRegistry } from '@theia/core';
 import { open, OpenerService } from '@theia/core/lib/browser/opener-service';
 import URI from '@theia/core/lib/common/uri';
+import { inject, injectable } from '@theia/core/shared/inversify';
 import { WorkspaceService } from '@theia/workspace/lib/browser/workspace-service';
-import { inject, injectable } from 'inversify';
 
 @injectable()
 export class ExampleNavigationCommandContribution implements CommandContribution {
@@ -32,7 +32,7 @@ export class ExampleNavigationCommandContribution implements CommandContribution
             {
                 execute: args => {
                     if (this.workspaceService.workspace) {
-                        const uri = new URI(this.workspaceService.workspace.uri + '/example1.wf');
+                        const uri = new URI(this.workspaceService.workspace.resource + '/example1.wf');
                         open(this.openerService, uri, {
                             selection: { name: 'Push' }
                         });

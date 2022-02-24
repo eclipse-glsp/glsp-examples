@@ -1,5 +1,5 @@
 /**
- *  Copyright (c) 2019-2020 EclipseSource and others.
+ *  Copyright (c) 2019-2021 EclipseSource and others.
  * 
  *  This program and the accompanying materials are made available under the
  *  terms of the Eclipse Public License v. 2.0 which is available at
@@ -384,15 +384,15 @@ public class TaskNodeImpl extends ActivityNodeImpl implements TaskNode {
       if (eIsProxy()) return super.toString();
 
       StringBuilder result = new StringBuilder(super.toString());
-      result.append(" (name: "); //$NON-NLS-1$
+      result.append(" (name: ");
       result.append(name);
-      result.append(", expanded: "); //$NON-NLS-1$
+      result.append(", expanded: ");
       result.append(expanded);
-      result.append(", duration: "); //$NON-NLS-1$
+      result.append(", duration: ");
       result.append(duration);
-      result.append(", taskType: "); //$NON-NLS-1$
+      result.append(", taskType: ");
       result.append(taskType);
-      result.append(", reference: "); //$NON-NLS-1$
+      result.append(", reference: ");
       result.append(reference);
       result.append(')');
       return result.toString();

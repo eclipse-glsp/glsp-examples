@@ -23,9 +23,14 @@ However, it's of course also possible to use any other IDE or text editor.
 
 -   [Minimal Example](minimal): A very simple GLSP editor for rectangular nodes.
     This demonstrates the core concepts and basic client-server integration into Theia.
+
+    <img src="documentation/minimal-example-animated.gif" alt="drawing" width="400"/>
+
 -   [Workflow Example](workflow): A consistent example provided by all GLSP components.
     It implements a simple flow chart diagram editor with different types of nodes and edges.
     The `Workflow Example` is the main example used for development and integrates all GLSP features
+
+    <img src="documentation/workflow-example-animated.gif" alt="drawing" width="400"/>
 
 ### VSCode workspaces
 

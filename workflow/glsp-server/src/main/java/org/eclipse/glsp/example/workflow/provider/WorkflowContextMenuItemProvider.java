@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2019 EclipseSource and others.
+ * Copyright (c) 2019-2021 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -31,13 +31,16 @@ import org.eclipse.glsp.server.model.GModelState;
 import org.eclipse.glsp.server.operations.CreateNodeOperation;
 
 import com.google.common.collect.Lists;
+import com.google.inject.Inject;
 
 public class WorkflowContextMenuItemProvider implements ContextMenuItemProvider {
 
+   @Inject
+   protected GModelState modelState;
+
    @Override
    public List<MenuItem> getItems(final List<String> selectedElementIds, final GPoint position,
-      final Map<String, String> args,
-      final GModelState modelState) {
+      final Map<String, String> args) {
       if (modelState.isReadonly()) {
          return Collections.emptyList();
       }

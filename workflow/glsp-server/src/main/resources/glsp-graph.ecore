@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ecore:EPackage xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
     xmlns:ecore="http://www.eclipse.org/emf/2002/Ecore" name="graph" nsURI="http://www.eclipse.org/glsp/graph" nsPrefix="graph">
-  <eClassifiers xsi:type="ecore:EClass" name="GModelElement" abstract="true" interface="true">
+  <eClassifiers xsi:type="ecore:EClass" name="GModelElement" abstract="true" interface="true"
+      eSuperTypes="#//GArgumentable">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="id" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EString"
         iD="true"/>
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="cssClasses" upperBound="-1"
@@ -53,7 +54,11 @@
     <eStructuralFeatures xsi:type="ecore:EReference" name="position" eType="#//GPoint"
         containment="true"/>
     <eStructuralFeatures xsi:type="ecore:EReference" name="size" eType="#//GDimension"
-        containment="true"/>
+        containment="true">
+      <eAnnotations source="http://www.eclipse.org/emf/2002/GenModel">
+        <details key="documentation" value="Visual bounds of the node"/>
+      </eAnnotations>
+    </eStructuralFeatures>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GPoint">
     <eStructuralFeatures xsi:type="ecore:EAttribute" name="x" lowerBound="1" eType="ecore:EDataType http://www.eclipse.org/emf/2002/Ecore#//EDouble"
@@ -99,6 +104,10 @@
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GAlignable">
     <eStructuralFeatures xsi:type="ecore:EReference" name="alignment" eType="#//GPoint"
+        containment="true"/>
+  </eClassifiers>
+  <eClassifiers xsi:type="ecore:EClass" name="GArgumentable">
+    <eStructuralFeatures xsi:type="ecore:EReference" name="args" upperBound="-1" eType="#//StringToObjectMapEntry"
         containment="true"/>
   </eClassifiers>
   <eClassifiers xsi:type="ecore:EClass" name="GIssue">

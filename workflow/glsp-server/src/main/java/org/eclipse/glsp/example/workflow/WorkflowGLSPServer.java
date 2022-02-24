@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2019-2020 EclipseSource and others.
+ * Copyright (c) 2019-2021 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -15,23 +15,35 @@
  ********************************************************************************/
 package org.eclipse.glsp.example.workflow;
 
+import static org.eclipse.glsp.server.types.GLSPServerException.getOrThrow;
+
+import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
 import org.apache.log4j.Logger;
-import org.eclipse.glsp.server.jsonrpc.DefaultGLSPServer;
+import org.eclipse.glsp.server.protocol.DefaultGLSPServer;
+import org.eclipse.glsp.server.protocol.InitializeResult;
+import org.eclipse.glsp.server.utils.MapUtil;
 
-public class WorkflowGLSPServer extends DefaultGLSPServer<WorkflowInitializeOptions> {
+public class WorkflowGLSPServer extends DefaultGLSPServer {
    private static final Logger LOGGER = Logger.getLogger(WorkflowGLSPServer.class);
-
-   public WorkflowGLSPServer() {
-      super(WorkflowInitializeOptions.class);
-   }
+   private static final String MESSAGE_KEY = "message";
+   private static final String TIMESTAMP_KEY = "timestamp";
 
    @Override
-   public CompletableFuture<Boolean> handleOptions(final WorkflowInitializeOptions options) {
-      if (options != null) {
-         LOGGER.debug(options.getTimestamp() + ": " + options.getMessage());
+   public CompletableFuture<InitializeResult> handleIntializeArgs(final InitializeResult result,
+      final Map<String, String> args) {
+      CompletableFuture<InitializeResult> completableResult = CompletableFuture.completedFuture(result);
+      if (args.isEmpty()) {
+         return completableResult;
       }
-      return CompletableFuture.completedFuture(true);
+
+      String timestamp = getOrThrow(MapUtil.getValue(args, TIMESTAMP_KEY),
+         "No value present for the given key: " + TIMESTAMP_KEY);
+      String message = getOrThrow(MapUtil.getValue(args, MESSAGE_KEY),
+         "No value present for the given key: " + MESSAGE_KEY);
+      LOGGER.debug(timestamp + ": " + message);
+
+      return completableResult;
    }
 }

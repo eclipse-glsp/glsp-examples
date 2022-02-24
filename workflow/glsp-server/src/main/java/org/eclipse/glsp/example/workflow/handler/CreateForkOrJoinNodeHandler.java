@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2019 EclipseSource and others.
+ * Copyright (c) 2021 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -13,15 +13,24 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
-package org.eclipse.glsp.example.workflow;
+package org.eclipse.glsp.example.workflow.handler;
 
-import java.util.Date;
+import java.util.Optional;
 
-public class WorkflowInitializeOptions {
-   private Date timestamp;
-   private String message;
+import org.eclipse.glsp.example.workflow.utils.WorkflowBuilder.ActivityNodeBuilder;
+import org.eclipse.glsp.graph.GPoint;
+import org.eclipse.glsp.server.model.GModelState;
 
-   public Date getTimestamp() { return timestamp; }
+public abstract class CreateForkOrJoinNodeHandler extends CreateActivityNodeHandler {
 
-   public String getMessage() { return message; }
+   public CreateForkOrJoinNodeHandler(final String elementTypeId, final String label) {
+      super(elementTypeId, label);
+   }
+
+   @Override
+   protected ActivityNodeBuilder builder(final Optional<GPoint> point, final GModelState modelState) {
+      return super.builder(point, modelState)
+         .addCssClass("forkOrJoin")
+         .size(10d, 50d);
+   }
 }

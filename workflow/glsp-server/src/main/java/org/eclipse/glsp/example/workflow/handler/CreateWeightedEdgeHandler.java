@@ -37,6 +37,7 @@ public class CreateWeightedEdgeHandler extends CreateEdgeOperationHandler {
          .source(source) //
          .target(target) //
          .probability("medium") //
+         .addCssClass("medium") //
          .build());
    }
 

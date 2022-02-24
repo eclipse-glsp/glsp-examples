@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2019-2020 EclipseSource and others.
+ * Copyright (c) 2019-2021 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -16,6 +16,7 @@
 package org.eclipse.glsp.example.workflow;
 
 import org.eclipse.glsp.example.workflow.handler.CreateAutomatedTaskHandler;
+import org.eclipse.glsp.example.workflow.handler.CreateCategoryHandler;
 import org.eclipse.glsp.example.workflow.handler.CreateDecisionNodeHandler;
 import org.eclipse.glsp.example.workflow.handler.CreateEdgeHandler;
 import org.eclipse.glsp.example.workflow.handler.CreateForkNodeHandler;
@@ -28,7 +29,6 @@ import org.eclipse.glsp.example.workflow.handler.WorkflowRequestContextActionsHa
 import org.eclipse.glsp.example.workflow.labeledit.WorkflowLabelEditValidator;
 import org.eclipse.glsp.example.workflow.layout.WorkflowLayoutEngine;
 import org.eclipse.glsp.example.workflow.marker.WorkflowModelValidator;
-import org.eclipse.glsp.example.workflow.model.WorkflowModelFactory;
 import org.eclipse.glsp.example.workflow.model.WorkflowNavigationTargetResolver;
 import org.eclipse.glsp.example.workflow.provider.NextNodeNavigationTargetProvider;
 import org.eclipse.glsp.example.workflow.provider.NodeDocumentationNavigationTargetProvider;
@@ -41,13 +41,15 @@ import org.eclipse.glsp.example.workflow.taskedit.TaskEditContextActionProvider;
 import org.eclipse.glsp.example.workflow.taskedit.TaskEditValidator;
 import org.eclipse.glsp.graph.GraphExtension;
 import org.eclipse.glsp.server.actions.ActionHandler;
-import org.eclipse.glsp.server.di.DefaultGLSPModule;
+import org.eclipse.glsp.server.di.GModelJsonDiagramModule;
+import org.eclipse.glsp.server.di.MultiBinding;
 import org.eclipse.glsp.server.diagram.DiagramConfiguration;
 import org.eclipse.glsp.server.features.commandpalette.CommandPaletteActionProvider;
 import org.eclipse.glsp.server.features.contextactions.ContextActionsProvider;
 import org.eclipse.glsp.server.features.contextactions.RequestContextActionsHandler;
 import org.eclipse.glsp.server.features.contextmenu.ContextMenuItemProvider;
-import org.eclipse.glsp.server.features.core.model.ModelFactory;
+import org.eclipse.glsp.server.features.core.model.JsonFileGModelLoader;
+import org.eclipse.glsp.server.features.core.model.ModelSourceLoader;
 import org.eclipse.glsp.server.features.directediting.ContextEditValidator;
 import org.eclipse.glsp.server.features.directediting.LabelEditValidator;
 import org.eclipse.glsp.server.features.modelsourcewatcher.FileWatcher;
@@ -56,23 +58,29 @@ import org.eclipse.glsp.server.features.navigation.NavigationTargetProvider;
 import org.eclipse.glsp.server.features.navigation.NavigationTargetResolver;
 import org.eclipse.glsp.server.features.popup.PopupModelFactory;
 import org.eclipse.glsp.server.features.validation.ModelValidator;
-import org.eclipse.glsp.server.layout.ILayoutEngine;
-import org.eclipse.glsp.server.layout.ServerLayoutConfiguration;
+import org.eclipse.glsp.server.layout.LayoutEngine;
 import org.eclipse.glsp.server.operations.OperationHandler;
-import org.eclipse.glsp.server.protocol.GLSPServer;
-import org.eclipse.glsp.server.utils.MultiBinding;
 
-public class WorkflowGLSPModule extends DefaultGLSPModule {
+public class WorkflowDiagramModule extends GModelJsonDiagramModule {
 
    @Override
-   @SuppressWarnings("rawtypes")
-   protected Class<? extends GLSPServer> bindGLSPServer() {
-      return WorkflowGLSPServer.class;
+   protected Class<? extends DiagramConfiguration> bindDiagramConfiguration() {
+      return WorkflowDiagramConfiguration.class;
    }
 
    @Override
-   protected Class<? extends ServerLayoutConfiguration> bindServerLayoutConfiguration() {
-      return WorkflowServerLayoutConfiguration.class;
+   protected Class<? extends ModelSourceLoader> bindSourceModelLoader() {
+      return JsonFileGModelLoader.class;
+   }
+
+   @Override
+   protected Class<? extends ModelSourceWatcher> bindModelSourceWatcher() {
+      return FileWatcher.class;
+   }
+
+   @Override
+   protected Class<? extends GraphExtension> bindGraphExtension() {
+      return WFGraphExtension.class;
    }
 
    @Override
@@ -85,11 +93,6 @@ public class WorkflowGLSPModule extends DefaultGLSPModule {
    protected void configureContextEditValidators(final MultiBinding<ContextEditValidator> binding) {
       super.configureContextEditValidators(binding);
       binding.add(TaskEditValidator.class);
-   }
-
-   @Override
-   protected void configureDiagramConfigurations(final MultiBinding<DiagramConfiguration> binding) {
-      binding.add(WorkflowDiagramConfiguration.class);
    }
 
    @Override
@@ -111,6 +114,7 @@ public class WorkflowGLSPModule extends DefaultGLSPModule {
       binding.add(CreateJoinNodeHandler.class);
       binding.add(CreateEdgeHandler.class);
       binding.add(CreateWeightedEdgeHandler.class);
+      binding.add(CreateCategoryHandler.class);
       binding.add(EditTaskOperationHandler.class);
       binding.add(ApplyTaskEditOperationHandler.class);
    }
@@ -120,11 +124,6 @@ public class WorkflowGLSPModule extends DefaultGLSPModule {
       super.configureActionHandlers(binding);
       binding.rebind(RequestContextActionsHandler.class, WorkflowRequestContextActionsHandler.class);
       binding.add(LogActionHandler.class);
-   }
-
-   @Override
-   protected Class<? extends GraphExtension> bindGraphExtension() {
-      return WFGraphExtension.class;
    }
 
    @Override
@@ -143,7 +142,7 @@ public class WorkflowGLSPModule extends DefaultGLSPModule {
    }
 
    @Override
-   protected Class<? extends ILayoutEngine> bindLayoutEngine() {
+   protected Class<? extends LayoutEngine> bindLayoutEngine() {
       return WorkflowLayoutEngine.class;
    }
 
@@ -163,12 +162,6 @@ public class WorkflowGLSPModule extends DefaultGLSPModule {
    }
 
    @Override
-   protected Class<? extends ModelFactory> bindModelFactory() {
-      return WorkflowModelFactory.class;
-   }
+   public String getDiagramType() { return "workflow-diagram"; }
 
-   @Override
-   protected Class<? extends ModelSourceWatcher> bindModelSourceWatcher() {
-      return FileWatcher.class;
-   }
 }

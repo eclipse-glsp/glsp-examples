@@ -3,22 +3,21 @@
   "name": "workflow-browser-app",
   "version": "0.8.0",
   "dependencies": {
-    "@theia/core": "1.4.0",
-    "@theia/editor": "1.4.0",
-    "@theia/filesystem": "1.4.0",
-    "@theia/languages": "1.4.0",
-    "@theia/markers": "1.4.0",
-    "@theia/messages": "1.4.0",
-    "@theia/monaco": "1.4.0",
-    "@theia/navigator": "1.4.0",
-    "@theia/preferences": "1.4.0",
-    "@theia/process": "1.4.0",
-    "@theia/terminal": "1.4.0",
-    "@theia/workspace": "1.4.0",
-    "@eclipse-glsp-examples/workflow-theia": "0.8.0"
+    "@theia/core": "1.20.0",
+    "@theia/editor": "1.20.0",
+    "@theia/filesystem": "1.20.0",
+    "@theia/markers": "1.20.0",
+    "@theia/messages": "1.20.0",
+    "@theia/monaco": "1.20.0",
+    "@theia/navigator": "1.20.0",
+    "@theia/preferences": "1.20.0",
+    "@theia/process": "1.20.0",
+    "@theia/terminal": "1.20.0",
+    "@theia/workspace": "1.20.0",
+    "@eclipse-glsp-examples/workflow-theia": "0.9.0"
   },
   "devDependencies": {
-    "@theia/cli": "1.4.0"
+    "@theia/cli": "1.20.0"
   },
   "scripts": {
     "prepare": "theia build --mode development",
