@@ -12,7 +12,7 @@
       "args": [
         "--port=3000",
         "--no-cluster",
-        "--WF_GLSP=5014",
+        "--WF_GLSP=5007",
         "--app-project-path=${workspaceRoot}/workflow-browser-app",
         "--root-dir=${workspaceRoot}/workspace"
       ],
@@ -41,8 +41,8 @@
         "--loglevel=debug",
         "--port=3000",
         "--no-cluster",
-        "--WF_GLSP=5014",
-        "--DEBUG",
+        "--WF_GLSP=5007",
+        "--debug",
         "--app-project-path=${workspaceRoot}/workflow-browser-app",
         "--root-dir=${workspaceRoot}/workspace"
       ],
