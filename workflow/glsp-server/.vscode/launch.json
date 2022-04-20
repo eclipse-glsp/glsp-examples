@@ -10,7 +10,7 @@
       "request": "launch",
       "mainClass": "org.eclipse.glsp.example.workflow.launch.WorkflowServerLauncher",
       "projectName": "org.eclipse.glsp.example.workflow",
-      "args": ["--port", "5014"],
+      "args": ["--port", "5007"],
       "console": "internalConsole",
       "internalConsoleOptions": "openOnSessionStart",
       "outputCapture": "std"

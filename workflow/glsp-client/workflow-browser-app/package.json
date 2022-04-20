@@ -22,7 +22,7 @@
   "scripts": {
     "prepare": "theia build --mode development",
     "start": "theia start --WF_GLSP=5007 --root-dir=../workspace",
-    "start:external": "theia start --WF_GLSP=5007 --root-dir=../workspace --DEBUG",
+    "start:external": "theia start --WF_GLSP=5007 --root-dir=../workspace --debug",
     "watch": "theia build --watch --mode development"
   },
   "theia": {
