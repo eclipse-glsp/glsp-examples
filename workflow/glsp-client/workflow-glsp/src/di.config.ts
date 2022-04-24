@@ -42,6 +42,7 @@ import 'sprotty/css/edit-label.css';
 import '../css/diagram.css';
 import { directTaskEditor } from './direct-task-editing/di.config';
 import { ActivityNode, CategoryNode, Icon, TaskNode, WeightedEdge } from './model';
+import extensionModule from './test-ui-extension/di.config';
 import { IconView, WorkflowEdgeView } from './workflow-views';
 
 const workflowDiagramModule = new ContainerModule((bind, unbind, isBound, rebind) => {
@@ -72,7 +73,7 @@ const workflowDiagramModule = new ContainerModule((bind, unbind, isBound, rebind
 });
 
 export default function createContainer(widgetId: string): Container {
-    const container = createClientContainer(workflowDiagramModule, directTaskEditor);
+    const container = createClientContainer(workflowDiagramModule, directTaskEditor, extensionModule);
     overrideViewerOptions(container, {
         baseDiv: widgetId,
         hiddenDiv: widgetId + '_hidden'

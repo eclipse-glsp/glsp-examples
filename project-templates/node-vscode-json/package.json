@@ -1,0 +1,8 @@
+{
+    "scripts": {
+        "prepare":"yarn build",
+        "build":" yarn build:client && yarn build:server",
+        "build:client":"yarn --cwd glsp-client install",
+        "build:server":"yarn --cwd glsp-serer install"
+    }
+}

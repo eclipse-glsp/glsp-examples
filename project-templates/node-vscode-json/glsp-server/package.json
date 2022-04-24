@@ -1,0 +1,63 @@
+{
+  "name": "@eclipse-glsp-examples/tasklist-server",
+  "version": "0.9.0",
+  "description": "GLSP node server for Tasklist GSLP diagrams",
+  "license": "(EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0)",
+  "keywords": [
+    "eclipse",
+    "graphics",
+    "diagram",
+    "modeling",
+    "visualization",
+    "glsp",
+    "diagram editor"
+  ],
+  "author": {
+    "name": "Eclipse GLSP"
+  },
+  "homepage": "https://www.eclipse.org/glsp/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eclipse-glsp/glsp-examples.git"
+  },
+  "bugs": "https://github.com/eclipse-glsp/glsp/issues",
+  "contributors": [
+    {
+      "name": "Eclipse GLSP Project",
+      "email": "glsp-dev@eclipse.org",
+      "url": "https://projects.eclipse.org/projects/ecd.glsp"
+    }
+  ],
+  "files": [
+    "lib",
+    "src"
+  ],
+  "dependencies": {
+    "@eclipse-glsp/server-node": "0.9.0-next.967ae58.23"
+  },
+  "devDependencies": {
+    "@eclipse-glsp/config": "next",
+    "rimraf": "3.0.2",
+    "typescript": "^4.5.2",
+    "circular-dependency-plugin": "^5.2.2",
+    "source-map-loader": "^3.0.0",
+    "webpack": "^5.48.0",
+    "webpack-cli": "4.7.0"
+  },
+  "scripts": {
+    "prepare": "yarn clean && yarn build && yarn lint",
+    "clean": "rimraf tsconfig.tsbuildinfo lib bundle",
+    "build": "yarn run clean && tsc && yarn bundle",
+    "bundle": "webpack",
+    "lint": "eslint -c .eslintrc.js --ext .ts,.tsx ./src",
+    "lint:fix": "eslint --fix -c .eslintrc.js --ext .ts,.tsx ./src",
+    "watch": "tsc-w",
+    "upgrade:next": "yarn upgrade -p \"@eclipse-glsp*\"",
+    "start": "node --enable-source-maps lib/index.js"
+  },
+  "publishConfig": {
+    "access": "public"
+  },
+  "main": "lib/index",
+  "types": "lib/index"
+}

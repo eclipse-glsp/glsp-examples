@@ -1,0 +1,48 @@
+{
+  "private": true,
+  "name": "parent",
+  "version": "0.9.0",
+  "engines": {
+    "yarn": ">=1.7.0 <2.x.x",
+    "node": ">= 12.14.1"
+  },
+  "license": "(EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0)",
+  "author": {
+    "name": "Eclipse GLSP"
+  },
+  "homepage": "https://www.eclipse.org/glsp/",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eclipse-glsp/glsp-examples.git"
+  },
+  "bugs": "https://github.com/eclipse-glsp/glsp/issues",
+  "contributors": [
+    {
+      "name": "Eclipse GLSP Project",
+      "email": "glsp-dev@eclipse.org",
+      "url": "https://projects.eclipse.org/projects/ecd.glsp"
+    }
+  ],
+  "scripts": {
+    "prepare": "lerna run prepare",
+    "watch": "lerna run --parallel watch",
+    "build": "yarn simpleInstall && lerna run build",
+    "lint": "lerna run lint --",
+    "simpleInstall": "yarn install --ignore-scripts"
+  },
+  "devDependencies": {
+    "@eclipse-glsp/config": "next",
+    "lerna": "^4.0.0",
+    "typescript": "^4.5.2"
+  },
+  "workspaces": [
+    "tasklist-glsp",
+    "tasklist-vscode/webview",
+    "tasklist-vscode/extension"
+  ],
+  "resolutions": {
+    "**/sprotty": "0.12.0-next.00a6590.0",
+    "**/@eclipse-glsp/vscode-integration": "0.10.0-next.662e092.49",
+    "**/@eclipse-glsp/vscode-integration-webview": "0.10.0-next.662e092.49"
+  }
+}

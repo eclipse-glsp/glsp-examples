@@ -32,7 +32,10 @@ export class WorkflowTaskEditCommandContribution implements CommandContribution 
         commands.registerCommand(
             { id: WorkflowTaskEditingCommands.EDIT_TASK, label: 'Direct Edit Task' },
             new GLSPCommandHandler(this.shell, {
-                actions: context => [new SetUIExtensionVisibilityAction(TaskEditor.ID, true, [context.selectedElements[0].id])],
+                actions: context => [
+                    new SetUIExtensionVisibilityAction(TaskEditor.ID, true, [context.selectedElements[0].id]),
+                    new SetUIExtensionVisibilityAction('test-extension', true)
+                ],
                 isEnabled: context => !context.isReadonly && context.selectedElements.filter(isTaskNode).length === 1
             })
         );
