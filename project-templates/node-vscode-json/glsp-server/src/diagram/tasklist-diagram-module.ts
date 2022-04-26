@@ -27,7 +27,7 @@ import {
     SourceModelStorage
 } from '@eclipse-glsp/server-node';
 import { BindingTarget } from '@eclipse-glsp/server-node/lib/di/binding-target';
-import { injectable, interfaces } from 'inversify';
+import { injectable } from 'inversify';
 import { CreateTaskHandler } from '../handler/create-task-node-handler';
 import { TasklistApplyLabelEditHandler } from '../handler/tasklist-apply-label-edit-handler';
 import { TasklistChangeBoundsHandler } from '../handler/tasklist-change-bounds-handler';
@@ -43,15 +43,22 @@ import { TasklistDiagramConfiguration } from './tasklist-diagram-configuration';
 export class TasklistDiagramModule extends DiagramModule {
     readonly diagramType = 'minimal-diagram';
 
-    protected override configure(
-        bind: interfaces.Bind,
-        unbind: interfaces.Unbind,
-        isBound: interfaces.IsBound,
-        rebind: interfaces.Rebind
-    ): void {
-        bind(TasklistModelIndex).toSelf().inSingletonScope();
-        super.configure(bind, unbind, isBound, rebind);
-        bind(TasklistModelState).toService(ModelState);
+    protected bindDiagramConfiguration(): BindingTarget<DiagramConfiguration> {
+        return TasklistDiagramConfiguration;
+    }
+
+    protected bindSourceModelStorage(): BindingTarget<SourceModelStorage> {
+        return TasklistStorage;
+    }
+
+    protected bindModelState(): BindingTarget<ModelState> {
+        this.context.bind(TasklistModelState).toSelf().inSingletonScope();
+        return { service: TasklistModelState };
+    }
+
+    protected override configureActionHandlers(binding: InstanceMultiBinding<ActionHandlerConstructor>): void {
+        super.configureActionHandlers(binding);
+        binding.add(ComputedBoundsActionHandler);
     }
 
     protected override configureOperationHandlers(binding: InstanceMultiBinding<OperationHandlerConstructor>): void {
@@ -62,30 +69,16 @@ export class TasklistDiagramModule extends DiagramModule {
         binding.add(TasklistDeleteHandler);
     }
 
-    protected override bindGModelIndex(): BindingTarget<GModelIndex> {
-        return { service: TasklistModelIndex };
-    }
-
-    protected bindDiagramConfiguration(): BindingTarget<DiagramConfiguration> {
-        return TasklistDiagramConfiguration;
-    }
-
-    protected bindSourceModelStorage(): BindingTarget<SourceModelStorage> {
-        return TasklistStorage;
-    }
-    protected bindModelState(): BindingTarget<ModelState> {
-        return TasklistModelState;
-    }
     protected bindGModelFactory(): BindingTarget<GModelFactory> {
         return TasklistGModelFactory;
     }
 
-    protected override bindLabelEditValidator(): BindingTarget<LabelEditValidator> | undefined {
-        return TasklistLabelEditValidator;
+    protected override bindGModelIndex(): BindingTarget<GModelIndex> {
+        this.context.bind(TasklistModelIndex).toSelf().inSingletonScope();
+        return { service: TasklistModelIndex };
     }
 
-    protected override configureActionHandlers(binding: InstanceMultiBinding<ActionHandlerConstructor>): void {
-        super.configureActionHandlers(binding);
-        binding.add(ComputedBoundsActionHandler);
+    protected override bindLabelEditValidator(): BindingTarget<LabelEditValidator> | undefined {
+        return TasklistLabelEditValidator;
     }
 }

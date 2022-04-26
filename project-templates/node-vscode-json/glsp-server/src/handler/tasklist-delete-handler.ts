@@ -19,10 +19,10 @@ import { TasklistModelState } from '../model/tasklist-model-state';
 
 @injectable()
 export class TasklistDeleteHandler implements OperationHandler {
+    readonly operationType = DeleteElementOperation.KIND;
+
     @inject(TasklistModelState)
     protected modelState: TasklistModelState;
-
-    readonly operationType = DeleteElementOperation.KIND;
 
     execute(operation: DeleteElementOperation): MaybePromise<void> {
         operation.elementIds.forEach(elementId => this.deleteTask(elementId));

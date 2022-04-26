@@ -21,10 +21,10 @@ import { TasklistModelState } from '../model/tasklist-model-state';
 
 @injectable()
 export class CreateTaskHandler extends CreateNodeOperationHandler {
+    readonly elementTypeIds = [DefaultTypes.NODE];
+
     @inject(TasklistModelState)
     protected override modelState: TasklistModelState;
-
-    readonly elementTypeIds = [DefaultTypes.NODE];
 
     execute(operation: CreateNodeOperation): void {
         const relativeLocation = this.getRelativeLocation(operation) ?? Point.ORIGIN;

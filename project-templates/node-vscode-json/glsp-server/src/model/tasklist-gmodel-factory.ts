@@ -34,7 +34,7 @@ export class TasklistGModelFactory implements GModelFactory {
         const builder = GNode.builder() //
             .id(task.id)
             .addCssClass('tasklist-node')
-            .add(GLabel.builder().text(task.name).build())
+            .add(GLabel.builder().text(task.name).id(`${task.id}_label`).build())
             .layout('hbox')
             .addLayoutOption('paddingLeft', 5)
             .position(task.position);
