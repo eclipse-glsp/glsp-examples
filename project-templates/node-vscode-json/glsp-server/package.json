@@ -42,7 +42,9 @@
     "circular-dependency-plugin": "^5.2.2",
     "source-map-loader": "^3.0.0",
     "webpack": "^5.48.0",
-    "webpack-cli": "4.7.0"
+    "webpack-cli": "4.7.0",
+    "reflect-metadata": "^0.1.13",
+    "fs-extra": "^10.1.0"
   },
   "scripts": {
     "prepare": "yarn clean && yarn build && yarn lint",
