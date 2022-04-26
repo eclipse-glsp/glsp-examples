@@ -11,7 +11,6 @@ The following libraries/frameworks need to be installed on your system:
 -   [Node.js](https://nodejs.org/en/) `>= 12.14.1`
 -   [Yarn](https://classic.yarnpkg.com/en/docs/install#debian-stable) `>=1.7.0`
 
-
 ### VSCode workspace
 
 To work with the source code and debug the example in VS Code a dedicated [VSCode Workspace](node-vscode-json.code-workspace) is provided.
@@ -42,36 +41,14 @@ yarn build:client
 yarn build:server
 ```
 
-## Running the example
-To run the example open the corresponding [VSCode Workspace](node-vscode-json.code-workspace) and then navigate to the `Run and Debug` view (Ctrl + Shift + D).
+## Running the examples
 
-Here you can choose between four different launch configurations:
-
-
-Each example provides a dedicated Theia web app which can be started from the repository root with `yarn start:<example_name>`:
-
-```bash
-   # Start minimal example Theia app
-   yarn start:minimal
-
-   # Start workflow example Theia app
-   yarn start:workflow
-```
-
-This will launch the example in the browser on [localhost:3000](http://localhost:3000).
-
-> **Note** that each example will be launched at the same port (`3000`).
-> Therefore it's currently not possible to launch multiple example Theia apps simultaneously.
-
-## Debugging the examples
-
-Theia applications run in two separate process the `Theia Frontend` and the `Theia Backend` process.
-In addition, the GLSP Server runs in a third separated process.
-Each process can be debugged individually and the [example workspaces](#vscode-workspaces) provides dedicated debug configurations.
+To start the example open a the corresponding [VSCode workspace](node-vscode-json.code-workspace) and then navigate to the Run and Debug view (Ctrl + Shift + D).
+Here you can choose between four different debug configurations:
 
 - `Launch Tasklist Diagram Extension`: <br>
     This config can be used to launch a second VSCode runtime instance that has the `Tasklist Diagram Extension` installed. 
-    It will automatically open an example workspace that contains a `example.tasklist` file. Simply double click on the file in the `Explorer` to open the `Tasklist Diagam Editor`.
+    It will automatically open an example workspace that contains a `example.tasklist` file. Simply double click on the file in the `Explorer` to open the `Tasklist Diagram Editor`.
     This launch config will start the GLSP server as embedded process which means you won't be able to debug the GLSP Server source code.
 - `"Launch Tasklist Diagram Extension (External GLSP Server)`<br>
     Similar to the `Launch Tasklist Diagram Extension` but does not start the GLSP server as embedded process.
@@ -81,11 +58,9 @@ Each process can be debugged individually and the [example workspaces](#vscode-w
     Breakpoints the source files of the `glsp-server` directory will be picked up.
     In order to use this config, the `Tasklist Diagram Extension` has to be launched in `External` server mode.
 - `Launch Tasklist Diagram extension with external GLSP Server`<br>
-    This is a convienience compound config that launches both the `Tasklist Diagram Extension` in external server mode and the
+    This is a convenience compound config that launches both the `Tasklist Diagram Extension` in external server mode and the
     `Tasklist GLSP server` process.
     Enables debugging of both the `glsp-client` and `glsp-server`code simultaneously.
-
-
 
 ## More information
 

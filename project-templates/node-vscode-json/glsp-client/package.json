@@ -41,8 +41,6 @@
     "tasklist-vscode/extension"
   ],
   "resolutions": {
-    "**/sprotty": "0.12.0-next.00a6590.0",
-    "**/@eclipse-glsp/vscode-integration": "0.10.0-next.662e092.49",
-    "**/@eclipse-glsp/vscode-integration-webview": "0.10.0-next.662e092.49"
+    "**/sprotty": "0.12.0-next.00a6590.0"
   }
 }

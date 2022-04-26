@@ -33,7 +33,7 @@
     "src"
   ],
   "dependencies": {
-    "@eclipse-glsp/server-node": "0.9.0-next.967ae58.23"
+    "@eclipse-glsp/server-node": "next"
   },
   "devDependencies": {
     "@eclipse-glsp/config": "next",

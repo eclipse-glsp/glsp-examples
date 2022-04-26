@@ -33,7 +33,7 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
         const serverProcess = new GlspServerLauncher({
             executable: path.join(__dirname, '../../../../glsp-server/lib/index.js'),
             socketConnectionOptions: { port: JSON.parse(process.env.TASKLIST_SERVER_PORT || DEFAULT_SERVER_PORT) },
-            additionalArgs: ['--fileLog', 'true', '--logDir', path.join(__dirname, '../../../../glsp-server/bundle/')],
+            additionalArgs: ['--no-consoleLog', '--fileLog', '--logDir', path.join(__dirname, '../../../../glsp-server/bundle/')],
             logging: true,
             serverType: 'node'
         });
