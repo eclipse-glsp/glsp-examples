@@ -56,6 +56,10 @@ export class TasklistDiagramModule extends DiagramModule {
         return { service: TasklistModelState };
     }
 
+    protected bindGModelFactory(): BindingTarget<GModelFactory> {
+        return TasklistGModelFactory;
+    }
+
     protected override configureActionHandlers(binding: InstanceMultiBinding<ActionHandlerConstructor>): void {
         super.configureActionHandlers(binding);
         binding.add(ComputedBoundsActionHandler);
@@ -67,10 +71,6 @@ export class TasklistDiagramModule extends DiagramModule {
         binding.add(TasklistChangeBoundsHandler);
         binding.add(TasklistApplyLabelEditHandler);
         binding.add(TasklistDeleteHandler);
-    }
-
-    protected bindGModelFactory(): BindingTarget<GModelFactory> {
-        return TasklistGModelFactory;
     }
 
     protected override bindGModelIndex(): BindingTarget<GModelIndex> {
