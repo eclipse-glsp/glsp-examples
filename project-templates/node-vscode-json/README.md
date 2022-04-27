@@ -1,4 +1,4 @@
-# Eclipse GLSP - Node/JSON Model/VSCOde Integration Example
+# Eclipse GLSP - Node / JSON Model / VS Code Integration Example
 
 TODO Intro
 
@@ -11,9 +11,9 @@ The following libraries/frameworks need to be installed on your system:
 -   [Node.js](https://nodejs.org/en/) `>= 12.14.1`
 -   [Yarn](https://classic.yarnpkg.com/en/docs/install#debian-stable) `>=1.7.0`
 
-### VSCode workspace
+### VS Code workspace
 
-To work with the source code and debug the example in VS Code a dedicated [VSCode Workspace](node-vscode-json.code-workspace) is provided.
+To work with the source code and debug the example in VS Code a dedicated [VS Code Workspace](node-vscode-json.code-workspace) is provided.
 These workspace include both the `glsp-client` and `glsp-server` sources and offer dedicated launch configurations for debugging purposes.
 
 To open the workspace simply start a VS Code instance and use the `Open Workspace from File..` entry from the `File` menu.
@@ -43,11 +43,11 @@ yarn build:server
 
 ## Running the examples
 
-To start the example open a the corresponding [VSCode workspace](node-vscode-json.code-workspace) and then navigate to the Run and Debug view (Ctrl + Shift + D).
+To start the example open a the corresponding [VS Code workspace](node-vscode-json.code-workspace) and then navigate to the Run and Debug view (Ctrl + Shift + D).
 Here you can choose between four different debug configurations:
 
 - `Launch Tasklist Diagram Extension`: <br>
-    This config can be used to launch a second VSCode runtime instance that has the `Tasklist Diagram Extension` installed. 
+    This config can be used to launch a second VS Code runtime instance that has the `Tasklist Diagram Extension` installed. 
     It will automatically open an example workspace that contains a `example.tasklist` file. Simply double click on the file in the `Explorer` to open the `Tasklist Diagram Editor`.
     This launch config will start the GLSP server as embedded process which means you won't be able to debug the GLSP Server source code.
 - `"Launch Tasklist Diagram Extension (External GLSP Server)`<br>
