@@ -1,0 +1,163 @@
+{
+  "name": "@eclipse-glsp/tasklist-vscode",
+  "private": "true",
+  "version": "0.9.0",
+  "description": "Extension for Tasklist GLSP diagrams",
+  "displayName": "Tasklist GLSP Diagram Editor",
+  "publisher": "Eclipse-GLSP",
+  "homepage": "https://www.eclipse.org/glsp/",
+  "bugs": "https://github.com/eclipse-glsp/glsp/issues",
+  "author": {
+    "name": "EclipseGLSP"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eclipse-glsp/glsp-examples.git"
+  },
+  "contributors": [
+    {
+      "name": "Eclipse GLSP Project",
+      "email": "glsp-dev@eclipse.org",
+      "url": "https://projects.eclipse.org/projects/ecd.glsp"
+    }
+  ],
+  "categories": [
+    "Programming Languages"
+  ],
+  "engines": {
+    "vscode": "^1.54.0"
+  },
+  "contributes": {
+    "customEditors": [
+      {
+        "viewType": "tasklist.glspDiagram",
+        "displayName": "Tasklist Diagram Editor",
+        "selector": [
+          {
+            "filenamePattern": "*.tasklist"
+          }
+        ]
+      }
+    ],
+    "commands": [
+      {
+        "command": "tasklist.fit",
+        "title": "Fit to Screen",
+        "category": "Tasklist Diagram",
+        "enablement": "activeCustomEditorId == 'tasklist.glspDiagram'"
+      },
+      {
+        "command": "tasklist.center",
+        "title": "Center selection",
+        "category": "Tasklist Diagram",
+        "enablement": "activeCustomEditorId == 'tasklist.glspDiagram'"
+      },
+      {
+        "command": "tasklist.layout",
+        "title": "Layout diagram",
+        "category": "Tasklist Diagram",
+        "enablement": "activeCustomEditorId == 'tasklist.glspDiagram'"
+      },
+      {
+        "command": "tasklist.exportAsSVG",
+        "title": "Export as SVG",
+        "category": "Tasklist Diagram",
+        "enablement": "activeCustomEditorId == 'tasklist.glspDiagram'"
+      }
+    ],
+    "submenus": [
+      {
+        "id": "tasklist.editor.title",
+        "label": "Diagram"
+      }
+    ],
+    "menus": {
+      "workflow.editor.title": [
+        {
+          "command": "tasklist.fit",
+          "group": "navigation",
+          "when": "activeCustomEditorId == 'tasklist.glspDiagram'"
+        },
+        {
+          "command": "tasklist.center",
+          "group": "navigation",
+          "when": "activeCustomEditorId == 'tasklist.glspDiagram'"
+        },
+        {
+          "command": "tasklist.layout",
+          "group": "navigation",
+          "when": "activeCustomEditorId == 'tasklist.glspDiagram'"
+        },
+        {
+          "command": "tasklist.exportAsSVG",
+          "when": "activeCustomEditorId == 'tasklist.glspDiagram'"
+        }
+      ]
+    },
+    "keybindings": [
+      {
+        "key": "alt+f",
+        "mac": "alt+f",
+        "command": "tasklist.fit",
+        "when": "activeCustomEditorId == 'tasklist.glspDiagram'"
+      },
+      {
+        "key": "alt+c",
+        "mac": "alt+c",
+        "command": "tasklist.center",
+        "when": "activeCustomEditorId == 'tasklist.glspDiagram'"
+      },
+      {
+        "key": "alt+l",
+        "mac": "alt+l",
+        "command": "tasklist.layout",
+        "when": "activeCustomEditorId == 'tasklist.glspDiagram'"
+      },
+      {
+        "key": "ctrl+a",
+        "mac": "ctrl+a",
+        "command": "tasklist.selectAll",
+        "when": "activeCustomEditorId == 'tasklist.glspDiagram'"
+      }
+    ]
+  },
+  "activationEvents": [
+    "*"
+  ],
+  "files": [
+    "lib",
+    "server",
+    "webview"
+  ],
+  "dependencies": {
+    "@vscode/codicons": "^0.0.25"
+  },
+  "main": "./lib/index",
+  "devDependencies": {
+    "@eclipse-glsp/vscode-integration": "next",
+    "@types/vscode": "^1.54.0",
+    "path": "^0.12.7",
+    "reflect-metadata": "^0.1.13",
+    "rimraf": "^2.6.3",
+    "ts-loader": "^6.2.1",
+    "ts-node": "^9.1.1",
+    "typescript": "^4.4.3",
+    "@types/node": "14.x",
+    "@eclipse-glsp/tasklist-webview": "0.9.0"
+  },
+  "scripts": {
+    "prepare": "yarn clean && yarn build && yarn lint",
+    "clean": "rimraf extension/lib extension/pack extension/server tsconfig.tsbuildinfo",
+    "watch": "tsc -w",
+    "lint": "eslint -c ./.eslintrc.js --ext .ts ./src",
+    "build": "tsc",
+    "publish": "vsce publish",
+    "download:Server": "ts-node ../scripts/download.ts"
+  },
+  "workspaces": {
+    "nohoist": [
+      "**/@vscode/codicons",
+      "**/@vscode/codicons/**"
+    ]
+  }
+}
