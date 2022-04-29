@@ -39,11 +39,11 @@ The following libraries/frameworks need to be installed on your system:
 
 ## VS Code workspace
 
-To work with the source code and debug the example in VS Code a dedicated [VS Code Workspace](node-vscode-json.code-workspace) is provided.
+To work with the source code and debug the example in VS Code a dedicated [VS Code Workspace](node-json-vscode.code-workspace) is provided.
 The workspace includes both the `glsp-client` and `glsp-server` sources and offers dedicated launch configurations to run and debug the example application.
 
 To open the workspace start a VS Code instance and use the `Open Workspace from File..` entry from the `File` menu.
-Then navigate to the directory containing the workspace file and open the `node-vscode-json.code-workspace` file.
+Then navigate to the directory containing the workspace file and open the `node-json-vscode.code-workspace` file.
 
 For a smooth development experience we recommend a set of useful VS Code extensions. When the workspace is first opened VS Code will ask you wether you want to install those recommended extensions.
 Alternatively, you can also open the `Extension View` (Ctrl + Shift + X) and type `@recommended` into the search field to see the list of `Workspace Recommendations`.
@@ -69,7 +69,7 @@ yarn build:server
 
 ## Running the examples
 
-To start the example open the corresponding [VS Code workspace](node-vscode-json.code-workspace) and then navigate to the `Run and Debug` view (Ctrl + Shift + D).
+To start the example open the corresponding [VS Code workspace](node-json-vscode.code-workspace) and then navigate to the `Run and Debug` view (Ctrl + Shift + D).
 Here you can choose between four different launch configurations:
 
 *   `Launch Tasklist Diagram Extension`: <br>
