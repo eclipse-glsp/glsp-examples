@@ -1,10 +1,10 @@
-# Eclipse GLSP - Project Template: 🖥️ Java ● 🗂️ EMF ● 🖼️ Theia
+# Eclipse GLSP - Project Template:<br> 🖥️ Java ● 🗂️ EMF ● 🖼️ Theia
 
 This folder contains a simple _project template_ to get you started quickly for your diagram editor implementation based on [GLSP](https://github.com/eclipse-glsp/glsp).
 It provides the initial setup of the package architecture and environment for a GLSP diagram editor that uses ...
 
 -   🖥️ The [Java GLSP server framework](https://github.com/eclipse-glsp/glsp-server)
--   🗂️ An EMF based source model
+-   🗂️ An [EMF](https://www.eclipse.org/modeling/emf/)-based source model
 -   🖼️ The [Theia integration](https://github.com/eclipse-glsp/glsp-theia-integration) to make your editor available as Theia application
 
 To explore alternative project templates or learn more about developing GLSP-based diagram editors, please refer to the [Getting Started](https://www.eclipse.org/glsp/documentation/gettingstarted) guide.
@@ -48,10 +48,10 @@ For both the client and the server part of this example we use [Visual Studio Co
 It is of course possible to use the [Eclipse IDE](https://www.eclipse.org/ide/) for the server or any other IDE or text editor.
 
 To work with and debug the source code in VS Code a dedicated [VS Code Workspace](java-emf-theia-example.code-workspace) is provided.
-These workspace include both the `glsp-client` and `glsp-server` sources and offer dedicated launch configurations for debugging purposes.
+This workspace includes both the `glsp-client` and `glsp-server` sources and offers dedicated launch configurations to run and debug the example application.
 
 To open the workspace start a VS Code instance and use the `Open Workspace from File..` entry from the `File` menu.
-Then navigate to the directory containing the workspace file and open the `node-vscode-json.code-workspace` file.
+Then navigate to the directory containing the workspace file and open the `java-emf-theia-example.code-workspace` file.
 
 For a smooth development experience we recommend a set of useful VS Code extensions. When the workspace is first opened VS Code will ask you wether you want to install those recommended extensions.
 Alternatively, you can also open the `Extension View` (Ctrl + Shift + X) and type `@recommended` into the search field to see the list of `Workspace Recommendations`.
@@ -80,25 +80,25 @@ and then execute:
 
 This will launch the example in the browser with an embedded GLSP server on [localhost:3000](http://localhost:3000).
 
-To debug the involved components, the [VS Code workspace](java-emf-theia-example.code-workspace) offers launch configs, available in the Run and Debug view (Ctrl + Shift + D).
-Here you can choose between four different debug configurations:
+To debug the involved components, the [VS Code workspace](java-emf-theia-example.code-workspace) offers launch configs, available in the `Run and Debug` view (Ctrl + Shift + D).
+Here you can choose between four different launch configurations:
 
 -   `Launch Tasklist GLSP Server`<br>
     This config can be used to manually launch the `Tasklist GLSP Server` java process.
-    Breakpoints the source files of the `glsp-server` directory will be picked up.
+    Breakpoints in the source files of the `glsp-server` directory will be picked up.
     In order to use this config, the Theia application backend has to be launched in `External` server mode (see `Launch TaskList Theia Backend (External GLSP Server)`).
     If the GLSP server is started via this launch config, it is possible to consume code changes immediately in the running instance via `Hot Code Replace` in the Debug toolbar.
 -   `Launch TaskList Theia Backend (External GLSP Server)`<br>
     This config launches the Theia browser backend application but does not start the GLSP server as embedded process.
-    Breakpoints the source files of the `glsp-client/**/node` directories will be picked up.
+    Breakpoints in the source files of the `glsp-client/**/node` directories will be picked up.
     It expects that the GLSP Server process is already running and has been started externally with the `Launch Tasklist GLSP Server` config.
 -   `Launch TaskList Theia Backend (Embedded GLSP Server)`<br>
     This config launches the Theia browser backend application and will start the GLSP server as embedded process which means you won't be able to debug the GLSP Server source code.
-    Breakpoints the source files of the `glsp-client/**/node` directories will be picked up.
+    Breakpoints in the source files of the `glsp-client/**/node` directories will be picked up.
 -   `Launch Theia Frontend`<br>
     Launches a Google chrome instance, opens the Theia browser application at `http://localhost:3000` and will automatically open an example workspace that contains a `example.tasklist` file.
     Double-click the file in the `Explorer` to open it with the `Tasklist Diagram Editor`.
-    Breakpoints the source files of the `glsp-client/**/browser` directories will be picked up.
+    Breakpoints in the source files of the `glsp-client/**/browser` directories will be picked up.
 
 ### Watch the TypeScript packages
 
