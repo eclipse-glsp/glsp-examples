@@ -1,0 +1,51 @@
+{
+  // See https://go.microsoft.com/fwlink/?LinkId=733558
+  // for the documentation about the tasks.json format
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "Build glsp-server packages",
+      "type": "shell",
+      "group": "build",
+      "command": "yarn build",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": ["$tsc", "$eslint-stylish"]
+    },
+    {
+      "label": "Watch glsp-server packages",
+      "type": "shell",
+      "group": "build",
+      "command": "yarn watch",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": ["$tsc-watch"]
+    },
+    {
+      "label": "Execute all glsp-server tests",
+      "type": "shell",
+      "group": "test",
+      "command": "yarn test",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Start Example GLSP server",
+      "type": "shell",
+      "group": "none",
+      "command": "yarn start",
+      "presentation": {
+        "reveal": "always",
+        "panel": "dedicated"
+      },
+      "problemMatcher": []
+    }
+  ]
+}

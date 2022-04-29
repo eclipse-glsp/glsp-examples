@@ -1,0 +1,12 @@
+{
+  "extends": "@eclipse-glsp/ts-config/tsconfig.json",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "lib",
+    "baseUrl": ".",
+    "reactNamespace": "JSX",
+    "skipLibCheck": true,
+    "types": []
+  },
+  "include": ["src"]
+}
