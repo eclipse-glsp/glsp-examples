@@ -1,0 +1,53 @@
+{
+  "id": "d63b4a87-ca5e-41f8-b800-83ff4947a1ce",
+  "tasks": [
+    {
+      "id": "6b068132-c0a9-4a9e-ac60-7cadce23079a",
+      "name": "First Task",
+      "position": {
+        "x": 203,
+        "y": 64
+      },
+      "size": {
+        "width": 55.92741394042969,
+        "height": 22.5
+      }
+    },
+    {
+      "id": "ad877ad8-b849-4dc4-b4ca-a5f55413864c",
+      "name": "Second Task",
+      "position": {
+        "x": 203,
+        "y": 110
+      },
+      "size": {
+        "width": 71.36635971069336,
+        "height": 22.5
+      }
+    },
+    {
+      "id": "3564ed38-4b63-485d-a7f0-75461a5ef50f",
+      "name": "Third Task",
+      "position": {
+        "x": 204,
+        "y": 152
+      },
+      "size": {
+        "width": 59.494258880615234,
+        "height": 22.5
+      }
+    },
+    {
+      "id": "51788706-0e25-49a7-86e9-ed93389ffd45",
+      "name": "Fourth Task",
+      "position": {
+        "x": 204.22628147616112,
+        "y": 190.87153777139335
+      },
+      "size": {
+        "width": 66.01871490478516,
+        "height": 22.5
+      }
+    }
+  ]
+}
