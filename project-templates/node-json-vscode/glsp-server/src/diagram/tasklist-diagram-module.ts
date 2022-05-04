@@ -52,7 +52,6 @@ export class TasklistDiagramModule extends DiagramModule {
     }
 
     protected bindModelState(): BindingTarget<ModelState> {
-        this.context.bind(TasklistModelState).toSelf().inSingletonScope();
         return { service: TasklistModelState };
     }
 
@@ -74,7 +73,6 @@ export class TasklistDiagramModule extends DiagramModule {
     }
 
     protected override bindGModelIndex(): BindingTarget<GModelIndex> {
-        this.context.bind(TasklistModelIndex).toSelf().inSingletonScope();
         return { service: TasklistModelIndex };
     }
 
