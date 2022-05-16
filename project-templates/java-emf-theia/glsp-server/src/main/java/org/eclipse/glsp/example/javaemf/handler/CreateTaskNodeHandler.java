@@ -19,8 +19,6 @@ import java.util.Optional;
 import java.util.UUID;
 import java.util.function.Function;
 
-import com.google.inject.Inject;
-
 import org.eclipse.emf.common.command.Command;
 import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.edit.command.AddCommand;
@@ -34,7 +32,7 @@ import org.eclipse.glsp.graph.GModelElement;
 import org.eclipse.glsp.graph.GPoint;
 import org.eclipse.glsp.graph.GraphPackage;
 import org.eclipse.glsp.graph.util.GraphUtil;
-import org.eclipse.glsp.server.emf.EMFCreateNodeOperationHandler;
+import org.eclipse.glsp.server.emf.AbstractEMFCreateNodeOperationHandler;
 import org.eclipse.glsp.server.emf.EMFIdGenerator;
 import org.eclipse.glsp.server.emf.model.notation.Diagram;
 import org.eclipse.glsp.server.emf.model.notation.NotationFactory;
@@ -44,7 +42,9 @@ import org.eclipse.glsp.server.emf.model.notation.Shape;
 import org.eclipse.glsp.server.emf.notation.EMFNotationModelState;
 import org.eclipse.glsp.server.operations.CreateNodeOperation;
 
-public class CreateTaskNodeHandler extends EMFCreateNodeOperationHandler {
+import com.google.inject.Inject;
+
+public class CreateTaskNodeHandler extends AbstractEMFCreateNodeOperationHandler {
 
    @Inject
    protected EMFNotationModelState modelState;
@@ -57,12 +57,8 @@ public class CreateTaskNodeHandler extends EMFCreateNodeOperationHandler {
    }
 
    @Override
-   protected Optional<Command> createCommand(final CreateNodeOperation operation) {
-      Optional<GModelElement> container = getContainer(operation);
-      if (!container.isPresent()) {
-         container = Optional.of(modelState.getRoot());
-      }
-
+   public Optional<Command> createCommand(final CreateNodeOperation operation) {
+      GModelElement container = modelState.getIndex().get(operation.getContainerId()).orElseGet(modelState::getRoot);
       Optional<GPoint> absoluteLocation = getLocation(operation);
       Optional<GPoint> relativeLocation = getRelativeLocation(operation, absoluteLocation, container);
 
