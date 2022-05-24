@@ -21,6 +21,9 @@ However, it's of course also possible to use any other IDE or text editor.
 
 ## Examples
 
+-   [Project Templates](project-templates): The best starting point for your own diagram editor project.
+    The project templates are available for several combinations of tool platform integrations (Theia, VSCode), source models (JSON, EMF) and servers (Node, Java). Please visit the [GLSP documentation](https://www.eclipse.org/glsp/documentation/gettingstarted/) for more information.
+
 -   [Minimal Example](minimal): A very simple GLSP editor for rectangular nodes.
     This demonstrates the core concepts and basic client-server integration into Theia.
 
