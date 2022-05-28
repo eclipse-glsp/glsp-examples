@@ -49,7 +49,8 @@ Alternatively, you can also open the `Extension View` (Ctrl + Shift + X) and typ
 
 ## Building the example
 
-The server component and the client component have to be built using `yarn`. A convenience script to build both is provided.
+The server component and the client component have to be built using `yarn`. 
+A convenience script to build both is provided.
 To build all components execute the following in the directory containing this README:
 
 ```bash
@@ -97,7 +98,7 @@ Here you can choose between four different launch configurations:
     This config launches the Theia browser backend application and will start the GLSP server as embedded process which means you won't be able to debug the GLSP Server source code.
     Breakpoints in the source files of the `glsp-client/**/node` directories will be picked up.
 *   `Launch Tasklist Theia backed with external GLSP Server`<br>
-    This is a convenience compound config that launches both the Tasklist Theia backed in external server mode and the Tasklist GLSP server process. Enables debugging of both the glsp-client and glsp-server code simultaneously.
+    This is a convenience compound config that launches both the Tasklist Theia backend in external server mode and the Tasklist GLSP server process. Enables debugging of both the glsp-client and glsp-server code simultaneously.
 *   `Launch Theia Frontend`<br>
     Launches a Google chrome instance, opens the Theia browser application at `http://localhost:3000` and will automatically open an example workspace that contains a `example.tasklist` file.
     Double-click the file in the `Explorer` to open it with the `Tasklist Diagram Editor`.
