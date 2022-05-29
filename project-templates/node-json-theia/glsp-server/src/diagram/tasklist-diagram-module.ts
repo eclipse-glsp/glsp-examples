@@ -29,35 +29,35 @@ import {
 import { BindingTarget } from '@eclipse-glsp/server-node/lib/di/binding-target';
 import { injectable } from 'inversify';
 import { CreateTaskHandler } from '../handler/create-task-node-handler';
-import { TasklistApplyLabelEditHandler } from '../handler/tasklist-apply-label-edit-handler';
-import { TasklistChangeBoundsHandler } from '../handler/tasklist-change-bounds-handler';
-import { TasklistDeleteHandler } from '../handler/tasklist-delete-handler';
-import { TasklistLabelEditValidator } from '../handler/tasklist-label-edit-validator';
-import { TasklistGModelFactory } from '../model/tasklist-gmodel-factory';
-import { TasklistModelIndex } from '../model/tasklist-model-index';
-import { TasklistModelState } from '../model/tasklist-model-state';
-import { TasklistStorage } from '../model/tasklist-storage';
-import { TasklistDiagramConfiguration } from './tasklist-diagram-configuration';
+import { DeleteTaskNodeHandler } from '../handler/delete-task-node-handler';
+import { TaskListApplyLabelEditHandler } from '../handler/tasklist-apply-label-edit-handler';
+import { TaskListChangeBoundsHandler } from '../handler/tasklist-change-bounds-handler';
+import { TaskListLabelEditValidator } from '../handler/tasklist-label-edit-validator';
+import { TaskListGModelFactory } from '../model/tasklist-gmodel-factory';
+import { TaskListModelIndex } from '../model/tasklist-model-index';
+import { TaskListModelState } from '../model/tasklist-model-state';
+import { TaskListStorage } from '../model/tasklist-storage';
+import { TaskListDiagramConfiguration } from './tasklist-diagram-configuration';
 
 @injectable()
-export class TasklistDiagramModule extends DiagramModule {
+export class TaskListDiagramModule extends DiagramModule {
     readonly diagramType = 'tasklist-diagram';
 
     protected bindDiagramConfiguration(): BindingTarget<DiagramConfiguration> {
-        return TasklistDiagramConfiguration;
+        return TaskListDiagramConfiguration;
     }
 
     protected bindSourceModelStorage(): BindingTarget<SourceModelStorage> {
-        return TasklistStorage;
+        return TaskListStorage;
     }
 
     protected bindModelState(): BindingTarget<ModelState> {
-        this.context.bind(TasklistModelState).toSelf().inSingletonScope();
-        return { service: TasklistModelState };
+        this.context.bind(TaskListModelState).toSelf().inSingletonScope();
+        return { service: TaskListModelState };
     }
 
     protected bindGModelFactory(): BindingTarget<GModelFactory> {
-        return TasklistGModelFactory;
+        return TaskListGModelFactory;
     }
 
     protected override configureActionHandlers(binding: InstanceMultiBinding<ActionHandlerConstructor>): void {
@@ -68,17 +68,17 @@ export class TasklistDiagramModule extends DiagramModule {
     protected override configureOperationHandlers(binding: InstanceMultiBinding<OperationHandlerConstructor>): void {
         super.configureOperationHandlers(binding);
         binding.add(CreateTaskHandler);
-        binding.add(TasklistChangeBoundsHandler);
-        binding.add(TasklistApplyLabelEditHandler);
-        binding.add(TasklistDeleteHandler);
+        binding.add(TaskListChangeBoundsHandler);
+        binding.add(TaskListApplyLabelEditHandler);
+        binding.add(DeleteTaskNodeHandler);
     }
 
     protected override bindGModelIndex(): BindingTarget<GModelIndex> {
-        this.context.bind(TasklistModelIndex).toSelf().inSingletonScope();
-        return { service: TasklistModelIndex };
+        this.context.bind(TaskListModelIndex).toSelf().inSingletonScope();
+        return { service: TaskListModelIndex };
     }
 
     protected override bindLabelEditValidator(): BindingTarget<LabelEditValidator> | undefined {
-        return TasklistLabelEditValidator;
+        return TaskListLabelEditValidator;
     }
 }

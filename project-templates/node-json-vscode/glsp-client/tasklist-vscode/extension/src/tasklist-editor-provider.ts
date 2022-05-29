@@ -17,8 +17,8 @@ import { GlspVscodeConnector } from '@eclipse-glsp/vscode-integration';
 import { GlspEditorProvider } from '@eclipse-glsp/vscode-integration/lib/quickstart-components';
 import * as vscode from 'vscode';
 
-export default class TasklistEditorProvider extends GlspEditorProvider {
-    diagramType = 'minimal-diagram';
+export default class TaskListEditorProvider extends GlspEditorProvider {
+    diagramType = 'tasklist-diagram';
 
     constructor(
         protected readonly extensionContext: vscode.ExtensionContext,

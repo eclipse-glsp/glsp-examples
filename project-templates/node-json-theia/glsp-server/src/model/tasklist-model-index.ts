@@ -15,13 +15,13 @@
  ********************************************************************************/
 import { GModelIndex } from '@eclipse-glsp/server-node';
 import { injectable } from 'inversify';
-import { Task, Tasklist } from './tasklist-model';
+import { Task, TaskList } from './tasklist-model';
 
 @injectable()
-export class TasklistModelIndex extends GModelIndex {
+export class TaskListModelIndex extends GModelIndex {
     protected taskIndex = new Map<string, Task>();
 
-    indexTaskList(taskList: Tasklist): void {
+    indexTaskList(taskList: TaskList): void {
         taskList.tasks.forEach(task => this.taskIndex.set(task.id, task));
     }
 

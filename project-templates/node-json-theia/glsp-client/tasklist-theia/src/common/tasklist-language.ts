@@ -16,9 +16,9 @@
 
 import { GLSPDiagramLanguage } from '@eclipse-glsp/theia-integration';
 
-export const TasklistLanguage: GLSPDiagramLanguage = {
+export const TaskListLanguage: GLSPDiagramLanguage = {
     contributionId: 'tasklist',
-    label: 'Tasklist Diagram',
+    label: 'TaskList Diagram',
     diagramType: 'tasklist-diagram',
     fileExtensions: ['.tasklist']
 };

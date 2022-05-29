@@ -30,7 +30,7 @@ import 'balloon-css/balloon.min.css';
 import { Container, ContainerModule } from 'inversify';
 import '../css/diagram.css';
 
-const tasklistDiagramModule = new ContainerModule((bind, unbind, isBound, rebind) => {
+const taskListDiagramModule = new ContainerModule((bind, unbind, isBound, rebind) => {
     rebind(TYPES.ILogger).to(ConsoleLogger).inSingletonScope();
     rebind(TYPES.LogLevel).toConstantValue(LogLevel.warn);
     const context = { bind, unbind, isBound, rebind };
@@ -39,7 +39,7 @@ const tasklistDiagramModule = new ContainerModule((bind, unbind, isBound, rebind
 });
 
 export default function createContainer(widgetId: string): Container {
-    const container = createClientContainer(tasklistDiagramModule);
+    const container = createClientContainer(taskListDiagramModule);
 
     overrideViewerOptions(container, {
         baseDiv: widgetId,

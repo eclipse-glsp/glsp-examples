@@ -26,7 +26,7 @@ import {
 import { injectable } from 'inversify';
 
 @injectable()
-export class TasklistDiagramConfiguration implements DiagramConfiguration {
+export class TaskListDiagramConfiguration implements DiagramConfiguration {
     get typeMapping(): Map<string, GModelElementConstructor<GModelElement>> {
         return getDefaultMapping();
     }

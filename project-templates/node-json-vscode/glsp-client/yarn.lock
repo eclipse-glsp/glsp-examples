@@ -40,12 +40,12 @@
   resolved "https://registry.yarnpkg.com/@discoveryjs/json-ext/-/json-ext-0.5.7.tgz#1d572bfbbe14b7704e0ba0f39b74815b84870d70"
   integrity sha512-dBVuXR082gk3jsFp7Rd/JI4kytwGHecnCoTtXFb7DB6CNHp4rg5k1bhg0nWdLGLnOV71lmDzGQaLMy8iPLY0pw==
 
-"@eclipse-glsp/client@next":
-  version "0.10.0-next.b3a810f.172"
-  resolved "https://registry.yarnpkg.com/@eclipse-glsp/client/-/client-0.10.0-next.b3a810f.172.tgz#8f22dc5866828633fa9b63b6c6e2f7985dd7a120"
-  integrity sha512-GsqOlHM1+S3XyV0aJn1pxHuIB4gIEKlZOuzoYFmbr61urJjH7QGdcshoDgvOpuS3fy6wjTqjmYQ7qpXl5z27zA==
+"@eclipse-glsp/client@0.10.0-next.c94277c.176", "@eclipse-glsp/client@next":
+  version "0.10.0-next.c94277c.176"
+  resolved "https://registry.yarnpkg.com/@eclipse-glsp/client/-/client-0.10.0-next.c94277c.176.tgz#ffd656624cfa286d340e2e73ec5fd13385e275ad"
+  integrity sha512-nQW0Rv96W/9QMLWyjAQ237qTYbkW+2XttrKNsXzdpTa7r0OzH3hM8fBvSuoGfKalr9NLXeM7OERO2SZCHVog5w==
   dependencies:
-    "@eclipse-glsp/protocol" "0.10.0-next.b3a810f.172+b3a810f"
+    "@eclipse-glsp/protocol" "0.10.0-next.c94277c.176+c94277c"
     autocompleter "5.1.0"
     sprotty next
 
@@ -95,10 +95,10 @@
   resolved "https://registry.yarnpkg.com/@eclipse-glsp/prettier-config/-/prettier-config-0.10.0-next.b7bb985.103.tgz#2ad708ca691e8fe228b98e0ce673dbba43a2ef8c"
   integrity sha512-GrIHVf41ZYfoHIs97JXukUAmTS6IHQ4n1MnIJcNILJ38lLoFb254QYWdpLybbtu8xmXMdqPOHlrJE1J6TrB5Ow==
 
-"@eclipse-glsp/protocol@0.10.0-next.b3a810f.172+b3a810f", "@eclipse-glsp/protocol@next":
-  version "0.10.0-next.b3a810f.172"
-  resolved "https://registry.yarnpkg.com/@eclipse-glsp/protocol/-/protocol-0.10.0-next.b3a810f.172.tgz#ee4ee6d4211e0bbd61000782f1d5fbea2ce5298c"
-  integrity sha512-GRqaq9YIl3ewGj1h+DeS9+LJALS/0FFSwhYjmwYkEd1v0cLyBlNuZ1ymLyGw6ckG9PrpeK9TWwMw4jAjpMK4WA==
+"@eclipse-glsp/protocol@0.10.0-next.c94277c.176", "@eclipse-glsp/protocol@0.10.0-next.c94277c.176+c94277c", "@eclipse-glsp/protocol@next":
+  version "0.10.0-next.c94277c.176"
+  resolved "https://registry.yarnpkg.com/@eclipse-glsp/protocol/-/protocol-0.10.0-next.c94277c.176.tgz#d42286295fd23b91ba5a9c4bfd6124ef9eafe1c0"
+  integrity sha512-bgh9bK2zl6Y41WBvzau5AaWsp+BFbYNGzHl1Aw2lgPlmJ8Pi0GcSBkq6BMv8Oe1S31eyfsnPXExR82KL6hFJtA==
   dependencies:
     sprotty-protocol next
     uuid "7.0.3"
@@ -714,10 +714,6 @@
   version "4.0.0"
   resolved "https://registry.yarnpkg.com/@lerna/resolve-symlink/-/resolve-symlink-4.0.0.tgz#6d006628a210c9b821964657a9e20a8c9a115e14"
   integrity sha512-RtX8VEUzqT+uLSCohx8zgmjc6zjyRlh6i/helxtZTMmc4+6O4FS9q5LJas2uGO2wKvBlhcD6siibGt7dIC3xZA==
-  dependencies:
-    fs-extra "^9.1.0"
-    npmlog "^4.1.2"
-    read-cmd-shim "^2.0.0"
 
 "@lerna/rimraf-dir@4.0.0":
   version "4.0.0"

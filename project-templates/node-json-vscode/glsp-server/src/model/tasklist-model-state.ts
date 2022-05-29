@@ -15,21 +15,21 @@
  ********************************************************************************/
 import { DefaultModelState } from '@eclipse-glsp/server-node';
 import { inject, injectable } from 'inversify';
-import { Tasklist } from './tasklist-model';
-import { TasklistModelIndex } from './tasklist-model-index';
+import { TaskList } from './tasklist-model';
+import { TaskListModelIndex } from './tasklist-model-index';
 
 @injectable()
-export class TasklistModelState extends DefaultModelState {
-    @inject(TasklistModelIndex)
-    override readonly index: TasklistModelIndex;
+export class TaskListModelState extends DefaultModelState {
+    @inject(TaskListModelIndex)
+    override readonly index: TaskListModelIndex;
 
-    protected _taskList: Tasklist;
+    protected _taskList: TaskList;
 
-    get taskList(): Tasklist {
+    get taskList(): TaskList {
         return this._taskList;
     }
 
-    set taskList(taskList: Tasklist) {
+    set taskList(taskList: TaskList) {
         this._taskList = taskList;
         this.index.indexTaskList(taskList);
     }

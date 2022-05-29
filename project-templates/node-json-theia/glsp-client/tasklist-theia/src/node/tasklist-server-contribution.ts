@@ -16,7 +16,7 @@
 import { GLSPSocketServerContribution, GLSPSocketServerContributionOptions } from '@eclipse-glsp/theia-integration/lib/node';
 import { injectable } from 'inversify';
 import * as path from 'path';
-import { TasklistLanguage } from '../common/tasklist-language';
+import { TaskListLanguage } from '../common/tasklist-language';
 
 const DEFAULT_SERVER_PORT = '5007';
 
@@ -24,8 +24,8 @@ export const LOG_DIR = path.join(__dirname, '..', '..', 'logs');
 const MODULE_PATH = path.join(__dirname, '..', '..', '..', '..', 'glsp-server', 'bundle', 'tasklist-glsp-server-packed.js');
 
 @injectable()
-export class TasklistServerContribution extends GLSPSocketServerContribution {
-    readonly id = TasklistLanguage.contributionId;
+export class TaskListServerContribution extends GLSPSocketServerContribution {
+    readonly id = TaskListLanguage.contributionId;
 
     createContributionOptions(): Partial<GLSPSocketServerContributionOptions> {
         return {
