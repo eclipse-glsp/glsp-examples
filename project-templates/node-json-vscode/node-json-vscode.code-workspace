@@ -124,8 +124,8 @@
     "launch": {
         "compounds": [
             {
-                "name": "Launch Tasklist Diagram extension with external GLSP Server",
-                "configurations": ["Launch Tasklist GLSP Server", "Launch Tasklist Diagram Extension (External GLSP Server)"]
+                "name": "Launch TaskList Diagram extension with external GLSP Server",
+                "configurations": ["Launch TaskList GLSP Server", "Launch TaskList Diagram Extension (External GLSP Server)"]
             }
         ]
     }

@@ -4,7 +4,7 @@
     {
       "type": "node",
       "request": "launch",
-      "name": "Launch Tasklist GLSP Server",
+      "name": "Launch TaskList GLSP Server",
       "program": "${workspaceFolder}/lib/index.js",
       "env": {
         "NODE_ENV": "development"
