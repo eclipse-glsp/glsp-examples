@@ -5,7 +5,7 @@
 This directory provides the initial setup of the package architecture and environment for a GLSP Client that is integrated into a Theia browser application.
 It is based on the `TaskList` example diagram language.
 
-For more detailed instructions and information please checkout the [general README](../README.md) in the parent directory.
+For more detailed instructions and information please confer to the [README](../README.md) in the parent directory.
 
 ## Building
 
@@ -23,8 +23,9 @@ To start the Theia browser application with the integrated `TaskList` example ex
 yarn start
 ```
 
-It's also possible to start the Theia browser application in external mode. This means
-the `TaskList` GLSP server will not be started as an embedded process and is expected to be already running. This can be used for debugging purposes:
+It's also possible to start the Theia browser application in external mode.
+This means the `TaskList` GLSP server will not be started as an embedded process and is expected to be already running.
+This can be used for debugging purposes, where you first start the GLSP server in debug mode and let the Theia application connect to it:
 
 ```bash
 yarn start:external

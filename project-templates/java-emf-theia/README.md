@@ -60,7 +60,7 @@ Alternatively, you can also open the `Extension View` (Ctrl + Shift + X) and typ
 
 ## Building the example
 
-The server component hast to be built using `maven` and the client component have to be built using `yarn`.
+The server component is built with `maven` and the client component is built with `yarn`.
 A convenience script to build both is provided.
 To build all components execute the following in the directory containing this README:
 
