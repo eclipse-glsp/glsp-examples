@@ -16,7 +16,8 @@
 package org.eclipse.glsp.example.javaemf;
 
 import org.eclipse.glsp.example.javaemf.handler.CreateTaskNodeHandler;
-import org.eclipse.glsp.example.javaemf.handler.DeleteTaskNodeHandler;
+import org.eclipse.glsp.example.javaemf.handler.CreateTransitionEdgeHandler;
+import org.eclipse.glsp.example.javaemf.handler.DeleteTaskListElementHandler;
 import org.eclipse.glsp.example.javaemf.model.TaskListGModelFactory;
 import org.eclipse.glsp.example.javaemf.model.TaskListSourceModelStorage;
 import org.eclipse.glsp.example.javaemf.palette.TaskListToolPaletteItemProvider;
@@ -65,7 +66,8 @@ public class TaskListDiagramModule extends EMFNotationDiagramModule {
    protected void configureOperationHandlers(final MultiBinding<OperationHandler> binding) {
       super.configureOperationHandlers(binding);
       binding.add(CreateTaskNodeHandler.class);
-      binding.add(DeleteTaskNodeHandler.class);
+      binding.add(CreateTransitionEdgeHandler.class);
+      binding.add(DeleteTaskListElementHandler.class);
    }
 
    @Override

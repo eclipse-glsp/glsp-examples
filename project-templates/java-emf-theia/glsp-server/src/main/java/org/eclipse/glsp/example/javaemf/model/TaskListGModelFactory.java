@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2022 EclipseSource and others.
+ * Copyright (c) 2022 EclipseSource, Harsh Deshpande and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -17,22 +17,33 @@ package org.eclipse.glsp.example.javaemf.model;
 
 import java.util.Map;
 
+import org.eclipse.emf.common.util.EList;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.glsp.example.javaemf.TaskListModelTypes;
 import org.eclipse.glsp.example.tasklist.model.Task;
 import org.eclipse.glsp.example.tasklist.model.TaskList;
+import org.eclipse.glsp.example.tasklist.model.Transition;
 import org.eclipse.glsp.graph.DefaultTypes;
+import org.eclipse.glsp.graph.GEdge;
 import org.eclipse.glsp.graph.GGraph;
+import org.eclipse.glsp.graph.GModelElement;
 import org.eclipse.glsp.graph.GModelRoot;
 import org.eclipse.glsp.graph.GNode;
+import org.eclipse.glsp.graph.builder.impl.GEdgeBuilder;
 import org.eclipse.glsp.graph.builder.impl.GLabelBuilder;
 import org.eclipse.glsp.graph.builder.impl.GLayoutOptions;
 import org.eclipse.glsp.graph.builder.impl.GNodeBuilder;
 import org.eclipse.glsp.graph.util.GConstants;
+import org.eclipse.glsp.server.emf.EMFIdGenerator;
 import org.eclipse.glsp.server.emf.model.notation.Diagram;
 import org.eclipse.glsp.server.emf.notation.EMFNotationGModelFactory;
 
+import com.google.inject.Inject;
+
 public class TaskListGModelFactory extends EMFNotationGModelFactory {
+
+   @Inject
+   protected EMFIdGenerator idGenerator;
 
    @Override
    protected void fillRootElement(final EObject semanticModel, final Diagram notationModel, final GModelRoot newRoot) {
@@ -40,8 +51,13 @@ public class TaskListGModelFactory extends EMFNotationGModelFactory {
       GGraph graph = GGraph.class.cast(newRoot);
       if (notationModel.getSemanticElement() != null
          && notationModel.getSemanticElement().getResolvedSemanticElement() != null) {
+
          taskList.getTasks().stream()
             .map(this::createTaskNode)
+            .forEachOrdered(graph.getChildren()::add);
+
+         taskList.getTransitions().stream()
+            .map(transition -> this.createTransitionEdge(graph, transition))
             .forEachOrdered(graph.getChildren()::add);
       }
    }
@@ -57,4 +73,24 @@ public class TaskListGModelFactory extends EMFNotationGModelFactory {
       return taskNodeBuilder.build();
    }
 
+   protected GEdge createTransitionEdge(final GGraph graph, final Transition transition) {
+      String sourceId = transition.getSource().getId();
+      String targetId = transition.getTarget().getId();
+
+      GModelElement sourceNode = findGNodeById(graph.getChildren(), sourceId);
+      GModelElement targetNode = findGNodeById(graph.getChildren(), targetId);
+
+      GEdgeBuilder builder = new GEdgeBuilder(TaskListModelTypes.TRANSITION)
+         .source(sourceNode)
+         .target(targetNode)
+         .id(idGenerator.getOrCreateId(transition));
+
+      applyEdgeData(transition, builder);
+
+      return builder.build();
+   }
+
+   protected GModelElement findGNodeById(final EList<GModelElement> eList, final String elementId) {
+      return eList.stream().filter(node -> elementId.equals(node.getId())).findFirst().orElse(null);
+   }
 }

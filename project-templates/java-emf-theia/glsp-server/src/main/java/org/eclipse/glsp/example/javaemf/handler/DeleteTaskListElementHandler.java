@@ -32,7 +32,7 @@ import org.eclipse.glsp.server.operations.DeleteOperation;
 
 import com.google.inject.Inject;
 
-public class DeleteTaskNodeHandler extends AbstractEMFOperationHandler<DeleteOperation> {
+public class DeleteTaskListElementHandler extends AbstractEMFOperationHandler<DeleteOperation> {
 
    @Inject
    protected EMFNotationModelState modelState;

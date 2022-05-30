@@ -30,6 +30,10 @@ public class TaskListDiagramConfiguration extends BaseDiagramConfiguration {
    }
 
    @Override
-   public List<EdgeTypeHint> getEdgeTypeHints() { return List.of(); }
+   public List<EdgeTypeHint> getEdgeTypeHints() {
+      // transitions can be deleted, but not repositioned or rerouted
+      return List.of(new EdgeTypeHint(TaskListModelTypes.TRANSITION, false, true, false,
+         List.of(TaskListModelTypes.TASK), List.of(TaskListModelTypes.TASK)));
+   }
 
 }

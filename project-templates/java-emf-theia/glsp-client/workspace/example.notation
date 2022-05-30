@@ -31,4 +31,7 @@
     <position x="598.0" y="236.0"/>
     <size width="60.0" height="25.0"/>
   </elements>
+  <elements xsi:type="notation:Edge">
+    <semanticElement elementId="1a71d348-2e40-46c6-9615-d63000991ff5"/>
+  </elements>
 </notation:Diagram>
