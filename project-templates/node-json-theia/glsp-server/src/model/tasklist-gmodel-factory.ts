@@ -16,12 +16,12 @@
 import { GGraph, GLabel, GModelFactory, GNode } from '@eclipse-glsp/server-node';
 import { inject, injectable } from 'inversify';
 import { Task } from './tasklist-model';
-import { TasklistModelState } from './tasklist-model-state';
+import { TaskListModelState } from './tasklist-model-state';
 
 @injectable()
-export class TasklistGModelFactory implements GModelFactory {
-    @inject(TasklistModelState)
-    protected modelState: TasklistModelState;
+export class TaskListGModelFactory implements GModelFactory {
+    @inject(TaskListModelState)
+    protected modelState: TaskListModelState;
 
     createModel(): void {
         const taskList = this.modelState.taskList;

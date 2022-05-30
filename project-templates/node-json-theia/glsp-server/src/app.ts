@@ -22,16 +22,16 @@ import {
     SocketServerLauncher
 } from '@eclipse-glsp/server-node';
 import { Container } from 'inversify';
-import { TasklistDiagramModule } from './diagram/tasklist-diagram-module';
+import { TaskListDiagramModule } from './diagram/tasklist-diagram-module';
 
 export function launch(argv?: string[]): void {
     const options = createSocketCliParser().parse(argv);
     const appContainer = new Container();
     appContainer.load(createAppModule(options));
 
-    const logger = appContainer.get<LoggerFactory>(LoggerFactory)('MinimalServerApp');
+    const logger = appContainer.get<LoggerFactory>(LoggerFactory)('TaskListServerApp');
     const launcher = appContainer.resolve(SocketServerLauncher);
-    const serverModule = new ServerModule().configureDiagramModule(new TasklistDiagramModule());
+    const serverModule = new ServerModule().configureDiagramModule(new TaskListDiagramModule());
 
     const errorHandler = (error: any): void => logger.error('Error in workflow server launcher:', error);
     launcher.configure(serverModule);

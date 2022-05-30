@@ -16,14 +16,14 @@
 import { ApplyLabelEditOperation } from '@eclipse-glsp/protocol';
 import { GLSPServerError, GNode, OperationHandler, toTypeGuard } from '@eclipse-glsp/server-node';
 import { inject, injectable } from 'inversify';
-import { TasklistModelState } from '../model/tasklist-model-state';
+import { TaskListModelState } from '../model/tasklist-model-state';
 
 @injectable()
-export class TasklistApplyLabelEditHandler implements OperationHandler {
+export class TaskListApplyLabelEditHandler implements OperationHandler {
     readonly operationType = ApplyLabelEditOperation.KIND;
 
-    @inject(TasklistModelState)
-    protected readonly modelState: TasklistModelState;
+    @inject(TaskListModelState)
+    protected readonly modelState: TaskListModelState;
 
     execute(operation: ApplyLabelEditOperation): void {
         const index = this.modelState.index;

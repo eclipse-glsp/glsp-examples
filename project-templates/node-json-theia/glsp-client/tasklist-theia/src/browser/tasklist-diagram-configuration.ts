@@ -13,18 +13,18 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
-import { createTasklistDiagramContainer } from '@eclipse-glsp-examples/tasklist-glsp';
+import { createTaskListDiagramContainer } from '@eclipse-glsp-examples/tasklist-glsp';
 import { configureDiagramServer, GLSPDiagramConfiguration, GLSPTheiaDiagramServer } from '@eclipse-glsp/theia-integration/lib/browser';
 import { Container, injectable } from '@theia/core/shared/inversify';
 import 'sprotty-theia/css/theia-sprotty.css';
-import { TasklistLanguage } from '../common/tasklist-language';
+import { TaskListLanguage } from '../common/tasklist-language';
 
 @injectable()
 export class TasklistDiagramConfiguration extends GLSPDiagramConfiguration {
-    diagramType: string = TasklistLanguage.diagramType;
+    diagramType: string = TaskListLanguage.diagramType;
 
     doCreateContainer(widgetId: string): Container {
-        const container = createTasklistDiagramContainer(widgetId);
+        const container = createTaskListDiagramContainer(widgetId);
         configureDiagramServer(container, GLSPTheiaDiagramServer);
         return container;
     }

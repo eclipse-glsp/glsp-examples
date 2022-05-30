@@ -16,14 +16,14 @@
 
 import { ChangeBoundsOperation, Dimension, GNode, MaybePromise, OperationHandler, Point } from '@eclipse-glsp/server-node';
 import { inject, injectable } from 'inversify';
-import { TasklistModelState } from '../model/tasklist-model-state';
+import { TaskListModelState } from '../model/tasklist-model-state';
 
 @injectable()
-export class TasklistChangeBoundsHandler implements OperationHandler {
+export class TaskListChangeBoundsHandler implements OperationHandler {
     readonly operationType = ChangeBoundsOperation.KIND;
 
-    @inject(TasklistModelState)
-    protected modelState: TasklistModelState;
+    @inject(TaskListModelState)
+    protected modelState: TaskListModelState;
 
     execute(operation: ChangeBoundsOperation): MaybePromise<void> {
         for (const element of operation.newBounds) {

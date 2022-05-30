@@ -4,7 +4,7 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Build client packages",
+      "label": "Build TaskList Diagram Extension",
       "type": "shell",
       "group": {
         "kind": "build",
@@ -18,7 +18,7 @@
       "problemMatcher": []
     },
     {
-      "label": "Watch client packages",
+      "label": "Watch TaskList Diagram Extension",
       "type": "shell",
       "group": "build",
       "command": "yarn watch",

@@ -13,89 +13,25 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
-import { BaseGLSPServerContribution, GLSPServerLaunchOptions, START_UP_COMPLETE_MSG } from '@eclipse-glsp/theia-integration/lib/node';
-import * as fs from 'fs';
+import { GLSPSocketServerContribution, GLSPSocketServerContributionOptions } from '@eclipse-glsp/theia-integration/lib/node';
 import { injectable } from 'inversify';
-import * as net from 'net';
 import * as path from 'path';
-import { createSocketConnection, IConnection } from 'vscode-ws-jsonrpc/lib/server';
-import { TasklistLanguage } from '../common/tasklist-language';
-const DEFAULT_SERVER_PORT = '5007';
-// Custom implementation until https://github.com/eclipse-glsp/glsp/issues/636 is resolved
+import { TaskListLanguage } from '../common/tasklist-language';
 
-export interface NodeSocketServerLaunchOptions extends GLSPServerLaunchOptions {
-    /** Path to the location of the node module that should be launched as process */
-    module: string;
-    /** Socket connection options for new client connections */
-    socketConnectionOptions: net.TcpSocketConnectOpts;
-    /** Additional arguments that should be passed when starting the server process. */
-    additionalArgs?: string[];
-}
+const DEFAULT_SERVER_PORT = '5007';
+
+export const LOG_DIR = path.join(__dirname, '..', '..', 'logs');
+const MODULE_PATH = path.join(__dirname, '..', '..', '..', '..', 'glsp-server', 'bundle', 'tasklist-glsp-server-packed.js');
 
 @injectable()
-export class TasklistServerContribution extends BaseGLSPServerContribution {
-    readonly id = TasklistLanguage.contributionId;
-    protected resolveReady: (value?: void | PromiseLike<void> | undefined) => void;
+export class TaskListServerContribution extends GLSPSocketServerContribution {
+    readonly id = TaskListLanguage.contributionId;
 
-    override launchOptions: NodeSocketServerLaunchOptions = {
-        ...GLSPServerLaunchOptions.createDefaultOptions(),
-        module: path.join(__dirname, '../../../../glsp-server/lib/index.js'),
-        socketConnectionOptions: { port: JSON.parse(process.env.TASKLIST_SERVER_PORT || DEFAULT_SERVER_PORT) },
-        additionalArgs: ['--no-consoleLog', '--fileLog', '--logDir', path.join(__dirname, '../../../../glsp-server/bundle/')]
-    };
-
-    createLaunchOptions?(): Partial<GLSPServerLaunchOptions>;
-
-    onReady: Promise<void> = new Promise(resolve => (this.resolveReady = resolve));
-
-    connect(clientConnection: IConnection): void {
-        this.connectToSocketServer(clientConnection);
-    }
-
-    async launch(): Promise<void> {
-        if (!fs.existsSync(this.launchOptions.module)) {
-            throw new Error(`Could not launch GLSP server. The given node module is not valid: ${this.launchOptions.module}`);
-        }
-        if (isNaN(this.launchOptions.socketConnectionOptions.port)) {
-            throw new Error(
-                `Could not launch GLSP Server. The given server port is not a number: ${this.launchOptions.socketConnectionOptions.port}`
-            );
-        }
-        let args = [this.launchOptions.module, '--port', `${this.launchOptions.socketConnectionOptions.port}`];
-
-        if (this.launchOptions.additionalArgs) {
-            args = [...args, ...this.launchOptions.additionalArgs];
-        }
-
-        await this.spawnProcessAsync('node', args, undefined);
-        return this.onReady;
-    }
-
-    protected override processLogInfo(data: string | Buffer): void {
-        if (data) {
-            const message = data.toString();
-            if (message.startsWith(START_UP_COMPLETE_MSG)) {
-                this.resolveReady();
-            }
-        }
-    }
-
-    protected override processLogError(data: string | Buffer): void {
-        // Override console logging of errors. To avoid a polluted client console.
-    }
-
-    protected connectToSocketServer(clientConnection: IConnection): void {
-        if (isNaN(this.launchOptions.socketConnectionOptions.port)) {
-            throw new Error(
-                // eslint-disable-next-line max-len
-                `Could not connect to to GLSP Server. The given server port is not a number: ${this.launchOptions.socketConnectionOptions.port}`
-            );
-        }
-        const socket = new net.Socket();
-        const serverConnection = createSocketConnection(socket, socket, () => {
-            socket.destroy();
-        });
-        this.forward(clientConnection, serverConnection);
-        socket.connect(this.launchOptions.socketConnectionOptions);
+    createContributionOptions(): Partial<GLSPSocketServerContributionOptions> {
+        return {
+            executable: MODULE_PATH,
+            socketConnectionOptions: { port: JSON.parse(process.env.TASKLIST_SERVER_PORT || DEFAULT_SERVER_PORT) },
+            additionalArgs: ['--no-consoleLog', '--fileLog', '--logDir', LOG_DIR]
+        };
     }
 }

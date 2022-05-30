@@ -20,13 +20,13 @@ import { AnyObject, hasArrayProp, hasObjectProp, hasStringProp } from '@eclipse-
  * The source model for `tasklist` GLSP diagrams. A `TaskList` is a
  * plain JSON objects that contains a set of {@link Task}s
  */
-export interface Tasklist {
+export interface TaskList {
     id: string;
     tasks: Task[];
 }
 
-export namespace Tasklist {
-    export function is(object: any): object is Tasklist {
+export namespace TaskList {
+    export function is(object: any): object is TaskList {
         return AnyObject.is(object) && hasStringProp(object, 'id') && hasArrayProp(object, 'tasks');
     }
 }

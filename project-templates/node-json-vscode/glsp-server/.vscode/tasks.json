@@ -4,7 +4,7 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Build glsp-server packages",
+      "label": "Build TaskList GLSP Server",
       "type": "shell",
       "group": "build",
       "command": "yarn build",
@@ -15,7 +15,7 @@
       "problemMatcher": ["$tsc", "$eslint-stylish"]
     },
     {
-      "label": "Watch glsp-server packages",
+      "label": "Watch TaskList GLSP Server",
       "type": "shell",
       "group": "build",
       "command": "yarn watch",
@@ -26,18 +26,7 @@
       "problemMatcher": ["$tsc-watch"]
     },
     {
-      "label": "Execute all glsp-server tests",
-      "type": "shell",
-      "group": "test",
-      "command": "yarn test",
-      "presentation": {
-        "reveal": "always",
-        "panel": "dedicated"
-      },
-      "problemMatcher": []
-    },
-    {
-      "label": "Start Example GLSP server",
+      "label": "Start TaskList GLSP Server",
       "type": "shell",
       "group": "none",
       "command": "yarn start",

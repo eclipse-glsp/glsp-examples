@@ -15,9 +15,9 @@
  ********************************************************************************/
 import { GLSPServerContribution } from '@eclipse-glsp/theia-integration/lib/node';
 import { ContainerModule } from '@theia/core/shared/inversify';
-import { TasklistServerContribution } from './tasklist-server-contribution';
+import { TaskListServerContribution } from './tasklist-server-contribution';
 
 export default new ContainerModule(bind => {
-    bind(TasklistServerContribution).toSelf().inSingletonScope();
-    bind(GLSPServerContribution).toService(TasklistServerContribution);
+    bind(TaskListServerContribution).toSelf().inSingletonScope();
+    bind(GLSPServerContribution).toService(TaskListServerContribution);
 });

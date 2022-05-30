@@ -4,7 +4,7 @@
   "version": "2.0.0",
   "tasks": [
     {
-      "label": "Build client packages",
+      "label": "Build TaskList GLSP Client example",
       "type": "shell",
       "group": {
         "kind": "build",
@@ -18,10 +18,32 @@
       "problemMatcher": []
     },
     {
-      "label": "Watch client packages",
+      "label": "Watch TaskList GLSP Client example",
       "type": "shell",
       "group": "build",
       "command": "yarn watch",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Start TaskList Example Theia Backend (Embedded GLSP Server)",
+      "type": "shell",
+      "group": "test",
+      "command": "yarn start",
+      "presentation": {
+        "reveal": "always",
+        "panel": "new"
+      },
+      "problemMatcher": []
+    },
+    {
+      "label": "Start TaskList Example Backend (External GLSP Server)",
+      "type": "shell",
+      "group": "test",
+      "command": "yarn start:external",
       "presentation": {
         "reveal": "always",
         "panel": "new"

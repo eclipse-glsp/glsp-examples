@@ -15,14 +15,14 @@
  ********************************************************************************/
 import { DeleteElementOperation, GNode, MaybePromise, OperationHandler, remove, toTypeGuard } from '@eclipse-glsp/server-node';
 import { inject, injectable } from 'inversify';
-import { TasklistModelState } from '../model/tasklist-model-state';
+import { TaskListModelState } from '../model/tasklist-model-state';
 
 @injectable()
-export class TasklistDeleteHandler implements OperationHandler {
+export class DeleteTaskNodeHandler implements OperationHandler {
     readonly operationType = DeleteElementOperation.KIND;
 
-    @inject(TasklistModelState)
-    protected modelState: TasklistModelState;
+    @inject(TaskListModelState)
+    protected modelState: TaskListModelState;
 
     execute(operation: DeleteElementOperation): MaybePromise<void> {
         operation.elementIds.forEach(elementId => this.deleteTask(elementId));

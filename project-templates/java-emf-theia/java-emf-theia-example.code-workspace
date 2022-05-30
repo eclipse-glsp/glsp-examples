@@ -69,5 +69,13 @@
             "shengchen.vscode-checkstyle",
             "vscjava.vscode-java-pack"
         ]
+    },
+    "launch": {
+        "compounds": [
+            {
+                "name": "Launch TaskList Theia backend with external GLSP Server",
+                "configurations": ["Launch TaskList GLSP Server", "Launch TaskList Theia Backend (External GLSP Server)"]
+            }
+        ]
     }
 }

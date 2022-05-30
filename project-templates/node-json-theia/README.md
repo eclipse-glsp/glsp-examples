@@ -49,7 +49,8 @@ Alternatively, you can also open the `Extension View` (Ctrl + Shift + X) and typ
 
 ## Building the example
 
-The server component and the client component have to be built using `yarn`. A convenience script to build both is provided.
+The server component and the client component have to be built using `yarn`. 
+A convenience script to build both is provided.
 To build all components execute the following in the directory containing this README:
 
 ```bash
@@ -86,23 +87,24 @@ To debug the involved components, the [VS Code workspace](node-json-theia.code-w
 Here you can choose between four different launch configurations:
 
 *   `Launch TaskList GLSP Server`<br>
-    This config can be used to manually launch the `Tasklist GLSP Server` node process.
+    This config can be used to manually launch the `TaskList GLSP Server` node process.
     Breakpoints in the source files of the `glsp-server` directory will be picked up.
     In order to use this config, the Theia application backend has to be launched in `External` server mode (see `Launch TaskList Theia Backend (External GLSP Server)`).
 *   `Launch TaskList Theia Backend (External GLSP Server)`<br>
     This config launches the Theia browser backend application but does not start the GLSP server as embedded process.
     Breakpoints in the source files of the `glsp-client/**/node` directories will be picked up.
-    It expects that the GLSP Server process is already running and has been started externally with the `Launch Tasklist GLSP Server` config.
+    It expects that the GLSP Server process is already running and has been started externally with the `Launch TaskList GLSP Server` config.
 *   `Launch TaskList Theia Backend (Embedded GLSP Server)`<br>
     This config launches the Theia browser backend application and will start the GLSP server as embedded process which means you won't be able to debug the GLSP Server source code.
     Breakpoints in the source files of the `glsp-client/**/node` directories will be picked up.
-*   `Launch Tasklist Theia backed with external GLSP Server`<br>
-    This is a convenience compound config that launches both the Tasklist Theia backed in external server mode and the Tasklist GLSP server process. Enables debugging of both the glsp-client and glsp-server code simultaneously.
+*   `Launch TaskList Theia backed with external GLSP Server`<br>
+    This is a convenience compound config that launches both the Tasklist Theia backend in external server mode and the Tasklist GLSP server process. Enables debugging of both the glsp-client and glsp-server code simultaneously.
 *   `Launch Theia Frontend`<br>
     Launches a Google chrome instance, opens the Theia browser application at `http://localhost:3000` and will automatically open an example workspace that contains a `example.tasklist` file.
     Double-click the file in the `Explorer` to open it with the `Tasklist Diagram Editor`.
     Breakpoints in the source files of the `glsp-client/**/browser` directories will be picked up.
 
+> **_NOTE:_**&nbsp; Due to bug [GLSP-666](https://github.com/eclipse-glsp/glsp/issues/666) the launch configurations for the `Theia Backend` might not work as expected when using Windows. Unfortunately there is currently no work-around and if you encounter this bug you won't be able to debug the Theia backed.
 ## Next steps
 
 Once you are up and running with this project template, we recommend to refer to the [Getting Started](https://www.eclipse.org/glsp/documentation) to learn how to

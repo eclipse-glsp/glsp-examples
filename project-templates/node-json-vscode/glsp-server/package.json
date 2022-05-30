@@ -61,5 +61,8 @@
     "access": "public"
   },
   "main": "lib/index",
-  "types": "lib/index"
+  "types": "lib/index",
+  "resolutions": {
+    "**/@eclipse-glsp/protocol": "0.10.0-next.c94277c.176"
+  }
 }

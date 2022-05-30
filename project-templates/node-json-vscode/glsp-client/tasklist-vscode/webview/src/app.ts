@@ -13,18 +13,18 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
-import { createTasklistDiagramContainer } from '@eclipse-glsp-examples/tasklist-glsp';
+import { createTaskListDiagramContainer } from '@eclipse-glsp-examples/tasklist-glsp';
 import { GLSPStarter } from '@eclipse-glsp/vscode-integration-webview';
 import '@eclipse-glsp/vscode-integration-webview/css/glsp-vscode.css';
 import { Container } from 'inversify';
 import { SprottyDiagramIdentifier } from 'sprotty-vscode-webview';
 
-class TasklistStarter extends GLSPStarter {
+class TaskListStarter extends GLSPStarter {
     createContainer(diagramIdentifier: SprottyDiagramIdentifier): Container {
-        return createTasklistDiagramContainer(diagramIdentifier.clientId);
+        return createTaskListDiagramContainer(diagramIdentifier.clientId);
     }
 }
 
 export function launch(): void {
-    new TasklistStarter();
+    new TaskListStarter();
 }

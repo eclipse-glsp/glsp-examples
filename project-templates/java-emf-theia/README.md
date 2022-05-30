@@ -31,6 +31,8 @@ The most important entry points are:
 -   [`glsp-client/tasklist-browser-app/package.json`](glsp-client/tasklist-browser-app/package.json): Theia browser application definition
 -   [`glsp-server/src/main/java/org/eclipse/glsp/example/javaemf/TaskListDiagramModule.java`](glsp-server/src/main/java/org/eclipse/glsp/example/javaemf/TaskListDiagramModule.java): dependency injection module of the server
 
+> **_NOTE:_**&nbsp; Due to bug [GLSP-666](https://github.com/eclipse-glsp/glsp/issues/666) the launch configurations for the `Theia Backend` might not work as expected when using Windows. Unfortunately there is currently no work-around and if you encounter this bug you won't be able to debug the Theia backed.
+
 ## Prerequisites
 
 The following libraries/frameworks need to be installed on your system:
@@ -58,12 +60,25 @@ Alternatively, you can also open the `Extension View` (Ctrl + Shift + X) and typ
 
 ## Building the example
 
-The server component of the minimal example has to be built using Maven, the client component has to be built using yarn. This can be done via CLI:
+The server component is built with `maven` and the client component is built with `yarn`.
+A convenience script to build both is provided.
+To build all components execute the following in the directory containing this README:
 
-    cd glsp-server && mvn clean verify && cd ..
-    cd glsp-client && yarn
+```bash
+yarn build
+```
 
-or the available VSCode tasks (via Menu _Terminal > Run Task..._)
+In addition, it is also possible to build each component individually:
+
+```bash
+# Build only the glsp-client
+yarn build:client
+
+# Build only glsp-server
+yarn build:server
+```
+
+Or you can use the available VSCode tasks configured in the [workspace](java-emf-theia-example.code-workspace)  (via Menu _Terminal > Run Task..._)
 
 -   `Build TaskList GLSP Server`
 -   `Build TaskList GLSP Client example`
@@ -72,11 +87,15 @@ or the available VSCode tasks (via Menu _Terminal > Run Task..._)
 
 To start the Theia browser application with the integrated tasklist example, navigate to the client directory
 
-    cd glsp-client
+```bash
+cd glsp-client
+```
 
 and then execute:
 
-    yarn start
+```bash
+yarn start
+```
 
 This will launch the example in the browser with an embedded GLSP server on [localhost:3000](http://localhost:3000).
 
@@ -95,6 +114,8 @@ Here you can choose between four different launch configurations:
 -   `Launch TaskList Theia Backend (Embedded GLSP Server)`<br>
     This config launches the Theia browser backend application and will start the GLSP server as embedded process which means you won't be able to debug the GLSP Server source code.
     Breakpoints in the source files of the `glsp-client/**/node` directories will be picked up.
+-   `Launch TaskList Theia backed with external GLSP Server`<br>
+    This is a convenience compound config that launches both the TaskList Theia backend in external server mode and the TaskList GLSP server process. Enables debugging of both the glsp-client and glsp-server code simultaneously.
 -   `Launch Theia Frontend`<br>
     Launches a Google chrome instance, opens the Theia browser application at `http://localhost:3000` and will automatically open an example workspace that contains a `example.tasklist` file.
     Double-click the file in the `Explorer` to open it with the `Tasklist Diagram Editor`.
@@ -104,7 +125,9 @@ Here you can choose between four different launch configurations:
 
 To run TypeScript in watch-mode so that TypeScript files are compiled as you modify them via CLI:
 
-    yarn watch
+```bash
+yarn watch
+```
 
 or the VSCode task `Watch TaskList GLSP Client example`.
 

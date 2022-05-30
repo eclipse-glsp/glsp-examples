@@ -17,14 +17,14 @@ import { CreateNodeOperation, CreateNodeOperationHandler, DefaultTypes, GNode, P
 import { inject, injectable } from 'inversify';
 import * as uuid from 'uuid';
 import { Task } from '../model/tasklist-model';
-import { TasklistModelState } from '../model/tasklist-model-state';
+import { TaskListModelState } from '../model/tasklist-model-state';
 
 @injectable()
 export class CreateTaskHandler extends CreateNodeOperationHandler {
     readonly elementTypeIds = [DefaultTypes.NODE];
 
-    @inject(TasklistModelState)
-    protected override modelState: TasklistModelState;
+    @inject(TaskListModelState)
+    protected override modelState: TaskListModelState;
 
     execute(operation: CreateNodeOperation): void {
         const relativeLocation = this.getRelativeLocation(operation) ?? Point.ORIGIN;

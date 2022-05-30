@@ -23,7 +23,7 @@ import * as path from 'path';
 import * as process from 'process';
 import 'reflect-metadata';
 import * as vscode from 'vscode';
-import TasklistEditorProvider from './tasklist-editor-provider';
+import TaskListEditorProvider from './tasklist-editor-provider';
 
 const DEFAULT_SERVER_PORT = '5007';
 
@@ -56,7 +56,7 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
 
     const customEditorProvider = vscode.window.registerCustomEditorProvider(
         'tasklist.glspDiagram',
-        new TasklistEditorProvider(context, glspVscodeConnector),
+        new TaskListEditorProvider(context, glspVscodeConnector),
         {
             webviewOptions: { retainContextWhenHidden: true },
             supportsMultipleEditorsPerDocument: false
