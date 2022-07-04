@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2020-2021 EclipseSource and others.
+ * Copyright (c) 2020-2022 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -40,7 +40,7 @@ import {
 } from '@eclipse-glsp/client';
 
 export class TaskNode extends RectangularNode implements Nameable, WithEditableLabel {
-    static readonly DEFAULT_FEATURES = [
+    static override readonly DEFAULT_FEATURES = [
         connectableFeature,
         deletableFeature,
         selectFeature,
@@ -53,20 +53,21 @@ export class TaskNode extends RectangularNode implements Nameable, WithEditableL
         nameFeature,
         withEditLabelFeature
     ];
-    name = '';
     duration?: number;
     taskType?: string;
     reference?: string;
 
     get editableLabel(): (SChildElement & EditableLabel) | undefined {
-        const headerComp = this.children.find(element => element.type === 'comp:header');
-        if (headerComp) {
-            const label = headerComp.children.find(element => element.type === 'label:heading');
-            if (label && isEditableLabel(label)) {
-                return label;
-            }
+        const label = this.children.find(element => element.type === 'label:heading');
+        if (label && isEditableLabel(label)) {
+            return label;
         }
         return undefined;
+    }
+
+    get name(): string {
+        const labelText = this.editableLabel?.text;
+        return labelText ? labelText : '<unknown>';
     }
 }
 
@@ -80,11 +81,11 @@ export class WeightedEdge extends SEdge {
 
 export class ActivityNode extends DiamondNode {
     nodeType: string = ActivityNode.Type.UNDEFINED;
-    size = {
+    override size = {
         width: 32,
         height: 32
     };
-    strokeWidth = 1;
+    override strokeWidth = 1;
 }
 
 export namespace ActivityNode {
@@ -103,15 +104,15 @@ export class Icon extends SShapeElement implements LayoutContainer {
     static readonly DEFAULT_FEATURES = [boundsFeature, layoutContainerFeature, layoutableChildFeature, fadeFeature];
 
     layout: string;
-    layoutOptions?: { [key: string]: string | number | boolean };
-    size = {
+    override layoutOptions?: { [key: string]: string | number | boolean };
+    override size = {
         width: 32,
         height: 32
     };
 }
 
 export class CategoryNode extends RectangularNode implements Nameable, WithEditableLabel {
-    static readonly DEFAULT_FEATURES = [
+    static override readonly DEFAULT_FEATURES = [
         deletableFeature,
         selectFeature,
         boundsFeature,

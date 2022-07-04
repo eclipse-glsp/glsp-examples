@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2021 EclipseSource and others.
+ * Copyright (c) 2021-2022 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -23,6 +23,7 @@ import org.eclipse.glsp.example.workflow.utils.WorkflowBuilder.CategoryNodeBuild
 import org.eclipse.glsp.example.workflow.wfgraph.WfgraphPackage;
 import org.eclipse.glsp.graph.GNode;
 import org.eclipse.glsp.graph.GPoint;
+import org.eclipse.glsp.graph.builder.impl.GArguments;
 import org.eclipse.glsp.server.model.GModelState;
 import org.eclipse.glsp.server.utils.GModelUtil;
 
@@ -38,7 +39,8 @@ public class CreateCategoryHandler extends CreateWorkflowNodeOperationHandler {
       String name = "Category " + nodeCounter;
 
       return new CategoryNodeBuilder(name) //
-         .position(point.orElse(null));
+         .position(point.orElse(null))
+         .addArguments(GArguments.cornerRadius(5));
    }
 
    @Override

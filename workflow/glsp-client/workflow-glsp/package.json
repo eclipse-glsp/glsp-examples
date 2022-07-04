@@ -1,7 +1,7 @@
 {
   "name": "@eclipse-glsp-examples/workflow-glsp",
   "private": "true",
-  "version": "0.9.0",
+  "version": "1.0.0",
   "description": "GLSP diagrams for the Workflow DSL",
   "license": "(EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0)",
   "keywords": [
@@ -27,17 +27,12 @@
     }
   ],
   "dependencies": {
-    "@eclipse-glsp/client": "0.9.0",
+    "@eclipse-glsp/client": "^1.0.0",
     "balloon-css": "^0.5.0"
-  },
-  "devDependencies": {
-    "@eclipse-glsp/config": "0.9.0",
-    "rimraf": "^2.6.1",
-    "typescript": "^3.9.2"
   },
   "scripts": {
     "prepare": "yarn clean && yarn build && yarn lint",
-    "clean": "rimraf lib",
+    "clean": "rimraf lib  tsconfig.tsbuildinfo",
     "build": "tsc",
     "lint": "eslint -c ../.eslintrc.js --ext .ts,.tsx ./src",
     "watch": "tsc -w"

@@ -23,6 +23,7 @@ import org.eclipse.emf.common.notify.impl.AdapterFactoryImpl;
 import org.eclipse.emf.ecore.EObject;
 
 import org.eclipse.glsp.example.workflow.wfgraph.*;
+
 import org.eclipse.glsp.graph.GArgumentable;
 import org.eclipse.glsp.graph.GBoundsAware;
 import org.eclipse.glsp.graph.GCompartment;

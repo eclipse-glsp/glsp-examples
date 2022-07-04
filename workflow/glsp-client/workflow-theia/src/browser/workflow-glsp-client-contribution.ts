@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2019-2021 EclipseSource and others.
+ * Copyright (c) 2019-2022 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -28,7 +28,7 @@ export class WorkflowGLSPClientContribution extends BaseGLSPClientContribution {
     readonly id = WorkflowLanguage.contributionId;
     readonly fileExtensions = WorkflowLanguage.fileExtensions;
 
-    protected createInitializeOptions(): MaybePromise<Args | undefined> {
+    protected override createInitializeOptions(): MaybePromise<Args | undefined> {
         return {
             ['timestamp']: new Date().toString(),
             ['message']: 'Custom Options Available'

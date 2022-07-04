@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2019-2021 EclipseSource and others.
+ * Copyright (c) 2019-2022 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -20,13 +20,14 @@ import static org.eclipse.glsp.server.types.GLSPServerException.getOrThrow;
 import java.util.Map;
 import java.util.concurrent.CompletableFuture;
 
-import org.apache.log4j.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.eclipse.glsp.server.protocol.DefaultGLSPServer;
 import org.eclipse.glsp.server.protocol.InitializeResult;
 import org.eclipse.glsp.server.utils.MapUtil;
 
 public class WorkflowGLSPServer extends DefaultGLSPServer {
-   private static final Logger LOGGER = Logger.getLogger(WorkflowGLSPServer.class);
+   private static final Logger LOGGER = LogManager.getLogger(WorkflowGLSPServer.class);
    private static final String MESSAGE_KEY = "message";
    private static final String TIMESTAMP_KEY = "timestamp";
 

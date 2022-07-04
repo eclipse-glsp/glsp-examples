@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "parent",
-  "version": "0.9.0",
+  "version": "1.0.0",
   "engines": {
     "yarn": ">=1.7.0 <2.x.x"
   },
@@ -23,18 +23,14 @@
     }
   ],
   "scripts": {
-    "build": "yarn build:minimal && yarn build:workflow",
-    "build:minimal": "yarn build:minimal:server && yarn build:minimal:client",
-    "build:minimal:server": "mvn -f minimal/glsp-server/pom.xml clean verify",
-    "build:minimal:client": "yarn --cwd minimal/glsp-client install",
-    "start:minimal": "yarn --cwd minimal/glsp-client/minimal-browser-app  start",
+    "build": "yarn build:workflow",
     "build:workflow": "yarn build:workflow:server && yarn build:workflow:client",
     "build:workflow:server": "mvn -f workflow/glsp-server/pom.xml clean verify",
     "build:workflow:client": "yarn --cwd workflow/glsp-client install",
     "start:workflow": "yarn --cwd workflow/glsp-client/workflow-browser-app start"
   },
   "devDependencies": {
-    "@eclipse-glsp/config": "0.9.0",
+    "@eclipse-glsp/config": "1.0.0",
     "typescript": "^3.9.2"
   }
 }

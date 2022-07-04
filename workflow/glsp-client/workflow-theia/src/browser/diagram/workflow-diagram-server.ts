@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2020-2021 EclipseSource and others.
+ * Copyright (c) 2020-2022 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -20,7 +20,7 @@ import { injectable } from '@theia/core/shared/inversify';
 
 @injectable()
 export class WorkflowDiagramServer extends GLSPTheiaDiagramServer {
-    initialize(registry: ActionHandlerRegistry): void {
+    override initialize(registry: ActionHandlerRegistry): void {
         super.initialize(registry);
         registry.register('editTask', this);
         registry.register(ApplyTaskEditOperation.KIND, this);

@@ -13,8 +13,7 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
-import { getPort } from '@eclipse-glsp/protocol';
-import { JavaSocketServerContribution, JavaSocketServerLaunchOptions } from '@eclipse-glsp/theia-integration/lib/node';
+import { getPort, GLSPSocketServerContribution, GLSPSocketServerContributionOptions } from '@eclipse-glsp/theia-integration/lib/node';
 import { injectable } from '@theia/core/shared/inversify';
 import { join, resolve } from 'path';
 import { WorkflowLanguage } from '../common/workflow-language';
@@ -23,15 +22,16 @@ export const DEFAULT_PORT = 5007;
 export const PORT_ARG_KEY = 'WF_GLSP';
 export const LOG_DIR = join(__dirname, '..', '..', 'logs');
 const JAR_FILE = resolve(
-    join(__dirname, '..', '..', '..', '..', 'glsp-server', 'target', 'org.eclipse.glsp.example.workflow-0.9.0-glsp.jar')
+    join(__dirname, '..', '..', '..', '..', 'glsp-server', 'target', 'org.eclipse.glsp.example.workflow-1.0.0-glsp.jar')
 );
+
 @injectable()
-export class WorkflowGLServerContribution extends JavaSocketServerContribution {
+export class WorkflowGLServerContribution extends GLSPSocketServerContribution {
     readonly id = WorkflowLanguage.contributionId;
 
-    createLaunchOptions(): Partial<JavaSocketServerLaunchOptions> {
+    createContributionOptions(): Partial<GLSPSocketServerContributionOptions> {
         return {
-            jarPath: JAR_FILE,
+            executable: JAR_FILE,
             additionalArgs: ['--consoleLog', 'false', '--fileLog', 'true', '--logDir', LOG_DIR],
             socketConnectionOptions: {
                 port: getPort(PORT_ARG_KEY, DEFAULT_PORT)

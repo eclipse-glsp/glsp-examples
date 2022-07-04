@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2019-2021 EclipseSource and others.
+ * Copyright (c) 2019-2022 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -15,15 +15,13 @@
  ********************************************************************************/
 package org.eclipse.glsp.example.workflow.launch;
 
-import java.io.IOException;
-
 import org.apache.commons.cli.ParseException;
 import org.eclipse.elk.alg.layered.options.LayeredMetaDataProvider;
 import org.eclipse.glsp.example.workflow.WorkflowDiagramModule;
 import org.eclipse.glsp.layout.ElkLayoutEngine;
 import org.eclipse.glsp.server.di.ServerModule;
-import org.eclipse.glsp.server.launch.SocketGLSPServerLauncher;
 import org.eclipse.glsp.server.launch.GLSPServerLauncher;
+import org.eclipse.glsp.server.launch.SocketGLSPServerLauncher;
 import org.eclipse.glsp.server.utils.LaunchUtil;
 import org.eclipse.glsp.server.websocket.WebsocketServerLauncher;
 
@@ -32,10 +30,9 @@ public final class WorkflowServerLauncher {
 
    @SuppressWarnings("uncommentedmain")
    public static void main(final String[] args) {
-      String processName = "WorkflowExampleGlspServer";
+      String processName = "org.eclipse.glsp.example.workflow-X.X.X-glsp.jar";
       try {
          WorkflowCLIParser parser = new WorkflowCLIParser(args, processName);
-         LaunchUtil.configure(parser);
          ElkLayoutEngine.initialize(new LayeredMetaDataProvider());
 
          int port = parser.parsePort();
@@ -43,12 +40,12 @@ public final class WorkflowServerLauncher {
             .configureDiagramModule(new WorkflowDiagramModule());
 
          GLSPServerLauncher launcher = parser.isWebsocket()
-            ? new WebsocketServerLauncher(workflowServerModule, "/workflow")
+            ? new WebsocketServerLauncher(workflowServerModule, "/workflow", parser.parseWebsocketLogLevel())
             : new SocketGLSPServerLauncher(workflowServerModule);
 
-         launcher.start("localhost", port);
+         launcher.start("localhost", port, parser);
 
-      } catch (ParseException | IOException ex) {
+      } catch (ParseException ex) {
          ex.printStackTrace();
          System.out.println();
          LaunchUtil.printHelp(processName, WorkflowCLIParser.getDefaultOptions());

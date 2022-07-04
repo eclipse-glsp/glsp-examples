@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2019-2021 EclipseSource and others.
+ * Copyright (c) 2019-2022 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -19,11 +19,10 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 import java.util.Optional;
-import java.util.stream.Collectors;
 
+import org.eclipse.glsp.example.workflow.utils.ModelTypes;
 import org.eclipse.glsp.example.workflow.wfgraph.ActivityNode;
 import org.eclipse.glsp.example.workflow.wfgraph.TaskNode;
-import org.eclipse.glsp.graph.GCompartment;
 import org.eclipse.glsp.graph.GEdge;
 import org.eclipse.glsp.graph.GLabel;
 import org.eclipse.glsp.graph.GModelElement;
@@ -31,7 +30,6 @@ import org.eclipse.glsp.server.features.validation.Marker;
 import org.eclipse.glsp.server.features.validation.MarkerKind;
 import org.eclipse.glsp.server.features.validation.ModelValidator;
 import org.eclipse.glsp.server.model.GModelState;
-import org.eclipse.glsp.server.utils.GModelUtil;
 
 import com.google.inject.Inject;
 
@@ -84,11 +82,15 @@ public class WorkflowModelValidator implements ModelValidator {
    private static Optional<Marker> validateTaskNode_labelStartsUpperCase(final GModelState modelState,
       final GModelElement element) {
       TaskNode taskNode = (TaskNode) element;
-      List<GCompartment> gCompartment = GModelUtil.filterByType(taskNode.getChildren(), GCompartment.class)
-         .collect(Collectors.toList());
-      List<GLabel> gLabels = GModelUtil.filterByType(gCompartment.get(0).getChildren(), GLabel.class)
-         .collect(Collectors.toList());
-      if (gLabels.size() > 0 && !Character.isUpperCase(gLabels.get(0).getText().charAt(0))) {
+
+      boolean hasLowerCaseLabel = taskNode.getChildren().stream()
+         .filter(c -> ModelTypes.LABEL_HEADING.equals(c.getType()))
+         .filter(GLabel.class::isInstance)
+         .map(GLabel.class::cast)
+         .map(GLabel::getText)
+         .anyMatch(text -> text.length() > 0 && !Character.isUpperCase(text.charAt(0)));
+
+      if (hasLowerCaseLabel) {
          return Optional.of(new Marker("Task node label in upper case",
             "Task node names should start with upper case letters", element.getId(), MarkerKind.WARNING));
       }

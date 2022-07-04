@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2020-2021 EclipseSource and others.
+ * Copyright (c) 2020-2022 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -43,7 +43,7 @@ export class WorkflowDiagramReadonlyViewContribution implements CommandContribut
     registerCommands(registry: CommandRegistry): void {
         registry.registerCommand(
             OPEN_READONLY_DIAGRAM_VIEW,
-            new UriAwareCommandHandler(this.selectionService, {
+            UriAwareCommandHandler.MonoSelect(this.selectionService, {
                 execute: async (uri: URI) => {
                     const openerOptions: GLSPWidgetOpenerOptions = { editMode: EditMode.READONLY };
                     const opener = await this.openerService.getOpener(uri, openerOptions);

@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2020-2021 EclipseSource and others.
+ * Copyright (c) 2020-2022 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -33,21 +33,21 @@ export class WorkflowNavigationCommandContribution implements CommandContributio
         commands.registerCommand(
             { id: WorkflowNavigationCommands.NEXT_NODE, label: 'Go to Next Node' },
             new GLSPCommandHandler(this.shell, {
-                actions: () => [new NavigateAction('next')],
+                actions: () => [NavigateAction.create('next')],
                 isEnabled: context => context.selectedElements.filter(isTaskNode).length === 1
             })
         );
         commands.registerCommand(
             { id: WorkflowNavigationCommands.PREVIOUS_NODE, label: 'Go to Previous Node' },
             new GLSPCommandHandler(this.shell, {
-                actions: () => [new NavigateAction('previous')],
+                actions: () => [NavigateAction.create('previous')],
                 isEnabled: context => context.selectedElements.filter(isTaskNode).length === 1
             })
         );
         commands.registerCommand(
             { id: WorkflowNavigationCommands.DOCUMENTATION, label: 'Go to Documentation' },
             new GLSPCommandHandler(this.shell, {
-                actions: () => [new NavigateAction('documentation')],
+                actions: () => [NavigateAction.create('documentation')],
                 isEnabled: context => context.selectedElements.filter(isTaskNode).length === 1
             })
         );
