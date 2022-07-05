@@ -66,9 +66,6 @@ pipeline {
             steps{
                 timeout(30){
                     container('ci') {
-                        dir('minimal/glsp-server/'){
-                            sh "mvn clean verify -DskipTests -B -Dcheckstyle.skip"
-                        }
                         dir('workflow/glsp-server/'){
                             sh "mvn clean verify -DskipTests -B -Dcheckstyle.skip"
                         }
@@ -81,9 +78,6 @@ pipeline {
             steps {
                 timeout(30){
                     container('ci') {
-                        dir('minimal/glsp-client') {
-                            sh 'yarn build'
-                        }
                          dir('workflow/glsp-client') {
                             sh 'yarn build'
                         }
@@ -97,18 +91,11 @@ pipeline {
                 timeout(30){
                     container('ci') {
                         // Execute checkstyle checks
-                        dir('minimal/glsp-server'){
-                            sh 'mvn checkstyle:check'
-                        } 
-
                         dir('workflow/glsp-server'){
                             sh 'mvn checkstyle:check'
                         } 
 
                         // Execute eslint checks
-                        dir('minimal/glsp-client') {
-                            sh 'yarn lint -o eslint.xml -f checkstyle'
-                        }    
 
                         dir('workflow/glsp-client') {
                             sh 'yarn lint -o eslint.xml -f checkstyle'
