@@ -28,9 +28,9 @@
     "src"
   ],
   "dependencies": {
-    "@eclipse-glsp-examples/tasklist-glsp": "0.10.0",
-    "@eclipse-glsp/theia-integration": "next",
-    "@eclipse-glsp/client": "next"
+    "@eclipse-glsp-examples/tasklist-glsp": "1.0.0",
+    "@eclipse-glsp/theia-integration": "^1.0.0",
+    "@eclipse-glsp/client": "^1.0.0"
   },
   "devDependencies": {
     "rimraf": "^2.6.1",

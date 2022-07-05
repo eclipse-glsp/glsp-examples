@@ -1,7 +1,7 @@
 {
   "private": true,
   "name": "parent",
-  "version": "0.10.0",
+  "version": "1.0.0",
   "engines": {
     "yarn": ">=1.7.0",
     "node": ">=12.14.1"
@@ -34,7 +34,7 @@
     "start:external": "yarn rebuild:browser && yarn --cwd tasklist-browser-app start:external"
   },
   "devDependencies": {
-    "@eclipse-glsp/config": "0.9.0",
+    "@eclipse-glsp/config": "^1.0.0",
     "lerna": "^4.0.0",
     "typescript": "~4.5.5"
   },
@@ -44,25 +44,10 @@
     "tasklist-browser-app"
   ],
   "resolutions": {
-    "**/@theia/cli": "1.25.0",
-    "**/@theia/core": "1.25.0",
-    "**/@theia/editor": "1.25.0",
-    "**/@theia/filesystem": "1.25.0",
-    "**/@theia/markers": "1.25.0",
-    "**/@theia/messages": "1.25.0",
-    "**/@theia/monaco": "1.25.0",
-    "**/@theia/navigator": "1.25.0",
-    "**/@theia/outline-view": "1.25.0",
-    "**/@theia/preferences": "1.25.0",
-    "**/@theia/process": "1.25.0",
-    "**/@theia/terminal": "1.25.0",
-    "**/@theia/variable-resolver": "1.25.0",
-    "**/@theia/userstorage": "1.25.0",
-    "**/@theia/workspace": "1.25.0",
-    "**/@eclipse-glsp/client": "0.10.0-next.c94277c.176",
-    "**/@eclipse-glsp/protocol": "0.10.0-next.c94277c.176",
-    "**/@eclipse-glsp/theia-integration": "0.10.0-next.e1dad52.128",
-    "**/sprotty": "0.12.0-next.00a6590.0",
-    "**/sprotty-theia": "0.12.0-next.bc7b3d7"
+    "**/@theia/core": "1.26.0",
+    "**/@theia/editor": "1.26.0",
+    "**/@theia/filesystem": "1.26.0",
+    "**/@theia/messages": "1.26.0",
+    "**/@theia/monaco": "1.26.0"
   }
 }
