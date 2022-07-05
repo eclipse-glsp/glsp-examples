@@ -24,11 +24,6 @@ However, it's of course also possible to use any other IDE or text editor.
 -   [Project Templates](project-templates): The best starting point for your own diagram editor project.
     The project templates are available for several combinations of tool platform integrations (Theia, VSCode), source models (JSON, EMF) and servers (Node, Java). Please visit the [GLSP documentation](https://www.eclipse.org/glsp/documentation/gettingstarted/) for more information.
 
--   [Minimal Example](minimal): A very simple GLSP editor for rectangular nodes.
-    This demonstrates the core concepts and basic client-server integration into Theia.
-
-    <img src="documentation/minimal-example-animated.gif" alt="drawing" width="400"/>
-
 -   [Workflow Example](workflow): A consistent example provided by all GLSP components.
     It implements a simple flow chart diagram editor with different types of nodes and edges.
     The `Workflow Example` is the main example used for development and integrates all GLSP features
@@ -58,9 +53,6 @@ yarn build
 In addition, it is also possible to build each example individually:
 
 ```bash
-# Build only the minimal example
-yarn build:minimal
-
 # Build only the workflow example
 yarn build:workflow
 ```
@@ -70,9 +62,6 @@ yarn build:workflow
 Each example provides a dedicated Theia web app which can be started from the repository root with `yarn start:<example_name>`:
 
 ```bash
-   # Start minimal example Theia app
-   yarn start:minimal
-
    # Start workflow example Theia app
    yarn start:workflow
 ```
@@ -132,14 +121,14 @@ The projects also contain a launch configuration (`<ExampleName>ServerLauncher.l
 
 ## Integration with other platforms
 
-The general GLSP Client code is separated from the Theia specific glue code and located in a dedicated package with `-glsp` prefix (e.g. `minimal-glsp`).
+The general GLSP Client code is separated from the Theia specific glue code and located in a dedicated package with `-glsp` prefix (e.g. `workflow-glsp`).
 This package can be easily reused when the package should be integrated with any other platform.
 In addition to the Theia integration, GLSP provides the following glue code frameworks:
 
 -   [GLSP VSCode Integration](https://github.com/eclipse-glsp/glsp-vscode-integration)
 -   [GLSP Eclipse IDE Integration](https://github.com/eclipse-glsp/glsp-eclipse-integration)
 
-For a reference implementation of a example specific glue code package please checkout the development examples in the corresponding integration repository.
+For a reference implementation of a example specific glue code package please checkout the `project templates`.
 
 ## More information
 
