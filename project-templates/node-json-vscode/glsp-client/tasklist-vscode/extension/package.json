@@ -1,7 +1,7 @@
 {
   "name": "@eclipse-glsp/tasklist-vscode",
   "private": "true",
-  "version": "0.9.0",
+  "version": "1.0.0",
   "description": "Extension for Tasklist GLSP diagrams",
   "displayName": "Tasklist GLSP Diagram Editor",
   "publisher": "Eclipse-GLSP",
@@ -134,7 +134,7 @@
   },
   "main": "./lib/index",
   "devDependencies": {
-    "@eclipse-glsp/vscode-integration": "next",
+    "@eclipse-glsp/vscode-integration": "^1.0.0",
     "@types/vscode": "^1.54.0",
     "path": "^0.12.7",
     "reflect-metadata": "^0.1.13",
@@ -143,7 +143,7 @@
     "ts-node": "^9.1.1",
     "typescript": "^4.4.3",
     "@types/node": "14.x",
-    "@eclipse-glsp/tasklist-webview": "0.9.0"
+    "@eclipse-glsp/tasklist-webview": "1.0.0"
   },
   "scripts": {
     "prepare": "yarn clean && yarn build && yarn lint",
