@@ -65,8 +65,8 @@
     "launch": {
         "compounds": [
             {
-                "name": "Launch Tasklist Theia backend with external GLSP Server",
-                "configurations": ["Launch Tasklist GLSP Server", "Launch TaskList Theia Backend (External GLSP Server)"]
+                "name": "Launch TaskList Theia backend with external GLSP Server",
+                "configurations": ["Launch TaskList GLSP Server", "Launch TaskList Theia Backend (External GLSP Server)"]
             }
         ]
     }
