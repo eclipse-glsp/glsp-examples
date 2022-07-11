@@ -36,7 +36,7 @@ To work with the source code and debug the examples in VS Code dedicated VSCode 
 These workspace include both the `glsp-client` and `glsp-server` sources and offer dedicated launch configurations for debugging purposes.
 
 To open a example workspace simply start a VS Code instance and use the `Open Workspace from File..` entry from the `File` menu.
-Then navigate to a example subdirectory (e.g. `minimal`) and open the `*.vscode-workspace` file.
+Then navigate to a example or project template subdirectory (e.g. `workflow`) and open the `*.vscode-workspace` file.
 
 For a smooth development experience we recommend a set of useful VS Code extensions. When a workspace is first opened VS Code will ask you wether you want to install those recommended extensions.
 Alternatively, you can also open the `Extension View`(Ctrl + Shift + X) and type `@recommended` into the search field to see the list of `Workspace Recommendations`.
