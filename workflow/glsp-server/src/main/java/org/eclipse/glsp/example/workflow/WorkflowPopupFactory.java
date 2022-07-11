@@ -15,9 +15,6 @@
  ********************************************************************************/
 package org.eclipse.glsp.example.workflow;
 
-import static org.eclipse.glsp.graph.util.GraphUtil.bounds;
-
-import java.util.Arrays;
 import java.util.Optional;
 
 import org.eclipse.glsp.example.workflow.wfgraph.TaskNode;
@@ -25,7 +22,8 @@ import org.eclipse.glsp.graph.GBounds;
 import org.eclipse.glsp.graph.GHtmlRoot;
 import org.eclipse.glsp.graph.GModelElement;
 import org.eclipse.glsp.graph.GPreRenderedElement;
-import org.eclipse.glsp.graph.GraphFactory;
+import org.eclipse.glsp.graph.builder.impl.GHtmlRootBuilder;
+import org.eclipse.glsp.graph.builder.impl.GPreRenderedElementBuilder;
 import org.eclipse.glsp.server.features.popup.PopupModelFactory;
 import org.eclipse.glsp.server.features.popup.RequestPopupModelAction;
 
@@ -46,21 +44,25 @@ public class WorkflowPopupFactory implements PopupModelFactory {
    public Optional<GHtmlRoot> createPopupModel(final GModelElement element, final RequestPopupModelAction action) {
       if (element != null && element instanceof TaskNode) {
          TaskNode task = (TaskNode) element;
-         GHtmlRoot root = GraphFactory.eINSTANCE.createGHtmlRoot();
          GBounds bounds = action.getBounds();
-         root.setCanvasBounds(bounds(bounds.getX(), bounds.getY(), bounds.getWidth(), bounds.getHeight()));
-         root.setType("html");
-         root.setId("sprotty-popup");
-         GPreRenderedElement p1 = GraphFactory.eINSTANCE.createGPreRenderedElement();
-         p1.setType("pre-rendered");
-         p1.setId("popup-title");
-         p1.setCode("<div class=\"sprotty-popup-title\">" + generateTitle(task) + "</div>");
 
-         GPreRenderedElement p2 = GraphFactory.eINSTANCE.createGPreRenderedElement();
-         p2.setType("pre-rendered");
-         p2.setId("popup-body");
-         p2.setCode("<div class=\"sprotty-popup-body\">" + generateBody(task) + "</div>");
-         root.getChildren().addAll(Arrays.asList(p1, p2));
+         GPreRenderedElement popupTitle = new GPreRenderedElementBuilder()
+            .id("popup-title")
+            .code("<div class=\"sprotty-popup-title\">" + generateTitle(task) + "</div>")
+            .build();
+
+         GPreRenderedElement popupBody = new GPreRenderedElementBuilder()
+            .id("popup-body")
+            .code("<div class=\"sprotty-popup-body\">" + generateBody(task) + "</div>")
+            .build();
+
+         GHtmlRoot root = new GHtmlRootBuilder()
+            .canvasBounds(bounds)
+            .id("sprotty-popup")
+            .add(popupTitle)
+            .add(popupBody)
+            .build();
+
          return Optional.of(root);
       }
       return Optional.empty();

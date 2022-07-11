@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2019-2021 EclipseSource and others.
+ * Copyright (c) 2019-2022 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -16,8 +16,11 @@
 package org.eclipse.glsp.example.workflow.labeledit;
 
 import java.util.Set;
+import java.util.stream.Stream;
 
+import org.eclipse.glsp.example.workflow.utils.ModelTypes;
 import org.eclipse.glsp.example.workflow.wfgraph.TaskNode;
+import org.eclipse.glsp.graph.GLabel;
 import org.eclipse.glsp.graph.GModelElement;
 import org.eclipse.glsp.server.features.directediting.LabelEditValidator;
 import org.eclipse.glsp.server.features.directediting.ValidationStatus;
@@ -37,9 +40,15 @@ public class WorkflowLabelEditValidator implements LabelEditValidator {
       }
 
       Set<TaskNode> taskNodes = modelState.getIndex().getAllByClass(TaskNode.class);
-      boolean hasDuplicate = taskNodes.stream()
+      Stream<GLabel> otherLabels = taskNodes.stream()
          .filter(e -> !e.getId().equals(element.getId()))
-         .map(TaskNode::getName).anyMatch(name -> name.equals(label));
+         .flatMap(n -> n.getChildren().stream())
+         .filter(c -> ModelTypes.LABEL_HEADING.equals(c.getType()))
+         .filter(GLabel.class::isInstance)
+         .map(GLabel.class::cast);
+
+      boolean hasDuplicate = otherLabels.anyMatch(otherLabel -> label.equals(otherLabel.getText()));
+
       if (hasDuplicate) {
          return ValidationStatus.warning("Name should be unique");
       }

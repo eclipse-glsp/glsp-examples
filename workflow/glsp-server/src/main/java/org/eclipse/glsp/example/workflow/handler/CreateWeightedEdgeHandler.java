@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2019 EclipseSource and others.
+ * Copyright (c) 2019-2022 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -21,10 +21,10 @@ import org.eclipse.glsp.example.workflow.utils.ModelTypes;
 import org.eclipse.glsp.example.workflow.utils.WorkflowBuilder.WeightedEdgeBuilder;
 import org.eclipse.glsp.graph.GEdge;
 import org.eclipse.glsp.graph.GModelElement;
+import org.eclipse.glsp.server.gmodel.AbstractGModelCreateEdgeOperationHandler;
 import org.eclipse.glsp.server.model.GModelState;
-import org.eclipse.glsp.server.operations.gmodel.CreateEdgeOperationHandler;
 
-public class CreateWeightedEdgeHandler extends CreateEdgeOperationHandler {
+public class CreateWeightedEdgeHandler extends AbstractGModelCreateEdgeOperationHandler {
 
    public CreateWeightedEdgeHandler() {
       super(ModelTypes.WEIGHTED_EDGE, "Weighted edge");

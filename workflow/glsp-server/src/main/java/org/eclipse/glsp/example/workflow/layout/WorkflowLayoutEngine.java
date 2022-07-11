@@ -15,6 +15,9 @@
  ********************************************************************************/
 package org.eclipse.glsp.example.workflow.layout;
 
+import org.eclipse.elk.alg.layered.options.FixedAlignment;
+import org.eclipse.elk.alg.layered.options.LayeredOptions;
+import org.eclipse.glsp.graph.GEdge;
 import org.eclipse.glsp.graph.GGraph;
 import org.eclipse.glsp.layout.ElkLayoutEngine;
 import org.eclipse.glsp.layout.GLSPLayoutConfigurator;
@@ -31,8 +34,17 @@ public class WorkflowLayoutEngine extends ElkLayoutEngine {
    public void layout() {
       if (modelState.getRoot() instanceof GGraph) {
          GLSPLayoutConfigurator configurator = new GLSPLayoutConfigurator();
-         configurator.configureByType("graph");
-         this.layout((GGraph) modelState.getRoot(), configurator);
+         configurator.configureByType("graph")
+            .setProperty(LayeredOptions.NODE_PLACEMENT_BK_FIXED_ALIGNMENT,
+               FixedAlignment.BALANCED);
+
+         layout((GGraph) modelState.getRoot(), configurator);
+
+         // Remove all bend points
+         modelState.getIndex().getStream(modelState.getRoot())
+            .filter(GEdge.class::isInstance)
+            .map(GEdge.class::cast)
+            .forEach(edge -> edge.getRoutingPoints().clear());
       }
    }
 

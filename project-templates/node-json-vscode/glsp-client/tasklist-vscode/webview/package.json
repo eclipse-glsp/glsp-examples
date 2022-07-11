@@ -1,7 +1,7 @@
 {
   "name": "@eclipse-glsp/tasklist-webview",
   "private": "true",
-  "version": "0.9.0",
+  "version": "1.0.0",
   "description": "Tasklist GLSP diagrams in a VS Code extensions (WebView part)",
   "license": "(EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0)",
   "keywords": [
@@ -28,8 +28,8 @@
     }
   ],
   "dependencies": {
-    "@eclipse-glsp-examples/tasklist-glsp": "0.9.0",
-    "@eclipse-glsp/vscode-integration-webview": "next"
+    "@eclipse-glsp-examples/tasklist-glsp": "1.0.0",
+    "@eclipse-glsp/vscode-integration-webview": "^1.0.0"
   },
   "devDependencies": {
     "@vscode/codicons": "^0.0.25",

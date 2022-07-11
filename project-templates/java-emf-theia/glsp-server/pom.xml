@@ -2,7 +2,7 @@
 <project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 	<modelVersion>4.0.0</modelVersion>
 	<groupId>org.eclipse.glsp.example</groupId>
-	<version>0.10.0</version>
+	<version>1.0.0</version>
 	<artifactId>org.eclipse.glsp.example.javaemf</artifactId>
 	<description>Server component for the Java/EMF/Theia GLSP example</description>
 	<url>https://github.com/eclipse/glsp-examples</url>
@@ -55,7 +55,7 @@
 		<versions.maven.plugin.version>2.7</versions.maven.plugin.version>
 		<!-- Dependency Versions -->
 		<!-- <glsp.version>0.10.0-SNAPSHOT</glsp.version> -->
-		<glsp.version>0.10.0-SNAPSHOT</glsp.version>
+		<glsp.version>1.0.0</glsp.version>
 		<modelserver.glsp.integration.version>0.7.0-SNAPSHOT</modelserver.glsp.integration.version>
 		<emf.ecore.version>2.26.0</emf.ecore.version>
 		<emf.common.version>2.23.0</emf.common.version>

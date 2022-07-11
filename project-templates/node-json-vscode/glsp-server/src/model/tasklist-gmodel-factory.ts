@@ -27,7 +27,8 @@ export class TaskListGModelFactory implements GModelFactory {
         const taskList = this.modelState.taskList;
         this.modelState.index.indexTaskList(taskList);
         const childNodes = taskList.tasks.map(task => this.createTaskNode(task));
-        this.modelState.root = GGraph.builder().id(taskList.id).addChildren(childNodes).build();
+        const newRoot= GGraph.builder().id(taskList.id).addChildren(childNodes).build();
+        this.modelState.updateRoot(newRoot);
     }
 
     protected createTaskNode(task: Task): GNode {

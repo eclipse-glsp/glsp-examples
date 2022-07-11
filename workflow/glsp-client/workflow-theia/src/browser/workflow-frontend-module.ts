@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2019-2021 EclipseSource and others.
+ * Copyright (c) 2019-2022 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -17,7 +17,6 @@ import { ContainerContext, GLSPClientContribution, GLSPTheiaFrontendModule } fro
 import { CommandContribution, MenuContribution } from '@theia/core';
 import { KeybindingContext, KeybindingContribution } from '@theia/core/lib/browser';
 import { DiagramConfiguration } from 'sprotty-theia';
-
 import { WorkflowLanguage } from '../common/workflow-language';
 import { WorkflowDiagramConfiguration } from './diagram/workflow-diagram-configuration';
 import { WorkflowDiagramReadonlyViewContribution } from './diagram/workflow-diagram-readonly-view';
@@ -28,14 +27,14 @@ import { ExampleNavigationCommandContribution } from './external-navigation-exam
 import { WorkflowGLSPClientContribution } from './workflow-glsp-client-contribution';
 
 export class WorkflowTheiaFrontendModule extends GLSPTheiaFrontendModule {
-    protected enableCopyPaste = true;
+    protected override enableCopyPaste = true;
 
     bindDiagramConfiguration(context: ContainerContext): void {
         context.bind(DiagramConfiguration).to(WorkflowDiagramConfiguration);
     }
     readonly diagramLanguage = WorkflowLanguage;
 
-    configure(context: ContainerContext): void {
+    override configure(context: ContainerContext): void {
         // Custom workflow commands and menus
         context.bind(CommandContribution).to(WorkflowTaskEditCommandContribution);
         context.bind(MenuContribution).to(WorkflowTaskEditMenuContribution);
@@ -53,7 +52,7 @@ export class WorkflowTheiaFrontendModule extends GLSPTheiaFrontendModule {
         context.bind(CommandContribution).toService(WorkflowDiagramReadonlyViewContribution);
     }
 
-    bindGLSPClientContribution(context: ContainerContext): void {
+    override bindGLSPClientContribution(context: ContainerContext): void {
         context.bind(GLSPClientContribution).to(WorkflowGLSPClientContribution);
     }
 }

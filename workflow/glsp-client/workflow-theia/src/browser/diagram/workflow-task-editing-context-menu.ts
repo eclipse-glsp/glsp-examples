@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2020-2021 EclipseSource and others.
+ * Copyright (c) 2020-2022 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -32,7 +32,13 @@ export class WorkflowTaskEditCommandContribution implements CommandContribution 
         commands.registerCommand(
             { id: WorkflowTaskEditingCommands.EDIT_TASK, label: 'Direct Edit Task' },
             new GLSPCommandHandler(this.shell, {
-                actions: context => [new SetUIExtensionVisibilityAction(TaskEditor.ID, true, [context.selectedElements[0].id])],
+                actions: context => [
+                    SetUIExtensionVisibilityAction.create({
+                        extensionId: TaskEditor.ID,
+                        visible: true,
+                        contextElementsId: [context.selectedElements[0].id]
+                    })
+                ],
                 isEnabled: context => !context.isReadonly && context.selectedElements.filter(isTaskNode).length === 1
             })
         );

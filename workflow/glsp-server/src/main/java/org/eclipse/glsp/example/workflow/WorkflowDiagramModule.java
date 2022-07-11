@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2019-2021 EclipseSource and others.
+ * Copyright (c) 2019-2022 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -41,27 +41,27 @@ import org.eclipse.glsp.example.workflow.taskedit.TaskEditContextActionProvider;
 import org.eclipse.glsp.example.workflow.taskedit.TaskEditValidator;
 import org.eclipse.glsp.graph.GraphExtension;
 import org.eclipse.glsp.server.actions.ActionHandler;
-import org.eclipse.glsp.server.di.GModelJsonDiagramModule;
 import org.eclipse.glsp.server.di.MultiBinding;
 import org.eclipse.glsp.server.diagram.DiagramConfiguration;
 import org.eclipse.glsp.server.features.commandpalette.CommandPaletteActionProvider;
 import org.eclipse.glsp.server.features.contextactions.ContextActionsProvider;
 import org.eclipse.glsp.server.features.contextactions.RequestContextActionsHandler;
 import org.eclipse.glsp.server.features.contextmenu.ContextMenuItemProvider;
-import org.eclipse.glsp.server.features.core.model.JsonFileGModelLoader;
-import org.eclipse.glsp.server.features.core.model.ModelSourceLoader;
+import org.eclipse.glsp.server.features.core.model.SourceModelStorage;
 import org.eclipse.glsp.server.features.directediting.ContextEditValidator;
 import org.eclipse.glsp.server.features.directediting.LabelEditValidator;
-import org.eclipse.glsp.server.features.modelsourcewatcher.FileWatcher;
-import org.eclipse.glsp.server.features.modelsourcewatcher.ModelSourceWatcher;
 import org.eclipse.glsp.server.features.navigation.NavigationTargetProvider;
 import org.eclipse.glsp.server.features.navigation.NavigationTargetResolver;
 import org.eclipse.glsp.server.features.popup.PopupModelFactory;
+import org.eclipse.glsp.server.features.sourcemodelwatcher.FileWatcher;
+import org.eclipse.glsp.server.features.sourcemodelwatcher.SourceModelWatcher;
 import org.eclipse.glsp.server.features.validation.ModelValidator;
+import org.eclipse.glsp.server.gmodel.GModelDiagramModule;
+import org.eclipse.glsp.server.gmodel.GModelStorage;
 import org.eclipse.glsp.server.layout.LayoutEngine;
 import org.eclipse.glsp.server.operations.OperationHandler;
 
-public class WorkflowDiagramModule extends GModelJsonDiagramModule {
+public class WorkflowDiagramModule extends GModelDiagramModule {
 
    @Override
    protected Class<? extends DiagramConfiguration> bindDiagramConfiguration() {
@@ -69,12 +69,12 @@ public class WorkflowDiagramModule extends GModelJsonDiagramModule {
    }
 
    @Override
-   protected Class<? extends ModelSourceLoader> bindSourceModelLoader() {
-      return JsonFileGModelLoader.class;
+   protected Class<? extends SourceModelStorage> bindSourceModelStorage() {
+      return GModelStorage.class;
    }
 
    @Override
-   protected Class<? extends ModelSourceWatcher> bindModelSourceWatcher() {
+   protected Class<? extends SourceModelWatcher> bindSourceModelWatcher() {
       return FileWatcher.class;
    }
 

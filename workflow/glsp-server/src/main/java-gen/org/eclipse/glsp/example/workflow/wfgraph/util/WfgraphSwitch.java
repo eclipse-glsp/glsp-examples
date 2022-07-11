@@ -21,6 +21,7 @@ import org.eclipse.emf.ecore.EPackage;
 import org.eclipse.emf.ecore.util.Switch;
 
 import org.eclipse.glsp.example.workflow.wfgraph.*;
+
 import org.eclipse.glsp.graph.GArgumentable;
 import org.eclipse.glsp.graph.GBoundsAware;
 import org.eclipse.glsp.graph.GCompartment;

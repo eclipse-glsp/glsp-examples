@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2019-2021 EclipseSource and others.
+ * Copyright (c) 2019-2022 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -20,10 +20,6 @@
     height: 100%;
 }
 
-.sprotty-popup {
-    z-index: 1;
-}
-
 .sprotty-text {
     font-size: 12pt;
     text-anchor: middle;
@@ -32,15 +28,6 @@
 .sprotty-node {
     stroke-width: 0;
     font-weight: bold;
-}
-
-.sprotty-node.mouseover:not(.selected) {
-    stroke-width: 2;
-}
-
-.sprotty-comp {
-    line-height: 3px;
-    text-align: left;
 }
 
 .sprotty-label {
@@ -53,132 +40,59 @@
 
 .sprotty-label.heading {
     font-weight: normal;
+    font-size: 0.7em;
+    fill: #f0f3f8;
 }
 
-.sprotty-icon {
-    stroke: black;
-    stroke-width: 0.5;
-    fill: #ffffff;
-    opacity: 0.5;
-}
-
-.sprotty-label.icon {
-    fill: black;
-}
-
-.sprotty-button {
-    fill: #152;
+.icon path {
     stroke-width: 0;
+    fill: #f0f3f8;
 }
 
-.sprotty-edge {
-    fill: none;
-    stroke-width: 1px;
-}
-
-.sprotty-edge.selected {
-    stroke-width: 3px;
-}
-
-.sprotty-edge.mouseover:not(.selected) {
-    stroke-width: 2px;
-}
-
-.sprotty-edge > .sprotty-routing-handle {
-    r: 7px;
-    fill: #884;
-    stroke: none;
-    z-index: 1000;
-}
-
-.sprotty-edge > .sprotty-routing-handle[data-kind='line'] {
-    opacity: 0.35;
-}
-
-.sprotty-edge > .sprotty-routing-handle.selected {
-    fill: #66a;
-}
-
-.sprotty-edge > .sprotty-routing-handle.mouseover {
-    stroke: #112;
-    stroke-width: 1;
-}
-
-.sprotty-missing {
-    stroke-width: 1;
-    stroke: #f00;
-    fill: #f00;
-    font-size: 14pt;
-    text-anchor: middle;
-}
-
-.sprotty-node:not(.selected) {
-    stroke-width: 1px;
-}
-
-.sprotty-node.marquee {
-    fill: lightgray;
-    opacity: 0.2;
+.icon .icon-background {
+    fill: transparent;
 }
 
 .task.automated > .sprotty-node {
-    fill: lightgray;
+    fill: #5b9fa8;
 }
 
 .task.manual > .sprotty-node {
-    fill: lightblue;
+    fill: #db8651;
 }
 
 .category > .sprotty-node {
-    fill: lightblue;
+    fill: #5c87bd;
 }
 
-text {
-    stroke-width: 0;
-    stroke: #000;
-    fill: #000;
-    font-family: sans-serif;
-    font-size: 8pt;
-    text-anchor: middle;
+.sprotty-edge.weighted.low:not(.selected),
+.sprotty-edge.weighted.low:not(.selected) .arrow {
+    stroke: rgb(128, 90, 233);
 }
 
-.sprotty-edge.weighted.low,
-.sprotty-edge.weighted.low .arrow {
-    stroke: lightblue;
+.sprotty-edge.weighted.low:not(.selected) .arrow {
+    fill: rgb(128, 90, 233);
 }
 
-.sprotty-edge.weighted.low .arrow {
-    fill: lightblue;
+.sprotty-edge.weighted:not(.selected),
+.sprotty-edge.weighted:not(.selected) .arrow,
+.sprotty-edge.weighted.medium:not(.selected),
+.sprotty-edge.weighted.medium:not(.selected) .arrow {
+    stroke: rgb(98, 60, 193);
 }
 
-.sprotty-edge.weighted,
-.sprotty-edge.weighted .arrow,
-.sprotty-edge.weighted.medium,
-.sprotty-edge.weighted.medium .arrow {
-    stroke: #007fd4;
+.sprotty-edge.weighted:not(.selected) .arrow,
+.sprotty-edge.weighted.medium:not(.selected) .arrow {
+    fill: rgb(98, 60, 193);
 }
 
-.sprotty-edge.weighted .arrow,
-.sprotty-edge.weighted.medium .arrow {
-    fill: #007fd4;
+.sprotty-edge.weighted.high:not(.selected),
+.sprotty-edge.weighted.high:not(.selected) .arrow {
+    stroke: rgb(68, 30, 163);
 }
 
-.sprotty-edge.weighted.high,
-.sprotty-edge.weighted.high .arrow {
-    stroke: darkblue;
-}
-
-.sprotty-edge.weighted.high .arrow {
-    fill: darkblue;
-}
-
-polygon.sprotty-node {
-    fill: white;
-    stroke-width: 1pt;
-}
-
-.sprotty-node.selected {
-    stroke-width: 3px;
+.sprotty-edge.weighted.high:not(.selected) .arrow {
+    fill: rgb(68, 30, 163);
 }
 
 .sprotty-comp {
@@ -186,38 +100,7 @@ polygon.sprotty-node {
     fill: transparent;
 }
 
-.sprotty-comp.debug {
-    stroke: deepskyblue;
-}
-
-svg {
-    border-style: solid;
-    border-width: 1px;
-    border-color: #bbb;
-}
-
 .label-edit input {
-    margin-top: -1px;
-    margin-left: -5px;
-}
-
-g .movement-not-allowed > .sprotty-node {
-    stroke: var(--glsp-error-foreground) !important;
-}
-
-.sprotty-resize-handle.movement-not-allowed {
-    stroke: var(--glsp-error-foreground) !important;
-    fill: var(--glsp-error-foreground) !important;
-}
-
-.error > .sprotty-node {
-    stroke: var(--glsp-error-foreground) !important;
-}
-
-.warning > .sprotty-node {
-    stroke: var(--glsp-warning-foreground) !important;
-}
-
-.info > .sprotty-node {
-    stroke: var(--glsp-info-foreground) !important;
+    margin-top: -3px;
+    margin-left: -3px;
 }

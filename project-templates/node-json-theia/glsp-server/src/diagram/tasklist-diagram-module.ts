@@ -52,7 +52,6 @@ export class TaskListDiagramModule extends DiagramModule {
     }
 
     protected bindModelState(): BindingTarget<ModelState> {
-        this.context.bind(TaskListModelState).toSelf().inSingletonScope();
         return { service: TaskListModelState };
     }
 
