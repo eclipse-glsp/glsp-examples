@@ -44,6 +44,10 @@ The following libraries/frameworks need to be installed on your system:
 
 The examples are heavily interweaved with Eclipse Theia, so please also check the [prerequisites of Theia](https://github.com/eclipse-theia/theia/blob/master/doc/Developing.md#prerequisites).
 
+## Theia Version compatibility
+
+This project template is implemented in `1.25.0` (and compatible with Theia `<=1.26.0`). Versions `>=1.27.0` are currently not supported, but we are working to provide a fix as soon as possible (for more information please see <https://github.com/eclipse-glsp/glsp-theia-integration>).
+
 ## VS Code workspace
 
 For both the client and the server part of this example we use [Visual Studio Code](https://code.visualstudio.com/).
@@ -78,7 +82,7 @@ yarn build:client
 yarn build:server
 ```
 
-Or you can use the available VSCode tasks configured in the [workspace](java-emf-theia-example.code-workspace)  (via Menu _Terminal > Run Task..._)
+Or you can use the available VSCode tasks configured in the [workspace](java-emf-theia-example.code-workspace) (via Menu _Terminal > Run Task..._)
 
 -   `Build TaskList GLSP Server`
 -   `Build TaskList GLSP Client example`
