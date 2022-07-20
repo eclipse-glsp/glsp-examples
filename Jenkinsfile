@@ -62,24 +62,109 @@ pipeline {
     }
     
     stages {
-        stage('Build Examples (Server)'){
-            steps{
-                timeout(30){
-                    container('ci') {
-                        dir('workflow/glsp-server/'){
-                            sh "mvn clean verify -DskipTests -B -Dcheckstyle.skip"
+
+         stage('Build Workflow Example') {
+            stages {
+                stage('Build Server') {
+                    steps{
+                        timeout(30){
+                            container('ci') {
+                                dir('workflow/glsp-server/'){
+                                    sh "mvn clean verify -DskipTests -B -Dcheckstyle.skip"
+                                }
+                            }
+                        }
+                    }
+                }
+                stage('Build Client') {
+                    steps {
+                        timeout(30){
+                            container('ci') {
+                                dir('workflow/glsp-client/') {
+                                    sh 'yarn --unsafe-perm'
+                                }
+                            }
+                        }
+                     }
+                }
+            }
+        }
+       
+        stage('Build java-emf-theia template') {
+            stages {
+                stage('Build server'){
+                    steps{
+                        timeout(30){
+                            container('ci') {
+                                dir('project-templates/java-emf-theia/glsp-server/'){
+                                    sh "mvn clean verify -DskipTests -B -Dcheckstyle.skip"
+                                }
+                            }
+                        }
+                    }
+                }
+                stage('Build client'){
+                    steps{
+                        timeout(30){
+                            container('ci') {
+                                dir('project-templates/java-emf-theia/glsp-client') {
+                                    sh 'yarn --unsafe-perm'
+                                }
+                            }
                         }
                     }
                 }
             }
         }
 
-        stage('Build Examples (Client)') {
-            steps {
-                timeout(30){
-                    container('ci') {
-                         dir('workflow/glsp-client') {
-                            sh 'yarn build'
+        stage('Build node-json-theia template') {
+            stages {
+                stage('Build server'){
+                    steps{
+                        timeout(30){
+                            container('ci') {
+                                dir('project-templates/node-json-theia/glsp-server/'){
+                                    sh 'yarn --unsafe-perm'
+                                }
+                            }
+                        }
+                    }
+                }
+                stage('Build client'){
+                    steps{
+                        timeout(30){
+                            container('ci') {
+                                dir('project-templates/node-json-theia/glsp-client') {
+                                     sh 'yarn --unsafe-perm'
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
+        stage('Build node-json-vscode template') {
+            stages {
+                stage('Build server'){
+                    steps{
+                        timeout(30){
+                            container('ci') {
+                                dir('project-templates/node-json-vscode/glsp-server/'){
+                                    sh 'yarn --unsafe-perm'
+                                }
+                            }
+                        }
+                    }
+                }
+                stage('Build client'){
+                    steps{
+                        timeout(30){
+                            container('ci') {
+                                dir('project-templates/node-json-vscode/glsp-client') {
+                                    sh 'yarn --unsafe-perm'
+                                }
+                            }
                         }
                     }
                 }
@@ -93,13 +178,24 @@ pipeline {
                         // Execute checkstyle checks
                         dir('workflow/glsp-server'){
                             sh 'mvn checkstyle:check'
-                        } 
+                        }
+                        dir('project-templates/java-emf-theia/glsp-server/'){
+                             sh 'mvn checkstyle:check'
+                        }
 
                         // Execute eslint checks
-
                         dir('workflow/glsp-client') {
                             sh 'yarn lint -o eslint.xml -f checkstyle'
-                        }  
+                        } 
+                        dir('project-templates/java-emf-theia/glsp-client/'){
+                            sh 'yarn lint -o eslint.xml -f checkstyle'
+                        }
+                        dir('project-templates/node-json-theia/glsp-client/'){
+                            sh 'yarn lint -o eslint.xml -f checkstyle'
+                        }
+                        dir('project-templates/node-json-vscode/glsp-client/'){
+                            sh 'yarn lint -o eslint.xml -f checkstyle'
+                        }
                     }   
                 }
             }

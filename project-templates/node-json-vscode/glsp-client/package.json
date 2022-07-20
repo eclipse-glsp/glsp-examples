@@ -26,9 +26,9 @@
   "scripts": {
     "prepare": "lerna run prepare",
     "watch": "lerna run --parallel watch",
-    "build": "yarn simpleInstall && lerna run build",
+    "build": "yarn install:only && lerna run build",
     "lint": "lerna run lint --",
-    "simpleInstall": "yarn install --ignore-scripts"
+    "install:only": "yarn install --ignore-scripts"
   },
   "devDependencies": {
     "@eclipse-glsp/config": "1.0.0",

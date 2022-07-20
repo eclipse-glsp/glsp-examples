@@ -26,8 +26,9 @@
   "scripts": {
     "prepare": "lerna run prepare",
     "watch": "lerna run --parallel watch",
-    "build": "yarn install --ignore-scripts && lerna run build",
-    "lint": "lerna run lint --",
+    "build": "yarn install:only && lerna run build",
+    "lint": "yarn install:only && lerna run lint --",
+    "install:only": "yarn install --ignore-scripts",
     "rebuild:browser": "theia rebuild:browser",
     "start": "yarn rebuild:browser && yarn --cwd workflow-browser-app start",
     "start:external": "yarn rebuild:browser && yarn --cwd workflow-browser-app start:external"
@@ -44,10 +45,10 @@
     "workflow-browser-app"
   ],
   "resolutions": {
-    "**/@theia/core": "1.26.0",
-    "**/@theia/editor": "1.26.0",
-    "**/@theia/filesystem": "1.26.0",
-    "**/@theia/messages": "1.26.0",
-    "**/@theia/monaco": "1.26.0"
+    "**/@theia/core": "1.27.0",
+    "**/@theia/editor": "1.27.0",
+    "**/@theia/filesystem": "1.27.0",
+    "**/@theia/messages": "1.27.0",
+    "**/@theia/monaco": "1.27.0"
   }
 }
