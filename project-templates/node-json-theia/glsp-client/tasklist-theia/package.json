@@ -29,7 +29,7 @@
   ],
   "dependencies": {
     "@eclipse-glsp-examples/tasklist-glsp": "1.0.0",
-    "@eclipse-glsp/theia-integration": "^1.0.0"
+    "@eclipse-glsp/theia-integration": "^1.0.0-theia1.27.0"
   },
   "devDependencies": {
     "rimraf": "^2.6.1"
@@ -38,7 +38,7 @@
     "prepare": "yarn  clean && yarn build && yarn lint",
     "clean": "rimraf lib tsconfig.tsbuildinfo",
     "build": "tsc",
-    "lint": "eslint -c .eslintrc.js --ext .ts,.tsx ./src",
+    "lint": "eslint --ext .ts,.tsx ./src",
     "watch": "tsc -w"
   },
   "theiaExtensions": [

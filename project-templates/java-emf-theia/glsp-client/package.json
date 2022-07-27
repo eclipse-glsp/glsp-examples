@@ -26,9 +26,9 @@
   "scripts": {
     "prepare": "lerna run prepare",
     "watch": "lerna run --parallel watch",
-    "build": "yarn simpleInstall && lerna run build",
+    "build": "yarn install:only && lerna run build",
     "lint": "lerna run lint --",
-    "simpleInstall": "yarn install --ignore-scripts",
+    "install:only": "yarn install --ignore-scripts",
     "rebuild:browser": "theia rebuild:browser",
     "start": "yarn rebuild:browser && yarn --cwd tasklist-browser-app start",
     "start:external": "yarn rebuild:browser && yarn --cwd tasklist-browser-app start:external"
@@ -44,10 +44,10 @@
     "tasklist-browser-app"
   ],
   "resolutions": {
-    "**/@theia/core": "1.26.0",
-    "**/@theia/editor": "1.26.0",
-    "**/@theia/filesystem": "1.26.0",
-    "**/@theia/messages": "1.26.0",
-    "**/@theia/monaco": "1.26.0"
+    "**/@theia/core": "1.27.0",
+    "**/@theia/editor": "1.27.0",
+    "**/@theia/filesystem": "1.27.0",
+    "**/@theia/messages": "1.27.0",
+    "**/@theia/monaco": "1.27.0"
   }
 }

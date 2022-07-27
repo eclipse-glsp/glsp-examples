@@ -149,7 +149,7 @@
     "prepare": "yarn clean && yarn build && yarn lint",
     "clean": "rimraf extension/lib extension/pack extension/server tsconfig.tsbuildinfo",
     "watch": "tsc -w",
-    "lint": "eslint -c ./.eslintrc.js --ext .ts ./src",
+    "lint": "eslint --ext .ts,.tsx ./src",
     "build": "tsc",
     "publish": "vsce publish",
     "download:Server": "ts-node ../scripts/download.ts"
