@@ -50,7 +50,7 @@ public class TaskListGModelFactory extends EMFNotationGModelFactory {
       GNodeBuilder taskNodeBuilder = new GNodeBuilder(TaskListModelTypes.TASK)
          .id(idGenerator.getOrCreateId(task))
          .addCssClass("tasklist-node")
-         .add(new GLabelBuilder(DefaultTypes.LABEL).text(task.getName()).build())
+         .add(new GLabelBuilder(DefaultTypes.LABEL).text(task.getName()).id(task.getId() + "_label").build())
          .layout(GConstants.Layout.HBOX, Map.of(GLayoutOptions.KEY_PADDING_LEFT, 5));
 
       applyShapeData(task, taskNodeBuilder);
