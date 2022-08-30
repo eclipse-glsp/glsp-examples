@@ -36,10 +36,6 @@ The following libraries/frameworks need to be installed on your system:
 *   [Node.js](https://nodejs.org/en/) `>= 12.14.1`
 *   [Yarn](https://classic.yarnpkg.com/en/docs/install#debian-stable) `>=1.7.0`
 
-## Theia Version compatibility
-
-This project template is implemented in `1.25.0` (and compatible with Theia `<=1.26.0`). Versions `>=1.27.0` are currently not supported, but we are working to provide a fix as soon as possible (for more information please see <https://github.com/eclipse-glsp/glsp-theia-integration>).
-
 ## VS Code workspace
 
 To work with the source code and debug the example in VS Code a dedicated [VS Code Workspace](node-json-theia.code-workspace) is provided.
