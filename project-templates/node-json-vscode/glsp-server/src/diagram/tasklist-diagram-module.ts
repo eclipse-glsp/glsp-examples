@@ -23,25 +23,38 @@ import {
     InstanceMultiBinding,
     LabelEditValidator,
     ModelState,
+    OperationActionHandler,
     OperationHandlerConstructor,
     SourceModelStorage
 } from '@eclipse-glsp/server-node';
 import { BindingTarget } from '@eclipse-glsp/server-node/lib/di/binding-target';
-import { injectable } from 'inversify';
+import { injectable, interfaces } from 'inversify';
 import { CreateTaskHandler } from '../handler/create-task-node-handler';
 import { DeleteTaskNodeHandler } from '../handler/delete-task-node-handler';
 import { TaskListApplyLabelEditHandler } from '../handler/tasklist-apply-label-edit-handler';
 import { TaskListChangeBoundsHandler } from '../handler/tasklist-change-bounds-handler';
 import { TaskListLabelEditValidator } from '../handler/tasklist-label-edit-validator';
+import { TaskListMemento } from '../handler/tasklist-memento';
+import { TaskListOperationActionHandler } from '../handler/tasklist-operation-handler';
+import { TaskListUndoRedoActionHandler } from '../handler/tasklist-undo-redo-handler';
 import { TaskListGModelFactory } from '../model/tasklist-gmodel-factory';
 import { TaskListModelIndex } from '../model/tasklist-model-index';
 import { TaskListModelState } from '../model/tasklist-model-state';
 import { TaskListStorage } from '../model/tasklist-storage';
 import { TaskListDiagramConfiguration } from './tasklist-diagram-configuration';
-
 @injectable()
 export class TaskListDiagramModule extends DiagramModule {
     readonly diagramType = 'tasklist-diagram';
+
+    protected override configure(
+        bind: interfaces.Bind,
+        unbind: interfaces.Unbind,
+        isBound: interfaces.IsBound,
+        rebind: interfaces.Rebind
+    ): void {
+        super.configure(bind, unbind, isBound, rebind);
+        bind(TaskListMemento).toSelf().inSingletonScope();
+    }
 
     protected bindDiagramConfiguration(): BindingTarget<DiagramConfiguration> {
         return TaskListDiagramConfiguration;
@@ -63,6 +76,8 @@ export class TaskListDiagramModule extends DiagramModule {
     protected override configureActionHandlers(binding: InstanceMultiBinding<ActionHandlerConstructor>): void {
         super.configureActionHandlers(binding);
         binding.add(ComputedBoundsActionHandler);
+        binding.rebind(OperationActionHandler, TaskListOperationActionHandler);
+        binding.add(TaskListUndoRedoActionHandler);
     }
 
     protected override configureOperationHandlers(binding: InstanceMultiBinding<OperationHandlerConstructor>): void {
@@ -74,7 +89,6 @@ export class TaskListDiagramModule extends DiagramModule {
     }
 
     protected override bindGModelIndex(): BindingTarget<GModelIndex> {
-        this.context.bind(TaskListModelIndex).toSelf().inSingletonScope();
         return { service: TaskListModelIndex };
     }
 

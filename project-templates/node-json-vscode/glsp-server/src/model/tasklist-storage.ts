@@ -17,6 +17,7 @@
 import { AbstractJsonModelStorage, MaybePromise, RequestModelAction, SaveModelAction } from '@eclipse-glsp/server-node';
 import { inject, injectable } from 'inversify';
 import * as uuid from 'uuid';
+import { TaskListMemento } from '../handler/tasklist-memento';
 import { TaskList } from './tasklist-model';
 import { TaskListModelState } from './tasklist-model-state';
 
@@ -24,6 +25,9 @@ import { TaskListModelState } from './tasklist-model-state';
 export class TaskListStorage extends AbstractJsonModelStorage {
     @inject(TaskListModelState)
     protected override modelState: TaskListModelState;
+
+    @inject(TaskListMemento)
+    protected memento: TaskListMemento;
 
     loadSourceModel(action: RequestModelAction): MaybePromise<void> {
         const sourceUri = this.getSourceUri(action);
@@ -34,6 +38,7 @@ export class TaskListStorage extends AbstractJsonModelStorage {
     saveSourceModel(action: SaveModelAction): MaybePromise<void> {
         const sourceUri = this.getFileUri(action);
         this.writeFile(sourceUri, this.modelState.taskList);
+        this.memento.clear();
     }
 
     protected override createModelForEmptyFile(path: string): TaskList {
