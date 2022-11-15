@@ -53,7 +53,7 @@
     "install:only": "yarn install --ignore-scripts",
     "bundle": "webpack",
     "lint": "eslint -c .eslintrc.js --ext .ts,.tsx ./src",
-    "watch": "tsc-w",
+    "watch": "tsc -w",
     "start": "node --enable-source-maps lib/index.js"
   },
   "publishConfig": {
