@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<fileset-config file-format-version="1.2.0" simple-config="false" sync-formatter="false">
+  <local-check-config name="EMF.cloud Checkstyle (8.39)" location="https://raw.githubusercontent.com/eclipse-emfcloud/emfcloud/master/codestyle/org.eclipse.emfcloud.checkstyle/src/main/resources/emfcloud-checkstyle-8.39.xml" type="remote" description="The central checkstyle configuration for EMF.cloud Checkstyle Version 8.39">
+    <additional-data name="cache-props-file-location" value="EMF.cloud Checkstyle (8.39)_1638214328569_cache.properties"/>
+    <additional-data name="cache-file-location" value="EMF.cloud Checkstyle (8.39)_1638214328569_cache.xml"/>
+    <additional-data name="cache-file" value="true"/>
+  </local-check-config>
+  <local-check-config name="EMF.cloud Checkstyle (8.44)" location="https://raw.githubusercontent.com/eclipse-emfcloud/emfcloud/master/codestyle/org.eclipse.emfcloud.checkstyle/src/main/resources/emfcloud-checkstyle-8.44.xml" type="remote" description="The central checkstyle configuration for EMF.cloud Checkstyle Version 8.44">
+    <additional-data name="cache-props-file-location" value="EMF.cloud Checkstyle (8.44)_1638214295838_cache.properties"/>
+    <additional-data name="cache-file-location" value="EMF.cloud Checkstyle (8.44)_1638214295838_cache.xml"/>
+    <additional-data name="cache-file" value="true"/>
+  </local-check-config>
+  <local-check-config name="maven-checkstyle-plugin default" location="jar:file:/home/tobias/.m2/repository/org/eclipse/emfcloud/org.eclipse.emfcloud.checkstyle/0.1.0-SNAPSHOT/org.eclipse.emfcloud.checkstyle-0.1.0-SNAPSHOT.jar!/emfcloud-checkstyle-8.44.xml" type="remote" description="maven-checkstyle-plugin configuration default">
+    <property name="checkstyle.header.file" value="/home/tobias/OpenSource/GLSP/eclipse-integration-ws/.metadata/.plugins/org.eclipse.core.resources/.projects/org.eclipse.glsp.ide.workflow.editor/com.basistech.m2e.code.quality.checkstyleConfigurator/checkstyle-header-default.txt"/>
+    <property name="checkstyle.cache.file" value="${project_loc}/target/checkstyle-cachefile"/>
+  </local-check-config>
+  <fileset name="java-sources-default" enabled="true" check-config-name="maven-checkstyle-plugin default" local="true">
+    <file-match-pattern match-pattern="^src/.*\/.*\.java" include-pattern="true"/>
+    <file-match-pattern match-pattern="^src.*.*src-gen/.*\.java" include-pattern="false"/>
+    <file-match-pattern match-pattern="^src/main/resources.*\.properties" include-pattern="true"/>
+    <file-match-pattern match-pattern="^src/test/resources.*\.properties" include-pattern="true"/>
+  </fileset>
+</fileset-config>

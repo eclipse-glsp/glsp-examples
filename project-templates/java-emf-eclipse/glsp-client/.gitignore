@@ -1,0 +1,6 @@
+tasklist-eclipse/app/**
+!tasklist-eclipse/app/diagram.html
+
+*.log
+*.ttf
+

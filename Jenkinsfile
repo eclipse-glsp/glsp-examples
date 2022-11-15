@@ -8,11 +8,11 @@ spec:
     tty: true
     resources:
       limits:
-        memory: "4Gi"
-        cpu: "2"
+        memory: "2Gi"
+        cpu: "1"
       requests:
-        memory: "4Gi"
-        cpu: "2"
+        memory: "2Gi"
+        cpu: "1"
     command:
     - cat
     env:
@@ -171,6 +171,33 @@ pipeline {
             }
         }
 
+        stage('Build java-emf-eclipse template') {
+            stages {
+                stage('Build client'){
+                    steps{
+                        timeout(30){
+                            container('ci') {
+                                dir('project-templates/java-emf-eclipse/glsp-client') {
+                                    sh 'yarn --unsafe-perm'
+                                }
+                            }
+                        }
+                    }
+                }
+                stage('Build server'){
+                    steps{
+                        timeout(30){
+                            container('ci') {
+                                dir('project-templates/java-emf-eclipse/glsp-server/'){
+                                    sh "mvn clean verify -DskipTests -B -Dcheckstyle.skip"
+                                }
+                            }
+                        }
+                    }
+                }
+            }
+        }
+
         stage('Codestyle') {
             steps {
                 timeout(30){
@@ -183,6 +210,9 @@ pipeline {
                              sh 'mvn checkstyle:check'
                         }
 
+                        dir('project-templates/java-emf-eclipse/glsp-server/'){
+                             sh 'mvn checkstyle:check'
+                        }
                         // Execute eslint checks
                         dir('workflow/glsp-client') {
                             sh 'yarn lint -o eslint.xml -f checkstyle'

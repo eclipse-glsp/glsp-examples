@@ -1,0 +1,199 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>org.eclipse.glsp.example</groupId>
+	<artifactId>org.eclipse.glsp.example.javaemf.parent</artifactId>
+	<description>Java/EMF/Eclipse GLSP Example parent</description>
+	<version>1.0.0</version>
+	<packaging>pom</packaging>
+	<url>https://github.com/eclipse/glsp-examples</url>
+
+	<pluginRepositories>
+		<pluginRepository>
+			<id>sonatype</id>
+			<name>Sonatype</name>
+			<url>https://oss.sonatype.org/content/groups/public</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<licenses>
+		<license>
+			<name>Eclipse Public License - v 2.0</name>
+			<url>http://www.eclipse.org/legal/epl-v20.html</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<name>Eclipse GLSP Project</name>
+			<email>glsp-dev@eclipse.org</email>
+			<organization>Eclipse GLSP</organization>
+			<organizationUrl>https://projects.eclipse.org/projects/ecd.glsp</organizationUrl>
+		</developer>
+	</developers>
+
+	<scm>
+		<url>https://github.com/eclipse-glsp/glsp-examples</url>
+		<connection>scm:git@github.com:eclipse-glsp/glsp-examples.git</connection>
+		<developerConnection>scm:git@github.com:eclipse-glsp/glsp-examples.git</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
+
+
+	<properties>
+		<!-- General build environment plugin versions -->
+		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<java.source>11</java.source>
+		<java.target>11</java.target>
+		<checkstyle>8.44</checkstyle>
+		<checkstyle.plugin>3.1.2</checkstyle.plugin>
+		<emfcloud.checkstyle.version>0.1.0-SNAPSHOT</emfcloud.checkstyle.version>
+		<maven.build.helper.plugin.version>3.3.0</maven.build.helper.plugin.version>
+		<maven.compiler.plugin.version>3.8.0</maven.compiler.plugin.version>
+		<maven.source.plugin.version>3.0.1</maven.source.plugin.version>
+		<maven.resources.plugin.version>2.7</maven.resources.plugin.version>
+		<tycho-version>2.7.5</tycho-version>
+
+		<!-- Dependency Versions -->
+		<!-- <glsp.version>0.10.0-SNAPSHOT</glsp.version> -->
+		<glsp.version>1.0.0</glsp.version>
+		<emf.ecore.version>2.26.0</emf.ecore.version>
+		<emf.common.version>2.23.0</emf.common.version>
+		<emf.ecore.change.version>2.14.0</emf.ecore.change.version>
+		<emf.ecore.edit.version>2.15.0</emf.ecore.edit.version>
+		<emf.ecore.xmi.version>2.16.0</emf.ecore.xmi.version>
+		<eclipse.core.version>3.7.100</eclipse.core.version>
+		<eclipse.core.runtime.version>3.7.0</eclipse.core.runtime.version>
+	</properties>
+
+	<modules>
+		<module>org.eclipse.glsp.example.javaemf.server</module>
+		<module>org.eclipse.glsp.example.javaemf.editor</module>
+		<module>org.eclipse.glsp.example.javaemf.target</module>
+	</modules>
+
+	<build>
+		<sourceDirectory>src</sourceDirectory>
+		<pluginManagement>
+			<plugins>
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-compiler-plugin</artifactId>
+					<version>${tycho-version}</version>
+				</plugin>
+				<!-- enable tycho build extension -->
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>tycho-maven-plugin</artifactId>
+					<version>${tycho-version}</version>
+					<extensions>true</extensions>
+				</plugin>
+				<plugin>
+					<groupId>org.eclipse.tycho</groupId>
+					<artifactId>target-platform-configuration</artifactId>
+					<version>${tycho-version}</version>
+				</plugin>
+			</plugins>
+		</pluginManagement>
+		<plugins>
+			<plugin>
+				<artifactId>maven-compiler-plugin</artifactId>
+				<version>${maven.compiler.plugin.version}</version>
+				<configuration>
+					<source>${java.source}</source>
+					<target>${java.target}</target>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-resources-plugin</artifactId>
+				<version>${maven.resources.plugin.version}</version>
+				<configuration>
+					<encoding>UTF-8</encoding>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-maven-plugin</artifactId>
+				<extensions>true</extensions>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>tycho-compiler-plugin</artifactId>
+				<configuration>
+					<source>${java.source}</source>
+					<target>${java.target}</target>
+					<optimize>true</optimize>
+					<showWarnings>true</showWarnings>
+				</configuration>
+			</plugin>
+			<plugin>
+				<groupId>org.eclipse.tycho</groupId>
+				<artifactId>target-platform-configuration</artifactId>
+				<configuration>
+					<includePackedArtifacts>true</includePackedArtifacts>
+					<targetDefinitionIncludeSource>honor</targetDefinitionIncludeSource>
+					<environments>
+						<environment>
+							<os>win32</os>
+							<ws>win32</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>linux</os>
+							<ws>gtk</ws>
+							<arch>x86_64</arch>
+						</environment>
+						<environment>
+							<os>macosx</os>
+							<ws>cocoa</ws>
+							<arch>x86_64</arch>
+						</environment>
+					</environments>
+					<target>
+						<artifact>
+							<groupId>org.eclipse.glsp.example</groupId>
+							<artifactId>org.eclipse.glsp.example.javaemf.parent</artifactId>
+							<classifier>org.eclipse.glsp.example.javaemf.target/r2021-03</classifier>
+							<version>${project.version}</version>
+						</artifact>
+					</target>
+				</configuration>
+			</plugin>
+			<!-- to disable use -Dcheckstyle.skip -->
+			<plugin>
+				<groupId>org.apache.maven.plugins</groupId>
+				<artifactId>maven-checkstyle-plugin</artifactId>
+				<version>${checkstyle.plugin}</version>
+				<configuration>
+					<configLocation>emfcloud-checkstyle-8.44.xml</configLocation>
+					<consoleOutput>true</consoleOutput>
+					<excludes>**/src-gen/**/*.java</excludes>
+				</configuration>
+				<executions>
+					<execution>
+						<phase>validate</phase>
+						<goals>
+							<goal>check</goal>
+						</goals>
+					</execution>
+				</executions>
+				<dependencies>
+					<dependency>
+						<groupId>org.eclipse.emfcloud</groupId>
+						<artifactId>org.eclipse.emfcloud.checkstyle</artifactId>
+						<version>0.1.0-SNAPSHOT</version>
+					</dependency>
+					<dependency>
+						<groupId>com.puppycrawl.tools</groupId>
+						<artifactId>checkstyle</artifactId>
+						<version>${checkstyle}</version>
+					</dependency>
+				</dependencies>
+			</plugin>
+		</plugins>
+	</build>
+</project>
