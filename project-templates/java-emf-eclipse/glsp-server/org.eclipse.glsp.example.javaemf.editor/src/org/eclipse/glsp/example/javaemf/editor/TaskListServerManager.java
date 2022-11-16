@@ -22,7 +22,6 @@ import java.net.URL;
 import javax.servlet.ServletException;
 import javax.websocket.DeploymentException;
 
-import org.eclipse.glsp.example.javaemf.server.TaskListDiagramModule;
 import org.eclipse.glsp.ide.editor.GLSPServerManager;
 import org.eclipse.glsp.ide.editor.di.IdeServerModule;
 import org.eclipse.glsp.server.di.ServerModule;
@@ -34,7 +33,7 @@ public class TaskListServerManager extends GLSPServerManager {
 
    @Override
    public ServerModule configureServerModule() {
-      return new IdeServerModule().configureDiagramModule(new TaskListDiagramModule());
+      return new IdeServerModule().configureDiagramModule(new TaskListEclipseDiagramModule());
    }
 
    @Override

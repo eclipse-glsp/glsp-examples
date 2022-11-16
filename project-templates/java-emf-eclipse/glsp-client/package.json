@@ -28,7 +28,7 @@
     "watch": "lerna run --parallel watch",
     "build": "yarn install:only && lerna run build",
     "lint": "lerna run lint --",
-    "copyClient": "copyfiles -f ./tasklist-eclipse-frontend//app/* ../glsp-server/org.eclipse.glsp.example.javaemf.editor/diagram"
+    "copyClient": "copyfiles -f ./tasklist-eclipse//app/* ../glsp-server/org.eclipse.glsp.example.javaemf.editor/diagram"
   },
   "devDependencies": {
     "@eclipse-glsp/config": "^1.0.0",
@@ -38,7 +38,7 @@
   },
   "workspaces": [
     "tasklist-glsp",
-    "tasklist-eclipse-frontend"
+    "tasklist-eclipse"
   ],
   "resolutions": {
     "**/@theia/core": "1.27.0",
