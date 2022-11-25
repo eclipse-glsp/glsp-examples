@@ -1,0 +1,40 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+
+	<artifactId>org.eclipse.glsp.example.javaemf.server</artifactId>
+	<packaging>eclipse-plugin</packaging>
+	<parent>
+		<groupId>org.eclipse.glsp.example</groupId>
+		<artifactId>org.eclipse.glsp.example.javaemf.parent</artifactId>
+		<version>1.0.0</version>
+		<relativePath>../pom.xml</relativePath>
+	</parent>
+
+	<licenses>
+		<license>
+			<name>Eclipse Public License - v 2.0</name>
+			<url>http://www.eclipse.org/legal/epl-v20.html</url>
+			<distribution>repo</distribution>
+		</license>
+	</licenses>
+
+	<developers>
+		<developer>
+			<name>Eclipse GLSP Project</name>
+			<email>glsp-dev@eclipse.org</email>
+			<organization>Eclipse GLSP</organization>
+			<organizationUrl>https://projects.eclipse.org/projects/ecd.glsp</organizationUrl>
+		</developer>
+	</developers>
+
+	<scm>
+		<url>https://github.com/eclipse-glsp/glsp-examples</url>
+		<connection>scm:git@github.com:eclipse-glsp/glsp-examples.git</connection>
+		<developerConnection>scm:git@github.com:eclipse-glsp/glsp-examples.git</developerConnection>
+		<tag>HEAD</tag>
+	</scm>
+
+
+</project>
