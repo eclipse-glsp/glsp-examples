@@ -5,7 +5,7 @@ It provides the initial setup of the package architecture and environment for a 
 
 -   🖥️ The [Java GLSP server framework](https://github.com/eclipse-glsp/glsp-server)
 -   🗂️ An [EMF](https://www.eclipse.org/modeling/emf/)-based source model
--   🖼️ The [Eclipse integration](https://github.com/eclipse-glsp/glsp-eclipse-integration) to make your editor available an Eclipse RCP Editor
+-   🖼️ The [Eclipse integration](https://github.com/eclipse-glsp/glsp-eclipse-integration) to make your editor available in Eclipse RCP
 
 To explore alternative project templates or learn more about developing GLSP-based diagram editors, please refer to the [Getting Started](https://www.eclipse.org/glsp/documentation/gettingstarted) guide.
 
@@ -66,7 +66,7 @@ projects are selected and click finish.
 To resolve all compilation errors you have to set the correct target platform.
 Got to the preferences (`Window -> Preferences`) and navigate to the target platform options (`Plug-in Development -> Target Platform`)-
 Selected the `2021-03-Release` target definition and click `Apply`.
-Once the target definitions has been resolved there should be no more compilation errors.
+Once the target platform has been resolved there should be no more compilation errors.
 
 ## Building the example
 
@@ -88,7 +88,7 @@ yarn build:client
 yarn build:server
 ```
 
-Or you can use the available VSCode tasks configured in the [glsp-client](glsp-client/) (via Menu _Terminal > Run Task..._)
+Or you can use the available VS Code tasks configured in the [glsp-client](glsp-client/) (via Menu _Terminal > Run Task..._)
 
 -   `Build TaskList GLSP Client example`
 -   `Copy TaskList GLSP Client bundle`
@@ -98,7 +98,7 @@ Or you can use the available VSCode tasks configured in the [glsp-client](glsp-c
 To test the Tasklist diagram editor a launch configuration is provided. In your [Eclipse Workspace](#eclipse-workspace) navigate to the
 `org.eclipse.glsp.example.javaemf.editor` plugin. Start or debug the example by via right-clicking on the `TaskListEditor.launch` file (`Run as -> TaskListEditor`).
 
-This opens a second (i.e. Runtime) instance of Eclipse which has the TaskList editor plugins preinstalled.
+This opens a second instance of Eclipse, which has the GLSP task list editor plugins preinstalled.
 Import the provided [`example project`](glsp-server/workspace/TaskListExample/) into this workspace and double click on the `example.tasklist` file to open the diagram editor.
 
 ## Next steps
