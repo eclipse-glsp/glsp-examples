@@ -1,0 +1,19 @@
+{
+	"name": "Node.js & TypeScript",
+	"build": {
+		"dockerfile": "Dockerfile"
+	},
+	"forwardPorts": [
+		"localhost:3000"
+	],
+	"portsAttributes": {
+		"3000": {
+			"label": "Theia Backend",
+			"onAutoForward": "openBrowserOnce"
+		},
+		"5007": {
+			"label": "GLSP Server",
+			"onAutoForward": "ignore"
+		}
+	}
+}
