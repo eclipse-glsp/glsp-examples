@@ -13,9 +13,9 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
-import { GGraph, GLabel, GModelFactory, GNode } from '@eclipse-glsp/server-node';
+import { GEdge, GGraph, GLabel, GModelFactory, GNode } from '@eclipse-glsp/server-node';
 import { inject, injectable } from 'inversify';
-import { Task } from './tasklist-model';
+import { Task, Transition } from './tasklist-model';
 import { TaskListModelState } from './tasklist-model-state';
 
 @injectable()
@@ -27,12 +27,17 @@ export class TaskListGModelFactory implements GModelFactory {
         const taskList = this.modelState.taskList;
         this.modelState.index.indexTaskList(taskList);
         const childNodes = taskList.tasks.map(task => this.createTaskNode(task));
-        const newRoot = GGraph.builder().id(taskList.id).addChildren(childNodes).build();
+        const childEdges = taskList.transitions.map(transition => this.createTransitionEdge(transition));
+        const newRoot = GGraph.builder() //
+            .id(taskList.id)
+            .addChildren(childNodes)
+            .addChildren(childEdges)
+            .build();
         this.modelState.updateRoot(newRoot);
     }
 
     protected createTaskNode(task: Task): GNode {
-        const builder = GNode.builder() //
+        const builder = GNode.builder()
             .id(task.id)
             .addCssClass('tasklist-node')
             .add(GLabel.builder().text(task.name).id(`${task.id}_label`).build())
@@ -45,5 +50,14 @@ export class TaskListGModelFactory implements GModelFactory {
         }
 
         return builder.build();
+    }
+
+    protected createTransitionEdge(transition: Transition): GEdge {
+        return GEdge.builder() //
+            .id(transition.id)
+            .addCssClass('tasklist-transition')
+            .sourceId(transition.sourceTaskId)
+            .targetId(transition.targetTaskId)
+            .build();
     }
 }
