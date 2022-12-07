@@ -6,6 +6,7 @@
     "prepare": "yarn build",
     "build": "yarn build:server && yarn build:client",
     "build:client": "yarn --cwd glsp-client install",
-    "build:server": "yarn --cwd glsp-server install"
+    "build:server": "yarn --cwd glsp-server install",
+    "start": "yarn --cwd glsp-client start"
   }
 }

@@ -27,19 +27,36 @@ import { injectable } from 'inversify';
 
 @injectable()
 export class TaskListDiagramConfiguration implements DiagramConfiguration {
+    layoutKind = ServerLayoutKind.MANUAL;
+    needsClientLayout = true;
+    animatedUpdate = true;
+
     get typeMapping(): Map<string, GModelElementConstructor<GModelElement>> {
         return getDefaultMapping();
     }
 
     get shapeTypeHints(): ShapeTypeHint[] {
-        return [{ elementTypeId: DefaultTypes.NODE, deletable: true, reparentable: false, repositionable: true, resizable: true }];
+        return [
+            {
+                elementTypeId: DefaultTypes.NODE,
+                deletable: true,
+                reparentable: false,
+                repositionable: true,
+                resizable: true
+            }
+        ];
     }
 
     get edgeTypeHints(): EdgeTypeHint[] {
-        return [];
+        return [
+            {
+                elementTypeId: DefaultTypes.EDGE,
+                deletable: true,
+                repositionable: false,
+                routable: false,
+                sourceElementTypeIds: [DefaultTypes.NODE],
+                targetElementTypeIds: [DefaultTypes.NODE]
+            }
+        ];
     }
-
-    layoutKind = ServerLayoutKind.MANUAL;
-    needsClientLayout = true;
-    animatedUpdate = true;
 }

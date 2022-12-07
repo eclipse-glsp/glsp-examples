@@ -39,7 +39,8 @@ export class TaskListStorage extends AbstractJsonModelStorage {
     protected override createModelForEmptyFile(path: string): TaskList {
         return {
             id: uuid.v4(),
-            tasks: []
+            tasks: [],
+            transitions: []
         };
     }
 }

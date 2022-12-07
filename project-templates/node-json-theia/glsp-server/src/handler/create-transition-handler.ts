@@ -13,32 +13,33 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
-import { DeleteElementOperation, GNode, MaybePromise, OperationHandler, remove, toTypeGuard } from '@eclipse-glsp/server-node';
+import { CreateEdgeOperation, CreateOperationHandler, DefaultTypes } from '@eclipse-glsp/server-node';
 import { inject, injectable } from 'inversify';
+import * as uuid from 'uuid';
+import { Transition } from '../model/tasklist-model';
 import { TaskListModelState } from '../model/tasklist-model-state';
 
 @injectable()
-export class DeleteTaskNodeHandler implements OperationHandler {
-    readonly operationType = DeleteElementOperation.KIND;
+export class CreateTransitionHandler extends CreateOperationHandler {
+    readonly elementTypeIds = [DefaultTypes.EDGE];
 
     @inject(TaskListModelState)
     protected modelState: TaskListModelState;
 
-    execute(operation: DeleteElementOperation): MaybePromise<void> {
-        operation.elementIds.forEach(elementId => this.deleteTask(elementId));
+    get operationType(): string {
+        return CreateEdgeOperation.KIND;
     }
 
-    protected deleteTask(elementId: string): void {
-        const index = this.modelState.index;
-        let task = index.findTask(elementId);
-        if (!task) {
-            const taskNode = index.findParentElement(elementId, toTypeGuard(GNode));
-            if (taskNode) {
-                task = index.findTask(taskNode.id);
-            }
-        }
-        if (task) {
-            remove(this.modelState.taskList.tasks, task);
-        }
+    execute(operation: CreateEdgeOperation): void {
+        const transition: Transition = {
+            id: uuid.v4(),
+            sourceTaskId: operation.sourceElementId,
+            targetTaskId: operation.targetElementId
+        };
+        this.modelState.taskList.transitions.push(transition);
+    }
+
+    get label(): string {
+        return 'Transition';
     }
 }
