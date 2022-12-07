@@ -9,7 +9,7 @@ Each example is self-contained and provides both, an example diagram client (`gl
 
 The following libraries/frameworks need to be installed on your system:
 
--   [Node.js](https://nodejs.org/en/) `>= 12.14.1`
+-   [Node.js](https://nodejs.org/en/) `>=14.18.0`
 -   [Yarn](https://classic.yarnpkg.com/en/docs/install#debian-stable) `>=1.7.0`
 -   [Java](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) `>=11`
 -   [Maven](https://maven.apache.org/) `>=3.6.0`
