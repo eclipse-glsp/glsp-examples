@@ -924,14 +924,14 @@
   resolved "https://registry.yarnpkg.com/@discoveryjs/json-ext/-/json-ext-0.5.7.tgz#1d572bfbbe14b7704e0ba0f39b74815b84870d70"
   integrity sha512-dBVuXR082gk3jsFp7Rd/JI4kytwGHecnCoTtXFb7DB6CNHp4rg5k1bhg0nWdLGLnOV71lmDzGQaLMy8iPLY0pw==
 
-"@eclipse-glsp/client@1.0.0", "@eclipse-glsp/client@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@eclipse-glsp/client/-/client-1.0.0.tgz#db0fe68279f04b5d157f62896d70c9566d606e5b"
-  integrity sha512-SXbnhE/L9LvnTWPREmiBf3l483JTJ5isNE8TLCJk3+D9ZJ9KyrQcBuYylmGx+eRs9dwI6nUTps509SIgDtBvRg==
+"@eclipse-glsp/client@1.1.0-RC03":
+  version "1.1.0-RC03"
+  resolved "https://registry.yarnpkg.com/@eclipse-glsp/client/-/client-1.1.0-RC03.tgz#566f229570742f659ed077852fdbd8f686aab61e"
+  integrity sha512-T0Az6EjzohNe2LTp5hZmVCOGwjo/D3pg5FehvjnRwA7iL+qeYY0Lt6rQQlv9B58gld9IcnyV01BgY1KMLQC73w==
   dependencies:
-    "@eclipse-glsp/protocol" "^1.0.0"
+    "@eclipse-glsp/protocol" "1.1.0-RC03"
     autocompleter "5.1.0"
-    sprotty "0.12.0"
+    sprotty "0.13.0-next.1c4343c.328"
 
 "@eclipse-glsp/config@1.1.0-next.d03ad9f.112":
   version "1.1.0-next.d03ad9f.112"
@@ -979,21 +979,21 @@
   resolved "https://registry.yarnpkg.com/@eclipse-glsp/prettier-config/-/prettier-config-1.1.0-next.d03ad9f.112.tgz#ff7d10ca4e840d3052a4a6094116423aa7cc9b01"
   integrity sha512-aJhAiHcdOCcX1jBh4QXX4UutfQTGD+5t44rF/qgLUkGcxiTVDoDDE/Uv6AcMqpC4SXHHzeqHR7MJy+TJDbicNA==
 
-"@eclipse-glsp/protocol@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@eclipse-glsp/protocol/-/protocol-1.0.0.tgz#42dddc83250eecc7e537dea61ef8bcd5c843810d"
-  integrity sha512-ie6ZNMPrAyCG65HL93RKDcKTb5IL0QHw0WWfkGzc+0sqWswnCkPPfFLp51rCsQE8ixYVkaJEf0slirxvjxzdSA==
+"@eclipse-glsp/protocol@1.1.0-RC03":
+  version "1.1.0-RC03"
+  resolved "https://registry.yarnpkg.com/@eclipse-glsp/protocol/-/protocol-1.1.0-RC03.tgz#710cebd16db6e8212650dbf854a5fd068725c7ba"
+  integrity sha512-ZE0DkkbODBJGV7SwwNOlr7q6FupfRLi1EiY77Hkjkvi0HBNFUP4PyRzveYr+iuEljsVkoMRON6ZygxQup/nXSg==
   dependencies:
     sprotty-protocol "0.12.0"
     uuid "7.0.3"
     vscode-ws-jsonrpc "0.2.0"
 
-"@eclipse-glsp/theia-integration@^1.0.0-theia1.27.0":
-  version "1.0.0-theia1.27.0"
-  resolved "https://registry.yarnpkg.com/@eclipse-glsp/theia-integration/-/theia-integration-1.0.0-theia1.27.0.tgz#52ebf4a21ee0638068e66aae8720cb35aab9c4ab"
-  integrity sha512-vnPvmOraiV2riDFF49+g9CmmNvrIuWljfcL8U0YxGNL1voE1s+Eg6ob/A13/xOwrztUJwyqGlU0ikdoThSQYhQ==
+"@eclipse-glsp/theia-integration@1.1.0-RC03":
+  version "1.1.0-RC03"
+  resolved "https://registry.yarnpkg.com/@eclipse-glsp/theia-integration/-/theia-integration-1.1.0-RC03.tgz#5aa1f40ff2235ac3d84b16c65f3ca5310dba40b3"
+  integrity sha512-FC5p+r6J754FUrHPvHpNPfl82hDRT3UFaz3TvLExnRIqKt5HPyLfyByZ5iL0evFHXCm7En+24F6FOy5BuP79MA==
   dependencies:
-    "@eclipse-glsp/client" "1.0.0"
+    "@eclipse-glsp/client" "1.1.0-RC03"
     "@theia/core" "^1.27.0"
     "@theia/messages" "^1.27.0"
     sprotty-theia "0.12.0"
@@ -9871,10 +9871,15 @@ sprintf-js@~1.0.2:
   resolved "https://registry.yarnpkg.com/sprintf-js/-/sprintf-js-1.0.3.tgz#04e6926f662895354f3dd015203633b857297e2c"
   integrity sha512-D9cPgkvLlV3t3IzL0D0YLvGA9Ahk4PcvVwUbN0dSGr1aP0Nrt4AEnTUbuGvquEC0mA64Gqt1fzirlRs5ibXx8g==
 
-sprotty-protocol@0.12.0, sprotty-protocol@^0.12.0, sprotty-protocol@~0.12.0:
+sprotty-protocol@0.12.0, sprotty-protocol@^0.12.0:
   version "0.12.0"
   resolved "https://registry.yarnpkg.com/sprotty-protocol/-/sprotty-protocol-0.12.0.tgz#542eb6396a645f85f8cfc2e7ef1d9b90c7b1980b"
   integrity sha512-vbov+XfbmSeMYb46vm6dJvK3q7YKUvg0q7JnM6H7Ca5qY8TaZCEZ5Vc8zHKFZGWchcwnQYKqLTzwDItsMikD0A==
+
+sprotty-protocol@0.13.0-next.1c4343c.328+1c4343c:
+  version "0.13.0-next.1c4343c.328"
+  resolved "https://registry.yarnpkg.com/sprotty-protocol/-/sprotty-protocol-0.13.0-next.1c4343c.328.tgz#3354fbf5eb405b289f0784f70c508cc99d6ef131"
+  integrity sha512-sprFlSDmNBHlgAgAq2vM7hllfvb8GTVAM6u0Ws7tPAnicTAA/ulmiYbeYfvJZH5uuAasSW2B7ieWzg1+kgF/xg==
 
 sprotty-theia@0.12.0:
   version "0.12.0"
@@ -9888,17 +9893,17 @@ sprotty-theia@0.12.0:
     sprotty "^0.12.0"
     sprotty-protocol "^0.12.0"
 
-sprotty@0.12.0, sprotty@^0.12.0:
-  version "0.12.0"
-  resolved "https://registry.yarnpkg.com/sprotty/-/sprotty-0.12.0.tgz#693432346d9321bb19f368c6806641539962db99"
-  integrity sha512-0RjRn3iR9McDt+LZ+cyySfdBdWyzR4kPbg4xESumvoSPziHphs6TdM7CvJ9ywTMmG131nKUF6GgbzhQZ+L6cGg==
+sprotty@0.13.0-next.1c4343c.328, sprotty@^0.12.0:
+  version "0.13.0-next.1c4343c.328"
+  resolved "https://registry.yarnpkg.com/sprotty/-/sprotty-0.13.0-next.1c4343c.328.tgz#ab943696ebae2be75dedc33e751b2792ec6914c8"
+  integrity sha512-6+//jO+c3ix5Sj2JG6lkHlp81PSY1/7ZGIw5DLipLwmZ/VSgFyU4JbOlXdk2FCMqUCgA77QZnU8mMmMwrDDm9A==
   dependencies:
     "@vscode/codicons" "^0.0.25"
     autocompleter "^5.1.0"
     file-saver "^2.0.2"
     inversify "^5.1.1"
     snabbdom "^3.0.3"
-    sprotty-protocol "~0.12.0"
+    sprotty-protocol "0.13.0-next.1c4343c.328+1c4343c"
     tinyqueue "^2.0.3"
 
 sshpk@^1.7.0:

@@ -23,6 +23,7 @@ import {
     InstanceMultiBinding,
     LabelEditValidator,
     ModelState,
+    OperationActionHandler,
     OperationHandlerConstructor,
     SourceModelStorage
 } from '@eclipse-glsp/server-node';
@@ -33,6 +34,7 @@ import { DeleteTaskNodeHandler } from '../handler/delete-task-node-handler';
 import { TaskListApplyLabelEditHandler } from '../handler/tasklist-apply-label-edit-handler';
 import { TaskListChangeBoundsHandler } from '../handler/tasklist-change-bounds-handler';
 import { TaskListLabelEditValidator } from '../handler/tasklist-label-edit-validator';
+import { TaskListOperationActionHandler } from '../handler/tasklist-operation-handler';
 import { TaskListGModelFactory } from '../model/tasklist-gmodel-factory';
 import { TaskListModelIndex } from '../model/tasklist-model-index';
 import { TaskListModelState } from '../model/tasklist-model-state';
@@ -62,6 +64,7 @@ export class TaskListDiagramModule extends DiagramModule {
     protected override configureActionHandlers(binding: InstanceMultiBinding<ActionHandlerConstructor>): void {
         super.configureActionHandlers(binding);
         binding.add(ComputedBoundsActionHandler);
+        binding.rebind(OperationActionHandler, TaskListOperationActionHandler);
     }
 
     protected override configureOperationHandlers(binding: InstanceMultiBinding<OperationHandlerConstructor>): void {

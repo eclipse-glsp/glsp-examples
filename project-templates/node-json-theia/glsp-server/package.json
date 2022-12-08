@@ -37,7 +37,7 @@
     "src"
   ],
   "dependencies": {
-    "@eclipse-glsp/server-node": "^1.0.0"
+    "@eclipse-glsp/server-node": "1.1.0-RC03"
   },
   "devDependencies": {
     "@eclipse-glsp/config": "1.1.0-next.d03ad9f.112",

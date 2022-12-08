@@ -54,12 +54,12 @@
     eslint-plugin-import "^2.26.0"
     eslint-plugin-no-null "^1.0.2"
 
-"@eclipse-glsp/graph@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@eclipse-glsp/graph/-/graph-1.0.0.tgz#b07a2ef36c21020337492b873eb6bbe24db138c8"
-  integrity sha512-vWuDSO3f51SSnvEZsn13x2BVifxyD+FEubEPAeLfi9ZgAJQTZe1d++VemCanpZcgMTcSPfembE27nxA/Tm341g==
+"@eclipse-glsp/graph@1.1.0-RC03":
+  version "1.1.0-RC03"
+  resolved "https://registry.yarnpkg.com/@eclipse-glsp/graph/-/graph-1.1.0-RC03.tgz#f19b588cd044f6d61d5e280e7aa04189b6d83a35"
+  integrity sha512-IMRiqphsRBosa/ngXLjPT/m3M6sdj1X8/qZhHtPfrAGkSE96gRNoCmxJXx5oSoCpJTgGJjX9f1bDvuFhAhroEg==
   dependencies:
-    "@eclipse-glsp/protocol" "1.0.0"
+    "@eclipse-glsp/protocol" "1.1.0-RC03"
 
 "@eclipse-glsp/mocha-config@1.1.0-next.d03ad9f.112+d03ad9f":
   version "1.1.0-next.d03ad9f.112"
@@ -81,22 +81,22 @@
   resolved "https://registry.yarnpkg.com/@eclipse-glsp/prettier-config/-/prettier-config-1.1.0-next.d03ad9f.112.tgz#ff7d10ca4e840d3052a4a6094116423aa7cc9b01"
   integrity sha512-aJhAiHcdOCcX1jBh4QXX4UutfQTGD+5t44rF/qgLUkGcxiTVDoDDE/Uv6AcMqpC4SXHHzeqHR7MJy+TJDbicNA==
 
-"@eclipse-glsp/protocol@1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@eclipse-glsp/protocol/-/protocol-1.0.0.tgz#42dddc83250eecc7e537dea61ef8bcd5c843810d"
-  integrity sha512-ie6ZNMPrAyCG65HL93RKDcKTb5IL0QHw0WWfkGzc+0sqWswnCkPPfFLp51rCsQE8ixYVkaJEf0slirxvjxzdSA==
+"@eclipse-glsp/protocol@1.1.0-RC03":
+  version "1.1.0-RC03"
+  resolved "https://registry.yarnpkg.com/@eclipse-glsp/protocol/-/protocol-1.1.0-RC03.tgz#710cebd16db6e8212650dbf854a5fd068725c7ba"
+  integrity sha512-ZE0DkkbODBJGV7SwwNOlr7q6FupfRLi1EiY77Hkjkvi0HBNFUP4PyRzveYr+iuEljsVkoMRON6ZygxQup/nXSg==
   dependencies:
     sprotty-protocol "0.12.0"
     uuid "7.0.3"
     vscode-ws-jsonrpc "0.2.0"
 
-"@eclipse-glsp/server-node@^1.0.0":
-  version "1.0.0"
-  resolved "https://registry.yarnpkg.com/@eclipse-glsp/server-node/-/server-node-1.0.0.tgz#edbe6e98c6c600de20672594e712d6efa089d5c9"
-  integrity sha512-SPC5FmXdmm+hFn4z1eqCyVz7TxJGdqzbBn0+lHmLu3eBeB4me7ibE3ogJc4BJSHRjLsL3Nzp2qy0GqEfLpBfJA==
+"@eclipse-glsp/server-node@1.1.0-RC03":
+  version "1.1.0-RC03"
+  resolved "https://registry.yarnpkg.com/@eclipse-glsp/server-node/-/server-node-1.1.0-RC03.tgz#c325d4b94cb4d489f2986d31c9c12375bc65c90f"
+  integrity sha512-ckuRA1j0YLD9gHT00eTXuacJZo6dSznOrWGXJUuvV2CDzu/P+8ekJlRUt4VN5F6LRdX7yPFQIJJCGPdf5hvj2A==
   dependencies:
-    "@eclipse-glsp/graph" "^1.0.0"
-    "@eclipse-glsp/protocol" "1.0.0"
+    "@eclipse-glsp/graph" "1.1.0-RC03"
+    "@eclipse-glsp/protocol" "1.1.0-RC03"
     "@types/uuid" "8.3.1"
     commander "^8.3.0"
     inversify "5.1.1"
