@@ -4,13 +4,13 @@ This example shows a consistent example provided by all GLSP components.
 It implements a simple flow chart diagram editor with different types of nodes and edges.
 The `Workflow Example` is the main example used for development and integrates all GLSP features.
 
-https://user-images.githubusercontent.com/588090/154459938-849ca684-11b3-472c-8a59-98ea6cb0b4c1.mp4
+<https://user-images.githubusercontent.com/588090/154459938-849ca684-11b3-472c-8a59-98ea6cb0b4c1.mp4>
 
 ## Prerequisites
 
 The following libraries/frameworks need to be installed on your system:
 
--   [Node.js](https://nodejs.org/en/) `>= 12.14.1 AND < 13`
+-   [Node.js](https://nodejs.org/en/) `>=14.18.0`
 -   [Yarn](https://classic.yarnpkg.com/en/docs/install#debian-stable) `>=1.7.0`
 -   [Java](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) `>=11`
 -   [Maven](https://maven.apache.org/) `>=3.6.0`
