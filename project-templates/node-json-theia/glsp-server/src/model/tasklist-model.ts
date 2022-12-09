@@ -35,6 +35,7 @@ export namespace TaskList {
 export interface Task {
     id: string;
     name: string;
+    difficulty?: 'low' | 'medium' | 'hard';
     position: { x: number; y: number };
     size?: { width: number; height: number };
 }
