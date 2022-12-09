@@ -14,6 +14,7 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
 
+import { GLSPContextMenu } from '@eclipse-glsp/theia-integration';
 import { CommandContribution, CommandRegistry, MenuContribution, MenuModelRegistry } from '@theia/core';
 import { ApplicationShell } from '@theia/core/lib/browser';
 import { inject, injectable } from '@theia/core/shared/inversify';
@@ -22,11 +23,16 @@ import { inject, injectable } from '@theia/core/shared/inversify';
 export class TaskListContribution implements CommandContribution, MenuContribution {
     @inject(ApplicationShell) protected readonly shell: ApplicationShell;
 
+    static HELLO_WORLD_COMMAND = { id: 'glsp-say-hello', label: 'Say hello from GLSP' };
+
     registerCommands(commands: CommandRegistry): void {
-        // TODO implement
+        commands.registerCommand(TaskListContribution.HELLO_WORLD_COMMAND, { execute: () => console.log('Hello world') });
     }
 
     registerMenus(menus: MenuModelRegistry): void {
-        // TODO implement
+        menus.registerMenuAction(GLSPContextMenu.MENU_PATH.concat('edit'), {
+            commandId: TaskListContribution.HELLO_WORLD_COMMAND.id,
+            label: 'Menu: Say hello from GLSP'
+        });
     }
 }
