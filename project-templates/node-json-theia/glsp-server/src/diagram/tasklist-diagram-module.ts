@@ -31,6 +31,7 @@ import { injectable } from 'inversify';
 import { CreateTaskHandler } from '../handler/create-task-node-handler';
 import { CreateTransitionHandler } from '../handler/create-transition-handler';
 import { DeleteElementHandler } from '../handler/delete-element-handler';
+import { MyCustomActionHandler } from '../handler/my-custom-action-handler';
 import { TaskListApplyLabelEditHandler } from '../handler/tasklist-apply-label-edit-handler';
 import { TaskListChangeBoundsHandler } from '../handler/tasklist-change-bounds-handler';
 import { TaskListLabelEditValidator } from '../handler/tasklist-label-edit-validator';
@@ -63,6 +64,7 @@ export class TaskListDiagramModule extends DiagramModule {
     protected override configureActionHandlers(binding: InstanceMultiBinding<ActionHandlerConstructor>): void {
         super.configureActionHandlers(binding);
         binding.add(ComputedBoundsActionHandler);
+        binding.add(MyCustomActionHandler);
     }
 
     protected override configureOperationHandlers(binding: InstanceMultiBinding<OperationHandlerConstructor>): void {
