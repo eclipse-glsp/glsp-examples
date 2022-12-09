@@ -34,3 +34,18 @@ export class TaskLabelView extends ShapeView {
         return vnode;
     }
 }
+
+@injectable()
+export class DifficultyLabelView extends ShapeView {
+    render(label: Readonly<SLabel>, context: RenderingContext): VNode | undefined {
+        if (!this.isVisible(label, context)) {
+            return undefined;
+        }
+        return (
+            <g>
+                <text class-sprotty-label={true}>-{label.text}-</text>
+                <line x1={-(label.size.width / 2) - 4.5} y1='4' x2={label.size.width / 2 + 4.7} y2='4' stroke='black' />
+            </g>
+        );
+    }
+}

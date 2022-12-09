@@ -42,6 +42,7 @@ export class TaskListGModelFactory implements GModelFactory {
             .addCssClass('tasklist-node')
             .add(
                 GLabel.builder()
+                    .type('label:difficulty')
                     .text(task.difficulty ?? 'unspecified')
                     .id(`${task.id}_difficulty_label`)
                     .build()

@@ -28,7 +28,7 @@ import {
 import 'balloon-css/balloon.min.css';
 import { Container, ContainerModule } from 'inversify';
 import '../css/diagram.css';
-import { TaskLabelView } from './views';
+import { DifficultyLabelView, TaskLabelView } from './views';
 
 const taskListDiagramModule = new ContainerModule((bind, unbind, isBound, rebind) => {
     rebind(TYPES.ILogger).to(ConsoleLogger).inSingletonScope();
@@ -36,6 +36,7 @@ const taskListDiagramModule = new ContainerModule((bind, unbind, isBound, rebind
     const context = { bind, unbind, isBound, rebind };
     configureDefaultModelElements(context);
     configureModelElement(context, DefaultTypes.LABEL, SLabel, TaskLabelView, { enable: [editLabelFeature] });
+    configureModelElement(context, 'label:difficulty', SLabel, DifficultyLabelView);
 });
 
 export default function createContainer(widgetId: string): Container {
