@@ -23,19 +23,19 @@ import {
     LogLevel,
     overrideViewerOptions,
     SLabel,
-    SLabelView,
     TYPES
 } from '@eclipse-glsp/client';
 import 'balloon-css/balloon.min.css';
 import { Container, ContainerModule } from 'inversify';
 import '../css/diagram.css';
+import { TaskLabelView } from './views';
 
 const taskListDiagramModule = new ContainerModule((bind, unbind, isBound, rebind) => {
     rebind(TYPES.ILogger).to(ConsoleLogger).inSingletonScope();
     rebind(TYPES.LogLevel).toConstantValue(LogLevel.warn);
     const context = { bind, unbind, isBound, rebind };
     configureDefaultModelElements(context);
-    configureModelElement(context, DefaultTypes.LABEL, SLabel, SLabelView, { enable: [editLabelFeature] });
+    configureModelElement(context, DefaultTypes.LABEL, SLabel, TaskLabelView, { enable: [editLabelFeature] });
 });
 
 export default function createContainer(widgetId: string): Container {
