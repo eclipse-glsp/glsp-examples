@@ -31,6 +31,7 @@ import { injectable } from 'inversify';
 import { CreateTaskHandler } from '../handler/create-task-node-handler';
 import { CreateTransitionHandler } from '../handler/create-transition-handler';
 import { DeleteElementHandler } from '../handler/delete-element-handler';
+import { IncreaseTaskDifficultyOperationHandler } from '../handler/increase-task-difficulty-handler';
 import { MyCustomActionHandler } from '../handler/my-custom-action-handler';
 import { TaskListApplyLabelEditHandler } from '../handler/tasklist-apply-label-edit-handler';
 import { TaskListChangeBoundsHandler } from '../handler/tasklist-change-bounds-handler';
@@ -74,6 +75,7 @@ export class TaskListDiagramModule extends DiagramModule {
         binding.add(TaskListChangeBoundsHandler);
         binding.add(TaskListApplyLabelEditHandler);
         binding.add(DeleteElementHandler);
+        binding.add(IncreaseTaskDifficultyOperationHandler);
     }
 
     protected override bindGModelIndex(): BindingTarget<GModelIndex> {

@@ -19,7 +19,7 @@ import { GLSPCommandHandler, GLSPContextMenu } from '@eclipse-glsp/theia-integra
 import { CommandContribution, CommandRegistry, MenuContribution, MenuModelRegistry } from '@theia/core';
 import { ApplicationShell } from '@theia/core/lib/browser';
 import { inject, injectable } from '@theia/core/shared/inversify';
-import { MyCustomAction } from './actions';
+import { IncreaseTaskDifficultyOperation, MyCustomAction } from './actions';
 
 @injectable()
 export class TaskListContribution implements CommandContribution, MenuContribution {
@@ -27,6 +27,7 @@ export class TaskListContribution implements CommandContribution, MenuContributi
 
     static HELLO_WORLD_COMMAND = { id: 'glsp-say-hello', label: 'Say hello from GLSP' };
     static MY_CUSTOM_ACTION_COMMAND = { id: 'glsp-custom-action', label: 'My Custom Action' };
+    static INCREASE_DIFFICULTY_COMMAND = { id: 'glsp-increase-difficulty', label: 'Increase Task Difficulty' };
 
     registerCommands(commands: CommandRegistry): void {
         commands.registerCommand(TaskListContribution.HELLO_WORLD_COMMAND, { execute: () => console.log('Hello world') });
@@ -34,6 +35,13 @@ export class TaskListContribution implements CommandContribution, MenuContributi
             TaskListContribution.MY_CUSTOM_ACTION_COMMAND,
             new GLSPCommandHandler(this.shell, {
                 actions: context => [MyCustomAction.create(context.selectedElements[0].id)],
+                isEnabled: context => context.selectedElements.length === 1 && context.selectedElements[0].type === DefaultTypes.NODE
+            })
+        );
+        commands.registerCommand(
+            TaskListContribution.INCREASE_DIFFICULTY_COMMAND,
+            new GLSPCommandHandler(this.shell, {
+                actions: context => [IncreaseTaskDifficultyOperation.create(context.selectedElements[0].id)],
                 isEnabled: context => context.selectedElements.length === 1 && context.selectedElements[0].type === DefaultTypes.NODE
             })
         );
@@ -47,6 +55,10 @@ export class TaskListContribution implements CommandContribution, MenuContributi
         menus.registerMenuAction(GLSPContextMenu.MENU_PATH.concat('edit'), {
             commandId: TaskListContribution.MY_CUSTOM_ACTION_COMMAND.id,
             label: TaskListContribution.MY_CUSTOM_ACTION_COMMAND.label
+        });
+        menus.registerMenuAction(GLSPContextMenu.MENU_PATH.concat('edit'), {
+            commandId: TaskListContribution.INCREASE_DIFFICULTY_COMMAND.id,
+            label: TaskListContribution.INCREASE_DIFFICULTY_COMMAND.label
         });
     }
 }
