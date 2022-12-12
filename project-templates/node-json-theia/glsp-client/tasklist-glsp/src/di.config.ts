@@ -28,6 +28,7 @@ import {
 import 'balloon-css/balloon.min.css';
 import { Container, ContainerModule } from 'inversify';
 import '../css/diagram.css';
+import { directConnectToolModule } from './direct-connect-tool/di.config';
 import { DifficultyLabelView, TaskLabelView } from './views';
 
 const taskListDiagramModule = new ContainerModule((bind, unbind, isBound, rebind) => {
@@ -40,7 +41,7 @@ const taskListDiagramModule = new ContainerModule((bind, unbind, isBound, rebind
 });
 
 export default function createContainer(widgetId: string): Container {
-    const container = createClientContainer(taskListDiagramModule);
+    const container = createClientContainer(taskListDiagramModule, directConnectToolModule);
 
     overrideViewerOptions(container, {
         baseDiv: widgetId,
