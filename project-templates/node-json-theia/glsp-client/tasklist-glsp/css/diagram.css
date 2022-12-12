@@ -25,5 +25,17 @@ svg {
 }
 
 .tasklist-node > .sprotty-node {
-    fill: #f1bd6c;
+    fill: #bdb2a1;
+}
+
+.tasklist-node.difficulty-low > .sprotty-node {
+    fill: #48c0c9;
+}
+
+.tasklist-node.difficulty-medium > .sprotty-node {
+    fill: #c9a048;
+}
+
+.tasklist-node.difficulty-hard > .sprotty-node {
+    fill: #c948a9;
 }

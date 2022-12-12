@@ -40,6 +40,7 @@ export class TaskListGModelFactory implements GModelFactory {
         const builder = GNode.builder()
             .id(task.id)
             .addCssClass('tasklist-node')
+            .addCssClass('difficulty-' + task.difficulty ?? 'unspecified')
             .add(
                 GLabel.builder()
                     .type('label:difficulty')
