@@ -56,7 +56,8 @@
     "clean": "rimraf tsconfig.tsbuildinfo lib bundle",
     "build": "yarn install:only && tsc && yarn bundle",
     "bundle": "webpack",
-    "lint": "eslint -c .eslintrc.js --ext .ts,.tsx ./src",
+    "lint": "eslint -c .eslintrc.js --ext .ts,.tsx ./src --",
+    "lint:ci": "eslint -c .eslintrc.js --ext .ts,.tsx ./src -o eslint.xml -f checkstyle",
     "watch": "tsc -w",
     "start": "node --enable-source-maps lib/index.js"
   },

@@ -65,6 +65,11 @@ pipeline {
     stages {
 
          stage('Build Workflow Example') {
+            when {
+                expression {  
+                    sh(returnStatus: true, script: 'git diff --name-only HEAD^ | grep --quiet "^workflow/\\(glsp-client\\|glsp-server\\)"') == 0
+                }
+            }
             stages {
                 stage('Build Server') {
                     steps{
@@ -92,6 +97,11 @@ pipeline {
         }
        
         stage('Build java-emf-theia template') {
+            when {
+                expression {  
+                    sh(returnStatus: true, script: 'git diff --name-only HEAD^ | grep --quiet "^project-templates/java-emf-theia/\\(glsp-client\\|glsp-server\\)"') == 0
+                }
+            }
             stages {
                 stage('Build server'){
                     steps{
@@ -119,6 +129,11 @@ pipeline {
         }
 
         stage('Build node-json-theia template') {
+            when {
+                expression {  
+                    sh(returnStatus: true, script: 'git diff --name-only HEAD^ | grep --quiet "^project-templates/node-json-theia/\\(glsp-client\\|glsp-server\\)"') == 0
+                }
+            }
             stages {
                 stage('Build server'){
                     steps{
@@ -146,6 +161,11 @@ pipeline {
         }
 
         stage('Build node-json-vscode template') {
+            when {
+                expression {  
+                    sh(returnStatus: true, script: 'git diff --name-only HEAD^ | grep --quiet "^project-templates/node-json-vscode/\\(glsp-client\\|glsp-server\\)"') == 0
+                }
+            }
             stages {
                 stage('Build server'){
                     steps{
@@ -173,6 +193,11 @@ pipeline {
         }
 
         stage('Build java-emf-eclipse template') {
+            when {
+                expression {  
+                    sh(returnStatus: true, script: 'git diff --name-only HEAD^ | grep --quiet "^project-templates/java-emf-eclipse/\\(glsp-client\\|glsp-server\\)"') == 0
+                }
+            }
             stages {
                 stage('Build client'){
                     steps{
@@ -193,41 +218,113 @@ pipeline {
                                     sh "mvn clean verify -DskipTests -B -Dcheckstyle.skip"
                                 }
                             }
-                        }
+                        } 
                     }
                 }
             }
         }
 
         stage('Codestyle') {
-            steps {
-                timeout(30){
-                    container('ci') {
-                        // Execute checkstyle checks
-                        dir('workflow/glsp-server'){
-                            sh 'mvn checkstyle:check'
+            stages {
+                stage ('Lint workflow example') {
+                    when {
+                        expression {  
+                            sh(returnStatus: true, script: 'git diff --name-only HEAD^ | grep --quiet "^workflow/\\(glsp-client\\|glsp-server\\)"') == 0
                         }
-                        dir('project-templates/java-emf-theia/glsp-server/'){
-                             sh 'mvn checkstyle:check'
+                    }
+                    steps {
+                        timeout(30) {
+                            container('ci') {
+                                dir('workflow/glsp-server'){
+                                    sh 'mvn checkstyle:check'
+                                }
+                                dir('workflow/glsp-client') {
+                                    sh 'yarn lint -o eslint.xml -f checkstyle'
+                                }
+                            }
                         }
+                    }
+                }
 
-                        dir('project-templates/java-emf-eclipse/glsp-server/'){
-                             sh 'mvn checkstyle:check'
+                stage ('Lint java-emf-theia') {
+                    when {
+                        expression {  
+                            sh(returnStatus: true, script: 'git diff --name-only HEAD^ | grep --quiet "^project-templates/java-emf-theia/\\(glsp-client\\|glsp-server\\)"') == 0
                         }
-                        // Execute eslint checks
-                        dir('workflow/glsp-client') {
-                            sh 'yarn lint -o eslint.xml -f checkstyle'
-                        } 
-                        dir('project-templates/java-emf-theia/glsp-client/'){
-                            sh 'yarn lint -o eslint.xml -f checkstyle'
+                    }
+                    steps {
+                        timeout(30) {
+                            container('ci') {
+                                dir('project-templates/java-emf-theia/glsp-server/'){
+                                    sh 'mvn checkstyle:check'
+                                }
+                                dir('project-templates/java-emf-theia/glsp-client/'){
+                                    sh 'yarn lint -o eslint.xml -f checkstyle'
+                                }
+                            }
                         }
-                        dir('project-templates/node-json-theia/glsp-client/'){
-                            sh 'yarn lint -o eslint.xml -f checkstyle'
+                    }
+                }
+
+
+                stage ('Lint java-emf-eclipse') {
+                    when {
+                        expression {  
+                            sh(returnStatus: true, script: 'git diff --name-only HEAD^ | grep --quiet "^project-templates/java-emf-eclipse/\\(glsp-client\\|glsp-server\\)"') == 0
                         }
-                        dir('project-templates/node-json-vscode/glsp-client/'){
-                            sh 'yarn lint -o eslint.xml -f checkstyle'
+                    }
+                    steps {
+                        timeout(30) {
+                            container('ci') {
+                                dir('project-templates/java-emf-eclipse/glsp-server/'){
+                                    sh 'mvn checkstyle:check'
+                                }
+                                dir('project-templates/java-emf-eclipse/glsp-client/'){
+                                    sh 'yarn lint -o eslint.xml -f checkstyle'
+                                }
+                            }
                         }
-                    }   
+                    }
+                }
+
+                stage ('Lint node-json-theia') {
+                    when {
+                        expression {  
+                            sh(returnStatus: true, script: 'git diff --name-only HEAD^ | grep --quiet "^project-templates/node-json-theia/\\(glsp-client\\|glsp-server\\)"') == 0
+                        }
+                    }
+                    steps {
+                        timeout(30) {
+                            container('ci') {
+                                dir('project-templates/node-json-theia/glsp-server/'){
+                                    sh 'yarn lint:ci'
+                                }
+                                dir('project-templates/node-json-theia/glsp-client/'){
+                                    sh 'yarn lint -o eslint.xml -f checkstyle'
+                                }
+                            }
+                        }
+                    }
+                }
+
+                stage ('Lint node-json-vscode') {
+                    when {
+                        expression {  
+                            sh(returnStatus: true, script: 'git diff --name-only HEAD^ | grep --quiet "^project-templates/node-json-vscode/\\(glsp-client\\|glsp-server\\)"') == 0
+                        }
+                    }
+                    steps {
+                        timeout(30) {
+                            container('ci') {
+                                dir('project-templates/node-json-vscode/glsp-server/'){
+                                    sh 'yarn lint:ci'
+                                }
+                                dir('project-templates/node-json-vscode/glsp-client/'){
+                                    sh 'yarn lint -o eslint.xml -f checkstyle'
+                                }
+                            }
+                        }
+                    }
                 }
             }
         }
