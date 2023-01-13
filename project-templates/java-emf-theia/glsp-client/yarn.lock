@@ -956,12 +956,12 @@
   resolved "https://registry.yarnpkg.com/@discoveryjs/json-ext/-/json-ext-0.5.7.tgz#1d572bfbbe14b7704e0ba0f39b74815b84870d70"
   integrity sha512-dBVuXR082gk3jsFp7Rd/JI4kytwGHecnCoTtXFb7DB6CNHp4rg5k1bhg0nWdLGLnOV71lmDzGQaLMy8iPLY0pw==
 
-"@eclipse-glsp/client@2.0.0", "@eclipse-glsp/client@~2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@eclipse-glsp/client/-/client-2.0.0.tgz#1100d7b2de0b4a92f4397417cc196fe7324af0f5"
-  integrity sha512-Bi3Pxv0jgr8uyKTtxivPEfD6nHYPB35a0+eaq5wjxymB3VlX3Fgguy+dAmO9P2FexRN/d4Wh8ZwWhtjC3XP0AQ==
+"@eclipse-glsp/client@2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@eclipse-glsp/client/-/client-2.1.0.tgz#324c48e243cb24d454c9c4a38dcd7effea92b729"
+  integrity sha512-OxQhgcz1VJnmj4IYMSz7Xp4bk50yX/nvrcdVyBvnWJ0S2FF9rJZcdMykooMg19N0nfnG+cjzVa4lbd5Mf975XQ==
   dependencies:
-    "@eclipse-glsp/sprotty" "~2.0.0"
+    "@eclipse-glsp/sprotty" "2.1.0"
     autocompleter "^9.1.0"
     file-saver "^2.0.5"
     lodash "4.17.21"
@@ -999,32 +999,32 @@
   dependencies:
     prettier-plugin-packagejson "~2.4.6"
 
-"@eclipse-glsp/protocol@~2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@eclipse-glsp/protocol/-/protocol-2.0.0.tgz#d09fa068c32dadf678696c987feded1790f3099b"
-  integrity sha512-6vFP2aY0+9AcrWvAtNFzcDX00z/rEFwTzYXg9ucDEYwYn105DUadhMruwSn9rsWLxf2movBzEkLSE2TNOX1PkQ==
+"@eclipse-glsp/protocol@2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@eclipse-glsp/protocol/-/protocol-2.1.0.tgz#e76a65a4815c969bfb86a1ab202ad24384a317cc"
+  integrity sha512-CUcVbsjiddDWEuhWKDLgfqslmau2QT6QTF9LyA4/y6Eomv5s8nTexeBMI6hCWL4sHgMfQ4t2zI9zV2a5gIow4A==
   dependencies:
     sprotty-protocol "0.15.0-next.044bba2.13"
     uuid "7.0.3"
     vscode-jsonrpc "^8.0.2"
 
-"@eclipse-glsp/sprotty@~2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@eclipse-glsp/sprotty/-/sprotty-2.0.0.tgz#dc3915a2ec8959ffbc0b518854820d46f7af5cef"
-  integrity sha512-bXnPwYhyw/dOl4YSGcMciBCJp6toYesa0v8U4iDs0P+x7/Q9yMAPBRYKajxKzyuoVs09hvCkNUVEM1e4cRQ1BA==
+"@eclipse-glsp/sprotty@2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@eclipse-glsp/sprotty/-/sprotty-2.1.0.tgz#4adf93dd501dc65426f7beac145ac007fcb37aa9"
+  integrity sha512-STBH3Af9sTD102mfgr0kplMSkvkkWIOMGLjr7Hl+b5yx8niMrFmy6HGIBVpyw9mb5DW+6eKN+3QjyslTetL8TA==
   dependencies:
-    "@eclipse-glsp/protocol" "~2.0.0"
+    "@eclipse-glsp/protocol" "2.1.0"
     autocompleter "^9.1.0"
     snabbdom "^3.5.1"
     sprotty "1.0.0"
     sprotty-protocol "1.0.0"
 
-"@eclipse-glsp/theia-integration@2.0.0":
-  version "2.0.0"
-  resolved "https://registry.yarnpkg.com/@eclipse-glsp/theia-integration/-/theia-integration-2.0.0.tgz#d89cf8d42d5361645e1570fd5182631091493b97"
-  integrity sha512-jb+yOo0YaGiz/iir2juBYPHVL8kKHFSc5KleIsstLoRf8gB2NOKdem/B9j5f26nqQ8XAog1bc5R/vWdRfrZhwg==
+"@eclipse-glsp/theia-integration@2.1.0":
+  version "2.1.0"
+  resolved "https://registry.yarnpkg.com/@eclipse-glsp/theia-integration/-/theia-integration-2.1.0.tgz#9528314be7758619782bf65de2181961d3d91bef"
+  integrity sha512-AeyuINW+6izXs3AmtF5A7zy9pBLQn1hDsNZ6w4xlqrR5c5aiVrdwkFtnilYEhqQmEVZbhFbqKXrJlL98S0qpkg==
   dependencies:
-    "@eclipse-glsp/client" "~2.0.0"
+    "@eclipse-glsp/client" "2.1.0"
     ws "~8.11.0"
 
 "@eclipse-glsp/ts-config@~2.0.0":
@@ -2212,6 +2212,14 @@
     "@theia/core" "1.43.1"
     node-pty "0.11.0-beta17"
     string-argv "^0.1.1"
+
+"@theia/property-view@1.43.1":
+  version "1.43.1"
+  resolved "https://registry.yarnpkg.com/@theia/property-view/-/property-view-1.43.1.tgz#efc889555e3d6d337f79f71d42b3bf974c9089ac"
+  integrity sha512-rhAD6nTMQmbzMWlEabQPAMaLA3iiRhxSanGfv909vZueYyHMFlHgdOZUHaavWOQUgqwtnTnx7/KrxAUmG9uwfA==
+  dependencies:
+    "@theia/core" "1.43.1"
+    "@theia/filesystem" "1.43.1"
 
 "@theia/request@1.43.1":
   version "1.43.1"

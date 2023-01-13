@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2022 EclipseSource and others.
+ * Copyright (c) 2022-2024 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -15,16 +15,19 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0 OR MIT
  ********************************************************************************/
 import { ContainerConfiguration } from '@eclipse-glsp/protocol';
-import { GLSPDiagramConfiguration } from '@eclipse-glsp/theia-integration/lib/browser';
+import { GLSPDiagramConfiguration, GlspSelectionDataService } from '@eclipse-glsp/theia-integration/lib/browser';
 import { Container, injectable } from '@theia/core/shared/inversify';
 import { initializeTasklistDiagramContainer } from 'tasklist-glsp';
 import { TaskListLanguage } from '../../common/tasklist-language';
+import { CustomGlspSelectionDataService } from '../property-view/selection-data-service';
 
 @injectable()
 export class TaskListDiagramConfiguration extends GLSPDiagramConfiguration {
     readonly diagramType = TaskListLanguage.diagramType;
 
-    override configureContainer(container: Container, ...containerConfiguration: ContainerConfiguration): void {
+    override configureContainer(container: Container, ...containerConfiguration: ContainerConfiguration): Container {
         initializeTasklistDiagramContainer(container, ...containerConfiguration);
+        container.bind(GlspSelectionDataService).to(CustomGlspSelectionDataService);
+        return container;
     }
 }
