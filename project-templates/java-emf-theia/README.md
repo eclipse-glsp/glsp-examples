@@ -31,8 +31,6 @@ The most important entry points are:
 -   [`glsp-client/tasklist-browser-app/package.json`](glsp-client/tasklist-browser-app/package.json): Theia browser application definition
 -   [`glsp-server/src/main/java/org/eclipse/glsp/example/javaemf/TaskListDiagramModule.java`](glsp-server/src/main/java/org/eclipse/glsp/example/javaemf/TaskListDiagramModule.java): dependency injection module of the server
 
-> **_NOTE:_**&nbsp; Due to bug [GLSP-666](https://github.com/eclipse-glsp/glsp/issues/666) the launch configurations for the `Theia Backend` might not work as expected when using Windows. Unfortunately there is currently no work-around and if you encounter this bug you won't be able to debug the Theia backed.
-
 ## Prerequisites
 
 The following libraries/frameworks need to be installed on your system:
@@ -46,7 +44,7 @@ The examples are heavily interweaved with Eclipse Theia, so please also check th
 
 ## Theia Version compatibility
 
-This project template is implemented in `1.34.0` (and compatible with Theia `>=1.25.0`).
+This project template is compatible with Theia `>=1.34.0`.
 
 ## VS Code workspace
 
