@@ -46,7 +46,7 @@ The examples are heavily interweaved with Eclipse Theia, so please also check th
 
 ## Theia Version compatibility
 
-This project template is implemented in `1.25.0` (and compatible with Theia `<=1.26.0`). Versions `>=1.27.0` are currently not supported, but we are working to provide a fix as soon as possible (for more information please see <https://github.com/eclipse-glsp/glsp-theia-integration>).
+This project template is implemented in `1.34.0` (and compatible with Theia `>=1.25.0`).
 
 ## VS Code workspace
 
