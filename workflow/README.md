@@ -19,6 +19,10 @@ The examples are heavily interweaved with Eclipse Theia, so please also check th
 
 The web-based/client part of the examples has been developed using [Visual Studio Code](https://code.visualstudio.com/) and the server/java part has been developed with the [Eclipse IDE](https://www.eclipse.org/ide/). However, it's of course also possible to use any other IDE or text editor.
 
+## Theia Version compatibility
+
+This project template is compatible with Theia `>=1.34.0`.
+
 ## Building the example
 
 The server component of the minimal example has to be built using Maven, the client component has to be built using yarn. This can be done via CLI:

@@ -36,6 +36,12 @@ The following libraries/frameworks need to be installed on your system:
 -   [Node.js](https://nodejs.org/en/) `>=14.18.0`
 -   [Yarn](https://classic.yarnpkg.com/en/docs/install#debian-stable) `>=1.7.0`
 
+The examples are heavily interweaved with Eclipse Theia, so please also check the [prerequisites of Theia](https://github.com/eclipse-theia/theia/blob/master/doc/Developing.md#prerequisites).
+
+## Theia Version compatibility
+
+This project template is compatible with Theia `>=1.34.0`.
+
 ## VS Code workspace
 
 To work with the source code and debug the example in VS Code a dedicated [VS Code Workspace](node-json-theia.code-workspace) is provided.
@@ -103,8 +109,6 @@ Here you can choose between four different launch configurations:
     Launches a Google chrome instance, opens the Theia browser application at `http://localhost:3000` and will automatically open an example workspace that contains a `example.tasklist` file.
     Double-click the file in the `Explorer` to open it with the `Tasklist Diagram Editor`.
     Breakpoints in the source files of the `glsp-client/**/browser` directories will be picked up.
-
-> **_NOTE:_**&nbsp; Due to bug [GLSP-666](https://github.com/eclipse-glsp/glsp/issues/666) the launch configurations for the `Theia Backend` might not work as expected when using Windows. Unfortunately there is currently no work-around and if you encounter this bug you won't be able to debug the Theia backed.
 
 ## Next steps
 

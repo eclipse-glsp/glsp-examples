@@ -47,8 +47,6 @@ Here you can choose between four different launch configurations:
     Double-click the file in the `Explorer` to open it with the `TaskList Diagram Editor`.
     Breakpoints in the source files of the `glsp-client/**/browser` directories will be picked up.
 
-> **_NOTE:_**&nbsp; Due to bug [GLSP-666](https://github.com/eclipse-glsp/glsp/issues/666) the launch configurations for the `Theia Backend` might not work as expected when using Windows. Unfortunately there is currently no work-around and if you encounter this bug you won't be able to debug the Theia backed.
-
 ## Watching the example
 
 To run TypeScript in watch-mode so that TypeScript files are compiled as you modify them execute:

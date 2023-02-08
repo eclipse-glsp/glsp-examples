@@ -1,7 +1,7 @@
 {
   "name": "@eclipse-glsp-examples/workflow-theia",
   "private": "true",
-  "version": "1.0.0",
+  "version": "1.0.0-theia1.34.0",
   "keywords": [
     "theia-extension"
   ],
@@ -25,7 +25,7 @@
   ],
   "dependencies": {
     "@eclipse-glsp-examples/workflow-glsp": "1.0.0",
-    "@eclipse-glsp/theia-integration": "^1.0.0-theia1.27.0"
+    "@eclipse-glsp/theia-integration": "1.0.0-theia1.34.0"
   },
   "files": [
     "lib",
