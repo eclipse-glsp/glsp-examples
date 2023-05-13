@@ -27,23 +27,22 @@
       "url": "https://projects.eclipse.org/projects/ecd.glsp"
     }
   ],
-  "dependencies": {
-    "@eclipse-glsp-examples/tasklist-glsp": "1.0.0",
-    "@eclipse-glsp/vscode-integration-webview": "^1.0.0"
-  },
   "devDependencies": {
+    "@eclipse-glsp-examples/tasklist-glsp": "1.0.0",
+    "@eclipse-glsp/vscode-integration-webview": "^1.0.0",
     "@vscode/codicons": "^0.0.25",
     "circular-dependency-plugin": "^5.2.2",
-    "css-loader": "^2.1.0",
+    "css-loader": "^6.7.1",
     "ignore-loader": "^0.1.2",
     "reflect-metadata": "^0.1.13",
     "rimraf": "latest",
-    "source-map-loader": "^1.0.2",
-    "style-loader": "^2.0.0",
-    "ts-loader": "^8.1.0",
+    "source-map-loader": "^4.0.1",
+    "style-loader": "^3.3.1",
+    "ts-loader": "^9.4.2",
     "typescript": "^4.9.3",
-    "webpack": "^4.46.0",
-    "webpack-cli": "^4.9.1",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1",
+    "node-polyfill-webpack-plugin": "^2.0.1",
     "yargs": "^12.0.5"
   },
   "scripts": {

@@ -1,5 +1,6 @@
 // @ts-check
 const path = require('path');
+const NodePolyfillPlugin = require('node-polyfill-webpack-plugin');
 
 const outputPath = path.resolve(__dirname, '../extension/pack');
 
@@ -12,10 +13,16 @@ const config = {
         filename: 'webview.js',
         path: outputPath
     },
-    devtool: 'source-map-eval',
+    devtool: 'eval-source-map',
     mode: 'development',
 
     resolve: {
+        fallback: {
+            fs: false,
+            net: false,
+            crypto: false,
+            os: false
+        },
         extensions: ['.ts', '.tsx', '.js']
     },
     module: {
@@ -40,10 +47,8 @@ const config = {
             }
         ]
     },
-    node: { fs: 'empty', net: 'empty' },
-    stats: {
-        warningsFilter: [/Failed to parse source map/]
-    }
+    plugins: [new NodePolyfillPlugin()],
+    ignoreWarnings: [/Failed to parse source map/, /Can't resolve .* in '.*ws\/lib'/]
 };
 
 module.exports = config;

@@ -48,6 +48,3 @@ location "https://download.eclipse.org/gemini/updates/web/3.0.4" {
 	org.apache.jasper
 }
 
-location "http://dl.maketechnology.io/chromium-cef/rls/repository" {
-	com.make.chromium.cef.feature.feature.group
-}
