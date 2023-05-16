@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8" standalone="no"?>
 <?pde?>
 <!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
-<target name="2021-03 - Release" sequenceNumber="1668156742">
+<target name="2021-03 - Release" sequenceNumber="1683972980">
   <locations>
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.eclipse.platform.feature.group" version="4.19.0.v20210303-1800"/>
@@ -50,10 +50,6 @@
     <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
       <unit id="org.apache.jasper" version="8.5.35"/>
       <repository location="https://download.eclipse.org/gemini/updates/web/3.0.4"/>
-    </location>
-    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
-      <unit id="com.make.chromium.cef.feature.feature.group" version="0.4.0.202005172227"/>
-      <repository location="http://dl.maketechnology.io/chromium-cef/rls/repository"/>
     </location>
   </locations>
 </target>
