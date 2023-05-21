@@ -21,10 +21,13 @@ Require-Bundle: org.eclipse.elk.alg.common;bundle-version="0.5.0",
  org.eclipse.glsp.example.javaemf.server;bundle-version="[1.0.0,2.0.0)",
  org.eclipse.glsp.server.emf;bundle-version="[1.0.0,2.0.0]",
  com.google.inject,
- org.eclipse.glsp.ide.editor;bundle-version="[1.0.0,2.0.0)"
+ org.eclipse.glsp.ide.editor;bundle-version="[1.0.0,2.0.0)",
+ org.eclipse.ui.ide,
+ org.eclipse.core.resources
 Bundle-ClassPath: .
 Eclipse-BundleShape: dir
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.eclipse.glsp.example.javaemf.editor.Activator
 Bundle-Vendor: Eclipse GLSP
 Import-Package: javax.servlet
+Export-Package: org.eclipse.glsp.example.javaemf.editor

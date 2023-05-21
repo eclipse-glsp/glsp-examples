@@ -12,7 +12,7 @@
    <extension
          point="org.eclipse.ui.editors">
       <editor
-            class="org.eclipse.glsp.ide.editor.ui.GLSPDiagramEditor"
+            class="org.eclipse.glsp.example.javaemf.editor.TaskListEditor"
             contributorClass="org.eclipse.glsp.ide.editor.ui.GLSPDiagramEditorActionContributor"
             default="true"
             extensions="tasklist"
