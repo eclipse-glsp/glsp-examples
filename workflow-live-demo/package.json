@@ -1,0 +1,52 @@
+{
+  "name": "workflow-live-demo",
+  "version": "1.1.0-next",
+  "private": true,
+  "description": "Standalone web app for the Workflow example",
+  "homepage": "https://www.eclipse.org/glsp/",
+  "bugs": "https://github.com/eclipse-glsp/glsp/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eclipse-glsp/glsp-examples.git"
+  },
+  "author": {
+    "name": "Eclipse GLSP"
+  },
+  "contributors": [
+    {
+      "name": "Eclipse GLSP Project",
+      "email": "glsp-dev@eclipse.org",
+      "url": "https://projects.eclipse.org/projects/ecd.glsp"
+    }
+  ],
+  "main": "lib",
+  "types": "lib",
+  "scripts": {
+    "build": "tsc -b && webpack",
+    "bundle": "webpack",
+    "clean": "rimraf lib tsconfig.tsbuildinfo dist/*.js dist/*.js.map dist/*.ttf",
+    "lint": "eslint --ext .ts,.tsx ./src",
+    "lint:ci": "yarn lint -o eslint.xml -f checkstyle",
+    "prepare": "yarn clean && yarn build",
+    "watch": "tsc -w -p ./tsconfig.json"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "@eclipse-glsp-examples/workflow-glsp": "next",
+    "@eclipse-glsp-examples/workflow-server": "next",
+    "@eclipse-glsp/client": "next",
+    "@eclipse-glsp/dev": "next",
+    "@vscode/codicons": "0.0.33",
+    "circular-dependency-plugin": "^5.2.2",
+    "css-loader": "^6.7.1",
+    "path-browserify": "^1.0.1",
+    "source-map-loader": "^4.0.0",
+    "style-loader": "^3.3.1",
+    "webpack": "^5.74.0",
+    "webpack-cli": "^4.10.0",
+    "webpack-dev-server":"^4.15.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}
