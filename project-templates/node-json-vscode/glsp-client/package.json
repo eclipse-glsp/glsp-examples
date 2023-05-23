@@ -28,7 +28,8 @@
     "watch": "lerna run --parallel watch",
     "build": "yarn install:only && lerna run build",
     "lint": "lerna run lint --",
-    "install:only": "yarn install --ignore-scripts"
+    "install:only": "yarn install --ignore-scripts",
+    "package": "yarn --cwd tasklist-vscode/extension package"
   },
   "devDependencies": {
     "@eclipse-glsp/config": "1.1.0-next.d03ad9f.112",

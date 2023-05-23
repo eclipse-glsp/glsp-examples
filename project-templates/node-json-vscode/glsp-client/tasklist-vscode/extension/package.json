@@ -1,5 +1,5 @@
 {
-  "name": "@eclipse-glsp/tasklist-vscode",
+  "name": "eclipse-glsp-tasklist-vscode",
   "private": "true",
   "version": "1.0.0",
   "description": "Extension for Tasklist GLSP diagrams",
@@ -122,37 +122,37 @@
     ]
   },
   "activationEvents": [
-    "*"
+    "onStartupFinished"
   ],
   "files": [
     "lib",
-    "server",
-    "webview"
+    "pack"
   ],
-  "dependencies": {
-    "@vscode/codicons": "^0.0.25"
-  },
-  "main": "./lib/index",
+  "main": "pack/extension",
   "devDependencies": {
     "@eclipse-glsp/vscode-integration": "^1.0.0",
     "@types/vscode": "^1.54.0",
     "path": "^0.12.7",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^2.6.3",
-    "ts-loader": "^6.2.1",
-    "ts-node": "^9.1.1",
+    "ts-loader": "^9.4.3",
+    "ts-node": "10.9.1",
     "typescript": "^4.9.3",
     "@types/node": "14.x",
-    "@eclipse-glsp/tasklist-webview": "1.0.0"
+    "@eclipse-glsp/tasklist-webview": "1.0.0",
+    "@vscode/codicons": "^0.0.25",
+    "@vscode/vsce": "^2.19.0",
+    "webpack": "^5.83.1",
+    "webpack-cli": "^5.1.1"
   },
   "scripts": {
     "prepare": "yarn clean && yarn build && yarn lint",
-    "clean": "rimraf extension/lib extension/pack extension/server tsconfig.tsbuildinfo",
+    "clean": "rimraf extension/lib extension/pack  tsconfig.tsbuildinfo",
     "watch": "tsc -w",
     "lint": "eslint --ext .ts,.tsx ./src",
-    "build": "tsc",
-    "publish": "vsce publish",
-    "download:Server": "ts-node ../scripts/download.ts"
+    "build": "tsc && webpack --mode=development",
+    "package": "vsce package --yarn",
+    "publish": "vsce publish"
   },
   "workspaces": {
     "nohoist": [

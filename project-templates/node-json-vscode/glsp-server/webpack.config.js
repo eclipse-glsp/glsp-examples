@@ -26,7 +26,7 @@ module.exports = {
         path: appRoot
     },
     mode: 'development',
-    devtool: 'source-map',
+    devtool: 'eval-source-map',
     resolve: {
         extensions: ['.ts', '.tsx', '.js']
     },

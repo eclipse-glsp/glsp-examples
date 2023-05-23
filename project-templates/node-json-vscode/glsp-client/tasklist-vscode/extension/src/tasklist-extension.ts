@@ -21,7 +21,6 @@ import {
 } from '@eclipse-glsp/vscode-integration/lib/quickstart-components';
 import * as path from 'path';
 import * as process from 'process';
-import 'reflect-metadata';
 import * as vscode from 'vscode';
 import TaskListEditorProvider from './tasklist-editor-provider';
 
@@ -31,12 +30,13 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
     // Start server process using quickstart component
     if (process.env.TASKLIST_SERVER_DEBUG !== 'true') {
         const serverProcess = new GlspServerLauncher({
-            executable: path.join(__dirname, '../../../../glsp-server/lib/index.js'),
+            executable: path.join(__dirname, '../pack/tasklist-glsp-server-packed.js'),
             socketConnectionOptions: { port: JSON.parse(process.env.TASKLIST_SERVER_PORT || DEFAULT_SERVER_PORT) },
-            additionalArgs: ['--no-consoleLog', '--fileLog', '--logDir', path.join(__dirname, '../../../../glsp-server/bundle/')],
+            additionalArgs: ['--no-consoleLog'],
             logging: true,
             serverType: 'node'
         });
+
         context.subscriptions.push(serverProcess);
         await serverProcess.start();
     }
