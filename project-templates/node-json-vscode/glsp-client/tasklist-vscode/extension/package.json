@@ -72,7 +72,13 @@
       }
     ],
     "menus": {
-      "workflow.editor.title": [
+      "editor/title": [
+        {
+          "submenu": "tasklist.editor.title",
+          "group": "bookmarks"
+        }
+      ],
+      "tasklist.editor.title": [
         {
           "command": "tasklist.fit",
           "group": "navigation",
@@ -117,6 +123,12 @@
         "key": "ctrl+a",
         "mac": "ctrl+a",
         "command": "tasklist.selectAll",
+        "when": "activeCustomEditorId == 'tasklist.glspDiagram'"
+      },
+      {
+        "key": "alt+e",
+        "mac": "alt+e",
+        "command": "tasklist.exportAsSVG",
         "when": "activeCustomEditorId == 'tasklist.glspDiagram'"
       }
     ]
