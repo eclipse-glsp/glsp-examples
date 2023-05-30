@@ -13,7 +13,7 @@ const config = {
         filename: 'extension.js',
         libraryTarget: 'commonjs2'
     },
-    devtool: 'eval-source-map',
+    devtool: 'source-map',
     externals: {
         vscode: 'commonjs vscode'
     },
