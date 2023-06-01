@@ -21,7 +21,7 @@
       "label": "Start TaskList GLSP Server",
       "type": "shell",
       "group": "test",
-      "command": "java -jar target/org.eclipse.glsp.example.javaemf-0.10.0-glsp.jar",
+      "command": "java -jar target/org.eclipse.glsp.example.javaemf-1.0.0-glsp.jar",
       "presentation": {
         "reveal": "always",
         "panel": "new"
