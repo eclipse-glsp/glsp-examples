@@ -22,7 +22,7 @@ However, it's of course also possible to use any other IDE or text editor.
 ## Examples
 
 -   [Project Templates](project-templates): The best starting point for your own diagram editor project.
-    The project templates are available for several combinations of tool platform integrations (Theia, VSCode), source models (JSON, EMF) and servers (Node, Java). Please visit the [GLSP documentation](https://www.eclipse.org/glsp/documentation/gettingstarted/) for more information.
+    The project templates are available for several combinations of tool platform integrations (Theia, VS Code), source models (JSON, EMF) and servers (Node, Java). Please visit the [GLSP documentation](https://www.eclipse.org/glsp/documentation/gettingstarted/) for more information.
 
 -   [Workflow Example](workflow): A consistent example provided by all GLSP components.
     It implements a simple flow chart diagram editor with different types of nodes and edges.
@@ -30,9 +30,9 @@ However, it's of course also possible to use any other IDE or text editor.
 
     <img src="documentation/workflow-example-animated.gif" alt="drawing" width="400"/>
 
-### VSCode workspaces
+### VS Code workspaces
 
-To work with the source code and debug the examples in VS Code dedicated VSCode Workspace files for each example are provided.
+To work with the source code and debug the examples in VS Code dedicated VS Code Workspace files for each example are provided.
 These workspace include both the `glsp-client` and `glsp-server` sources and offer dedicated launch configurations for debugging purposes.
 
 To open a example workspace simply start a VS Code instance and use the `Open Workspace from File..` entry from the `File` menu.
@@ -91,7 +91,7 @@ Here you can choose between four different debug configurations:
     This config can be used when both the Theia Backend and the GLSP Server process should be debugged.
     It will launch the Theia Backend node process in Debug mode
     but will not start an embedded GLSP server process.
-    It expects that the GLSP Server process is already running and has been started externally (e.g. through another VSCode launch config or in the Eclipse IDE).
+    It expects that the GLSP Server process is already running and has been started externally (e.g. through another VS Code launch config or in the Eclipse IDE).
 -   `Launch <example-name> Theia Frontend`<br>
     This config can be used to launch the example Theia Frontend process in Debug Mode and directly debug the sources in VS Code.
     Breakpoints in the frontend source files of the `glsp-client` packages will be picked up. A browser window pointing to [localhost:3000](http://localhost:3000) will be opened automatically.
@@ -125,7 +125,7 @@ The general GLSP Client code is separated from the Theia specific glue code and 
 This package can be easily reused when the package should be integrated with any other platform.
 In addition to the Theia integration, GLSP provides the following glue code frameworks:
 
--   [GLSP VSCode Integration](https://github.com/eclipse-glsp/glsp-vscode-integration)
+-   [GLSP VS Code Integration](https://github.com/eclipse-glsp/glsp-vscode-integration)
 -   [GLSP Eclipse IDE Integration](https://github.com/eclipse-glsp/glsp-eclipse-integration)
 
 For a reference implementation of a example specific glue code package please checkout the `project templates`.
@@ -134,3 +134,10 @@ For a reference implementation of a example specific glue code package please ch
 
 For more information, please visit the [Eclipse GLSP Umbrella repository](https://github.com/eclipse-glsp/glsp) and the [Eclipse GLSP Website](https://www.eclipse.org/glsp/).
 If you have questions, please raise them in the [discussions](https://github.com/eclipse-glsp/glsp/discussions) and have a look at our [communication and support options](https://www.eclipse.org/glsp/contact/).
+
+## License
+
+- [Eclipse Public License 2.0](LICENSE-EPL)
+- [一 (Secondary) GNU General Public License, version 2 with the GNU Classpath Exception](LICENSE-GPL)
+- [一 (Secondary) MIT License](LICENSE-MIT)
+

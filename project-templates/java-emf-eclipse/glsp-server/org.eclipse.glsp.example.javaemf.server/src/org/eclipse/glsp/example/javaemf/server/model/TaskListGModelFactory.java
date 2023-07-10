@@ -7,11 +7,12 @@
  *
  * This Source Code may also be made available under the following Secondary
  * Licenses when the conditions for such availability set forth in the Eclipse
- * Public License v. 2.0 are satisfied: GNU General Public License, version 2
- * with the GNU Classpath Exception which is available at
- * https://www.gnu.org/software/classpath/license.html.
+ * Public License v. 2.0 are satisfied: 
+ * -- GNU General Public License, version 2 with the GNU Classpath Exception
+ * which is available at https://www.gnu.org/software/classpath/license.html
+ * -- MIT License which is available at https://opensource.org/license/mit.
  *
- * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
+ * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0 OR MIT
  ********************************************************************************/
 package org.eclipse.glsp.example.javaemf.server.model;
 
@@ -39,19 +40,19 @@ public class TaskListGModelFactory extends EMFNotationGModelFactory {
       TaskList taskList = TaskList.class.cast(semanticModel);
       GGraph graph = GGraph.class.cast(newRoot);
       if (notationModel.getSemanticElement() != null
-         && notationModel.getSemanticElement().getResolvedSemanticElement() != null) {
+            && notationModel.getSemanticElement().getResolvedSemanticElement() != null) {
          taskList.getTasks().stream()
-            .map(this::createTaskNode)
-            .forEachOrdered(graph.getChildren()::add);
+               .map(this::createTaskNode)
+               .forEachOrdered(graph.getChildren()::add);
       }
    }
 
    protected GNode createTaskNode(final Task task) {
       GNodeBuilder taskNodeBuilder = new GNodeBuilder(TaskListModelTypes.TASK)
-         .id(idGenerator.getOrCreateId(task))
-         .addCssClass("tasklist-node")
-         .add(new GLabelBuilder(DefaultTypes.LABEL).text(task.getName()).id(task.getId() + "_label").build())
-         .layout(GConstants.Layout.HBOX, Map.of(GLayoutOptions.KEY_PADDING_LEFT, 5));
+            .id(idGenerator.getOrCreateId(task))
+            .addCssClass("tasklist-node")
+            .add(new GLabelBuilder(DefaultTypes.LABEL).text(task.getName()).id(task.getId() + "_label").build())
+            .layout(GConstants.Layout.HBOX, Map.of(GLayoutOptions.KEY_PADDING_LEFT, 5));
 
       applyShapeData(task, taskNodeBuilder);
       return taskNodeBuilder.build();
