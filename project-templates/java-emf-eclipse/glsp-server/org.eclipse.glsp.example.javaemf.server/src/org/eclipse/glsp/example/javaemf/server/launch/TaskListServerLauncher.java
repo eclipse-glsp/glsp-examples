@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2022 EclipseSource and others.
+ * Copyright (c) 2022-2023 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -17,8 +17,8 @@
 package org.eclipse.glsp.example.javaemf.server.launch;
 
 import java.io.IOException;
-import java.text.ParseException;
 
+import org.apache.commons.cli.ParseException;
 import org.eclipse.glsp.example.javaemf.server.TaskListDiagramModule;
 import org.eclipse.glsp.server.di.ServerModule;
 import org.eclipse.glsp.server.launch.DefaultCLIParser;
@@ -42,7 +42,7 @@ public final class TaskListServerLauncher {
 
          GLSPServerLauncher launcher = new SocketGLSPServerLauncher(tasklistServerModule);
          launcher.start("localhost", port);
-      } catch (ParseException | IOException ex) {
+      } catch (IOException | ParseException ex) {
          ex.printStackTrace();
          LaunchUtil.printHelp(processName, DefaultCLIParser.getDefaultOptions());
       }
