@@ -35,7 +35,8 @@ export class WorkflowGLServerContribution extends GLSPSocketServerContribution {
             executable: JAR_FILE,
             additionalArgs: ['--consoleLog', 'false', '--fileLog', 'true', '--logDir', LOG_DIR],
             socketConnectionOptions: {
-                port: getPort(PORT_ARG_KEY, DEFAULT_PORT)
+                port: getPort(PORT_ARG_KEY, DEFAULT_PORT),
+                host: '127.0.0.1'
             }
         };
     }
