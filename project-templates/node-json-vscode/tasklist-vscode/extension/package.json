@@ -1,0 +1,178 @@
+{
+  "name": "tasklist-vscode",
+  "displayName": "Tasklist GLSP Diagram Editor",
+  "version": "1.0.0",
+  "private": "true",
+  "description": "Extension for Tasklist GLSP diagrams",
+  "categories": [
+    "Programming Languages"
+  ],
+  "homepage": "https://www.eclipse.org/glsp/",
+  "bugs": "https://github.com/eclipse-glsp/glsp/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eclipse-glsp/glsp-examples.git"
+  },
+  "author": {
+    "name": "EclipseGLSP"
+  },
+  "contributors": [
+    {
+      "name": "Eclipse GLSP Project",
+      "email": "glsp-dev@eclipse.org",
+      "url": "https://projects.eclipse.org/projects/ecd.glsp"
+    }
+  ],
+  "publisher": "Eclipse-GLSP",
+  "main": "./lib/index",
+  "files": [
+    "lib",
+    "server",
+    "webview"
+  ],
+  "workspaces": {
+    "nohoist": [
+      "**/@vscode/codicons",
+      "**/@vscode/codicons/**"
+    ]
+  },
+  "scripts": {
+    "build": "tsc -b && yarn bundle",
+    "bundle": "webpack",
+    "bundle:prod": "webpack --config ./webpack.prod.js",
+    "clean": "rimraf lib tsconfig.tsbuildinfo dist",
+    "lint": "eslint --ext .ts,.tsx ./src",
+    "lint:ci": "yarn lint -o eslint.xml -f checkstyle",
+    "package": "vsce package --yarn",
+    "prepare": "yarn clean && yarn build",
+    "watch": "tsc -w"
+  },
+  "contributes": {
+    "commands": [
+      {
+        "command": "tasklist.fit",
+        "title": "Fit to Screen",
+        "category": "Tasklist Diagram",
+        "enablement": "activeCustomEditorId == 'tasklist.glspDiagram'"
+      },
+      {
+        "command": "tasklist.center",
+        "title": "Center selection",
+        "category": "Tasklist Diagram",
+        "enablement": "activeCustomEditorId == 'tasklist.glspDiagram'"
+      },
+      {
+        "command": "tasklist.layout",
+        "title": "Layout diagram",
+        "category": "Tasklist Diagram",
+        "enablement": "activeCustomEditorId == 'tasklist.glspDiagram'"
+      },
+      {
+        "command": "tasklist.exportAsSVG",
+        "title": "Export as SVG",
+        "category": "Tasklist Diagram",
+        "enablement": "activeCustomEditorId == 'tasklist.glspDiagram'"
+      }
+    ],
+    "customEditors": [
+      {
+        "viewType": "tasklist.glspDiagram",
+        "displayName": "Tasklist Diagram Editor",
+        "selector": [
+          {
+            "filenamePattern": "*.tasklist"
+          }
+        ]
+      }
+    ],
+    "keybindings": [
+      {
+        "key": "alt+f",
+        "mac": "alt+f",
+        "command": "tasklist.fit",
+        "when": "activeCustomEditorId == 'tasklist.glspDiagram'"
+      },
+      {
+        "key": "alt+c",
+        "mac": "alt+c",
+        "command": "tasklist.center",
+        "when": "activeCustomEditorId == 'tasklist.glspDiagram'"
+      },
+      {
+        "key": "alt+l",
+        "mac": "alt+l",
+        "command": "tasklist.layout",
+        "when": "activeCustomEditorId == 'tasklist.glspDiagram'"
+      },
+      {
+        "key": "ctrl+a",
+        "mac": "ctrl+a",
+        "command": "tasklist.selectAll",
+        "when": "activeCustomEditorId == 'tasklist.glspDiagram'"
+      },
+      {
+        "key": "alt+e",
+        "mac": "alt+e",
+        "command": "tasklist.exportAsSVG",
+        "when": "activeCustomEditorId == 'tasklist.glspDiagram'"
+      }
+    ],
+    "menus": {
+      "editor/title": [
+        {
+          "submenu": "tasklist.editor.title",
+          "group": "bookmarks"
+        }
+      ],
+      "tasklist.editor.title": [
+        {
+          "command": "tasklist.fit",
+          "group": "navigation",
+          "when": "activeCustomEditorId == 'tasklist.glspDiagram'"
+        },
+        {
+          "command": "tasklist.center",
+          "group": "navigation",
+          "when": "activeCustomEditorId == 'tasklist.glspDiagram'"
+        },
+        {
+          "command": "tasklist.layout",
+          "group": "navigation",
+          "when": "activeCustomEditorId == 'tasklist.glspDiagram'"
+        },
+        {
+          "command": "tasklist.exportAsSVG",
+          "when": "activeCustomEditorId == 'tasklist.glspDiagram'"
+        }
+      ]
+    },
+    "submenus": [
+      {
+        "id": "tasklist.editor.title",
+        "label": "Diagram"
+      }
+    ]
+  },
+  "activationEvents": [
+    "onStartupFinished"
+  ],
+  "dependencies": {
+    "@vscode/codicons": "^0.0.25"
+  },
+  "devDependencies": {
+    "@eclipse-glsp/vscode-integration": "2.0.0",
+    "@types/node": "16.x",
+    "@types/vscode": "^1.54.0",
+    "copy-webpack-plugin": "^11.0.0",
+    "path": "^0.12.7",
+    "reflect-metadata": "^0.1.13",
+    "rimraf": "^2.6.3",
+    "tasklist-webview": "2.0.0",
+    "ts-loader": "^6.2.1",
+    "ts-node": "^9.1.1",
+    "webpack-merge": "^5.9.0"
+  },
+  "engines": {
+    "vscode": "^1.54.0"
+  }
+}

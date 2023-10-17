@@ -2,8 +2,8 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: GLSP Tasklist Example Server
 Bundle-SymbolicName: org.eclipse.glsp.example.javaemf.server
-Bundle-Version: 1.0.0
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-Version: 2.0.0
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Automatic-Module-Name: org.eclipse.glsp.example.javaemf.server
 Export-Package: org.eclipse.glsp.example.javaemf.server,
  org.eclipse.glsp.example.javaemf.server.handler,
@@ -14,8 +14,8 @@ Export-Package: org.eclipse.glsp.example.javaemf.server,
  org.eclipse.glsp.example.tasklist.model.impl,
  org.eclipse.glsp.example.tasklist.model.util
 Bundle-Vendor: Eclipse GLSP
-Require-Bundle: org.eclipse.glsp.server,
- org.eclipse.glsp.server.emf,
+Require-Bundle: org.eclipse.glsp.server;bundle-version="[2.0.0,3.0.0)",
+ org.eclipse.glsp.server.emf;bundle-version="[2.0.0,3.0.0)",
  org.eclipse.emf.edit,
  org.eclipse.emf.ecore.edit,
  org.eclipse.emf.ecore.xmi

@@ -33,7 +33,7 @@ import org.eclipse.glsp.graph.GModelElement;
 import org.eclipse.glsp.graph.GPoint;
 import org.eclipse.glsp.graph.GraphPackage;
 import org.eclipse.glsp.graph.util.GraphUtil;
-import org.eclipse.glsp.server.emf.AbstractEMFCreateNodeOperationHandler;
+import org.eclipse.glsp.server.emf.EMFCreateOperationHandler;
 import org.eclipse.glsp.server.emf.EMFIdGenerator;
 import org.eclipse.glsp.server.emf.model.notation.Diagram;
 import org.eclipse.glsp.server.emf.model.notation.NotationFactory;
@@ -42,10 +42,11 @@ import org.eclipse.glsp.server.emf.model.notation.SemanticElementReference;
 import org.eclipse.glsp.server.emf.model.notation.Shape;
 import org.eclipse.glsp.server.emf.notation.EMFNotationModelState;
 import org.eclipse.glsp.server.operations.CreateNodeOperation;
+import org.eclipse.glsp.server.utils.LayoutUtil;
 
 import com.google.inject.Inject;
 
-public class CreateTaskNodeHandler extends AbstractEMFCreateNodeOperationHandler {
+public class CreateTaskNodeHandler extends EMFCreateOperationHandler<CreateNodeOperation> {
 
    @Inject
    protected EMFNotationModelState modelState;
@@ -60,8 +61,8 @@ public class CreateTaskNodeHandler extends AbstractEMFCreateNodeOperationHandler
    @Override
    public Optional<Command> createCommand(final CreateNodeOperation operation) {
       GModelElement container = modelState.getIndex().get(operation.getContainerId()).orElseGet(modelState::getRoot);
-      Optional<GPoint> absoluteLocation = getLocation(operation);
-      Optional<GPoint> relativeLocation = getRelativeLocation(operation, absoluteLocation, container);
+      Optional<GPoint> absoluteLocation = operation.getLocation();
+      Optional<GPoint> relativeLocation = absoluteLocation.map(location->LayoutUtil.getRelativeLocation(location, container));
 
       return Optional.of(createTaskAndShape(relativeLocation));
    }

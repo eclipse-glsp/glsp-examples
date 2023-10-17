@@ -1,0 +1,70 @@
+{
+  // Use IntelliSense to learn about possible Node.js debug attributes.
+  // Hover to view descriptions of existing attributes.
+  // For more information, visit: https://go.microsoft.com/fwlink/?linkid=830387
+  "version": "0.2.0",
+  "configurations": [
+    {
+      "name": "Launch TaskList Diagram Extension",
+      "type": "extensionHost",
+      "request": "launch",
+      "runtimeExecutable": "${execPath}",
+      "args": [
+        "${workspaceFolder}/workspace",
+        "--extensionDevelopmentPath=${workspaceFolder}/tasklist-vscode/extension"
+      ],
+      "outFiles": [
+        "${workspaceFolder}/tasklist-vscode/extension/lib/*.js",
+        "${workspaceFolder}/node_modules/@eclipse-glsp/*/lib/**/*.js",
+        "${workspaceFolder}/node_modules/@eclipse-glsp/*/lib/*.js"
+      ],
+      "sourceMaps": true
+    },
+    {
+      "name": "Launch TaskList Diagram Extension (External GLSP Server)",
+      "type": "extensionHost",
+      "request": "launch",
+      "runtimeExecutable": "${execPath}",
+      "args": [
+        "${workspaceFolder}/workspace",
+        "--extensionDevelopmentPath=${workspaceFolder}/tasklist-vscode/extension"
+      ],
+      "outFiles": [
+        "${workspaceFolder}/tasklist-vscode/extension/lib/*.js",
+        "${workspaceFolder}/node_modules/@eclipse-glsp/*/lib/**/*.js"
+      ],
+      "sourceMaps": true,
+      "env": {
+        "TASKLIST_SERVER_DEBUG": "true",
+        "TASKLIST_SERVER_PORT": "5007"
+      }
+    },
+    {
+      "type": "node",
+      "request": "launch",
+      "name": "Launch TaskList GLSP Server",
+      "program": "${workspaceFolder}/tasklist-glsp-server/lib/app.js",
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "sourceMaps": true,
+      "outFiles": [
+        "${workspaceFolder}/node_modules/@eclipse-glsp/**/*.js",
+        "${workspaceFolder}/tasklist-glsp-server/lib/**/*.js"
+      ],
+      "args": ["--port=5007"],
+      "smartStep": true,
+      "internalConsoleOptions": "openOnSessionStart",
+      "outputCapture": "std"
+    }
+  ],
+  "compounds": [
+    {
+      "name": "Launch Tasklist Diagram extension with external GLSP Server",
+      "configurations": [
+        "Launch TaskList GLSP Server",
+        "Launch TaskList Diagram Extension (External GLSP Server)"
+      ]
+    }
+  ]
+}

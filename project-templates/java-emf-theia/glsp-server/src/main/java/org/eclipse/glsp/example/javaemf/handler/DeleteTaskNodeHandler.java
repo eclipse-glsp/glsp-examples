@@ -25,7 +25,7 @@ import org.eclipse.emf.common.command.CompoundCommand;
 import org.eclipse.emf.ecore.EObject;
 import org.eclipse.emf.edit.command.RemoveCommand;
 import org.eclipse.emf.edit.domain.EditingDomain;
-import org.eclipse.glsp.server.emf.AbstractEMFOperationHandler;
+import org.eclipse.glsp.server.emf.EMFOperationHandler;
 import org.eclipse.glsp.server.emf.model.notation.NotationElement;
 import org.eclipse.glsp.server.emf.notation.EMFNotationModelIndex;
 import org.eclipse.glsp.server.emf.notation.EMFNotationModelState;
@@ -33,7 +33,7 @@ import org.eclipse.glsp.server.operations.DeleteOperation;
 
 import com.google.inject.Inject;
 
-public class DeleteTaskNodeHandler extends AbstractEMFOperationHandler<DeleteOperation> {
+public class DeleteTaskNodeHandler extends EMFOperationHandler<DeleteOperation> {
 
    @Inject
    protected EMFNotationModelState modelState;

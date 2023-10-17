@@ -4,7 +4,7 @@ kind: Pod
 spec:
   containers:
   - name: ci
-    image: eclipseglsp/ci:alpine-v3.1
+    image: eclipseglsp/ci:alpine-v4.0
     tty: true
     resources:
       limits:
@@ -59,7 +59,8 @@ pipeline {
     environment {
         YARN_CACHE_FOLDER = "${env.WORKSPACE}/yarn-cache"
         SPAWN_WRAP_SHIM_ROOT = "${env.WORKSPACE}"
-        EMAIL_TO= "tortmayr+eclipseci@eclipsesource.com"
+        EMAIL_TO= "glsp-build@eclipse.org"
+        PUPPETEER_SKIP_DOWNLOAD="true"
     }
     
     stages {
@@ -67,27 +68,16 @@ pipeline {
          stage('Build Workflow Example') {
             when {
                 expression {  
-                    sh(returnStatus: true, script: 'git diff --name-only HEAD^ | grep --quiet "^workflow/\\(glsp-client\\|glsp-server\\)"') == 0
+                    sh(returnStatus: true, script: 'git diff --name-only HEAD^ | grep --quiet "^workflow/"') == 0
                 }
             }
             stages {
-                stage('Build Server') {
-                    steps{
-                        timeout(30){
-                            container('ci') {
-                                dir('workflow/glsp-server/'){
-                                    sh "mvn clean verify -DskipTests -B -Dcheckstyle.skip"
-                                }
-                            }
-                        }
-                    }
-                }
-                stage('Build Client') {
+                stage('Build') {
                     steps {
                         timeout(30){
                             container('ci') {
-                                dir('workflow/glsp-client/') {
-                                    sh 'yarn --unsafe-perm'
+                                dir('workflow') {
+                                    sh 'yarn install --unsafe-perm'
                                 }
                             }
                         }
@@ -119,7 +109,7 @@ pipeline {
                         timeout(30){
                             container('ci') {
                                 dir('project-templates/java-emf-theia/glsp-client') {
-                                    sh 'yarn --unsafe-perm'
+                                    sh 'yarn install --unsafe-perm'
                                 }
                             }
                         }
@@ -131,27 +121,16 @@ pipeline {
         stage('Build node-json-theia template') {
             when {
                 expression {  
-                    sh(returnStatus: true, script: 'git diff --name-only HEAD^ | grep --quiet "^project-templates/node-json-theia/\\(glsp-client\\|glsp-server\\)"') == 0
+                    sh(returnStatus: true, script: 'git diff --name-only HEAD^ | grep --quiet "^project-templates/node-json-theia/"') == 0
                 }
             }
             stages {
-                stage('Build server'){
+                stage('Build'){
                     steps{
                         timeout(30){
                             container('ci') {
-                                dir('project-templates/node-json-theia/glsp-server/'){
-                                    sh 'yarn --unsafe-perm'
-                                }
-                            }
-                        }
-                    }
-                }
-                stage('Build client'){
-                    steps{
-                        timeout(30){
-                            container('ci') {
-                                dir('project-templates/node-json-theia/glsp-client') {
-                                     sh 'yarn --unsafe-perm'
+                                dir('project-templates/node-json-theia') {
+                                     sh 'yarn install --unsafe-perm'
                                 }
                             }
                         }
@@ -163,27 +142,16 @@ pipeline {
         stage('Build node-json-vscode template') {
             when {
                 expression {  
-                    sh(returnStatus: true, script: 'git diff --name-only HEAD^ | grep --quiet "^project-templates/node-json-vscode/\\(glsp-client\\|glsp-server\\)"') == 0
+                    sh(returnStatus: true, script: 'git diff --name-only HEAD^ | grep --quiet "^project-templates/node-json-vscode/"') == 0
                 }
             }
             stages {
-                stage('Build server'){
+                stage('Build'){
                     steps{
                         timeout(30){
                             container('ci') {
-                                dir('project-templates/node-json-vscode/glsp-server/'){
-                                    sh 'yarn --unsafe-perm'
-                                }
-                            }
-                        }
-                    }
-                }
-                stage('Build client'){
-                    steps{
-                        timeout(30){
-                            container('ci') {
-                                dir('project-templates/node-json-vscode/glsp-client') {
-                                    sh 'yarn --unsafe-perm'
+                                dir('project-templates/node-json-vscode') {
+                                    sh 'yarn install --unsafe-perm'
                                 }
                             }
                         }
@@ -204,7 +172,7 @@ pipeline {
                         timeout(30){
                             container('ci') {
                                 dir('project-templates/java-emf-eclipse/glsp-client') {
-                                    sh 'yarn --unsafe-perm'
+                                    sh 'yarn install --unsafe-perm'
                                 }
                             }
                         }
@@ -229,16 +197,13 @@ pipeline {
                 stage ('Lint workflow example') {
                     when {
                         expression {  
-                            sh(returnStatus: true, script: 'git diff --name-only HEAD^ | grep --quiet "^workflow/\\(glsp-client\\|glsp-server\\)"') == 0
+                            sh(returnStatus: true, script: 'git diff --name-only HEAD^ | grep --quiet "^workflow/"') == 0
                         }
                     }
                     steps {
                         timeout(30) {
                             container('ci') {
-                                dir('workflow/glsp-server'){
-                                    sh 'mvn checkstyle:check'
-                                }
-                                dir('workflow/glsp-client') {
+                                dir('workflow') {
                                     sh 'yarn lint -o eslint.xml -f checkstyle'
                                 }
                             }
@@ -259,7 +224,7 @@ pipeline {
                                     sh 'mvn checkstyle:check'
                                 }
                                 dir('project-templates/java-emf-theia/glsp-client/'){
-                                    sh 'yarn lint -o eslint.xml -f checkstyle'
+                                    sh 'yarn lint:ci'
                                 }
                             }
                         }
@@ -280,7 +245,7 @@ pipeline {
                                     sh 'mvn checkstyle:check'
                                 }
                                 dir('project-templates/java-emf-eclipse/glsp-client/'){
-                                    sh 'yarn lint -o eslint.xml -f checkstyle'
+                                    sh 'yarn lint:ci'
                                 }
                             }
                         }
@@ -290,17 +255,14 @@ pipeline {
                 stage ('Lint node-json-theia') {
                     when {
                         expression {  
-                            sh(returnStatus: true, script: 'git diff --name-only HEAD^ | grep --quiet "^project-templates/node-json-theia/\\(glsp-client\\|glsp-server\\)"') == 0
+                            sh(returnStatus: true, script: 'git diff --name-only HEAD^ | grep --quiet "^project-templates/node-json-theia/"') == 0
                         }
                     }
                     steps {
                         timeout(30) {
                             container('ci') {
-                                dir('project-templates/node-json-theia/glsp-server/'){
+                                dir('project-templates/node-json-theia/'){
                                     sh 'yarn lint:ci'
-                                }
-                                dir('project-templates/node-json-theia/glsp-client/'){
-                                    sh 'yarn lint -o eslint.xml -f checkstyle'
                                 }
                             }
                         }
@@ -310,17 +272,14 @@ pipeline {
                 stage ('Lint node-json-vscode') {
                     when {
                         expression {  
-                            sh(returnStatus: true, script: 'git diff --name-only HEAD^ | grep --quiet "^project-templates/node-json-vscode/\\(glsp-client\\|glsp-server\\)"') == 0
+                            sh(returnStatus: true, script: 'git diff --name-only HEAD^ | grep --quiet "^project-templates/node-json-vscode/"') == 0
                         }
                     }
                     steps {
                         timeout(30) {
                             container('ci') {
-                                dir('project-templates/node-json-vscode/glsp-server/'){
+                                dir('project-templates/node-json-vscode/'){
                                     sh 'yarn lint:ci'
-                                }
-                                dir('project-templates/node-json-vscode/glsp-client/'){
-                                    sh 'yarn lint -o eslint.xml -f checkstyle'
                                 }
                             }
                         }
@@ -340,9 +299,9 @@ pipeline {
 
             // Record & publish esLint issues
             recordIssues enabledForFailure: true, publishAllIssues: true, aggregatingResults: true, 
-            tools: [esLint(pattern: '**/glsp-client/node_modules/**/*/eslint.xml')], 
+            tools: [esLint(pattern: '**/node_modules/**/*/eslint.xml')], 
             qualityGates: [[threshold: 1, type: 'TOTAL', unstable: true]]
-
+            
             // Record maven,java warnings
             recordIssues enabledForFailure: true, skipPublishingChecks:true, tools: [mavenConsole(), java()]    
             }

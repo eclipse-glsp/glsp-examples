@@ -1,0 +1,35 @@
+target "2023-09 - Release" with source requirements
+
+location "http://download.eclipse.org/releases/2023-09" {
+	org.eclipse.platform.feature.group
+	org.eclipse.emf.sdk.feature.group
+	org.eclipse.emf.transaction.feature.group
+	org.eclipse.equinox.executable.feature.group
+	org.eclipse.equinox.p2.discovery.feature.feature.group
+}
+
+
+location "https://download.eclipse.org/glsp/server/p2/releases/2.0.0" {
+	org.eclipse.glsp.feature.feature.group lazy
+	org.eclipse.glsp.feature.source.feature.group lazy
+	org.eclipse.glsp.server.websocket lazy
+	org.eclipse.glsp.layout lazy
+	org.eclipse.glsp.example.workflow lazy
+	org.eclipse.glsp.server.emf lazy
+}
+
+location "https://download.eclipse.org/glsp/ide/p2/releases/2.0.0/"{
+	org.eclipse.glsp.ide.feature.feature.group lazy
+}
+
+location "mvn:org.eclipse.jetty:jetty-p2:10.0.13:zip:p2site" {
+	org.eclipse.jetty.websocket.javax.server
+}
+
+location "https://download.eclipse.org/elk/updates/releases/0.8.1/" {
+	org.eclipse.elk.core
+	org.eclipse.elk.graph
+	org.eclipse.elk.graph.text
+	org.eclipse.elk.alg.layered
+}
+

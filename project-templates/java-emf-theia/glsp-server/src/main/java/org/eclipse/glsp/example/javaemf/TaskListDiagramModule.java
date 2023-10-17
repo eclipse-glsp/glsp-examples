@@ -63,7 +63,7 @@ public class TaskListDiagramModule extends EMFNotationDiagramModule {
    }
 
    @Override
-   protected void configureOperationHandlers(final MultiBinding<OperationHandler> binding) {
+   protected void configureOperationHandlers(final MultiBinding<OperationHandler<?>> binding) {
       super.configureOperationHandlers(binding);
       binding.add(CreateTaskNodeHandler.class);
       binding.add(DeleteTaskNodeHandler.class);

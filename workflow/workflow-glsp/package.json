@@ -1,0 +1,50 @@
+{
+  "name": "@eclipse-glsp-examples/workflow-glsp",
+  "version": "2.0.0",
+  "description": "GLSP diagrams for the Workflow DSL",
+  "keywords": [
+    "glsp",
+    "workflow",
+    "diagram",
+    "example"
+  ],
+  "homepage": "https://www.eclipse.org/glsp/",
+  "bugs": "https://github.com/eclipse-glsp/glsp/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eclipse-glsp/glsp-client.git"
+  },
+  "license": "(EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0)",
+  "author": {
+    "name": "Eclipse GLSP"
+  },
+  "contributors": [
+    {
+      "name": "Eclipse GLSP Project",
+      "email": "glsp-dev@eclipse.org",
+      "url": "https://projects.eclipse.org/projects/ecd.glsp"
+    }
+  ],
+  "main": "lib/index",
+  "types": "lib/index",
+  "files": [
+    "lib",
+    "src",
+    "css"
+  ],
+  "scripts": {
+    "build": "tsc -b",
+    "clean": "rimraf tsconfig.tsbuildinfo  lib",
+    "lint": "eslint --ext .ts,.tsx ./src",
+    "lint:ci": "yarn lint -o eslint.xml -f checkstyle",
+    "prepare": "yarn clean && yarn build ",
+    "watch": "tsc -w"
+  },
+  "dependencies": {
+    "@eclipse-glsp/client": "2.0.0",
+    "balloon-css": "^0.5.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

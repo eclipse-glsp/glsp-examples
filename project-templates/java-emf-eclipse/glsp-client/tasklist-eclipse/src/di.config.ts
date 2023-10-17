@@ -14,20 +14,14 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0 OR MIT
  ********************************************************************************/
-import { createTaskListDiagramContainer } from '@eclipse-glsp-examples/tasklist-glsp';
-import { ConsoleLogger, LogLevel, TYPES } from '@eclipse-glsp/client';
-import { EclipseGLSPDiagramServer, eclipseCopyPasteModule, eclipseDeleteModule, keepAliveModule } from '@eclipse-glsp/ide';
+import { ConsoleLogger, IDiagramOptions, LogLevel, TYPES, createDiagramOptionsModule } from '@eclipse-glsp/client';
+import { ECLIPSE_DEFAULT_MODULE_CONFIG } from '@eclipse-glsp/ide';
 import { Container } from 'inversify';
+import { initializeTasklistDiagramContainer } from 'tasklist-glsp';
 
-export default function createContainer(widgetId: string): Container {
-    const container = createTaskListDiagramContainer(widgetId);
-    container.bind(TYPES.ModelSource).to(EclipseGLSPDiagramServer).inSingletonScope();
+export  function createContainer(options: IDiagramOptions): Container {
+    const container = initializeTasklistDiagramContainer(new Container(),createDiagramOptionsModule(options),ECLIPSE_DEFAULT_MODULE_CONFIG);
     container.rebind(TYPES.ILogger).to(ConsoleLogger).inSingletonScope();
     container.rebind(TYPES.LogLevel).toConstantValue(LogLevel.warn);
-
-    container.load(keepAliveModule);
-    container.load(eclipseCopyPasteModule);
-    container.load(eclipseDeleteModule);
-
     return container;
 }

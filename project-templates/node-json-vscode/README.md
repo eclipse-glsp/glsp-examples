@@ -13,63 +13,47 @@ To explore alternative project templates or learn more about developing GLSP-bas
 
 This project is structured as follows:
 
--   [`glsp-client`](glsp-client)
-    -   [`tasklist-glsp`](glsp-client/tasklist-glsp): diagram client configuring the views for rendering and the user interface modules
-    -   [`tasklist-vscode`](glsp-client/tasklist-vscode): glue code for integrating the editor into VS Code
-        -   [`extension`](glsp-client/tasklist-vscode/extension): VS Code extension responsible for starting the glsp-server and registering the `webview` as a custom editor
-        -   [`webview`](glsp-client/tasklist-vscode/webview): integration of the `tasklist-glsp` diagram as webview
-    -   [`workspace`](glsp-client/workspace): contains an example file that can be opened with this diagram editor
--   [`glsp-server`](glsp-server)
-    -   [`src/diagram`](glsp-server/src/diagram): dependency injection module of the server and diagram configuration
-    -   [`src/handler`](glsp-server/src/handler): handlers for the diagram-specific actions
-    -   [`src/model`](glsp-server/src/model): all source model, graphical model and model state related files
+-   [`tasklist-glsp-client`](./tasklist-glsp-client): diagram client configuring the views for rendering and the user interface modules
+-   [`tasklist-vscode`](./tasklist-vscode): glue code for integrating the editor into VS Code
+    -   [`extension`](./tasklist-vscode/extension): VS Code extension responsible for starting the glsp-server and registering the `webview` as a custom editor
+    -   [`webview`](./tasklist-vscode/webview): integration of the `tasklist-glsp` diagram as webview
+-   [`workspace`](./workspace): contains an example file that can be opened with this diagram editor
+-   [`tasklist-glsp-server`](./tasklist-glsp-server):
+    -   [`src/diagram`](./tasklist-glsp-server/src/diagram): dependency injection module of the server and diagram configuration
+    -   [`src/handler`](./tasklist-glsp-server/src/handler): handlers for the diagram-specific actions
+    -   [`src/model`](./tasklist-glsp-server/src/model): all source model, graphical model and model state related files
 
 The most important entry points are:
 
--   [`glsp-client/tasklist-glsp/src/di.config.ts`](glsp-client/tasklist-glsp/src/di.config.ts): dependency injection module of the client
+-   [`tasklist-glsp-client/src/tasklist-diagram-module.ts`](./tasklist-glsp-client/src/tasklist-diagram-module.ts): dependency injection module of the client
 -   [`glsp-client/tasklist-vscode/extension/package.json`](glsp-client/tasklist-vscode/extension/package.json): VS Code extension entry point
--   [`glsp-server/src/diagram/tasklist-diagram-module.ts`](glsp-server/src/diagram/tasklist-diagram-module.ts): dependency injection module of the server
+-   [`tasklist-glsp-server/src/diagram/tasklist-diagram-module.ts`](./tasklist-glsp-server/src/diagram/tasklist-diagram-module.ts): dependency injection module of the server
 
 ## Prerequisites
 
 The following libraries/frameworks need to be installed on your system:
 
--   [Node.js](https://nodejs.org/en/) `>=14.18.0`
--   [Yarn](https://classic.yarnpkg.com/en/docs/install#debian-stable) `>=1.7.0`
+-   [Node.js](https://nodejs.org/en/) `>=16.11.0`
+-   [Yarn](https://classic.yarnpkg.com/en/docs/install#debian-stable) `>=1.7.0 <2.x.x`
 
-## VS Code workspace
-
-To work with the source code and debug the example in VS Code a dedicated [VS Code Workspace](node-json-vscode.code-workspace) is provided.
-The workspace includes both the `glsp-client` and `glsp-server` sources and offers dedicated launch configurations to run and debug the example application.
-
-To open the workspace start a VS Code instance and use the `Open Workspace from File..` entry from the `File` menu.
-Then navigate to the directory containing the workspace file and open the `node-json-vscode.code-workspace` file.
+## VS Code Extension
 
 For a smooth development experience we recommend a set of useful VS Code extensions. When the workspace is first opened VS Code will ask you wether you want to install those recommended extensions.
 Alternatively, you can also open the `Extension View` (Ctrl + Shift + X) and type `@recommended` into the search field to see the list of `Workspace Recommendations`.
 
 ## Building the example
 
-The server component and the client component have to be built using `yarn`. A convenience script to build both is provided.
+The server component and the client component have to be built using `yarn`.
+A convenience script to build both is provided.
 To build all components execute the following in the directory containing this README:
 
 ```bash
 yarn build
 ```
 
-In addition, it is also possible to build each component individually:
-
-```bash
-# Build only the glsp-client
-yarn build:client
-
-# Build only glsp-server
-yarn build:server
-```
-
 ## Running the examples
 
-To start the example open the corresponding [VS Code workspace](node-json-vscode.code-workspace) and then navigate to the `Run and Debug` view (Ctrl + Shift + D).
+To start the example open the directory containing this README in VS Code and then navigate to the `Run and Debug` view (Ctrl + Shift + D).
 Here you can choose between four different launch configurations:
 
 -   `Launch Tasklist Diagram Extension`: <br>

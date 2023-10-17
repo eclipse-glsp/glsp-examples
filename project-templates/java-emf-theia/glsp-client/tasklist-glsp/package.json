@@ -1,7 +1,7 @@
 {
   "private": "true",
-  "name": "@eclipse-glsp-examples/tasklist-glsp",
-  "version": "1.0.0",
+  "name": "tasklist-glsp",
+  "version": "2.0.0",
   "description": "GLSP sprotty diagrams for the EMF model TaskList DSL",
   "license": "(EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0 OR MIT)",
   "keywords": [
@@ -31,17 +31,17 @@
     "css"
   ],
   "dependencies": {
-    "@eclipse-glsp/client": "^1.0.0"
+    "@eclipse-glsp/client": "2.0.0"
   },
   "devDependencies": {
-    "rimraf": "^2.6.1",
-    "typescript": "^4.9.3"
+    "rimraf": "^2.6.1"
   },
   "scripts": {
-    "prepare": "yarn clean && yarn build && yarn lint",
+    "prepare": "yarn clean && yarn build",
     "clean": "rimraf lib tsconfig.tsbuildinfo",
     "build": "tsc",
     "lint": "eslint --ext .ts,.tsx ./src",
+    "lint:ci": "yarn lint -o eslint.xml -f checkstyle",
     "watch": "tsc -w"
   },
   "main": "lib/index",

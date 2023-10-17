@@ -12,12 +12,50 @@
    <extension
          point="org.eclipse.ui.editors">
       <editor
-            class="org.eclipse.glsp.example.javaemf.editor.TaskListEditor"
+            class="org.eclipse.glsp.ide.editor.ui.GLSPDiagramEditor"
             contributorClass="org.eclipse.glsp.ide.editor.ui.GLSPDiagramEditorActionContributor"
             default="true"
             extensions="tasklist"
             id="org.eclipse.glsp.example.javaemf.editor"
             name="TaskList Diagram Editor">
       </editor>
+   </extension>
+   <extension
+         point="org.eclipse.ui.commands">
+      <command
+            categoryId="org.eclipse.glsp"
+            defaultHandler="org.eclipse.glsp.ide.editor.handlers.ExternalBrowserDebugHandler"
+            description="Debug Diagram in external browser"
+            id="org.eclipse.glsp.examples.tasklist.editor.external.debug"
+            name="Debug (External Browser)">
+      </command>
+   </extension>
+   <extension
+         point="org.eclipse.ui.menus">
+      <menuContribution
+            allPopups="false"
+            locationURI="menu:org.eclipse.glsp.ide.diagram">
+         <command
+               commandId="org.eclipse.glsp.examples.tasklist.editor.external.debug"
+               style="push">
+            <visibleWhen
+                  checkEnabled="false">
+               <with
+                     variable="activePartId">
+                  <equals
+                        value="org.eclipse.glsp.example.javaemf.editor">
+                  </equals>
+               </with>
+            </visibleWhen>
+         </command>
+      </menuContribution>
+      <menuContribution
+            allPopups="false"
+            locationURI="menu:org.eclipse.ui.main.menu?after=additions">
+         <menu
+               id="org.eclipse.glsp.ide.diagram"
+               label="Diagram">
+         </menu>
+      </menuContribution>
    </extension>
 </plugin>

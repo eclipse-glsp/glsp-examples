@@ -6,7 +6,7 @@
 	<groupId>org.eclipse.glsp.example</groupId>
 	<artifactId>org.eclipse.glsp.example.javaemf.parent</artifactId>
 	<description>Java/EMF/Eclipse GLSP Example parent</description>
-	<version>1.0.0</version>
+	<version>2.0.0</version>
 	<packaging>pom</packaging>
 	<url>https://github.com/eclipse/glsp-examples</url>
 
@@ -46,8 +46,8 @@
 	<properties>
 		<!-- General build environment plugin versions -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-		<java.source>11</java.source>
-		<java.target>11</java.target>
+		<java.source>17</java.source>
+		<java.target>17</java.target>
 		<checkstyle>8.44</checkstyle>
 		<checkstyle.plugin>3.1.2</checkstyle.plugin>
 		<emfcloud.checkstyle.version>0.1.0-SNAPSHOT</emfcloud.checkstyle.version>
@@ -56,17 +56,6 @@
 		<maven.source.plugin.version>3.0.1</maven.source.plugin.version>
 		<maven.resources.plugin.version>2.7</maven.resources.plugin.version>
 		<tycho-version>2.7.5</tycho-version>
-
-		<!-- Dependency Versions -->
-		<!-- <glsp.version>0.10.0-SNAPSHOT</glsp.version> -->
-		<glsp.version>1.0.0</glsp.version>
-		<emf.ecore.version>2.26.0</emf.ecore.version>
-		<emf.common.version>2.23.0</emf.common.version>
-		<emf.ecore.change.version>2.14.0</emf.ecore.change.version>
-		<emf.ecore.edit.version>2.15.0</emf.ecore.edit.version>
-		<emf.ecore.xmi.version>2.16.0</emf.ecore.xmi.version>
-		<eclipse.core.version>3.7.100</eclipse.core.version>
-		<eclipse.core.runtime.version>3.7.0</eclipse.core.runtime.version>
 	</properties>
 
 	<modules>
@@ -157,7 +146,7 @@
 						<artifact>
 							<groupId>org.eclipse.glsp.example</groupId>
 							<artifactId>org.eclipse.glsp.example.javaemf.parent</artifactId>
-							<classifier>org.eclipse.glsp.example.javaemf.target/r2021-03</classifier>
+							<classifier>org.eclipse.glsp.example.javaemf.target/r2023-09</classifier>
 							<version>${project.version}</version>
 						</artifact>
 					</target>
