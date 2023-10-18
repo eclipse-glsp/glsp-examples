@@ -1,0 +1,9 @@
+{
+  "$schema": "https://json.schemastore.org/tsconfig",
+  "extends": "@eclipse-glsp/ts-config/tsconfig.json",
+  "compilerOptions": {
+    "noEmit": true
+  },
+  "exclude": ["**/node_modules", "**/.eslintrc.js", "**/webpack.config.js"],
+  "include": ["workflow-glsp/src", "workflow-theia/src"]
+}

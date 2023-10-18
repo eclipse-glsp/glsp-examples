@@ -1,23 +1,23 @@
 {
+  "name": "tasklist-eclipse",
+  "version": "2.0.0",
   "private": "true",
-  "name": "@eclipse-glsp-examples/tasklist-eclipse",
-  "version": "1.0.0",
   "description": "GLSP-frontend code for the EMF model TaskList Eclipse integration",
-  "license": "(EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0 OR MIT)",
   "keywords": [
     "glsp",
     "tasklist",
     "diagram"
   ],
-  "author": {
-    "name": "Eclipse GLSP"
-  },
   "homepage": "https://www.eclipse.org/glsp/",
+  "bugs": "https://github.com/eclipse-glsp/glsp/issues",
   "repository": {
     "type": "git",
     "url": "https://github.com/eclipse-glsp/glsp-examples.git"
   },
-  "bugs": "https://github.com/eclipse-glsp/glsp/issues",
+  "license": "(EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0 OR MIT)",
+  "author": {
+    "name": "Eclipse GLSP"
+  },
   "contributors": [
     {
       "name": "Eclipse GLSP Project",
@@ -25,33 +25,35 @@
       "url": "https://projects.eclipse.org/projects/ecd.glsp"
     }
   ],
+  "main": "lib/index",
+  "types": "lib/index",
   "files": [
     "lib",
     "src"
   ],
+  "scripts": {
+    "build": "tsc && webpack",
+    "clean": "rimraf lib tsconfig.tsbuildinfo app/bundle.js app/bundle.js.map",
+    "lint": "eslint --ext .ts,.tsx ./src",
+    "lint:ci": "yarn lint -o eslint.xml -f checkstyle",
+    "prepare": "yarn clean && yarn build",
+    "watch": "tsc -w"
+  },
   "dependencies": {
-    "@eclipse-glsp-examples/tasklist-glsp": "1.0.0",
-    "@eclipse-glsp/ide": "1.0.0"
+    "@eclipse-glsp/ide": "2.0.0",
+    "tasklist-glsp": "2.0.0",
+    "inversify":"^6.0.1"
   },
   "devDependencies": {
-    "circular-dependency-plugin": "^5.2.2",
-    "css-loader": "^4.3.0",
+    "@vscode/codicons": "^0.0.25",
+    "css-loader": "^6.7.3",
     "file-loader": "^6.2.0",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^3.0.2",
-    "source-map-loader": "^1.0.2",
-    "style-loader": "^2.0.0",
-    "ts-loader": "^9.2.6",
-    "webpack": "^4.46.0",
-    "webpack-cli": "^4.9.1"
-  },
-  "scripts": {
-    "prepare": "yarn clean && yarn build && yarn lint",
-    "clean": "rimraf lib tsconfig.tsbuildinfo app/bundle.js app/bundle.js.map",
-    "build": "tsc && webpack",
-    "lint": "eslint --ext .ts,.tsx ./src",
-    "watch": "tsc -w"
-  },
-  "main": "lib/index",
-  "types": "lib/index"
+    "source-map-loader": "^4.0.1",
+    "style-loader": "^3.3.1",
+    "ts-loader": "^9.4.2",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
+  }
 }

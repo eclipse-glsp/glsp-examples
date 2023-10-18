@@ -1,7 +1,0 @@
-{
-  "extends": "@eclipse-glsp/ts-config/tsconfig.json",
-  "compilerOptions": {
-    "baseUrl": "."
-  },
-  "include": ["workflow-glsp/src", "workflow-theia/src", "workflow-standalone"]
-}

@@ -2,32 +2,35 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: GLSP TaskList Example  Editor
 Bundle-SymbolicName: org.eclipse.glsp.example.javaemf.editor;singleton:=true
-Bundle-Version: 1.0.0
+Bundle-Version: 2.0.0
 Automatic-Module-Name: org.eclipse.glsp.example.javaemf.editor
-Bundle-RequiredExecutionEnvironment: JavaSE-11
+Bundle-RequiredExecutionEnvironment: JavaSE-17
 Require-Bundle: org.eclipse.elk.alg.common;bundle-version="0.5.0",
  org.eclipse.elk.alg.layered;bundle-version="0.5.0",
  org.eclipse.elk.graph.text;bundle-version="0.5.0",
- org.eclipse.glsp.server.websocket;bundle-version="[1.0.0,2.0.0)",
- org.eclipse.glsp.layout;bundle-version="[1.0.0,2.0.0)",
- org.eclipse.glsp.server;bundle-version="[1.0.0,2.0.0)",
- org.eclipse.glsp.example.workflow;bundle-version="[1.0.0,2.0.0)",
+ org.eclipse.glsp.server.websocket;bundle-version="[2.0.0,3.0.0)",
+ org.eclipse.glsp.layout;bundle-version="[2.0.0,3.0.0)",
+ org.eclipse.glsp.server;bundle-version="[2.0.0,3.0.0)",
+ org.eclipse.glsp.example.workflow;bundle-version="[2.0.0,3.0.0)",
  org.eclipse.core.runtime;bundle-version="3.18.0",
  org.eclipse.ui;bundle-version="3.117.0",
  org.eclipse.elk.core;bundle-version="0.6.0",
  org.eclipse.elk.graph;bundle-version="0.6.0",
  org.eclipse.lsp4j.websocket;bundle-version="0.9.0",
  org.eclipse.e4.core.contexts;bundle-version="1.8.400",
- org.eclipse.glsp.example.javaemf.server;bundle-version="[1.0.0,2.0.0)",
+ org.eclipse.glsp.example.javaemf.server;bundle-version="[2.0.0,3.0.0)",
  org.eclipse.glsp.server.emf;bundle-version="[1.0.0,2.0.0]",
  com.google.inject,
- org.eclipse.glsp.ide.editor;bundle-version="[1.0.0,2.0.0)",
+ org.eclipse.glsp.ide.editor;bundle-version="[2.0.0,3.0.0)",
  org.eclipse.ui.ide,
- org.eclipse.core.resources
+ org.eclipse.core.resources,
+ org.eclipse.jetty.server;bundle-version="[10.0.0,11.0.0)"
 Bundle-ClassPath: .
 Eclipse-BundleShape: dir
 Bundle-ActivationPolicy: lazy
 Bundle-Activator: org.eclipse.glsp.example.javaemf.editor.Activator
 Bundle-Vendor: Eclipse GLSP
-Import-Package: javax.servlet
+Import-Package: javax.servlet;version="4.0.0",
+ javax.websocket;version="1.1.0",
+ org.apache.logging.log4j;version="2.19.0"
 Export-Package: org.eclipse.glsp.example.javaemf.editor

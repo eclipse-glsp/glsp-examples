@@ -26,17 +26,11 @@
   "scripts": {
     "build": "yarn build:workflow && yarn build:project-templates",
     "build:project-templates": "yarn build:java-emf-theia && yarn build:node-json-theia && yarn build:node-json-vscode && yarn build:java-emf-eclipse",
-    "build:java-emf-theia": "yarn --cwd project-templates/java-emf-theia build",
-    "build:node-json-theia": "yarn --cwd project-templates/node-json-theia build",
-    "build:node-json-vscode": "yarn --cwd project-templates/node-json-vscode build",
-    "build:java-emf-eclipse": "yarn --cwd project-templates/java-emf-eclipse build",
-    "build:workflow": "yarn build:workflow:server && yarn build:workflow:client",
-    "build:workflow:server": "mvn -f workflow/glsp-server/pom.xml clean verify",
-    "build:workflow:client": "yarn --cwd workflow/glsp-client install",
-    "start:workflow": "yarn --cwd workflow/glsp-client/workflow-browser-app start"
-  },
-  "devDependencies": {
-    "@eclipse-glsp/config": "1.1.0-next.d03ad9f.112",
-    "typescript": "^4.9.3"
+    "build:java-emf-theia": "yarn --cwd project-templates/java-emf-theia install",
+    "build:node-json-theia": "yarn --cwd project-templates/node-json-theia install",
+    "build:node-json-vscode": "yarn --cwd project-templates/node-json-vscode install",
+    "build:java-emf-eclipse": "yarn --cwd project-templates/java-emf-eclipse install",
+    "build:workflow": "yarn --cwd workflow install",
+    "start:workflow": "yarn --cwd workflow/workflow-browser-app start"
   }
 }

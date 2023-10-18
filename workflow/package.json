@@ -1,0 +1,54 @@
+{
+  "name": "parent",
+  "version": "1.0.0",
+  "private": true,
+  "homepage": "https://www.eclipse.org/glsp/",
+  "bugs": "https://github.com/eclipse-glsp/glsp/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eclipse-glsp/glsp-examples.git"
+  },
+  "license": "(EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0 OR MIT)",
+  "author": {
+    "name": "Eclipse GLSP"
+  },
+  "contributors": [
+    {
+      "name": "Eclipse GLSP Project",
+      "email": "glsp-dev@eclipse.org",
+      "url": "https://projects.eclipse.org/projects/ecd.glsp"
+    }
+  ],
+  "workspaces": [
+    "workflow-glsp",
+    "workflow-theia",
+    "workflow-browser-app",
+    "workflow-server"
+  ],
+  "scripts": {
+    "all": "yarn install && yarn lint",
+    "build": "lerna run build",
+    "clean": "lerna run clean",
+    "lint": "lerna run lint",
+    "lint:ci": "lerna run lint:ci",
+    "prepare": "lerna run prepare",
+    "rebuild:browser": "theia rebuild:browser",
+    "start": "yarn rebuild:browser && yarn --cwd workflow-browser-app start",
+    "start:external": "yarn rebuild:browser && yarn --cwd workflow-browser-app start:external",
+    "start:server": "yarn --cwd workflow-server start",
+    "watch": "lerna run --parallel watch"
+  },
+  "resolutions": {
+    "string-width": "4.2.3"
+  },
+  "devDependencies": {
+    "@eclipse-glsp/config": "2.0.0",
+    "lerna": "^6.6.2",
+    "rimraf": "^2.6.1",
+    "typescript": "^5.2.2"
+  },
+  "engines": {
+    "node": ">=16.11.0",
+    "yarn": ">=1.7.0 <2.x.x"
+  }
+}

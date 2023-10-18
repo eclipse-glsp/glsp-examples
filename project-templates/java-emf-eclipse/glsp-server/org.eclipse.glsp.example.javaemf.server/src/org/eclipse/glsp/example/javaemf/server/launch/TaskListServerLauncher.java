@@ -16,8 +16,6 @@
  ********************************************************************************/
 package org.eclipse.glsp.example.javaemf.server.launch;
 
-import java.io.IOException;
-
 import org.apache.commons.cli.ParseException;
 import org.eclipse.glsp.example.javaemf.server.TaskListDiagramModule;
 import org.eclipse.glsp.server.di.ServerModule;
@@ -42,7 +40,7 @@ public final class TaskListServerLauncher {
 
          GLSPServerLauncher launcher = new SocketGLSPServerLauncher(tasklistServerModule);
          launcher.start("localhost", port);
-      } catch (IOException | ParseException ex) {
+      } catch (ParseException ex) {
          ex.printStackTrace();
          LaunchUtil.printHelp(processName, DefaultCLIParser.getDefaultOptions());
       }

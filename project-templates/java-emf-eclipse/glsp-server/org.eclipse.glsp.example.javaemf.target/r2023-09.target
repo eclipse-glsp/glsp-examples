@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?pde?>
+<!-- generated with https://github.com/eclipse-cbi/targetplatform-dsl -->
+<target name="2023-09 - Release" sequenceNumber="1697585984">
+  <locations>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.platform.feature.group" version="4.29.0.v20230903-1000"/>
+      <unit id="org.eclipse.emf.sdk.feature.group" version="2.35.0.v20230829-0934"/>
+      <unit id="org.eclipse.emf.transaction.feature.group" version="1.13.0.202208110935"/>
+      <unit id="org.eclipse.equinox.executable.feature.group" version="3.8.2200.v20230717-2134"/>
+      <unit id="org.eclipse.equinox.p2.discovery.feature.feature.group" version="1.3.100.v20230728-2010"/>
+      <repository location="http://download.eclipse.org/releases/2023-09"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.glsp.feature.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.glsp.feature.source.feature.group" version="0.0.0"/>
+      <unit id="org.eclipse.glsp.server.websocket" version="0.0.0"/>
+      <unit id="org.eclipse.glsp.layout" version="0.0.0"/>
+      <unit id="org.eclipse.glsp.example.workflow" version="0.0.0"/>
+      <unit id="org.eclipse.glsp.server.emf" version="0.0.0"/>
+      <repository location="https://download.eclipse.org/glsp/server/p2/releases/2.0.0"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.glsp.ide.feature.feature.group" version="0.0.0"/>
+      <repository location="https://download.eclipse.org/glsp/ide/p2/releases/2.0.0/"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.jetty.websocket.javax.server" version="10.0.13"/>
+      <repository location="mvn:org.eclipse.jetty:jetty-p2:10.0.13:zip:p2site"/>
+    </location>
+    <location includeMode="planner" includeAllPlatforms="false" includeSource="true" includeConfigurePhase="false" type="InstallableUnit">
+      <unit id="org.eclipse.elk.core" version="0.8.1"/>
+      <unit id="org.eclipse.elk.graph" version="0.8.1"/>
+      <unit id="org.eclipse.elk.graph.text" version="0.8.1"/>
+      <unit id="org.eclipse.elk.alg.layered" version="0.8.1"/>
+      <repository location="https://download.eclipse.org/elk/updates/releases/0.8.1/"/>
+    </location>
+  </locations>
+</target>

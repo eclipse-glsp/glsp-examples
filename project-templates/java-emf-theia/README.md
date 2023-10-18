@@ -27,7 +27,7 @@ This project is structured as follows:
 
 The most important entry points are:
 
--   [`glsp-client/tasklist-glsp/src/di.config.ts`](glsp-client/tasklist-glsp/src/di.config.ts): dependency injection module of the client
+-   [`glsp-client/tasklist-glsp/src/tasklist-diagram-module.ts`](glsp-client/tasklist-glsp/src/tasklist-diagram-module.ts): dependency injection module of the client
 -   [`glsp-client/tasklist-browser-app/package.json`](glsp-client/tasklist-browser-app/package.json): Theia browser application definition
 -   [`glsp-server/src/main/java/org/eclipse/glsp/example/javaemf/TaskListDiagramModule.java`](glsp-server/src/main/java/org/eclipse/glsp/example/javaemf/TaskListDiagramModule.java): dependency injection module of the server
 
@@ -35,16 +35,16 @@ The most important entry points are:
 
 The following libraries/frameworks need to be installed on your system:
 
--   [Node.js](https://nodejs.org/en/) `>=14.18.0`
--   [Yarn](https://classic.yarnpkg.com/en/docs/install#debian-stable) `>=1.7.0`
--   [Java](https://adoptium.net/temurin/releases) `>=11`
+-   [Node.js](https://nodejs.org/en/) `>=16.11.0`
+-   [Yarn](https://classic.yarnpkg.com/en/docs/install#debian-stable) `>=1.7.0 <2.x.x`
+-   [Java](https://adoptium.net/temurin/releases) `>=17`
 -   [Maven](https://maven.apache.org/) `>=3.6.0`
 
 The examples are heavily interweaved with Eclipse Theia, so please also check the [prerequisites of Theia](https://github.com/eclipse-theia/theia/blob/master/doc/Developing.md#prerequisites).
 
 ## Theia Version compatibility
 
-This project template is compatible with Theia `>=1.34.0`.
+This project template is compatible with Theia `>=1.39.0`.
 
 ## VS Code workspace
 

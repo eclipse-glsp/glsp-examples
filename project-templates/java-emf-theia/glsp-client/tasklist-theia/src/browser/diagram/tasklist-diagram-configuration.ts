@@ -7,26 +7,24 @@
  *
  * This Source Code may also be made available under the following Secondary
  * Licenses when the conditions for such availability set forth in the Eclipse
- * Public License v. 2.0 are satisfied: 
+ * Public License v. 2.0 are satisfied:
  * -- GNU General Public License, version 2 with the GNU Classpath Exception
  * which is available at https://www.gnu.org/software/classpath/license.html
  * -- MIT License which is available at https://opensource.org/license/mit.
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0 OR MIT
  ********************************************************************************/
-import { createTaskListDiagramContainer } from '@eclipse-glsp-examples/tasklist-glsp';
-import { configureDiagramServer, GLSPDiagramConfiguration, GLSPTheiaDiagramServer } from '@eclipse-glsp/theia-integration/lib/browser';
+import { ContainerConfiguration } from '@eclipse-glsp/protocol';
+import { GLSPDiagramConfiguration } from '@eclipse-glsp/theia-integration/lib/browser';
 import { Container, injectable } from '@theia/core/shared/inversify';
-import 'sprotty-theia/css/theia-sprotty.css';
+import { initializeTasklistDiagramContainer } from 'tasklist-glsp';
 import { TaskListLanguage } from '../../common/tasklist-language';
 
 @injectable()
 export class TaskListDiagramConfiguration extends GLSPDiagramConfiguration {
-    diagramType: string = TaskListLanguage.diagramType;
+    readonly diagramType = TaskListLanguage.diagramType;
 
-    doCreateContainer(widgetId: string): Container {
-        const container = createTaskListDiagramContainer(widgetId);
-        configureDiagramServer(container, GLSPTheiaDiagramServer);
-        return container;
+    override configureContainer(container: Container, ...containerConfiguration: ContainerConfiguration): void {
+        initializeTasklistDiagramContainer(container, ...containerConfiguration);
     }
 }

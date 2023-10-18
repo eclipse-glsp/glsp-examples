@@ -14,6 +14,4 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0 OR MIT
  ********************************************************************************/
-import createTaskListDiagramContainer from './di.config';
-
-export { createTaskListDiagramContainer };
+export * from './tasklist-diagram-module';

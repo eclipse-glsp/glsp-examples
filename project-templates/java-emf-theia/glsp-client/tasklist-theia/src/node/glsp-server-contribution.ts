@@ -7,7 +7,7 @@
  *
  * This Source Code may also be made available under the following Secondary
  * Licenses when the conditions for such availability set forth in the Eclipse
- * Public License v. 2.0 are satisfied: 
+ * Public License v. 2.0 are satisfied:
  * -- GNU General Public License, version 2 with the GNU Classpath Exception
  * which is available at https://www.gnu.org/software/classpath/license.html
  * -- MIT License which is available at https://opensource.org/license/mit.
@@ -19,11 +19,11 @@ import { injectable } from '@theia/core/shared/inversify';
 import { join, resolve } from 'path';
 import { TaskListLanguage } from '../common/tasklist-language';
 
-export const DEFAULT_PORT = 5007;
-export const PORT_ARG_KEY = 'TASKLIST';
+export const DEFAULT_PORT = 0;
+export const PORT_ARG_KEY = 'TASKLIST_GLSP';
 export const LOG_DIR = join(__dirname, '..', '..', 'logs');
 const JAR_FILE = resolve(
-    join(__dirname, '..', '..', '..', '..', 'glsp-server', 'target', 'org.eclipse.glsp.example.javaemf-1.0.0-glsp.jar')
+    join(__dirname, '..', '..', '..', '..', 'glsp-server', 'target', 'org.eclipse.glsp.example.javaemf-2.0.0-glsp.jar')
 );
 
 @injectable()

@@ -1,0 +1,59 @@
+{
+  "name": "@eclipse-glsp-examples/workflow-server",
+  "version": "2.0.0",
+  "description": "GLSP node server for the workflow example",
+  "keywords": [
+    "eclipse",
+    "graphics",
+    "diagram",
+    "modeling",
+    "visualization",
+    "glsp",
+    "diagram editor"
+  ],
+  "homepage": "https://www.eclipse.org/glsp/",
+  "bugs": "https://github.com/eclipse-glsp/glsp/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eclipse-glsp/glsp-server-node.git"
+  },
+  "license": "(EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0)",
+  "author": {
+    "name": "Eclipse GLSP"
+  },
+  "contributors": [
+    {
+      "name": "Eclipse GLSP Project",
+      "email": "glsp-dev@eclipse.org",
+      "url": "https://projects.eclipse.org/projects/ecd.glsp"
+    }
+  ],
+  "main": "./dist/workflow-glsp-server.js",
+  "types": "lib/index",
+  "files": [
+    "dist",
+    "lib",
+    "src"
+  ],
+  "scripts": {
+    "build": "tsc -b && yarn bundle",
+    "bundle": "webpack",
+    "clean": "rimraf lib tsconfig.tsbuildinfo bundle",
+    "lint": "eslint --ext .ts,.tsx ./src",
+    "lint:ci": "yarn lint -o eslint.xml -f checkstyle",
+    "prepare": "yarn clean && yarn build",
+    "start": "ts-node src/app.ts --port 5007",
+    "watch": "tsc -w"
+  },
+  "devDependencies": {
+    "@eclipse-glsp/layout-elk": "2.0.0",
+    "@eclipse-glsp/server": "2.0.0",
+    "inversify": "^6.0.1",
+    "source-map-loader": "^4.0.1",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

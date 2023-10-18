@@ -28,7 +28,7 @@ This project is structured as follows:
 
 The most important entry points are:
 
--   [`glsp-client/tasklist-glsp/src/di.config.ts`](glsp-client/tasklist-glsp/src/di.config.ts): dependency injection module of the client
+-   [`glsp-client/tasklist-glsp/src/tasklist-diagram-module.ts`](glsp-client/tasklist-glsp/src/tasklist-diagram-module.ts) dependency injection module of the client
 -   [`glsp-client/tasklist-eclipse/src/app`](glsp-client/tasklist-eclipse/src/app.ts): Browser application bundle
 -   [`glsp-server/org.eclipse.glsp.example.javaemf.editor/src/org/eclipse/glsp/example/javaemf/editor/TaskListEclipseDiagramModule.java`](glsp-server/org.eclipse.glsp.example.javaemf.editor/src/org/eclipse/glsp/example/javaemf/editor/TaskListEclipseDiagramModule.java): dependency injection module of the Eclipse ide integration
 -   [`glsp-server/org.eclipse.glsp.example.javaemf.editor/src/org/eclipse/glsp/example/javaemf/editor/TaskListServerManager.java`](glsp-server/org.eclipse.glsp.example.javaemf.editor/src/org/eclipse/glsp/example/javaemf/editor/TaskListServerManager.java): the server manager counterpart for the Tasklist editor
@@ -39,9 +39,9 @@ The most important entry points are:
 
 The following libraries/frameworks need to be installed on your system:
 
--   [Node.js](https://nodejs.org/en/) `>=14.18.0`
--   [Yarn](https://classic.yarnpkg.com/en/docs/install#debian-stable) `>=1.7.0`
--   [Java](https://adoptium.net/temurin/releases) `>=11`
+-   [Node.js](https://nodejs.org/en/) `>=16.11.0`
+-   [Yarn](https://classic.yarnpkg.com/en/docs/install#debian-stable) `>=1.7.0 < 2.x.x`
+-   [Java](https://adoptium.net/temurin/releases) `>=17`
 -   [Maven](https://maven.apache.org/) `>=3.6.0`
 
 ## VS Code workspace
@@ -65,7 +65,7 @@ projects are selected and click finish.
 
 To resolve all compilation errors you have to set the correct target platform.
 Got to the preferences (`Window -> Preferences`) and navigate to the target platform options (`Plug-in Development -> Target Platform`)-
-Selected the `2021-03-Release` target definition and click `Apply`.
+Selected the `2023-09-Release` target definition and click `Apply`.
 Once the target platform has been resolved there should be no more compilation errors.
 
 ## Building the example
