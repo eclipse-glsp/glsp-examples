@@ -27,7 +27,7 @@ This project is structured as follows:
 
 The most important entry points are:
 
--   [`glsp-client/tasklist-glsp/src/di.config.ts`](glsp-client/tasklist-glsp/src/di.config.ts): dependency injection module of the client
+-   [`glsp-client/tasklist-glsp/src/tasklist-diagram-module.ts`](glsp-client/tasklist-glsp/src/tasklist-diagram-module.ts): dependency injection module of the client
 -   [`glsp-client/tasklist-browser-app/package.json`](glsp-client/tasklist-browser-app/package.json): Theia browser application definition
 -   [`glsp-server/src/main/java/org/eclipse/glsp/example/javaemf/TaskListDiagramModule.java`](glsp-server/src/main/java/org/eclipse/glsp/example/javaemf/TaskListDiagramModule.java): dependency injection module of the server
 

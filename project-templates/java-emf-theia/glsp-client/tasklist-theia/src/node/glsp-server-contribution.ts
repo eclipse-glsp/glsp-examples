@@ -20,7 +20,7 @@ import { join, resolve } from 'path';
 import { TaskListLanguage } from '../common/tasklist-language';
 
 export const DEFAULT_PORT = 0;
-export const PORT_ARG_KEY = 'TASKLIST';
+export const PORT_ARG_KEY = 'TASKLIST_GLSP';
 export const LOG_DIR = join(__dirname, '..', '..', 'logs');
 const JAR_FILE = resolve(
     join(__dirname, '..', '..', '..', '..', 'glsp-server', 'target', 'org.eclipse.glsp.example.javaemf-2.0.0-glsp.jar')

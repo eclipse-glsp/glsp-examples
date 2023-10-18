@@ -4,7 +4,7 @@ kind: Pod
 spec:
   containers:
   - name: ci
-    image: eclipseglsp/ci:alpine-v4.0
+    image: eclipseglsp/ci:alpine-v5.0
     tty: true
     resources:
       limits:
