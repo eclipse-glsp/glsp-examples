@@ -28,7 +28,7 @@ However, it's of course also possible to use any other IDE or text editor.
     It implements a simple flow chart diagram editor with different types of nodes and edges.
     The `Workflow Example` is the main example used for development and integrates all GLSP features
 
-    <img src="documentation/workflow-example-animated.gif" alt="drawing" width="400"/>
+    https://user-images.githubusercontent.com/588090/154459938-849ca684-11b3-472c-8a59-98ea6cb0b4c1.mp4
 
 ## Building the examples & project templates
 
