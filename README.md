@@ -55,7 +55,7 @@ Each example and project template contains a dedicated README with detailed inst
 ### Debugging the Jave GLSP Server in Eclipse
 
 All Java example GLSP servers are maven projects which can be imported directly into the Eclipse IDE.
-In contrast to the Java support in VS Code, Eclipse also offers Ecore tooling which is required to manipulate or extend the graph Ecore models (e.g. [`workflow-graph.ecore`](workflow/glsp-server/src/main/resources/workflow-graph.ecore).
+In contrast to the Java support in VS Code, Eclipse also offers Ecore tooling which is required to manipulate or extend the graph Ecore models (e.g. [`workflow-graph.ecore`](workflow/glsp-server/src/main/resources/workflow-graph.ecore)).
 
 We recommend to use the [`Eclipse Modeling Tools`](https://www.eclipse.org/downloads/packages/release/2023-09/r/eclipse-modeling-tools) package as it already provides most needed plugins out of the box.
 Only the [`M2E` plugin](https://github.com/eclipse-m2e/m2e-core/blob/master/README.md#-installation) has to be installed on top to enable maven support in Eclipse.
