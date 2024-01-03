@@ -32,14 +32,14 @@ public final class TaskListServerLauncher {
       String processName = "TaskListExampleGlspServer";
       try {
          DefaultCLIParser parser = new DefaultCLIParser(args, processName);
-         LaunchUtil.configure(parser);
 
          int port = parser.parsePort();
+         String host = parser.parseHostname();
          ServerModule tasklistServerModule = new ServerModule()
             .configureDiagramModule(new TaskListDiagramModule());
 
          GLSPServerLauncher launcher = new SocketGLSPServerLauncher(tasklistServerModule);
-         launcher.start("localhost", port);
+         launcher.start(host, port, parser);
       } catch (ParseException ex) {
          ex.printStackTrace();
          LaunchUtil.printHelp(processName, DefaultCLIParser.getDefaultOptions());
