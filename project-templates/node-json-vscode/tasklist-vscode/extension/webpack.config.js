@@ -39,6 +39,9 @@ const config = {
             patterns: [
                 {
                     from: path.resolve(__dirname, '..', 'webview', 'dist')
+                },
+                {
+                    from: path.resolve(__dirname, '..', '..', 'tasklist-glsp-server', 'dist')
                 }
             ]
         })

@@ -43,15 +43,13 @@ Alternatively, you can also open the `Extension View` (Ctrl + Shift + X) and typ
 
 ## Building the example
 
-The server component and the client component have to be built using `yarn`.
-A convenience script to build both is provided.
-To build all components execute the following in the directory containing this README:
+To build and bundle all components execute the following in the directory containing this README:
 
 ```bash
-yarn build
+yarn
 ```
 
-## Running the examples
+## Running the example
 
 To start the example open the directory containing this README in VS Code and then navigate to the `Run and Debug` view (Ctrl + Shift + D).
 Here you can choose between four different launch configurations:
@@ -71,6 +69,16 @@ Here you can choose between four different launch configurations:
     This is a convenience compound config that launches both the `Tasklist Diagram Extension` in external server mode and the
     `Tasklist GLSP server` process.
     Enables debugging of both the `glsp-client` and `glsp-server`code simultaneously.
+
+## Packaging the example
+
+To package the example extension as `*.vsix` execute the following in the directory containing this README:
+
+```bash
+yarn package
+```
+
+This will create a `tasklist-vscode-*.vsix` file (located in the [extension directory](./tasklist-vscode/extension/)) that can be installed in VS Code.
 
 ## Next steps
 

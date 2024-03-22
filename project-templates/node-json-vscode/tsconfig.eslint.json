@@ -5,5 +5,5 @@
     "noEmit": true
   },
   "exclude": ["**/node_modules", "**/.eslintrc.js"],
-  "include": ["tasklist-glsp/src", "tasklist-vscode/*/src"]
+  "include": ["tasklist-glsp-client/src", "tasklist-glsp-server/src", "tasklist-vscode/*/src"]
 }

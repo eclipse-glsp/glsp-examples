@@ -14,6 +14,8 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0 OR MIT
  ********************************************************************************/
+import 'reflect-metadata';
+
 import {
     configureDefaultCommands,
     GlspSocketServerLauncher,
@@ -22,10 +24,8 @@ import {
 } from '@eclipse-glsp/vscode-integration/node';
 import * as path from 'path';
 import * as process from 'process';
-import 'reflect-metadata';
 import * as vscode from 'vscode';
 import TaskListEditorProvider from './tasklist-editor-provider';
-const MODULE_PATH = require.resolve('tasklist-glsp-server');
 export const LOG_DIR = path.join(__dirname, '..', '..', 'logs');
 
 const DEFAULT_SERVER_PORT = '0';
@@ -35,8 +35,9 @@ export async function activate(context: vscode.ExtensionContext): Promise<void> 
     let serverProcess: GlspSocketServerLauncher | undefined;
 
     if (process.env.TASKLIST_SERVER_DEBUG !== 'true') {
+        const modulePath = vscode.Uri.joinPath(context.extensionUri, 'dist', 'tasklist-glsp-server.js').fsPath;
         serverProcess = new GlspSocketServerLauncher({
-            executable: MODULE_PATH,
+            executable: modulePath,
             socketConnectionOptions: { port: JSON.parse(process.env.TASKLIST_SERVER_PORT || DEFAULT_SERVER_PORT) },
             additionalArgs: ['--no-consoleLog', '--fileLog', '--logDir', LOG_DIR],
             logging: true
