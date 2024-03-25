@@ -22,6 +22,7 @@
     "@theia/process": "1.43.1",
     "@theia/terminal": "1.43.1",
     "@theia/workspace": "1.43.1",
+    "second-theia": "2.0.0",
     "tasklist-theia": "2.0.0"
   },
   "devDependencies": {

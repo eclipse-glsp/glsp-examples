@@ -5,5 +5,5 @@
     "noEmit": true
   },
   "exclude": ["**/node_modules", "**/.eslintrc.js"],
-  "include": ["tasklist-glsp/src", "tasklist-theia/src"]
+  "include": ["tasklist-glsp/src", "second-theia/src", "tasklist-theia/src"]
 }

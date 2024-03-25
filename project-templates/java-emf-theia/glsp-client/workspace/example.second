@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<example-model:TaskList xmi:version="2.0" xmlns:xmi="http://www.omg.org/XMI" xmlns:example-model="http://www.eclipse.org/glsp/examples/tasklist" id="root" name="Task List">
+  <tasks id="61bcc27a-3e93-4847-89e4-1d2433371b4b" name="NewTask0"/>
+  <tasks id="8204461f-8451-46c7-a258-b9ffb976182e" name="NewTask1"/>
+  <tasks id="7c68e6a2-1288-484c-ad01-454232adeb9f" name="NewTask2"/>
+  <tasks id="4eec0256-329f-468b-887e-c769317fa19c" name="NewTask3"/>
+  <tasks id="958c1de7-7cdb-455e-bf9c-11136f719f8b" name="NewTask4"/>
+  <tasks id="cd618de0-d960-47ea-93e6-3ba61c0ac790" name="NewTask5"/>
+</example-model:TaskList>

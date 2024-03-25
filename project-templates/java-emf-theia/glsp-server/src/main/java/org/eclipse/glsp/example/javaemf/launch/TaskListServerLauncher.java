@@ -17,13 +17,13 @@
 package org.eclipse.glsp.example.javaemf.launch;
 
 import org.apache.commons.cli.ParseException;
+import org.eclipse.glsp.example.javaemf.SecondDiagramModule;
 import org.eclipse.glsp.example.javaemf.TaskListDiagramModule;
 import org.eclipse.glsp.server.di.ServerModule;
 import org.eclipse.glsp.server.launch.DefaultCLIParser;
 import org.eclipse.glsp.server.launch.GLSPServerLauncher;
 import org.eclipse.glsp.server.launch.SocketGLSPServerLauncher;
 import org.eclipse.glsp.server.utils.LaunchUtil;
-
 public final class TaskListServerLauncher {
    private TaskListServerLauncher() {}
 
@@ -36,7 +36,8 @@ public final class TaskListServerLauncher {
          int port = parser.parsePort();
          String host = parser.parseHostname();
          ServerModule tasklistServerModule = new ServerModule()
-            .configureDiagramModule(new TaskListDiagramModule());
+            .configureDiagramModule(new TaskListDiagramModule())
+            .configureDiagramModule(new SecondDiagramModule());
 
          GLSPServerLauncher launcher = new SocketGLSPServerLauncher(tasklistServerModule);
          launcher.start(host, port, parser);

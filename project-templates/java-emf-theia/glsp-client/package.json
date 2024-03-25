@@ -22,6 +22,7 @@
   "workspaces": [
     "tasklist-glsp",
     "tasklist-theia",
+    "second-theia",
     "tasklist-browser-app"
   ],
   "scripts": {
