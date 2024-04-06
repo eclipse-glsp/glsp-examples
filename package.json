@@ -1,0 +1,49 @@
+{
+  "name": "glsp-browser-standalone-integration",
+  "version": "1.0.0",
+  "description": "Integrates both server and client in a standalone static bundle usable in browsers",
+  "main": "lib",
+  "types": "lib",
+  "files": [
+    "lib",
+    "src",
+    "css"
+  ],
+  "scripts": {
+    "build": "yarn compile && yarn bundle",
+    "bundle": "webpack",
+    "clean": "rimraf lib tsconfig.tsbuildinfo",
+    "compile": "tsc -b",
+    "lint": "eslint --ext .ts,.tsx ./src",
+    "watch": "tsc -w && yarn watch:bundle",
+    "watch:bundle": "webpack -w"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Sakrafux/glsp-browser-standalone-integration.git"
+  },
+  "license": "(EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0)",
+  "author": {
+    "name": "Eclipse GLSP"
+  },
+  "bugs": {
+    "url": "https://github.com/Sakrafux/glsp-browser-standalone-integration/issues"
+  },
+  "homepage": "https://github.com/Sakrafux/glsp-browser-standalone-integration#readme",
+  "devDependencies": {
+    "@eclipse-glsp/dev": "^2.0.0",
+    "@types/lodash": "^4.17.0",
+    "circular-dependency-plugin": "^5.2.2",
+    "css-loader": "^7.0.0",
+    "inversify": "^6.0.2",
+    "path-browserify": "^1.0.1",
+    "source-map-loader": "^5.0.0",
+    "style-loader": "^3.3.4",
+    "typescript": "^5.4.4",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "lodash": "^4.17.21"
+  }
+}
