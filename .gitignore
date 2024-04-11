@@ -9,10 +9,13 @@ artifacts/
 *.ttf
 *.log
 *.jar
+bundles/*.js
+bundles/*.js.map
 
 !packages/client/src/lib
 tsconfig.tsbuildinfo
 eslint.xml
 report.xml
 
-app/bundle.js
+**/app/*.js
+**/app/*.js.map
