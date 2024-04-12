@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2022 EclipseSource and others.
+ * Copyright (c) 2022-2024 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -16,11 +16,16 @@
  ********************************************************************************/
 package org.eclipse.glsp.example.javaemf;
 
+import org.eclipse.glsp.example.javaemf.action.RequestElementDataAction;
+import org.eclipse.glsp.example.javaemf.action.SetElementDataAction;
 import org.eclipse.glsp.example.javaemf.handler.CreateTaskNodeHandler;
 import org.eclipse.glsp.example.javaemf.handler.DeleteTaskNodeHandler;
+import org.eclipse.glsp.example.javaemf.handler.RequestElementDataHandler;
 import org.eclipse.glsp.example.javaemf.model.TaskListGModelFactory;
 import org.eclipse.glsp.example.javaemf.model.TaskListSourceModelStorage;
 import org.eclipse.glsp.example.javaemf.palette.TaskListToolPaletteItemProvider;
+import org.eclipse.glsp.server.actions.Action;
+import org.eclipse.glsp.server.actions.ActionHandler;
 import org.eclipse.glsp.server.di.MultiBinding;
 import org.eclipse.glsp.server.diagram.DiagramConfiguration;
 import org.eclipse.glsp.server.emf.EMFIdGenerator;
@@ -67,6 +72,12 @@ public class TaskListDiagramModule extends EMFNotationDiagramModule {
       super.configureOperationHandlers(binding);
       binding.add(CreateTaskNodeHandler.class);
       binding.add(DeleteTaskNodeHandler.class);
+   }
+
+   @Override
+   protected void configureActionHandlers(MultiBinding<ActionHandler> binding) {
+      super.configureActionHandlers(binding);
+      binding.add(RequestElementDataHandler.class);
    }
 
    @Override

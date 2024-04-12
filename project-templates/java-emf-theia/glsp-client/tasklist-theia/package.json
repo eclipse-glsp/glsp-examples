@@ -30,7 +30,11 @@
   "dependencies": {
     "tasklist-glsp": "2.1.0",
     "@eclipse-glsp/theia-integration": "2.1.0",
-    "@theia/property-view": "1.43.1"
+    "@theia/property-view": "1.43.1",
+    "@eclipse-emfcloud/jsonforms-property-view": "0.8.0-theia-cr03",
+    "@jsonforms/core": "^3.0.0",
+    "@jsonforms/react": "^3.0.0",
+    "@jsonforms/vanilla-renderers": "^3.0.0"
   },
   "devDependencies": {
     "rimraf": "^2.6.1"

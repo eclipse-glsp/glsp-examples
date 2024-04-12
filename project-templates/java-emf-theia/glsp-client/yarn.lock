@@ -956,6 +956,11 @@
   resolved "https://registry.yarnpkg.com/@discoveryjs/json-ext/-/json-ext-0.5.7.tgz#1d572bfbbe14b7704e0ba0f39b74815b84870d70"
   integrity sha512-dBVuXR082gk3jsFp7Rd/JI4kytwGHecnCoTtXFb7DB6CNHp4rg5k1bhg0nWdLGLnOV71lmDzGQaLMy8iPLY0pw==
 
+"@eclipse-emfcloud/jsonforms-property-view@0.8.0-theia-cr03":
+  version "0.8.0-theia-cr03"
+  resolved "https://registry.yarnpkg.com/@eclipse-emfcloud/jsonforms-property-view/-/jsonforms-property-view-0.8.0-theia-cr03.tgz#0a9d77e1394b91a51bee927adbec285c05f0bb91"
+  integrity sha512-aYedvFzSOj2hXTYgDPCszGJOD+ieOtkuDtcccn1H+B2gg6Ft2BnvBscLH7bhqzCAopvcGmFWmoKFns2cp8Sv+Q==
+
 "@eclipse-glsp/client@2.1.0":
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/@eclipse-glsp/client/-/client-2.1.0.tgz#324c48e243cb24d454c9c4a38dcd7effea92b729"
@@ -1171,6 +1176,30 @@
   dependencies:
     "@jridgewell/resolve-uri" "^3.1.0"
     "@jridgewell/sourcemap-codec" "^1.4.14"
+
+"@jsonforms/core@^3.0.0":
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/@jsonforms/core/-/core-3.2.1.tgz#4436018ff3f28bf24141a9478787dc1c7e91a4a1"
+  integrity sha512-G5ldiWM2e5Vh5WrbjDKb0QJ1SG/39kxC48x2ufFKhfpDHibqhPaXegg5jmSBTNcB0ldE9jMmpKwxF6fi5VBCEA==
+  dependencies:
+    "@types/json-schema" "^7.0.3"
+    ajv "^8.6.1"
+    ajv-formats "^2.1.0"
+    lodash "^4.17.21"
+
+"@jsonforms/react@^3.0.0":
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/@jsonforms/react/-/react-3.2.1.tgz#7ce968142b6b19567ed437e26b0c02223452b681"
+  integrity sha512-MKDEXBHtaCZR7vjtlTa4JtyItgYxCPrShjLTgoZbwRL6dsi54d6gRJ08YvV3XuwPn0kempXj3RCMY/kw/5AYRQ==
+  dependencies:
+    lodash "^4.17.21"
+
+"@jsonforms/vanilla-renderers@^3.0.0":
+  version "3.2.1"
+  resolved "https://registry.yarnpkg.com/@jsonforms/vanilla-renderers/-/vanilla-renderers-3.2.1.tgz#4d14a855e51c7b66d4feca4e30f36b0729e01c09"
+  integrity sha512-Pdr/RWBYvsMDoUFYCiOSov2TKpyaKIm9C6Iudv/e9SWiroSvm1nm9ktqDOn2nfqW0O4aFG2Q/qUsLO88LAg99A==
+  dependencies:
+    lodash "^4.17.21"
 
 "@lerna/child-process@6.6.2":
   version "6.6.2"
@@ -2420,6 +2449,11 @@
   resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.13.tgz#02c24f4363176d2d18fc8b70b9f3c54aba178a85"
   integrity sha512-RbSSoHliUbnXj3ny0CNFOoxrIDV6SUGyStHsvDqosw6CkdPV8TtWGlfecuK4ToyMEAql6pzNxgCFKanovUzlgQ==
 
+"@types/json-schema@^7.0.3":
+  version "7.0.15"
+  resolved "https://registry.yarnpkg.com/@types/json-schema/-/json-schema-7.0.15.tgz#596a1747233694d50f6ad8a7869fcb6f56cf5841"
+  integrity sha512-5+fP8P8MFNC+AyZCDxrB2pkZFPGzqQWUzpSeuuVLvm8VMcorNYavBqoFcxK8bQz4Qsbn4oUEEem4wDLfcysGHA==
+
 "@types/json5@^0.0.29":
   version "0.0.29"
   resolved "https://registry.yarnpkg.com/@types/json5/-/json5-0.0.29.tgz#ee28707ae94e11d2b827bcbe5270bcea7f3e71ee"
@@ -3032,7 +3066,7 @@ aggregate-error@^3.0.0:
     clean-stack "^2.0.0"
     indent-string "^4.0.0"
 
-ajv-formats@^2.1.1:
+ajv-formats@^2.1.0, ajv-formats@^2.1.1:
   version "2.1.1"
   resolved "https://registry.yarnpkg.com/ajv-formats/-/ajv-formats-2.1.1.tgz#6e669400659eb74973bbf2e33327180a0996b520"
   integrity sha512-Wx0Kx52hxE7C18hkMEggYlEifqWZtYaRgouJor+WMdPnQyEK13vgEWyVNup7SoeeoLMsr4kf5h6dOW11I15MUA==
@@ -3061,7 +3095,7 @@ ajv@^6.12.4, ajv@^6.12.5, ajv@^6.5.3:
     json-schema-traverse "^0.4.1"
     uri-js "^4.2.2"
 
-ajv@^8.0.0, ajv@^8.9.0:
+ajv@^8.0.0, ajv@^8.6.1, ajv@^8.9.0:
   version "8.12.0"
   resolved "https://registry.yarnpkg.com/ajv/-/ajv-8.12.0.tgz#d1a0527323e22f53562c567c00991577dfbe19d1"
   integrity sha512-sRu1kpcO9yLtYxBKvqfTeh9KzZEwO3STyX1HT+4CaDzC6HpTGYhIhPIzj9XuKU7KYDwnaeh5hcOwjy1QuJzBPA==
