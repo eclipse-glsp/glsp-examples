@@ -16,11 +16,31 @@
 
 import { JsonFormsPropertyViewWidgetProvider } from '@eclipse-emfcloud/jsonforms-property-view';
 import { GlspSelection } from '@eclipse-glsp/theia-integration';
-import { injectable } from 'inversify';
+import { injectable, postConstruct } from 'inversify';
+import { debounce } from 'lodash';
 
 @injectable()
 export class GlspPropertyViewWidgetProvider extends JsonFormsPropertyViewWidgetProvider {
+    @postConstruct()
+    override init(): void {
+        super.init();
+        this.registerWidgetChangeHandler();
+    }
+
+    protected registerWidgetChangeHandler(): void {
+        this.jsonFormsWidget.onChange(
+            debounce((jsonFormsData: object) => {
+                this.handleChanges(jsonFormsData);
+            }, 250)
+        );
+    }
+
     override canHandle(selection: any): number {
         return GlspSelection.is(selection) ? 1 : 0;
+    }
+
+    protected handleChanges(jsonFormsData: object | undefined): void {
+        // handle the changed form data
+        // e.g. change model via GLSP actions or your custom model management
     }
 }
