@@ -72,7 +72,10 @@ module.exports = {
             languages: ['javascript', 'css', 'html', 'typescript', 'json']
         }),
         new CopyWebpackPlugin({
-            patterns: [{ from: path.resolve(__dirname, 'src', 'index.html'), to: path.resolve(appRoot, 'index.html') }]
+            patterns: [
+                { from: path.resolve(__dirname, 'src', 'index.html'), to: path.resolve(appRoot, 'index.html') },
+                { from: path.resolve(__dirname, 'src', 'css'), to: path.resolve(appRoot, 'css') }
+            ]
         })
     ]
 };

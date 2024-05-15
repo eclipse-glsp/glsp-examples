@@ -27,6 +27,7 @@ import {
     IDiagramOptions,
     initializeDiagramContainer,
     LogLevel,
+    STANDALONE_MODULE_CONFIG,
     TYPES
 } from '@eclipse-glsp/client';
 import 'balloon-css/balloon.min.css';
@@ -46,5 +47,5 @@ export function initializeTasklistDiagramContainer(container: Container, ...cont
 }
 
 export function createContainer(options: IDiagramOptions): Container {
-    return initializeTasklistDiagramContainer(new Container(), createDiagramOptionsModule(options));
+    return initializeTasklistDiagramContainer(new Container(), createDiagramOptionsModule(options), STANDALONE_MODULE_CONFIG);
 }

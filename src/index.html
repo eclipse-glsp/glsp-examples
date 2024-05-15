@@ -2,76 +2,21 @@
 <html>
     <head>
         <meta charset="utf-8" />
-        <style>
-            html {
-                width: 100%;
-                height: 100%;
-                font-family: Verdana, Geneva, Tahoma, sans-serif;
-            }
-
-            body {
-                position: absolute;
-                top: 0;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                margin: 0;
-                padding: 0;
-            }
-
-            #glsp-editor {
-                display: grid;
-                grid-template-columns: 2fr 3fr;
-                grid-template-rows: 1fr 9fr;
-                width: 100%;
-                height: 100%;
-                gap: 8px;
-            }
-
-            #compile-options {
-                grid-column-start: 1;
-                grid-column-end: 3;
-                /* background-color: aquamarine; */
-            }
-
-            #editor {
-                display: grid;
-                grid-template-rows: auto 1fr;
-                gap: 4px;
-            }
-
-            #tabs {
-                display: flex;
-                overflow-x: auto;
-            }
-
-            .tab {
-                flex-shrink: 0;
-                padding: 10px;
-                border: 1px solid grey;
-                cursor: pointer;
-                user-select: none;
-            }
-
-            .tab[selected='true'] {
-                background-color: #bbb;
-            }
-
-            .tab:hover {
-                background-color: #999;
-            }
-
-            .tab:active {
-                background-color: #666;
-            }
-        </style>
+        <link rel="stylesheet" href="css/index.css" />
+        <link rel="stylesheet" href="css/tab.css" />
     </head>
 
     <body>
         <div id="glsp-editor">
             <div id="compile-options"></div>
             <div id="editor">
-                <div id="tabs"></div>
+                <div id="view-selection">
+                    <div class="tabs">
+                        <div id="view-data-button" class="tab" selected>Data</div>
+                        <div id="view-sources-button" class="tab">Sources</div>
+                    </div>
+                    <select id="file-select" disabled></select>
+                </div>
                 <div id="code"></div>
             </div>
             <div id="model"></div>

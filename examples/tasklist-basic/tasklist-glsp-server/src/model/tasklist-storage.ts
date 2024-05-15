@@ -15,13 +15,7 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0 OR MIT
  ********************************************************************************/
 
-import {
-    Logger,
-    MaybePromise,
-    RequestModelAction,
-    SaveModelAction,
-    SourceModelStorage
-} from '@eclipse-glsp/server/browser';
+import { Logger, MaybePromise, RequestModelAction, SaveModelAction, SourceModelStorage } from '@eclipse-glsp/server/browser';
 import { inject, injectable } from 'inversify';
 import { TaskListModelState } from './tasklist-model-state';
 
@@ -39,10 +33,17 @@ export class TaskListStorage implements SourceModelStorage {
             .then(data => {
                 console.log(data);
                 this.modelState.updateSourceModel(data);
-        })
+                this.postModelForMonacoDisplay();
+            });
     }
 
     saveSourceModel(action: SaveModelAction): MaybePromise<void> {
-        this.logger.warn('Saving is not supported by this mock implementation');
+        this.postModelForMonacoDisplay();
+    }
+
+    private postModelForMonacoDisplay(): void {
+        // This is only for transmitting the saved model back to the client, since we need it for display outside of the iframe.
+        // Outside of the integrated sandbox, this is not necessary and it therefore presents a unique situation, not supposed to behandled via GLSP protocol.
+        self.postMessage({ isUpdatedModelFile: true, modelFile: JSON.stringify(this.modelState.sourceModel, undefined, 2) });
     }
 }

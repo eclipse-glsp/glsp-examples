@@ -24,13 +24,9 @@
                     "name": "tasklist-diagram-module.ts",
                     "path": "sources/client",
                     "language": "typescript"
-                },
-                {
-                    "name": "example.tasklist",
-                    "path": ".",
-                    "language": "json"
                 }
-            ]
+            ],
+            "sourceModelType": "json"
         }
     ]
 }

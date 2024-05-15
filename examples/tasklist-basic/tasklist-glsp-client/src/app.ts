@@ -30,6 +30,14 @@ let container: Container;
 const wwProvider = new GLSPWebWorkerProvider('http://localhost:8000/tasklist-glsp-server.js');
 wwProvider.listen({ onConnection: initialize, logger: console });
 
+// This is only necessary in the integrated sandbox, in order to display the model file outside of the iframe.
+//@ts-ignore
+wwProvider.worker.addEventListener('message', ({ data }) => {
+    if (data.isUpdatedModelFile) {
+        window.parent.postMessage({ type: 'MODEL_FILE', data: data.modelFile }, '*');
+    }
+});
+
 async function initialize(connectionProvider: MessageConnection): Promise<void> {
     glspClient = new BaseJsonrpcGLSPClient({ id, connectionProvider });
     container = createContainer({
