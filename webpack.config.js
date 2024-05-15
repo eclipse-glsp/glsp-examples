@@ -14,11 +14,13 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
 const webpack = require('webpack');
+const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
+const CircularDependencyPlugin = require('circular-dependency-plugin');
+
 const path = require('path');
 
 const buildRoot = path.resolve(__dirname, 'lib');
 const appRoot = path.resolve(__dirname, 'app');
-var CircularDependencyPlugin = require('circular-dependency-plugin');
 
 module.exports = {
     entry: [path.resolve(buildRoot, 'app')],
@@ -64,6 +66,9 @@ module.exports = {
             exclude: /(node_modules|examples)\/./,
             failOnError: false
         }),
-        new webpack.WatchIgnorePlugin({ paths: [/\.js$/, /\.d\.ts$/] })
+        new webpack.WatchIgnorePlugin({ paths: [/\.js$/, /\.d\.ts$/] }),
+        new MonacoWebpackPlugin({
+            languages: ['javascript', 'css', 'html', 'typescript', 'json']
+        })
     ]
 };

@@ -41,7 +41,9 @@
     "@eclipse-glsp/config": "2.0.0",
     "@eclipse-glsp/dev": "2.0.0",
     "@types/lodash": "^4.17.0",
+    "@vscode/codicons": "^0.0.25",
     "circular-dependency-plugin": "^5.2.2",
+    "copy-webpack-plugin": "^12.0.2",
     "css-loader": "^7.0.0",
     "path-browserify": "^1.0.1",
     "source-map-loader": "^5.0.0",
@@ -55,6 +57,8 @@
     "@eclipse-glsp/server": "2.1.1",
     "balloon-css": "^0.5.0",
     "inversify": "^6.0.2",
-    "lodash": "^4.17.21"
+    "lodash": "^4.17.21",
+    "monaco-editor": "^0.47.0",
+    "monaco-editor-webpack-plugin": "^7.1.0"
   }
 }

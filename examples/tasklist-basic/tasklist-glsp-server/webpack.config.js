@@ -14,7 +14,11 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0 OR MIT
  ********************************************************************************/
+const CopyWebpackPlugin = require('copy-webpack-plugin');
+
 const path = require('path');
+const fs = require('fs');
+
 const buildRoot = path.resolve(__dirname, 'lib');
 const appRoot = path.resolve(__dirname, '..', 'app');
 
@@ -40,5 +44,18 @@ module.exports = {
             }
         ]
     },
+    plugins: [
+        new CopyWebpackPlugin({
+            patterns: (() => {
+                const jsonFilePath = path.resolve(__dirname, 'monaco-sources.json');
+                const jsonData = fs.readFileSync(jsonFilePath, 'utf8');
+                const filesToCopy = JSON.parse(jsonData).files;
+
+                return filesToCopy.map(file => {
+                    return { from: path.resolve(__dirname, 'src', ...file), to: path.resolve(appRoot, 'sources', 'server', file.at(-1)) };
+                });
+            })()
+        })
+    ],
     ignoreWarnings: [/Failed to parse source map/, /Can't resolve .* in '.*ws\/lib'/]
 };

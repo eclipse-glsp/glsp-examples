@@ -1,0 +1,7 @@
+{
+    "files": [
+        ["model", "tasklist-gmodel-factory.ts"], 
+        ["model", "tasklist-model-state.ts"], 
+        ["model", "tasklist-storage.ts"]
+    ]
+}

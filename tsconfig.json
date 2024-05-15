@@ -5,5 +5,5 @@
     "rootDir": "src",
     "outDir": "lib"
   },
-  "include": ["src", "lib", "css", "app"]
+  "include": ["src", "lib", "css", "app", "src/**/*.json"]
 }
