@@ -16,6 +16,7 @@
 const webpack = require('webpack');
 const MonacoWebpackPlugin = require('monaco-editor-webpack-plugin');
 const CircularDependencyPlugin = require('circular-dependency-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const path = require('path');
 
@@ -69,6 +70,9 @@ module.exports = {
         new webpack.WatchIgnorePlugin({ paths: [/\.js$/, /\.d\.ts$/] }),
         new MonacoWebpackPlugin({
             languages: ['javascript', 'css', 'html', 'typescript', 'json']
+        }),
+        new CopyWebpackPlugin({
+            patterns: [{ from: path.resolve(__dirname, 'src', 'index.html'), to: path.resolve(appRoot, 'index.html') }]
         })
     ]
 };

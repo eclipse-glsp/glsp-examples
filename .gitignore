@@ -17,5 +17,4 @@ tsconfig.tsbuildinfo
 eslint.xml
 report.xml
 
-**/app/*.js
-**/app/*.js.map
+app/

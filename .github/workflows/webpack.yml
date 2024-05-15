@@ -31,8 +31,10 @@ jobs:
         npm install
         npm run build
 
+    # TODO Build the tasklist/etc. static files
+
     - name: Upload artifact
-      uses: actions/upload-pages-artifact@v2
+      uses: actions/upload-pages-artifact@v4
       with:
         path: 'app'
 

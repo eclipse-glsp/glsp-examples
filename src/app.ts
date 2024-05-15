@@ -4,6 +4,7 @@ import { examples } from './examples.json';
 const activeModelFrame = document.createElement('iframe');
 activeModelFrame.width = '100%';
 activeModelFrame.height = '100%';
+// TODO make host optional if in github pages
 activeModelFrame.src = 'http://localhost:8000/diagram.html';
 activeModelFrame.style.border = '0';
 activeModelFrame.style.display = 'block';
@@ -23,6 +24,7 @@ const loadMonaco = (source: { name: string; path: string; language: string }) =>
         });
     }
 
+    // TODO make host optional if in github pages
     fetch(`http://localhost:8000/${source.path}/${source.name}`)
         .then(result => result.text())
         .then(fileText => codeEditor!.setValue(fileText));
