@@ -34,7 +34,7 @@ jobs:
     # TODO Build the tasklist/etc. static files
 
     - name: Upload artifact
-      uses: actions/upload-pages-artifact@v3
+      uses: actions/upload-pages-artifact@v2
       with:
         path: 'app'
 
