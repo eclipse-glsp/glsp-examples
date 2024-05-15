@@ -24,7 +24,7 @@ const buildRoot = path.resolve(__dirname, 'lib');
 const appRoot = path.resolve(__dirname, 'app');
 
 module.exports = {
-    entry: [path.resolve(buildRoot, 'app')],
+    entry: [path.resolve(buildRoot, 'index')],
     output: {
         filename: 'bundle.js',
         path: appRoot

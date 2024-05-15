@@ -17,7 +17,7 @@
     "build": "yarn compile && yarn bundle",
     "build:all": "yarn import:client && yarn import:server && yarn build",
     "bundle": "webpack",
-    "clean": "rimraf lib tsconfig.tsbuildinfo ./bundles/wf-glsp-client.js ./bundles/wf-glsp-client.js.map ./bundles/wf-glsp-server-webworker.js ./bundles/wf-glsp-server-webworker.js.map",
+    "clean": "rimraf lib tsconfig.tsbuildinfo app",
     "compile": "tsc -b",
     "import:client": "yarn --cwd ../glsp-client build && cp ../glsp-client/examples/workflow-standalone/app/bundle.js ./bundles/wf-glsp-client.js && cp ../glsp-client/examples/workflow-standalone/app/bundle.js.map ./bundles/wf-glsp-client.js.map",
     "import:server": "yarn --cwd ../glsp-server-node build && cp ../glsp-server-node/examples/workflow-server-bundled/wf-glsp-server-webworker.js ./bundles/wf-glsp-server-webworker.js && cp ../glsp-server-node/examples/workflow-server-bundled/wf-glsp-server-webworker.js.map ./bundles/wf-glsp-server-webworker.js.map",
