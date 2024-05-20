@@ -8,22 +8,26 @@
                 {
                     "name": "tasklist-gmodel-factory.ts",
                     "path": "sources/server",
-                    "language": "typescript"
+                    "language": "typescript",
+                    "side": "server"
                 },
                 {
                     "name": "tasklist-model-state.ts",
                     "path": "sources/server",
-                    "language": "typescript"
+                    "language": "typescript",
+                    "side": "server"
                 },
                 {
                     "name": "tasklist-storage.ts",
                     "path": "sources/server",
-                    "language": "typescript"
+                    "language": "typescript",
+                    "side": "server"
                 },
                 {
                     "name": "tasklist-diagram-module.ts",
                     "path": "sources/client",
-                    "language": "typescript"
+                    "language": "typescript",
+                    "side": "client"
                 }
             ],
             "sourceModelType": "json"

@@ -27,15 +27,25 @@ const clientId = 'tasklist-client';
 
 let glspClient: GLSPClient;
 let container: Container;
-const wwProvider = new GLSPWebWorkerProvider('http://localhost:8000/tasklist-glsp-server.js');
+// @ts-ignore
+console.log(window.SERVER_URL);
+// @ts-ignore
+const wwProvider = new GLSPWebWorkerProvider(window.SERVER_URL);
 wwProvider.listen({ onConnection: initialize, logger: console });
 
 // This is only necessary in the integrated sandbox, in order to display the model file outside of the iframe.
-//@ts-ignore
+// @ts-ignore
 wwProvider.worker.addEventListener('message', ({ data }) => {
     if (data.isUpdatedModelFile) {
         window.parent.postMessage({ type: 'MODEL_FILE', data: data.modelFile }, '*');
     }
+    if (data.jsonrpc && data.params?.action?.severity === 'ERROR') {
+        throw new Error(data.params.action.details);
+    }
+});
+// @ts-ignore
+wwProvider.worker.addEventListener('error', error => {
+    throw error;
 });
 
 async function initialize(connectionProvider: MessageConnection): Promise<void> {

@@ -10,6 +10,9 @@ type MonacoSource = {
     name: string;
     path: string;
     language: string;
+    side: SourceSide;
 };
+
+type SourceSide = 'client' | 'server';
 
 type ViewSelectionSection = 'DATA' | 'SOURCES';

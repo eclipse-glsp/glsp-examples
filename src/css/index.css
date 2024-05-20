@@ -48,3 +48,19 @@ body {
 #file-select {
     flex: 1;
 }
+
+#compile-button {
+    margin: 10px;
+    padding: 10px;
+    border: 1px solid #bbb;
+    cursor: pointer;
+    user-select: none;
+}
+
+#compile-button:hover {
+    background-color: #999;
+}
+
+#compile-button:active {
+    background-color: #666;
+}

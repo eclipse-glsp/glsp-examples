@@ -22,3 +22,7 @@ window.addEventListener('message', ({ data }) => {
         }
     }
 });
+
+export const replaceIframeSrc = (newUrl: string) => {
+    activeModelFrame.src = newUrl;
+};

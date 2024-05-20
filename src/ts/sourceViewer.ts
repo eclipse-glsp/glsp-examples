@@ -8,14 +8,14 @@ let currentSelectedSource = 0;
 currentExample.sources.forEach((source, i) => {
     const option = document.createElement('option');
     option.value = i.toString();
-    option.innerHTML = source.name;
+    option.innerHTML = `${source.side[0].toUpperCase()}${source.side.substring(1)} - ${source.name}`;
 
     fileSelect.appendChild(option);
 });
 fileSelect.onchange = e => {
     const selectedSource = Number((e.target as HTMLSelectElement).value);
     currentSelectedSource = selectedSource;
-    loadMonaco(currentExample.sources[selectedSource]);
+    loadMonaco(currentExample.sources[selectedSource], selectedSource);
 };
 
 export let currentView: ViewSelectionSection = 'DATA';
@@ -35,6 +35,6 @@ viewSourcesButton.onclick = () => {
     viewDataButton.removeAttribute('selected');
     viewSourcesButton.setAttribute('selected', '');
     fileSelect.removeAttribute('disabled');
-    loadMonaco(currentExample.sources[currentSelectedSource]);
+    loadMonaco(currentExample.sources[currentSelectedSource], currentSelectedSource);
     currentView = 'SOURCES';
 };
