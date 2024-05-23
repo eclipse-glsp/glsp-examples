@@ -2,7 +2,7 @@ import * as monaco from 'monaco-editor';
 import { fileStore, loadCachedSource } from './store';
 
 monaco.languages.typescript.typescriptDefaults.setDiagnosticsOptions({
-    diagnosticCodesToIgnore: [2792]
+    diagnosticCodesToIgnore: [2792, 4112]
 });
 
 let currentLanguage: string | undefined = undefined;
@@ -26,6 +26,7 @@ export const setMonacoText = (fileText: string, sourceLanguage: string, sourceIn
 
     codeEditor!.setValue(fileText);
 };
-export const loadMonaco = (source: MonacoSource, index: number) => {
-    loadCachedSource(source, index).then(fileText => setMonacoText(fileText, source.language, index));
+
+export const loadMonaco = (example: GLSPExample, index: number) => {
+    loadCachedSource(example, index).then(fileText => setMonacoText(fileText, example.sources[index].language, index));
 };

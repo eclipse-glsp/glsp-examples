@@ -17,16 +17,10 @@ body {
 #glsp-editor {
     display: grid;
     grid-template-columns: 2fr 3fr;
-    grid-template-rows: 1fr 9fr;
+    grid-template-rows: min-content 1fr;
     width: 100%;
     height: 100%;
     gap: 8px;
-}
-
-#compile-options {
-    grid-column-start: 1;
-    grid-column-end: 3;
-    /* background-color: aquamarine; */
 }
 
 #editor {
@@ -49,18 +43,66 @@ body {
     flex: 1;
 }
 
-#compile-button {
-    margin: 10px;
+#compile-options {
+    grid-column-start: 1;
+    grid-column-end: 3;
+    display: flex;
+    margin-left: auto;
+    margin-right: auto;
+    margin-top: 8px;
+    padding-left: 8px;
+    padding-right: 8px;
+    width: 1200px;
+    max-width: 100%;
+    align-items: center;
+    gap: 8px;
+}
+
+.button {
     padding: 10px;
     border: 1px solid #bbb;
     cursor: pointer;
     user-select: none;
+    text-align: center;
 }
 
-#compile-button:hover {
+.button:hover {
     background-color: #999;
 }
 
-#compile-button:active {
+.button:active {
     background-color: #666;
+}
+
+#example-title {
+    margin: 0;
+}
+
+#example-select {
+    flex: 5;
+    height: 100%;
+}
+
+#compile-button {
+    flex: 2;
+}
+
+#compile-button:hover {
+    background-color: #9effb4;
+}
+
+#compile-button:active {
+    background-color: #2bff5b;
+}
+
+#reset-button {
+    flex: 2;
+}
+
+#reset-button:hover {
+    background-color: #ff9292;
+}
+
+#reset-button:active {
+    background-color: #ff1616;
 }

@@ -1,5 +1,5 @@
 import { JsxEmit, ModuleKind, ModuleResolutionKind, ScriptTarget, transpileModule } from 'typescript';
-import { fileStore, loadBundles } from './store';
+import { fileStore } from './store';
 import { replaceIframeSrc } from './modelViewer';
 
 const compilerOptions = {
@@ -28,8 +28,6 @@ const compilerOptions = {
     sourceMap: false,
     types: ['node', 'reflect-metadata']
 };
-
-loadBundles();
 
 const searchImports = (subModuleString: string, markString: string): [number, number] => {
     const importStartPos = subModuleString.search(`\n.*${markString}`) + 1;
@@ -70,11 +68,11 @@ const compileSide = (side: SourceSide) => {
     return URL.createObjectURL(blob);
 };
 
-const compileSources = async () => {
+export const compileSources = () => {
     const serverBlobURL = compileSide('server');
     const clientBlobURL = compileSide('client');
 
-    let diagramHtml = await (await fetch('http://localhost:8000/diagram.html')).text();
+    let diagramHtml = fileStore.diagramHtml!;
     diagramHtml =
         diagramHtml.slice(0, diagramHtml.search('/\\*\\* OVERWRITE SERVER URL START \\*\\*/')) +
         '"' +
@@ -94,6 +92,3 @@ const compileSources = async () => {
 
     replaceIframeSrc(diagramHtmlBlobURL);
 };
-
-const compileButton = document.getElementById('compile-button')!;
-compileButton.onclick = compileSources;

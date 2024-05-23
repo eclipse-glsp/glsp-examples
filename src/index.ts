@@ -1,3 +1,3 @@
-import './ts/sourceViewer';
-import './ts/modelViewer';
-import './ts/sourceCompiler';
+import { onStart } from './ts/compilerActions';
+
+onStart();

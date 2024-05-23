@@ -3,7 +3,10 @@
         {
             "id": "tasklist-basic",
             "name": "Tasklist Basic",
+            "path": ".",
             "diagram": "diagram.html",
+            "serverBundle": "tasklist-glsp-server.js",
+            "clientBundle": "tasklist-glsp-client.js",
             "sources": [
                 {
                     "name": "tasklist-gmodel-factory.ts",
