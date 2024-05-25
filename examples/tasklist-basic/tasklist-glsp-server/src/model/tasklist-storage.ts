@@ -43,7 +43,7 @@ export class TaskListStorage implements SourceModelStorage {
 
     private postModelForMonacoDisplay(): void {
         // This is only for transmitting the saved model back to the client, since we need it for display outside of the iframe.
-        // Outside of the integrated sandbox, this is not necessary and it therefore presents a unique situation, not supposed to behandled via GLSP protocol.
+        // Outside of the integrated sandbox, this is not necessary and it therefore presents a unique situation, not supposed to be handled via GLSP protocol.
         self.postMessage({ isUpdatedModelFile: true, modelFile: JSON.stringify(this.modelState.sourceModel, undefined, 2) });
     }
 }

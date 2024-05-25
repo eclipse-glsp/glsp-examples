@@ -21,7 +21,11 @@ const fs = require('fs');
 
 const buildRoot = path.resolve(__dirname, 'lib');
 const appRoot = path.resolve(__dirname, '..', 'app');
-var CircularDependencyPlugin = require('circular-dependency-plugin');
+const CircularDependencyPlugin = require('circular-dependency-plugin');
+
+const jsonFilePath = path.resolve(__dirname, 'monaco-sources.json');
+const jsonData = fs.readFileSync(jsonFilePath, 'utf8');
+const filesToCopy = JSON.parse(jsonData).files;
 
 module.exports = {
     entry: [path.resolve(buildRoot, 'app')],
@@ -68,16 +72,17 @@ module.exports = {
             failOnError: false
         }),
         new webpack.WatchIgnorePlugin({ paths: [/\.js$/, /\.d\.ts$/] }),
-        new CopyWebpackPlugin({
-            patterns: (() => {
-                const jsonFilePath = path.resolve(__dirname, 'monaco-sources.json');
-                const jsonData = fs.readFileSync(jsonFilePath, 'utf8');
-                const filesToCopy = JSON.parse(jsonData).files;
-
-                return filesToCopy.map(file => {
-                    return { from: path.resolve(__dirname, 'src', ...file), to: path.resolve(appRoot, 'sources', 'client', file.at(-1)) };
-                });
-            })()
-        })
+        ...(filesToCopy.length
+            ? [
+                  new CopyWebpackPlugin({
+                      patterns: filesToCopy.map(file => {
+                          return {
+                              from: path.resolve(__dirname, 'src', ...file),
+                              to: path.resolve(appRoot, 'sources', 'client', file.at(-1))
+                          };
+                      })
+                  })
+              ]
+            : [])
     ]
 };

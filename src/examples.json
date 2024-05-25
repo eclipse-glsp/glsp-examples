@@ -1,39 +1,45 @@
 {
-    "examples": [
+  "examples": [
+    {
+      "id": "tasklist-basic",
+      "name": "Tasklist Basic",
+      "path": "tasklist-basic",
+      "diagram": "diagram.html",
+      "serverBundle": "tasklist-glsp-server.js",
+      "clientBundle": "tasklist-glsp-client.js",
+      "sources": [
         {
-            "id": "tasklist-basic",
-            "name": "Tasklist Basic",
-            "path": "tasklist-basic",
-            "diagram": "diagram.html",
-            "serverBundle": "tasklist-glsp-server.js",
-            "clientBundle": "tasklist-glsp-client.js",
-            "sources": [
-                {
-                    "name": "tasklist-gmodel-factory.ts",
-                    "path": "sources/server",
-                    "language": "typescript",
-                    "side": "server"
-                },
-                {
-                    "name": "tasklist-model-state.ts",
-                    "path": "sources/server",
-                    "language": "typescript",
-                    "side": "server"
-                },
-                {
-                    "name": "tasklist-storage.ts",
-                    "path": "sources/server",
-                    "language": "typescript",
-                    "side": "server"
-                },
-                {
-                    "name": "tasklist-diagram-module.ts",
-                    "path": "sources/client",
-                    "language": "typescript",
-                    "side": "client"
-                }
-            ],
-            "sourceModelType": "json"
+          "name": "tasklist-gmodel-factory.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "tasklist-model-index.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "tasklist-model-state.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "tasklist-model.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "tasklist-storage.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
         }
-    ]
+      ],
+      "sourceModelType": "json"
+    }
+  ]
 }

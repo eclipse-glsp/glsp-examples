@@ -1,7 +1,9 @@
 {
-    "files": [
-        ["model", "tasklist-gmodel-factory.ts"], 
-        ["model", "tasklist-model-state.ts"], 
-        ["model", "tasklist-storage.ts"]
-    ]
+  "files": [
+    ["model", "tasklist-gmodel-factory.ts"],
+    ["model", "tasklist-model-index.ts"],
+    ["model", "tasklist-model-state.ts"],
+    ["model", "tasklist-model.ts"],
+    ["model", "tasklist-storage.ts"]
+  ]
 }
