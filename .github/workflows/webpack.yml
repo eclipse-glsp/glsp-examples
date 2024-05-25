@@ -8,19 +8,12 @@ on:
 
 jobs:
   build:
-    permissions:
-      pages: read
-
     runs-on: ubuntu-latest
 
-    strategy:
-      matrix:
-        node-version: [18.x]
-
     steps:
-      - name: Show context variables
+      - name: Show context
         run: |
-          echo "${{ toJson(steps) }}"
+          echo "${{ toJson(github) }}"
 
       - uses: actions/checkout@v4
 
@@ -28,14 +21,14 @@ jobs:
         uses: actions/configure-pages@v3
         id: pages
 
-      - name: Use Node.js ${{ matrix.node-version }}
+      - name: Use Node.js 18.x
         uses: actions/setup-node@v3
         with:
-          node-version: ${{ matrix.node-version }}
+          node-version: 18.x
 
       - name: Overwrite .env file
         run: |
-          echo "HOST_PATH=${{ steps.build.outputs.page_url }}" > .env
+          echo "HOST_PATH=" > .env
 
       - name: Build
         run: |
