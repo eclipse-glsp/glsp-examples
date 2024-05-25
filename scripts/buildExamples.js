@@ -26,7 +26,10 @@ const copyDirectory = (src, dest, example) => {
 };
 
 examples.forEach(example => {
-    exec('npm run build', { cwd: path.join('examples', example.id) }, () => {
+    exec('npm run build', { cwd: path.join('examples', example.id) }, error => {
+        if (error) {
+            throw error;
+        }
         const src = path.join('examples', example.id, 'app');
         const dest = path.join('app', example.id);
         copyDirectory(src, dest, example);
