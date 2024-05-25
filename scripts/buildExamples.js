@@ -19,7 +19,7 @@ const copyDirectory = (src, dest, example) => {
             copyDirectory(srcPath, destPath, example);
         } else {
             const file = fs.readFileSync(srcPath, 'utf8');
-            const result = file.replace(/process\.env\.HOST_PATH/g, `'${process.env.HOST_PATH}${example.path}'`);
+            const result = file.replace(/process\.env\.HOST_PATH/g, `'${process.env.HOST_PATH}/${example.path}'`);
             fs.writeFileSync(destPath, result, 'utf8');
         }
     }
