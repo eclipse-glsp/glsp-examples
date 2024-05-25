@@ -11,10 +11,6 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Show context
-        run: |
-          echo "${{ toJson(github) }}"
-
       - uses: actions/checkout@v4
 
       - name: Configure GitHub Pages
@@ -28,7 +24,7 @@ jobs:
 
       - name: Overwrite .env file
         run: |
-          echo "HOST_PATH=" > .env
+          echo "HOST_PATH=https://${{ github.event.repository.owner.name }}.github.io/${{ github.event.repository.name }}/" > .env
 
       - name: Build
         run: |
