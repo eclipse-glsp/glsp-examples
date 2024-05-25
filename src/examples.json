@@ -41,6 +41,96 @@
         }
       ],
       "sourceModelType": "json"
+    },
+    {
+      "id": "tasklist-basic-all-server",
+      "name": "Tasklist Basic - All server",
+      "path": "tasklist-basic-all-server",
+      "buildPath": "tasklist-basic",
+      "diagram": "diagram.html",
+      "serverBundle": "tasklist-glsp-server.js",
+      "clientBundle": "tasklist-glsp-client.js",
+      "sources": [
+        {
+          "name": "tasklist-gmodel-factory.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "tasklist-model-index.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "tasklist-model-state.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "tasklist-model.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "tasklist-storage.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "create-task-node-handler.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "create-transition-handler.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "delete-element-handler.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "tasklist-apply-label-edit-handler.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "tasklist-change-bounds-handler.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "tasklist-label-edit-validator.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "tasklist-diagram-configuration.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "tasklist-diagram-module.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        }
+      ],
+      "sourceModelType": "json"
     }
   ]
 }

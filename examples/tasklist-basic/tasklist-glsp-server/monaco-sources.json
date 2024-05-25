@@ -4,6 +4,14 @@
     ["model", "tasklist-model-index.ts"],
     ["model", "tasklist-model-state.ts"],
     ["model", "tasklist-model.ts"],
-    ["model", "tasklist-storage.ts"]
+    ["model", "tasklist-storage.ts"],
+    ["handler", "create-task-node-handler.ts"],
+    ["handler", "create-transition-handler.ts"],
+    ["handler", "delete-element-handler.ts"],
+    ["handler", "tasklist-apply-label-edit-handler.ts"],
+    ["handler", "tasklist-change-bounds-handler.ts"],
+    ["handler", "tasklist-label-edit-validator.ts"],
+    ["diagram", "tasklist-diagram-configuration.ts"],
+    ["diagram", "tasklist-diagram-module.ts"]
   ]
 }
