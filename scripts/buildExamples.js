@@ -5,7 +5,7 @@ const { exec } = require('child_process');
 
 dotenv.config();
 
-const examples = JSON.parse(fs.readFileSync('src/examples.json', 'utf8')).examples;
+const examples = JSON.parse(fs.readFileSync(path.join('src', 'examples.json'), 'utf8')).examples;
 
 const copyDirectory = (src, dest, example) => {
     fs.mkdirSync(dest, { recursive: true });
@@ -26,12 +26,13 @@ const copyDirectory = (src, dest, example) => {
 };
 
 examples.forEach(example => {
-    exec('npm run build', { cwd: path.join('examples', example.id) }, error => {
+    exec('npm run build', { cwd: path.join('examples', example.buildPath) }, error => {
         if (error) {
             throw error;
         }
-        const src = path.join('examples', example.id, 'app');
-        const dest = path.join('app', example.id);
+        const src = path.join('examples', example.buildPath, 'app');
+        const dest = path.join('app', example.path);
         copyDirectory(src, dest, example);
+        fs.copyFileSync(path.join('src', 'index.html'), path.join(dest, 'index.html'));
     });
 });

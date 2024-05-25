@@ -1,9 +1,12 @@
-import { examples, resetStore } from './store';
+import { examples as _examples, resetStore } from './store';
 import { compileSources } from './sourceCompiler';
 import { loadBundles } from './store';
 import { loadExample } from './sourceViewer';
 import { replaceIframeSrc } from './modelViewer';
 import { createPath } from './util';
+
+const selectedPath = window.location.pathname.substring(1);
+const examples = selectedPath ? _examples.filter(example => example.path === selectedPath) : _examples;
 
 const setExample = (example: GLSPExample) => {
     resetStore();
@@ -26,6 +29,9 @@ exampleSelect.onchange = e => {
     currentExample = selectedExample;
     setExample(examples[selectedExample]);
 };
+if (examples.length === 1) {
+    exampleSelect.setAttribute('disabled', '');
+}
 
 const compileButton = document.getElementById('compile-button')!;
 compileButton.onclick = compileSources;
