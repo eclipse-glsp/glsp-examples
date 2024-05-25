@@ -56,10 +56,8 @@
             <div>Further details are displayed in the console.</div>
         </div>
         <script>
-            window.CLIENT_URL =
-                /** OVERWRITE CLIENT URL START **/ 'http://localhost:8000/tasklist-glsp-client.js' /** OVERWRITE CLIENT URL END **/;
-            window.SERVER_URL =
-                /** OVERWRITE SERVER URL START **/ 'http://localhost:8000/tasklist-glsp-server.js' /** OVERWRITE SERVER URL END **/;
+            window.CLIENT_URL = /** OVERWRITE CLIENT URL START **/ `${process.env.HOST_PATH}/tasklist-glsp-client.js` /** OVERWRITE CLIENT URL END **/;
+            window.SERVER_URL = /** OVERWRITE SERVER URL START **/ `${process.env.HOST_PATH}/tasklist-glsp-server.js` /** OVERWRITE SERVER URL END **/;
             const loadClientScript = document.createElement('script');
             loadClientScript.src = window.CLIENT_URL;
             document.getElementsByTagName('body')[0].appendChild(loadClientScript);

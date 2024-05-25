@@ -19,6 +19,9 @@ const CircularDependencyPlugin = require('circular-dependency-plugin');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const path = require('path');
+const dotenv = require('dotenv');
+
+dotenv.config();
 
 const buildRoot = path.resolve(__dirname, 'lib');
 const appRoot = path.resolve(__dirname, 'app');
@@ -76,6 +79,7 @@ module.exports = {
                 { from: path.resolve(__dirname, 'src', 'index.html'), to: path.resolve(appRoot, 'index.html') },
                 { from: path.resolve(__dirname, 'src', 'css'), to: path.resolve(appRoot, 'css') }
             ]
-        })
+        }),
+        new webpack.EnvironmentPlugin(['HOST_PATH'])
     ]
 };

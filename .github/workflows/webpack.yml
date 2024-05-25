@@ -2,9 +2,9 @@ name: NodeJS with Webpack
 
 on:
   push:
-    branches: [ "main" ]
+    branches: ['main']
   pull_request:
-    branches: [ "main" ]
+    branches: ['main']
 
 jobs:
   build:
@@ -15,28 +15,30 @@ jobs:
         node-version: [18.x]
 
     steps:
-    - uses: actions/checkout@v4
+      - uses: actions/checkout@v4
 
-    - name: Configure GitHub Pages
-      uses: actions/configure-pages@v3
-      id: pages
+      - name: Configure GitHub Pages
+        uses: actions/configure-pages@v3
+        id: pages
 
-    - name: Use Node.js ${{ matrix.node-version }}
-      uses: actions/setup-node@v3
-      with:
-        node-version: ${{ matrix.node-version }}
+      - name: Use Node.js ${{ matrix.node-version }}
+        uses: actions/setup-node@v3
+        with:
+          node-version: ${{ matrix.node-version }}
 
-    - name: Build
-      run: |
-        npm install
-        npm run build
+      - name: Overwrite .env file
+        run: |
+          echo "HOST_PATH=${{ steps.deployment.outputs.page_url }}" > .env
 
-    # TODO Build the tasklist/etc. static files
+      - name: Build
+        run: |
+          npm install
+          npm run build:all
 
-    - name: Upload artifact
-      uses: actions/upload-pages-artifact@v2
-      with:
-        path: 'app'
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v2
+        with:
+          path: 'app'
 
   deploy:
     permissions:
@@ -46,7 +48,7 @@ jobs:
 
     environment:
       name: github-pages
-      url: ${{steps.deployment.outputs.page_url}}
+      url: ${{ steps.deployment.outputs.page_url }}
 
     runs-on: ubuntu-latest
 
