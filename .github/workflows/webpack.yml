@@ -24,7 +24,7 @@ jobs:
 
       - name: Overwrite .env file
         run: |
-          echo "HOST_PATH=https://${{ github.event.repository.owner.name }}.github.io/${{ github.event.repository.name }}/" > .env
+          echo "HOST_PATH=${{ steps.pages.outputs.base_url }}" > .env
 
       - name: Build
         run: |
