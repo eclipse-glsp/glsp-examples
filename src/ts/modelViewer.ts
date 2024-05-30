@@ -14,7 +14,7 @@ window.addEventListener('message', ({ data }) => {
     if (data.type === 'MODEL_FILE') {
         fileStore.data = data.data;
         if (currentView === 'DATA') {
-            setMonacoText(data.data, 'json');
+            setMonacoText(data.data, fileStore.sourceModelType, undefined, true);
         } else {
             viewDataButton.innerText = 'Data*';
         }

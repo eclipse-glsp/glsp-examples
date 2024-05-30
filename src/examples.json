@@ -6,9 +6,16 @@
       "path": "tasklist-basic",
       "buildPath": "tasklist-basic",
       "diagram": "diagram.html",
+      "sourceModelType": "json",
       "serverBundle": "tasklist-glsp-server.js",
       "clientBundle": "tasklist-glsp-client.js",
       "sources": [
+        {
+          "name": "example.tasklist",
+          "path": ".",
+          "language": "json",
+          "side": "data"
+        },
         {
           "name": "tasklist-gmodel-factory.ts",
           "path": "sources/server",
@@ -39,8 +46,7 @@
           "language": "typescript",
           "side": "server"
         }
-      ],
-      "sourceModelType": "json"
+      ]
     },
     {
       "id": "tasklist-basic-all-server",
@@ -48,9 +54,16 @@
       "path": "tasklist-basic-all-server",
       "buildPath": "tasklist-basic",
       "diagram": "diagram.html",
+      "sourceModelType": "json",
       "serverBundle": "tasklist-glsp-server.js",
       "clientBundle": "tasklist-glsp-client.js",
       "sources": [
+        {
+          "name": "example.tasklist",
+          "path": ".",
+          "language": "json",
+          "side": "data"
+        },
         {
           "name": "tasklist-gmodel-factory.ts",
           "path": "sources/server",
@@ -129,8 +142,7 @@
           "language": "typescript",
           "side": "server"
         }
-      ],
-      "sourceModelType": "json"
+      ]
     }
   ]
 }

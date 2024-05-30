@@ -34,7 +34,7 @@ export const loadExample = (example: GLSPExample) => {
         viewDataButton.setAttribute('selected', '');
         viewSourcesButton.removeAttribute('selected');
         fileSelect.setAttribute('disabled', '');
-        setMonacoText(fileStore.data, 'json');
+        setMonacoText(fileStore.data, fileStore.sourceModelType, undefined, true);
         currentView = 'DATA';
         viewDataButton.innerText = 'Data';
     };

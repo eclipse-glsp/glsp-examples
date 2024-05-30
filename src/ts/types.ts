@@ -2,11 +2,11 @@ type GLSPExample = {
     id: string;
     name: string;
     diagram: string;
+    sourceModelType: string;
     path: string;
     serverBundle: string;
     clientBundle: string;
     sources: MonacoSource[];
-    sourceModelType: string;
 };
 
 type MonacoSource = {
@@ -16,6 +16,6 @@ type MonacoSource = {
     side: SourceSide;
 };
 
-type SourceSide = 'client' | 'server';
+type SourceSide = 'client' | 'server' | 'data';
 
 type ViewSelectionSection = 'DATA' | 'SOURCES';

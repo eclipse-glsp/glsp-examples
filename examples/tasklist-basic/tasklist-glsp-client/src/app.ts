@@ -54,7 +54,8 @@ async function initialize(connectionProvider: MessageConnection): Promise<void> 
         clientId,
         diagramType,
         glspClientProvider: async () => glspClient,
-        sourceUri: `${process.env.HOST_PATH}/example.tasklist`
+        // @ts-ignore
+        sourceUri: window.DATA_URL
     });
     const diagramLoader = container.get(DiagramLoader);
     await diagramLoader.load();

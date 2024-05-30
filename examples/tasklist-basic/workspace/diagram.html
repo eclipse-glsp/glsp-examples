@@ -58,6 +58,7 @@
         <script>
             window.CLIENT_URL = /** OVERWRITE CLIENT URL START **/ `${process.env.HOST_PATH}/tasklist-glsp-client.js` /** OVERWRITE CLIENT URL END **/;
             window.SERVER_URL = /** OVERWRITE SERVER URL START **/ `${process.env.HOST_PATH}/tasklist-glsp-server.js` /** OVERWRITE SERVER URL END **/;
+            window.DATA_URL = /** OVERWRITE DATA URL START **/ `${process.env.HOST_PATH}/example.tasklist` /** OVERWRITE DATA URL END **/;
             const loadClientScript = document.createElement('script');
             loadClientScript.src = window.CLIENT_URL;
             document.getElementsByTagName('body')[0].appendChild(loadClientScript);

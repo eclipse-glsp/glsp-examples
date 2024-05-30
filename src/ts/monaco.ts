@@ -8,13 +8,13 @@ monaco.languages.typescript.typescriptDefaults.setDiagnosticsOptions({
 let currentLanguage: string | undefined = undefined;
 let codeEditor: monaco.editor.IStandaloneCodeEditor | undefined = undefined;
 
-export const setMonacoText = (fileText: string, sourceLanguage: string, sourceIndex?: number) => {
+export const setMonacoText = (fileText: string, sourceLanguage: string, sourceIndex?: number, readOnly?: boolean) => {
     if (currentLanguage !== sourceLanguage) {
         codeEditor?.dispose();
         codeEditor = monaco.editor.create(document.getElementById('code')!, {
             language: sourceLanguage,
             automaticLayout: true,
-            readOnly: sourceLanguage !== 'typescript',
+            readOnly,
             wordWrap: 'on'
         });
         if (sourceIndex != null) {

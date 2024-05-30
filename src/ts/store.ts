@@ -5,6 +5,7 @@ export const examples = _examples as GLSPExample[];
 
 export const fileStore = {
     data: '',
+    sourceModelType: '',
     sources: {} as Record<number, { source: MonacoSource; text: string }>,
     serverJs: undefined as string | undefined,
     clientJs: undefined as string | undefined,
@@ -26,6 +27,7 @@ export const loadCachedSource = async (example: GLSPExample, index: number) => {
 };
 
 export const loadBundles = async (example: GLSPExample) => {
+    fileStore.sourceModelType = example.sourceModelType;
     return Promise.all([
         fetch(createPath(example, example.serverBundle))
             .then(result => result.text())
@@ -41,6 +43,7 @@ export const loadBundles = async (example: GLSPExample) => {
 
 export const resetStore = () => {
     fileStore.data = '';
+    fileStore.sourceModelType = '';
     fileStore.sources = {};
     fileStore.serverJs = undefined;
     fileStore.clientJs = undefined;

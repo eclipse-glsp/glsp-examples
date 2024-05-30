@@ -68,9 +68,19 @@ const compileSide = (side: SourceSide) => {
     return URL.createObjectURL(blob);
 };
 
+const compileData = () => {
+    const data = Object.values(fileStore.sources).find(source => source.source.side === 'data');
+    if (!data) {
+        return undefined;
+    }
+    const blob = new Blob([data.text], { type: 'application/json' });
+    return URL.createObjectURL(blob);
+};
+
 export const compileSources = () => {
     const serverBlobURL = compileSide('server');
     const clientBlobURL = compileSide('client');
+    const dataBlobURL = compileData();
 
     let diagramHtml = fileStore.diagramHtml!;
     diagramHtml =
@@ -86,6 +96,15 @@ export const compileSources = () => {
         clientBlobURL +
         '"' +
         diagramHtml.slice(diagramHtml.search('/\\*\\* OVERWRITE CLIENT URL END \\*\\*/'));
+
+    if (dataBlobURL) {
+        diagramHtml =
+            diagramHtml.slice(0, diagramHtml.search('/\\*\\* OVERWRITE DATA URL START \\*\\*/')) +
+            '"' +
+            dataBlobURL +
+            '"' +
+            diagramHtml.slice(diagramHtml.search('/\\*\\* OVERWRITE DATA URL END \\*\\*/'));
+    }
 
     const diagramHtmlBlob = new Blob([diagramHtml], { type: 'text/html' });
     const diagramHtmlBlobURL = URL.createObjectURL(diagramHtmlBlob);
