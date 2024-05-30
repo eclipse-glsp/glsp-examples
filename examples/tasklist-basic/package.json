@@ -27,7 +27,7 @@
     "all": "yarn install && yarn lint",
     "build": "yarn clean && yarn --cwd tasklist-glsp-server build && yarn --cwd tasklist-glsp-client build && yarn copy:static",
     "clean": "yarn --cwd tasklist-glsp-server clean && yarn --cwd tasklist-glsp-client clean && rimraf app",
-    "copy:static": "cp workspace/diagram.html app/diagram.html && cp workspace/example.tasklist app/example.tasklist"
+    "copy:static": "cp -f workspace/diagram.html app/diagram.html && cp -f workspace/example.tasklist app/example.tasklist"
   },
   "resolutions": {
     "string-width": "4.2.3"

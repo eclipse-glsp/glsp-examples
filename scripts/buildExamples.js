@@ -34,7 +34,7 @@ examples.forEach(example => {
         const dest = path.join('app', example.path);
         copyDirectory(src, dest, example);
         const file = fs.readFileSync(path.join('src', 'index.html'), 'utf8');
-        const result = file.replace(/bundle\.js/g, `../bundle.js`);
+        const result = file.replace(/bundle\.js/g, `../bundle.js`).replace(/css\//g, '../css/');
         fs.writeFileSync(path.join(dest, 'index.html'), result, 'utf8');
     });
 });
