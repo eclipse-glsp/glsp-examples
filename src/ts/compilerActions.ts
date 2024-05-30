@@ -5,7 +5,7 @@ import { loadExample } from './sourceViewer';
 import { replaceIframeSrc } from './modelViewer';
 import { createPath } from './util';
 
-const selectedPath = window.location.pathname.substring(1);
+const selectedPath = window.location.href.replace(process.env.HOST_PATH as string, '').substring(1);
 const examples = selectedPath ? _examples.filter(example => example.path === selectedPath) : _examples;
 
 const setExample = (example: GLSPExample) => {
