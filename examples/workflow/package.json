@@ -1,5 +1,5 @@
 {
-  "name": "tasklist-basic",
+  "name": "workflow",
   "version": "2.0.0",
   "private": true,
   "homepage": "https://www.eclipse.org/glsp/",
@@ -20,14 +20,14 @@
     }
   ],
   "workspaces": [
-    "tasklist-glsp-server",
-    "tasklist-glsp-client"
+    "workflow-glsp-server",
+    "workflow-glsp-client"
   ],
   "scripts": {
     "all": "yarn install && yarn lint",
-    "build": "yarn clean && yarn --cwd tasklist-glsp-server build && yarn --cwd tasklist-glsp-client build && yarn copy:static",
-    "clean": "yarn --cwd tasklist-glsp-server clean && yarn --cwd tasklist-glsp-client clean && rimraf app",
-    "copy:static": "cp -f workspace/diagram.html app/diagram.html && cp -f workspace/example.tasklist app/example.tasklist"
+    "build": "yarn clean && yarn --cwd workflow-glsp-server build && yarn --cwd workflow-glsp-client build && yarn copy:static",
+    "clean": "yarn --cwd workflow-glsp-server clean && yarn --cwd workflow-glsp-client clean && rimraf app",
+    "copy:static": "cp -f workspace/diagram.html app/diagram.html && cp -f workspace/example.wf app/example.wf"
   },
   "resolutions": {
     "string-width": "4.2.3"

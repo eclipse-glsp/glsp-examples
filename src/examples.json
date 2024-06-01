@@ -143,6 +143,36 @@
           "side": "server"
         }
       ]
+    },
+    {
+      "id": "workflow",
+      "name": "Workflow",
+      "path": "workflow",
+      "buildPath": "workflow",
+      "diagram": "diagram.html",
+      "sourceModelType": "json",
+      "serverBundle": "workflow-glsp-server.js",
+      "clientBundle": "workflow-glsp-client.js",
+      "sources": [
+        {
+          "name": "example.wf",
+          "path": ".",
+          "language": "json",
+          "side": "data"
+        },
+        {
+          "name": "workflow-diagram-module.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "workflow-model.ts",
+          "path": "sources/client",
+          "language": "typescript",
+          "side": "client"
+        }
+      ]
     }
   ]
 }
