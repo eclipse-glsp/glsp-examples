@@ -1,7 +1,7 @@
 import { examples as _examples, resetStore } from './store';
 import { compileSources } from './sourceCompiler';
 import { loadBundles } from './store';
-import { loadExample } from './sourceViewer';
+import { loadExample, resetSelectedSource } from './sourceViewer';
 import { replaceIframeSrc } from './modelViewer';
 import { createPath } from './util';
 
@@ -40,7 +40,10 @@ const compileButton = document.getElementById('compile-button')!;
 compileButton.onclick = compileSources;
 
 const resetButton = document.getElementById('reset-button')!;
-resetButton.onclick = () => setExample(examples[currentExample]);
+resetButton.onclick = () => {
+    setExample(examples[currentExample]);
+    resetSelectedSource();
+};
 
 export const onStart = () => {
     setExample(examples[0]);

@@ -1,8 +1,8 @@
-import { JsxEmit, ModuleKind, ModuleResolutionKind, ScriptTarget, transpileModule } from 'typescript';
+import { CompilerOptions, JsxEmit, ModuleKind, ModuleResolutionKind, ScriptTarget, transpileModule } from 'typescript';
 import { fileStore } from './store';
 import { replaceIframeSrc } from './modelViewer';
 
-const compilerOptions = {
+const compilerOptions: CompilerOptions = {
     skipLibCheck: true,
     declaration: true,
     declarationMap: true,
@@ -23,7 +23,8 @@ const compilerOptions = {
     module: ModuleKind.CommonJS,
     moduleResolution: ModuleResolutionKind.NodeNext,
     target: ScriptTarget.ES2017,
-    jsx: JsxEmit.ReactJSX,
+    jsx: JsxEmit.React,
+    reactNamespace: 'JSX',
     lib: ['ES2017', 'dom'],
     sourceMap: false,
     types: ['node', 'reflect-metadata']
@@ -47,7 +48,7 @@ const compileSide = (side: SourceSide) => {
         .forEach(source => {
             const jsCode = transpileModule(source.text, { compilerOptions }).outputText;
 
-            const subModulePrePos = moduleString.search(`${source.source.name.replace('.ts', '.js')}":`);
+            const subModulePrePos = moduleString.search(`${source.source.name.replace(/\.tsx?/g, '.js')}":`);
             const moduleStringSubstr = moduleString.substring(subModulePrePos);
             const subModuleStartPos = moduleStringSubstr.search('"use strict";') + subModulePrePos;
             const subModuleEndPos = moduleStringSubstr.search('/\\*\\*\\*/ \\}\\)') + subModulePrePos;

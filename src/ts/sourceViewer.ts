@@ -47,3 +47,7 @@ export const loadExample = (example: GLSPExample) => {
         currentView = 'SOURCES';
     };
 };
+
+export const resetSelectedSource = () => {
+    currentSelectedSource = 0;
+};

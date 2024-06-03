@@ -418,6 +418,12 @@
           "path": "sources/client",
           "language": "typescript",
           "side": "client"
+        },
+        {
+          "name": "workflow-views.tsx",
+          "path": "sources/client",
+          "language": "typescript",
+          "side": "client"
         }
       ]
     }
