@@ -42,6 +42,7 @@ const compileSide = (side: SourceSide) => {
     let moduleString = side === 'client' ? fileStore.clientJs! : fileStore.serverJs!;
 
     Object.values(fileStore.sources)
+        .filter(source => !source.source.ignoreForCompilation)
         .filter(source => source.source.side === side)
         .forEach(source => {
             const jsCode = transpileModule(source.text, { compilerOptions }).outputText;

@@ -167,7 +167,254 @@
           "side": "server"
         },
         {
+          "name": "workflow-diagram-configuration.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "workflow-glsp-server.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "graph-extension.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "workflow-popup-factory.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "workflow-edge-creation-checker.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "workflow-serializer.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "model-types.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "task-edit-validator.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "task-edit-context-provider.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "edit-task-operation-handler.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "workflow-context-menu-item-provider.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "workflow-command-palette-action-provider.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "previous-node-navigation-target-provider.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "node-documentation-navigation-target-provider.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "next-node-navigation-target-provider.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "abstract-next-or-previous-navigation-target-provider.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "workflow-storage.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "workflow-navigation-target-resolver.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
           "name": "workflow-model.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server",
+          "ignoreForCompilation": true
+        },
+        {
+          "name": "workflow-model-state.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "workflow-gmodel-factory.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "workflow-model-validator.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "workflow-layout-configurator.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "workflow-label-edit-validator.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "grid-snapper.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "create-workflow-node-operation-handler.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "create-weighted-edge-handler.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "create-task-handler.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "create-merge-node-handler.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "create-manual-task-handler.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "create-join-node-handler.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "create-fork-or-join-node-handler.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "create-fork-node-handler.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "create-edge-handler.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "create-decision-node-handler.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "create-category-handler.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "create-automated-task-handler.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "create-activity-node-handler.ts",
+          "path": "sources/server",
+          "language": "typescript",
+          "side": "server"
+        },
+        {
+          "name": "workflow-model.ts",
+          "path": "sources/client",
+          "language": "typescript",
+          "side": "client"
+        },
+        {
+          "name": "workflow-diagram-module.ts",
+          "path": "sources/client",
+          "language": "typescript",
+          "side": "client"
+        },
+        {
+          "name": "workflow-snapper.ts",
+          "path": "sources/client",
+          "language": "typescript",
+          "side": "client"
+        },
+        {
+          "name": "workflow-startup.ts",
           "path": "sources/client",
           "language": "typescript",
           "side": "client"

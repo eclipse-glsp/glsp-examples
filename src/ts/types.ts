@@ -14,6 +14,7 @@ type MonacoSource = {
     path: string;
     language: string;
     side: SourceSide;
+    ignoreForCompilation?: boolean;
 };
 
 type SourceSide = 'client' | 'server' | 'data';
