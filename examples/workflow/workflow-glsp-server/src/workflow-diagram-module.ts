@@ -23,8 +23,10 @@ import {
     EdgeCreationChecker,
     GLSPServer,
     GModelDiagramModule,
+    GModelFactory,
     InstanceMultiBinding,
     LabelEditValidator,
+    ModelState,
     ModelValidator,
     MultiBinding,
     NavigationTargetProvider,
@@ -59,6 +61,9 @@ import { WorkflowDiagramConfiguration } from './workflow-diagram-configuration';
 import { WorkflowEdgeCreationChecker } from './workflow-edge-creation-checker';
 import { WorkflowGLSPServer } from './workflow-glsp-server';
 import { WorkflowPopupFactory } from './workflow-popup-factory';
+import { WorkflowModelState } from './model/workflow-model-state';
+import { WorkflowModelStorage } from './model/workflow-storage';
+import { WorkflowGModelFactory } from './model/workflow-gmodel-factory';
 
 @injectable()
 export class WorkflowServerModule extends ServerModule {
@@ -69,10 +74,6 @@ export class WorkflowServerModule extends ServerModule {
 
 @injectable()
 export class WorkflowDiagramModule extends GModelDiagramModule {
-    constructor(public bindSourceModelStorage: () => BindingTarget<SourceModelStorage>) {
-        super();
-    }
-
     get diagramType(): string {
         return 'workflow-diagram';
     }
@@ -89,6 +90,18 @@ export class WorkflowDiagramModule extends GModelDiagramModule {
         binding.add(CreateDecisionNodeHandler);
         binding.add(CreateCategoryHandler);
         binding.add(EditTaskOperationHandler);
+    }
+
+    protected bindSourceModelStorage(): BindingTarget<SourceModelStorage> {
+        return WorkflowModelStorage;
+    }
+
+    protected override bindModelState(): BindingTarget<ModelState> {
+        return { service: WorkflowModelState };
+    }
+
+    protected override bindGModelFactory(): BindingTarget<GModelFactory> {
+        return WorkflowGModelFactory;
     }
 
     protected bindDiagramConfiguration(): BindingTarget<DiagramConfiguration> {

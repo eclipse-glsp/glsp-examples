@@ -1,790 +1,539 @@
 {
-  "cssClasses": [],
-  "type": "graph",
-  "position": {
-    "x": 0,
-    "y": 0
-  },
-  "id": "sprotty",
-  "revision": 14,
-  "children": [
-    {
-      "cssClasses": [
-        "task",
-        "automated"
-      ],
-      "type": "task:automated",
-      "id": "b300bdb8-52c3-4903-ba09-36dff9b281fd",
-      "layout": "hbox",
-      "args": {
-        "radiusTopLeft": 5,
-        "radiusBottomLeft": 5,
-        "radiusBottomRight": 5,
-        "radiusTopRight": 5
-      },
-      "position": {
-        "x": 220,
-        "y": 150
-      },
-      "name": "AutomatedTask8",
-      "taskType": "automated",
-      "layoutOptions": {
-        "paddingRight": 10,
-        "prefWidth": 82.4482421875,
-        "prefHeight": 30
-      },
-      "size": {
-        "width": 82.4482421875,
-        "height": 30
-      },
-      "children": [
-        {
-          "cssClasses": [],
-          "type": "icon",
-          "id": "b300bdb8-52c3-4903-ba09-36dff9b281fd_icon",
-          "position": {
-            "x": 5,
-            "y": 5
-          },
-          "size": {
-            "width": 25,
-            "height": 20
-          },
-          "children": []
-        },
-        {
-          "cssClasses": [],
-          "type": "label:heading",
-          "alignment": {
-            "x": 20.6171875,
-            "y": 13
-          },
-          "id": "b300bdb8-52c3-4903-ba09-36dff9b281fd_classname",
-          "text": "ChkTp",
-          "position": {
-            "x": 31,
-            "y": 7
-          },
-          "size": {
-            "width": 41.4482421875,
-            "height": 16
-          },
-          "children": []
-        }
-      ]
+    "id": "sprotty",
+    "nodes": {
+        "tasks": [
+            {
+                "type": "task:automated",
+                "id": "b300bdb8-52c3-4903-ba09-36dff9b281fd",
+                "position": {
+                    "x": 220,
+                    "y": 150
+                },
+                "name": "AutomatedTask8",
+                "size": {
+                    "width": 82.4482421875,
+                    "height": 30
+                },
+                "children": [
+                    {
+                        "type": "icon",
+                        "id": "b300bdb8-52c3-4903-ba09-36dff9b281fd_icon",
+                        "position": {
+                            "x": 5,
+                            "y": 5
+                        },
+                        "size": {
+                            "width": 25,
+                            "height": 20
+                        }
+                    },
+                    {
+                        "type": "label:heading",
+                        "alignment": {
+                            "x": 20.6171875,
+                            "y": 13
+                        },
+                        "id": "b300bdb8-52c3-4903-ba09-36dff9b281fd_classname",
+                        "text": "ChkTp",
+                        "position": {
+                            "x": 31,
+                            "y": 7
+                        },
+                        "size": {
+                            "width": 41.4482421875,
+                            "height": 16
+                        }
+                    }
+                ]
+            },
+            {
+                "type": "task:manual",
+                "id": "3a083ea5-5d82-4942-8bb4-3c0c27e9a71d",
+                "position": {
+                    "x": 70,
+                    "y": 100
+                },
+                "name": "ManualTask9",
+                "size": {
+                    "width": 72.921875,
+                    "height": 30
+                },
+                "children": [
+                    {
+                        "type": "icon",
+                        "id": "3a083ea5-5d82-4942-8bb4-3c0c27e9a71d_icon",
+                        "position": {
+                            "x": 5,
+                            "y": 5
+                        },
+                        "size": {
+                            "width": 25,
+                            "height": 20
+                        }
+                    },
+                    {
+                        "type": "label:heading",
+                        "alignment": {
+                            "x": 15.9609375,
+                            "y": 13
+                        },
+                        "id": "task0",
+                        "text": "Push",
+                        "position": {
+                            "x": 31,
+                            "y": 7
+                        },
+                        "size": {
+                            "width": 31.921875,
+                            "height": 16
+                        }
+                    }
+                ]
+            },
+            {
+                "type": "task:automated",
+                "id": "5496d85e-104c-47a8-bfe6-75211dbf5ae1",
+                "position": {
+                    "x": 220,
+                    "y": 50
+                },
+                "name": "AutomatedTask10",
+                "size": {
+                    "width": 83.1103515625,
+                    "height": 30
+                },
+                "children": [
+                    {
+                        "type": "icon",
+                        "id": "5496d85e-104c-47a8-bfe6-75211dbf5ae1_icon",
+                        "position": {
+                            "x": 5,
+                            "y": 5
+                        },
+                        "size": {
+                            "width": 25,
+                            "height": 20
+                        }
+                    },
+                    {
+                        "type": "label:heading",
+                        "alignment": {
+                            "x": 21,
+                            "y": 13
+                        },
+                        "id": "task0_automated",
+                        "text": "ChkWt",
+                        "position": {
+                            "x": 31,
+                            "y": 7
+                        },
+                        "size": {
+                            "width": 42.1103515625,
+                            "height": 16
+                        }
+                    }
+                ]
+            },
+            {
+                "type": "task:automated",
+                "id": "ab6e230a-33e6-4a0c-a08b-c0930767a437",
+                "position": {
+                    "x": 390,
+                    "y": 180
+                },
+                "name": "AutomatedTask11",
+                "size": {
+                    "width": 92.46875,
+                    "height": 30
+                },
+                "children": [
+                    {
+                        "type": "icon",
+                        "id": "ab6e230a-33e6-4a0c-a08b-c0930767a437_icon",
+                        "position": {
+                            "x": 5,
+                            "y": 5
+                        },
+                        "size": {
+                            "width": 25,
+                            "height": 20
+                        }
+                    },
+                    {
+                        "type": "label:heading",
+                        "alignment": {
+                            "x": 25.6796875,
+                            "y": 13
+                        },
+                        "id": "ab6e230a-33e6-4a0c-a08b-c0930767a437_classname",
+                        "text": "PreHeat",
+                        "position": {
+                            "x": 31,
+                            "y": 7
+                        },
+                        "size": {
+                            "width": 51.46875,
+                            "height": 16
+                        }
+                    }
+                ]
+            },
+            {
+                "type": "task:automated",
+                "id": "8360c168-8f25-438a-a213-d5a84e9ae4cd",
+                "position": {
+                    "x": 390,
+                    "y": 130
+                },
+                "name": "AutomatedTask12",
+                "size": {
+                    "width": 90.248046875,
+                    "height": 30
+                },
+                "children": [
+                    {
+                        "type": "icon",
+                        "id": "8360c168-8f25-438a-a213-d5a84e9ae4cd_icon",
+                        "position": {
+                            "x": 5,
+                            "y": 5
+                        },
+                        "size": {
+                            "width": 25,
+                            "height": 20
+                        }
+                    },
+                    {
+                        "type": "label:heading",
+                        "alignment": {
+                            "x": 24.5234375,
+                            "y": 13
+                        },
+                        "id": "8360c168-8f25-438a-a213-d5a84e9ae4cd_classname",
+                        "text": "KeepTp",
+                        "position": {
+                            "x": 31,
+                            "y": 7
+                        },
+                        "size": {
+                            "width": 49.248046875,
+                            "height": 16
+                        }
+                    }
+                ]
+            },
+            {
+                "type": "task:manual",
+                "id": "ef349859-2a89-46b0-b394-c339a79c10e3",
+                "position": {
+                    "x": 390,
+                    "y": 30
+                },
+                "name": "ManualTask13",
+                "size": {
+                    "width": 75.32421875,
+                    "height": 30
+                },
+                "children": [
+                    {
+                        "type": "icon",
+                        "id": "ef349859-2a89-46b0-b394-c339a79c10e3_icon",
+                        "position": {
+                            "x": 5,
+                            "y": 5
+                        },
+                        "size": {
+                            "width": 25,
+                            "height": 20
+                        }
+                    },
+                    {
+                        "type": "label:heading",
+                        "alignment": {
+                            "x": 17.109375,
+                            "y": 13
+                        },
+                        "id": "ef349859-2a89-46b0-b394-c339a79c10e3_classname",
+                        "text": "RflWt",
+                        "position": {
+                            "x": 31,
+                            "y": 7
+                        },
+                        "size": {
+                            "width": 34.32421875,
+                            "height": 16
+                        }
+                    }
+                ]
+            },
+            {
+                "type": "task:automated",
+                "id": "da626312-7545-4b15-a502-766ab2da1e65",
+                "position": {
+                    "x": 390,
+                    "y": 80
+                },
+                "name": "AutomatedTask14",
+                "size": {
+                    "width": 78.9931640625,
+                    "height": 30
+                },
+                "children": [
+                    {
+                        "type": "icon",
+                        "id": "da626312-7545-4b15-a502-766ab2da1e65_icon",
+                        "position": {
+                            "x": 5,
+                            "y": 5
+                        },
+                        "size": {
+                            "width": 25,
+                            "height": 20
+                        }
+                    },
+                    {
+                        "type": "label:heading",
+                        "alignment": {
+                            "x": 18.671875,
+                            "y": 13
+                        },
+                        "id": "da626312-7545-4b15-a502-766ab2da1e65_classname",
+                        "text": "WtOK",
+                        "position": {
+                            "x": 31,
+                            "y": 7
+                        },
+                        "size": {
+                            "width": 37.9931640625,
+                            "height": 16
+                        }
+                    }
+                ]
+            },
+            {
+                "type": "task:automated",
+                "id": "532ff124-9e72-4335-9e2b-423a544f1318",
+                "position": {
+                    "x": 600,
+                    "y": 100
+                },
+                "name": "AutomatedTask15",
+                "size": {
+                    "width": 73.20530319213867,
+                    "height": 30
+                },
+                "children": [
+                    {
+                        "type": "icon",
+                        "id": "532ff124-9e72-4335-9e2b-423a544f1318_icon",
+                        "position": {
+                            "x": 5,
+                            "y": 5
+                        },
+                        "size": {
+                            "width": 25,
+                            "height": 20
+                        }
+                    },
+                    {
+                        "type": "label:heading",
+                        "alignment": {
+                            "x": 15.953125,
+                            "y": 13
+                        },
+                        "id": "532ff124-9e72-4335-9e2b-423a544f1318_classname",
+                        "text": "Brew",
+                        "position": {
+                            "x": 31,
+                            "y": 7
+                        },
+                        "size": {
+                            "width": 31.90625,
+                            "height": 16
+                        }
+                    }
+                ]
+            }
+        ],
+        "activities": [
+            {
+                "type": "activityNode:fork",
+                "id": "16c7860a-c38b-4761-bb48-baa92113478b",
+                "position": {
+                    "x": 170,
+                    "y": 90
+                },
+                "size": {
+                    "width": 10,
+                    "height": 50
+                }
+            },
+            {
+                "type": "activityNode:decision",
+                "id": "304abdb7-a8b3-4035-b73e-45cc611dd4c3",
+                "position": {
+                    "x": 330,
+                    "y": 50
+                },
+                "size": {
+                    "width": 32,
+                    "height": 32
+                }
+            },
+            {
+                "type": "activityNode:decision",
+                "id": "44cdab45-7480-4f67-850b-75d0bc2f22c4",
+                "position": {
+                    "x": 330,
+                    "y": 150
+                },
+                "size": {
+                    "width": 32,
+                    "height": 32
+                }
+            },
+            {
+                "type": "activityNode:join",
+                "id": "8668b502-0a10-4f32-b751-97dbaa4f5372",
+                "position": {
+                    "x": 560,
+                    "y": 90
+                },
+                "size": {
+                    "width": 10,
+                    "height": 50
+                }
+            },
+            {
+                "type": "activityNode:merge",
+                "id": "ba5ec10f-1aed-458f-a5a5-eb30b127f4b6",
+                "position": {
+                    "x": 500,
+                    "y": 50
+                },
+                "size": {
+                    "width": 32,
+                    "height": 32
+                }
+            },
+            {
+                "type": "activityNode:merge",
+                "id": "55be52aa-fb5d-4f5c-8cdf-05c17cd9a1e3",
+                "position": {
+                    "x": 500,
+                    "y": 150
+                },
+                "size": {
+                    "width": 32,
+                    "height": 32
+                }
+            }
+        ]
     },
-    {
-      "cssClasses": [
-        "task",
-        "manual"
-      ],
-      "type": "task:manual",
-      "id": "3a083ea5-5d82-4942-8bb4-3c0c27e9a71d",
-      "layout": "hbox",
-      "args": {
-        "radiusTopLeft": 5,
-        "radiusBottomLeft": 5,
-        "radiusBottomRight": 5,
-        "radiusTopRight": 5
-      },
-      "position": {
-        "x": 70,
-        "y": 100
-      },
-      "name": "ManualTask9",
-      "taskType": "manual",
-      "layoutOptions": {
-        "paddingRight": 10,
-        "prefWidth": 72.921875,
-        "prefHeight": 30
-      },
-      "size": {
-        "width": 72.921875,
-        "height": 30
-      },
-      "children": [
-        {
-          "cssClasses": [],
-          "type": "icon",
-          "id": "3a083ea5-5d82-4942-8bb4-3c0c27e9a71d_icon",
-          "position": {
-            "x": 5,
-            "y": 5
-          },
-          "size": {
-            "width": 25,
-            "height": 20
-          },
-          "children": []
-        },
-        {
-          "cssClasses": [],
-          "type": "label:heading",
-          "alignment": {
-            "x": 15.9609375,
-            "y": 13
-          },
-          "id": "task0",
-          "text": "Push",
-          "position": {
-            "x": 31,
-            "y": 7
-          },
-          "size": {
-            "width": 31.921875,
-            "height": 16
-          },
-          "children": []
-        }
-      ]
-    },
-    {
-      "cssClasses": [
-        "forkOrJoin"
-      ],
-      "type": "activityNode:fork",
-      "id": "16c7860a-c38b-4761-bb48-baa92113478b",
-      "position": {
-        "x": 170,
-        "y": 90
-      },
-      "nodeType": "forkNode",
-      "size": {
-        "width": 10,
-        "height": 50
-      },
-      "children": []
-    },
-    {
-      "cssClasses": [],
-      "type": "edge",
-      "routingPoints": [],
-      "id": "a8ffb72a-a632-4133-a55f-95e4df297875",
-      "sourceId": "3a083ea5-5d82-4942-8bb4-3c0c27e9a71d",
-      "targetId": "16c7860a-c38b-4761-bb48-baa92113478b",
-      "children": []
-    },
-    {
-      "cssClasses": [],
-      "type": "edge",
-      "routingPoints": [],
-      "id": "d6fa4391-4139-4789-bd00-4c7509e5d4e1",
-      "sourceId": "16c7860a-c38b-4761-bb48-baa92113478b",
-      "targetId": "b300bdb8-52c3-4903-ba09-36dff9b281fd",
-      "children": []
-    },
-    {
-      "cssClasses": [
-        "task",
-        "automated"
-      ],
-      "type": "task:automated",
-      "id": "5496d85e-104c-47a8-bfe6-75211dbf5ae1",
-      "layout": "hbox",
-      "args": {
-        "radiusTopLeft": 5,
-        "radiusBottomLeft": 5,
-        "radiusBottomRight": 5,
-        "radiusTopRight": 5
-      },
-      "position": {
-        "x": 220,
-        "y": 50
-      },
-      "name": "AutomatedTask10",
-      "taskType": "automated",
-      "layoutOptions": {
-        "paddingRight": 10,
-        "prefWidth": 83.1103515625,
-        "prefHeight": 30
-      },
-      "size": {
-        "width": 83.1103515625,
-        "height": 30
-      },
-      "children": [
-        {
-          "cssClasses": [],
-          "type": "icon",
-          "id": "5496d85e-104c-47a8-bfe6-75211dbf5ae1_icon",
-          "position": {
-            "x": 5,
-            "y": 5
-          },
-          "size": {
-            "width": 25,
-            "height": 20
-          },
-          "children": []
-        },
-        {
-          "cssClasses": [],
-          "type": "label:heading",
-          "alignment": {
-            "x": 21,
-            "y": 13
-          },
-          "id": "task0_automated",
-          "text": "ChkWt",
-          "position": {
-            "x": 31,
-            "y": 7
-          },
-          "size": {
-            "width": 42.1103515625,
-            "height": 16
-          },
-          "children": []
-        }
-      ]
-    },
-    {
-      "cssClasses": [
-        "decision"
-      ],
-      "type": "activityNode:decision",
-      "id": "304abdb7-a8b3-4035-b73e-45cc611dd4c3",
-      "position": {
-        "x": 330,
-        "y": 50
-      },
-      "nodeType": "decisionNode",
-      "size": {
-        "width": 32,
-        "height": 32
-      },
-      "children": []
-    },
-    {
-      "cssClasses": [
-        "decision"
-      ],
-      "type": "activityNode:decision",
-      "id": "44cdab45-7480-4f67-850b-75d0bc2f22c4",
-      "position": {
-        "x": 330,
-        "y": 150
-      },
-      "nodeType": "decisionNode",
-      "size": {
-        "width": 32,
-        "height": 32
-      },
-      "children": []
-    },
-    {
-      "cssClasses": [],
-      "type": "edge",
-      "routingPoints": [],
-      "id": "ea94aeb9-c86f-42b2-94c6-4cc91d34a883",
-      "sourceId": "5496d85e-104c-47a8-bfe6-75211dbf5ae1",
-      "targetId": "304abdb7-a8b3-4035-b73e-45cc611dd4c3",
-      "children": []
-    },
-    {
-      "cssClasses": [],
-      "type": "edge",
-      "routingPoints": [],
-      "id": "d7b69577-d35f-4e3b-b306-86e3f0b7008e",
-      "sourceId": "16c7860a-c38b-4761-bb48-baa92113478b",
-      "targetId": "5496d85e-104c-47a8-bfe6-75211dbf5ae1",
-      "children": []
-    },
-    {
-      "cssClasses": [],
-      "type": "edge",
-      "routingPoints": [],
-      "id": "5cb74a75-9676-4db4-a088-13d467234c19",
-      "sourceId": "b300bdb8-52c3-4903-ba09-36dff9b281fd",
-      "targetId": "44cdab45-7480-4f67-850b-75d0bc2f22c4",
-      "children": []
-    },
-    {
-      "cssClasses": [
-        "task",
-        "automated"
-      ],
-      "type": "task:automated",
-      "id": "ab6e230a-33e6-4a0c-a08b-c0930767a437",
-      "layout": "hbox",
-      "args": {
-        "radiusTopLeft": 5,
-        "radiusBottomLeft": 5,
-        "radiusBottomRight": 5,
-        "radiusTopRight": 5
-      },
-      "position": {
-        "x": 390,
-        "y": 180
-      },
-      "name": "AutomatedTask11",
-      "taskType": "automated",
-      "layoutOptions": {
-        "paddingRight": 10,
-        "prefWidth": 92.46875,
-        "prefHeight": 30
-      },
-      "size": {
-        "width": 92.46875,
-        "height": 30
-      },
-      "children": [
-        {
-          "cssClasses": [],
-          "type": "icon",
-          "id": "ab6e230a-33e6-4a0c-a08b-c0930767a437_icon",
-          "position": {
-            "x": 5,
-            "y": 5
-          },
-          "size": {
-            "width": 25,
-            "height": 20
-          },
-          "children": []
-        },
-        {
-          "cssClasses": [],
-          "type": "label:heading",
-          "alignment": {
-            "x": 25.6796875,
-            "y": 13
-          },
-          "id": "ab6e230a-33e6-4a0c-a08b-c0930767a437_classname",
-          "text": "PreHeat",
-          "position": {
-            "x": 31,
-            "y": 7
-          },
-          "size": {
-            "width": 51.46875,
-            "height": 16
-          },
-          "children": []
-        }
-      ]
-    },
-    {
-      "cssClasses": [
-        "task",
-        "automated"
-      ],
-      "type": "task:automated",
-      "id": "8360c168-8f25-438a-a213-d5a84e9ae4cd",
-      "layout": "hbox",
-      "args": {
-        "radiusTopLeft": 5,
-        "radiusBottomLeft": 5,
-        "radiusBottomRight": 5,
-        "radiusTopRight": 5
-      },
-      "position": {
-        "x": 390,
-        "y": 130
-      },
-      "name": "AutomatedTask12",
-      "taskType": "automated",
-      "layoutOptions": {
-        "paddingRight": 10,
-        "prefWidth": 90.248046875,
-        "prefHeight": 30
-      },
-      "size": {
-        "width": 90.248046875,
-        "height": 30
-      },
-      "children": [
-        {
-          "cssClasses": [],
-          "type": "icon",
-          "id": "8360c168-8f25-438a-a213-d5a84e9ae4cd_icon",
-          "position": {
-            "x": 5,
-            "y": 5
-          },
-          "size": {
-            "width": 25,
-            "height": 20
-          },
-          "children": []
-        },
-        {
-          "cssClasses": [],
-          "type": "label:heading",
-          "alignment": {
-            "x": 24.5234375,
-            "y": 13
-          },
-          "id": "8360c168-8f25-438a-a213-d5a84e9ae4cd_classname",
-          "text": "KeepTp",
-          "position": {
-            "x": 31,
-            "y": 7
-          },
-          "size": {
-            "width": 49.248046875,
-            "height": 16
-          },
-          "children": []
-        }
-      ]
-    },
-    {
-      "cssClasses": [
-        "task",
-        "manual"
-      ],
-      "type": "task:manual",
-      "id": "ef349859-2a89-46b0-b394-c339a79c10e3",
-      "layout": "hbox",
-      "args": {
-        "radiusTopLeft": 5,
-        "radiusBottomLeft": 5,
-        "radiusBottomRight": 5,
-        "radiusTopRight": 5
-      },
-      "position": {
-        "x": 390,
-        "y": 30
-      },
-      "name": "ManualTask13",
-      "taskType": "manual",
-      "layoutOptions": {
-        "paddingRight": 10,
-        "prefWidth": 75.32421875,
-        "prefHeight": 30
-      },
-      "size": {
-        "width": 75.32421875,
-        "height": 30
-      },
-      "children": [
-        {
-          "cssClasses": [],
-          "type": "icon",
-          "id": "ef349859-2a89-46b0-b394-c339a79c10e3_icon",
-          "position": {
-            "x": 5,
-            "y": 5
-          },
-          "size": {
-            "width": 25,
-            "height": 20
-          },
-          "children": []
-        },
-        {
-          "cssClasses": [],
-          "type": "label:heading",
-          "alignment": {
-            "x": 17.109375,
-            "y": 13
-          },
-          "id": "ef349859-2a89-46b0-b394-c339a79c10e3_classname",
-          "text": "RflWt",
-          "position": {
-            "x": 31,
-            "y": 7
-          },
-          "size": {
-            "width": 34.32421875,
-            "height": 16
-          },
-          "children": []
-        }
-      ]
-    },
-    {
-      "cssClasses": [
-        "task",
-        "automated"
-      ],
-      "type": "task:automated",
-      "id": "da626312-7545-4b15-a502-766ab2da1e65",
-      "layout": "hbox",
-      "args": {
-        "radiusTopLeft": 5,
-        "radiusBottomLeft": 5,
-        "radiusBottomRight": 5,
-        "radiusTopRight": 5
-      },
-      "position": {
-        "x": 390,
-        "y": 80
-      },
-      "name": "AutomatedTask14",
-      "taskType": "automated",
-      "layoutOptions": {
-        "paddingRight": 10,
-        "prefWidth": 78.9931640625,
-        "prefHeight": 30
-      },
-      "size": {
-        "width": 78.9931640625,
-        "height": 30
-      },
-      "children": [
-        {
-          "cssClasses": [],
-          "type": "icon",
-          "id": "da626312-7545-4b15-a502-766ab2da1e65_icon",
-          "position": {
-            "x": 5,
-            "y": 5
-          },
-          "size": {
-            "width": 25,
-            "height": 20
-          },
-          "children": []
-        },
-        {
-          "cssClasses": [],
-          "type": "label:heading",
-          "alignment": {
-            "x": 18.671875,
-            "y": 13
-          },
-          "id": "da626312-7545-4b15-a502-766ab2da1e65_classname",
-          "text": "WtOK",
-          "position": {
-            "x": 31,
-            "y": 7
-          },
-          "size": {
-            "width": 37.9931640625,
-            "height": 16
-          },
-          "children": []
-        }
-      ]
-    },
-    {
-      "cssClasses": [
-        "medium"
-      ],
-      "type": "edge:weighted",
-      "routingPoints": [],
-      "id": "b42e5b46-38c8-4a8b-a75c-34e7b503b123",
-      "sourceId": "304abdb7-a8b3-4035-b73e-45cc611dd4c3",
-      "targetId": "ef349859-2a89-46b0-b394-c339a79c10e3",
-      "probability": "medium",
-      "children": []
-    },
-    {
-      "cssClasses": [
-        "medium"
-      ],
-      "type": "edge:weighted",
-      "routingPoints": [],
-      "id": "254aa972-f692-4e71-ba47-69dd564146e6",
-      "sourceId": "304abdb7-a8b3-4035-b73e-45cc611dd4c3",
-      "targetId": "da626312-7545-4b15-a502-766ab2da1e65",
-      "probability": "medium",
-      "children": []
-    },
-    {
-      "cssClasses": [
-        "medium"
-      ],
-      "type": "edge:weighted",
-      "routingPoints": [],
-      "id": "b65bb287-ba47-4c2c-9714-0fa61345e891",
-      "sourceId": "44cdab45-7480-4f67-850b-75d0bc2f22c4",
-      "targetId": "8360c168-8f25-438a-a213-d5a84e9ae4cd",
-      "probability": "medium",
-      "children": []
-    },
-    {
-      "cssClasses": [
-        "medium"
-      ],
-      "type": "edge:weighted",
-      "routingPoints": [],
-      "id": "c3fd1ee7-d8df-4ba2-9741-95cca3d6f268",
-      "sourceId": "44cdab45-7480-4f67-850b-75d0bc2f22c4",
-      "targetId": "ab6e230a-33e6-4a0c-a08b-c0930767a437",
-      "probability": "medium",
-      "children": []
-    },
-    {
-      "cssClasses": [
-        "forkOrJoin"
-      ],
-      "type": "activityNode:join",
-      "id": "8668b502-0a10-4f32-b751-97dbaa4f5372",
-      "position": {
-        "x": 560,
-        "y": 90
-      },
-      "nodeType": "joinNode",
-      "size": {
-        "width": 10,
-        "height": 50
-      },
-      "children": []
-    },
-    {
-      "cssClasses": [
-        "task",
-        "automated"
-      ],
-      "type": "task:automated",
-      "id": "532ff124-9e72-4335-9e2b-423a544f1318",
-      "layout": "hbox",
-      "args": {
-        "radiusTopLeft": 5,
-        "radiusBottomLeft": 5,
-        "radiusBottomRight": 5,
-        "radiusTopRight": 5
-      },
-      "position": {
-        "x": 600,
-        "y": 100
-      },
-      "name": "AutomatedTask15",
-      "taskType": "automated",
-      "layoutOptions": {
-        "paddingRight": 10,
-        "prefWidth": 73.20530319213867,
-        "prefHeight": 30
-      },
-      "size": {
-        "width": 73.20530319213867,
-        "height": 30
-      },
-      "children": [
-        {
-          "cssClasses": [],
-          "type": "icon",
-          "id": "532ff124-9e72-4335-9e2b-423a544f1318_icon",
-          "position": {
-            "x": 5,
-            "y": 5
-          },
-          "size": {
-            "width": 25,
-            "height": 20
-          },
-          "children": []
-        },
-        {
-          "cssClasses": [],
-          "type": "label:heading",
-          "alignment": {
-            "x": 15.953125,
-            "y": 13
-          },
-          "id": "532ff124-9e72-4335-9e2b-423a544f1318_classname",
-          "text": "Brew",
-          "position": {
-            "x": 31,
-            "y": 7
-          },
-          "size": {
-            "width": 31.90625,
-            "height": 16
-          },
-          "children": []
-        }
-      ]
-    },
-    {
-      "cssClasses": [
-        "merge"
-      ],
-      "type": "activityNode:merge",
-      "id": "ba5ec10f-1aed-458f-a5a5-eb30b127f4b6",
-      "position": {
-        "x": 500,
-        "y": 50
-      },
-      "nodeType": "mergeNode",
-      "size": {
-        "width": 32,
-        "height": 32
-      },
-      "children": []
-    },
-    {
-      "cssClasses": [
-        "merge"
-      ],
-      "type": "activityNode:merge",
-      "id": "55be52aa-fb5d-4f5c-8cdf-05c17cd9a1e3",
-      "position": {
-        "x": 500,
-        "y": 150
-      },
-      "nodeType": "mergeNode",
-      "size": {
-        "width": 32,
-        "height": 32
-      },
-      "children": []
-    },
-    {
-      "cssClasses": [],
-      "type": "edge",
-      "routingPoints": [],
-      "id": "7b660e4a-c5cf-4746-91d6-5a7e732008de",
-      "sourceId": "ef349859-2a89-46b0-b394-c339a79c10e3",
-      "targetId": "ba5ec10f-1aed-458f-a5a5-eb30b127f4b6",
-      "children": []
-    },
-    {
-      "cssClasses": [],
-      "type": "edge",
-      "routingPoints": [],
-      "id": "2a0ddf8c-fb98-4432-9844-e9189ba2fa6c",
-      "sourceId": "da626312-7545-4b15-a502-766ab2da1e65",
-      "targetId": "ba5ec10f-1aed-458f-a5a5-eb30b127f4b6",
-      "children": []
-    },
-    {
-      "cssClasses": [],
-      "type": "edge",
-      "routingPoints": [],
-      "id": "58114c96-6558-4b46-9d91-a480e3f9c3cd",
-      "sourceId": "8360c168-8f25-438a-a213-d5a84e9ae4cd",
-      "targetId": "55be52aa-fb5d-4f5c-8cdf-05c17cd9a1e3",
-      "children": []
-    },
-    {
-      "cssClasses": [],
-      "type": "edge",
-      "routingPoints": [],
-      "id": "7633af04-0cf0-4267-a681-646123270d54",
-      "sourceId": "ab6e230a-33e6-4a0c-a08b-c0930767a437",
-      "targetId": "55be52aa-fb5d-4f5c-8cdf-05c17cd9a1e3",
-      "children": []
-    },
-    {
-      "cssClasses": [],
-      "type": "edge",
-      "routingPoints": [],
-      "id": "9ddef18e-ba9a-40a3-8961-eaee5ab0007f",
-      "sourceId": "55be52aa-fb5d-4f5c-8cdf-05c17cd9a1e3",
-      "targetId": "8668b502-0a10-4f32-b751-97dbaa4f5372",
-      "children": []
-    },
-    {
-      "cssClasses": [],
-      "type": "edge",
-      "routingPoints": [],
-      "id": "191fea84-e6a7-4ad6-94ee-a8e939a5058d",
-      "sourceId": "ba5ec10f-1aed-458f-a5a5-eb30b127f4b6",
-      "targetId": "8668b502-0a10-4f32-b751-97dbaa4f5372",
-      "children": []
-    },
-    {
-      "cssClasses": [],
-      "type": "edge",
-      "routingPoints": [],
-      "id": "c8fe1b1c-54fd-4bcd-b194-acc02299a0ed",
-      "sourceId": "8668b502-0a10-4f32-b751-97dbaa4f5372",
-      "targetId": "532ff124-9e72-4335-9e2b-423a544f1318",
-      "children": []
+    "edges": {
+        "simple": [
+            {
+                "routingPoints": [],
+                "id": "a8ffb72a-a632-4133-a55f-95e4df297875",
+                "sourceId": "3a083ea5-5d82-4942-8bb4-3c0c27e9a71d",
+                "targetId": "16c7860a-c38b-4761-bb48-baa92113478b"
+            },
+            {
+                "routingPoints": [],
+                "id": "d6fa4391-4139-4789-bd00-4c7509e5d4e1",
+                "sourceId": "16c7860a-c38b-4761-bb48-baa92113478b",
+                "targetId": "b300bdb8-52c3-4903-ba09-36dff9b281fd"
+            },
+            {
+                "routingPoints": [],
+                "id": "ea94aeb9-c86f-42b2-94c6-4cc91d34a883",
+                "sourceId": "5496d85e-104c-47a8-bfe6-75211dbf5ae1",
+                "targetId": "304abdb7-a8b3-4035-b73e-45cc611dd4c3"
+            },
+            {
+                "routingPoints": [],
+                "id": "d7b69577-d35f-4e3b-b306-86e3f0b7008e",
+                "sourceId": "16c7860a-c38b-4761-bb48-baa92113478b",
+                "targetId": "5496d85e-104c-47a8-bfe6-75211dbf5ae1"
+            },
+            {
+                "routingPoints": [],
+                "id": "5cb74a75-9676-4db4-a088-13d467234c19",
+                "sourceId": "b300bdb8-52c3-4903-ba09-36dff9b281fd",
+                "targetId": "44cdab45-7480-4f67-850b-75d0bc2f22c4"
+            },
+            {
+                "routingPoints": [],
+                "id": "7b660e4a-c5cf-4746-91d6-5a7e732008de",
+                "sourceId": "ef349859-2a89-46b0-b394-c339a79c10e3",
+                "targetId": "ba5ec10f-1aed-458f-a5a5-eb30b127f4b6"
+            },
+            {
+                "routingPoints": [],
+                "id": "2a0ddf8c-fb98-4432-9844-e9189ba2fa6c",
+                "sourceId": "da626312-7545-4b15-a502-766ab2da1e65",
+                "targetId": "ba5ec10f-1aed-458f-a5a5-eb30b127f4b6"
+            },
+            {
+                "routingPoints": [],
+                "id": "58114c96-6558-4b46-9d91-a480e3f9c3cd",
+                "sourceId": "8360c168-8f25-438a-a213-d5a84e9ae4cd",
+                "targetId": "55be52aa-fb5d-4f5c-8cdf-05c17cd9a1e3"
+            },
+            {
+                "routingPoints": [],
+                "id": "7633af04-0cf0-4267-a681-646123270d54",
+                "sourceId": "ab6e230a-33e6-4a0c-a08b-c0930767a437",
+                "targetId": "55be52aa-fb5d-4f5c-8cdf-05c17cd9a1e3"
+            },
+            {
+                "routingPoints": [],
+                "id": "9ddef18e-ba9a-40a3-8961-eaee5ab0007f",
+                "sourceId": "55be52aa-fb5d-4f5c-8cdf-05c17cd9a1e3",
+                "targetId": "8668b502-0a10-4f32-b751-97dbaa4f5372"
+            },
+            {
+                "routingPoints": [],
+                "id": "191fea84-e6a7-4ad6-94ee-a8e939a5058d",
+                "sourceId": "ba5ec10f-1aed-458f-a5a5-eb30b127f4b6",
+                "targetId": "8668b502-0a10-4f32-b751-97dbaa4f5372"
+            },
+            {
+                "routingPoints": [],
+                "id": "c8fe1b1c-54fd-4bcd-b194-acc02299a0ed",
+                "sourceId": "8668b502-0a10-4f32-b751-97dbaa4f5372",
+                "targetId": "532ff124-9e72-4335-9e2b-423a544f1318"
+            }
+        ],
+        "weighted": [
+            {
+                "routingPoints": [],
+                "id": "b42e5b46-38c8-4a8b-a75c-34e7b503b123",
+                "sourceId": "304abdb7-a8b3-4035-b73e-45cc611dd4c3",
+                "targetId": "ef349859-2a89-46b0-b394-c339a79c10e3",
+                "probability": "medium"
+            },
+            {
+                "routingPoints": [],
+                "id": "254aa972-f692-4e71-ba47-69dd564146e6",
+                "sourceId": "304abdb7-a8b3-4035-b73e-45cc611dd4c3",
+                "targetId": "da626312-7545-4b15-a502-766ab2da1e65",
+                "probability": "medium"
+            },
+            {
+                "routingPoints": [],
+                "id": "b65bb287-ba47-4c2c-9714-0fa61345e891",
+                "sourceId": "44cdab45-7480-4f67-850b-75d0bc2f22c4",
+                "targetId": "8360c168-8f25-438a-a213-d5a84e9ae4cd",
+                "probability": "medium"
+            },
+            {
+                "routingPoints": [],
+                "id": "c3fd1ee7-d8df-4ba2-9741-95cca3d6f268",
+                "sourceId": "44cdab45-7480-4f67-850b-75d0bc2f22c4",
+                "targetId": "ab6e230a-33e6-4a0c-a08b-c0930767a437",
+                "probability": "medium"
+            }
+        ]
     }
-  ]
 }

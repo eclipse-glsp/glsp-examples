@@ -49,7 +49,11 @@ export class TaskNode extends GNode {
     references: string;
 
     static override builder(): TaskNodeBuilder {
-        return new TaskNodeBuilder(TaskNode).layout('vbox').addArgs(ArgsUtil.cornerRadius(5)).addCssClass('task');
+        return new TaskNodeBuilder(TaskNode)
+            .layout('hbox')
+            .addArgs(ArgsUtil.cornerRadius(5))
+            .addCssClass('task')
+            .addLayoutOption('paddingRight', 10);
     }
 }
 
@@ -75,12 +79,9 @@ export class TaskNodeBuilder<T extends TaskNode = TaskNode> extends GNodeBuilder
     }
 
     children(): this {
+        this.proxy.children.push(this.createCompartmentIcon());
+        this.proxy.children.push(this.createCompartmentHeader());
         return this;
-    }
-
-    override build(): T {
-        this.layout('hbox').addLayoutOption('paddingRight', 10).add(this.createCompartmentIcon()).add(this.createCompartmentHeader());
-        return super.build();
     }
 
     protected createCompartmentHeader(): GLabel {

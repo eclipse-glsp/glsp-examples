@@ -20,7 +20,6 @@ import { createAppModule, LogLevel, WorkerServerLauncher } from '@eclipse-glsp/s
 import { Container } from 'inversify';
 import { WorkflowLayoutConfigurator } from './layout/workflow-layout-configurator';
 import { WorkflowDiagramModule, WorkflowServerModule } from './workflow-diagram-module';
-import { WorkflowModelStorage } from './workflow-storage';
 
 export async function launch(argv?: string[]): Promise<void> {
     const appContainer = new Container();
@@ -33,10 +32,7 @@ export async function launch(argv?: string[]): Promise<void> {
         isWebWorker: true
     });
 
-    const serverModule = new WorkflowServerModule().configureDiagramModule(
-        new WorkflowDiagramModule(() => WorkflowModelStorage),
-        elkLayoutModule
-    );
+    const serverModule = new WorkflowServerModule().configureDiagramModule(new WorkflowDiagramModule(), elkLayoutModule);
 
     launcher.configure(serverModule);
 

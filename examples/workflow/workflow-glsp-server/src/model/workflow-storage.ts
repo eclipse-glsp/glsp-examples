@@ -13,49 +13,38 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
-import {
-    GModelSerializer,
-    Logger,
-    MaybePromise,
-    ModelState,
-    RequestModelAction,
-    SaveModelAction,
-    SourceModelStorage
-} from '@eclipse-glsp/server/browser';
+import { Logger, MaybePromise, RequestModelAction, SaveModelAction, SourceModelStorage } from '@eclipse-glsp/server/browser';
 import { inject, injectable } from 'inversify';
+import { WorkflowModelState } from './workflow-model-state';
+import { WorkflowSerializer } from '../util/workflow-serializer';
 
 @injectable()
 export class WorkflowModelStorage implements SourceModelStorage {
     @inject(Logger)
     protected logger: Logger;
 
-    @inject(GModelSerializer)
-    protected modelSerializer: GModelSerializer;
-
-    @inject(ModelState)
-    protected modelState: ModelState;
+    @inject(WorkflowModelState)
+    protected modelState: WorkflowModelState;
 
     loadSourceModel(action: RequestModelAction): MaybePromise<void> {
         return fetch(action.options!.sourceUri.toString())
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                const root = this.modelSerializer.createRoot(data);
-                this.modelState.updateRoot(root);
-                this.postModelForMonacoDisplay();
+                this.modelState.updateSourceModel(data);
+                self.postMessage({
+                    isUpdatedModelFile: true,
+                    modelFile: JSON.stringify(this.modelState.sourceModel, undefined, 2)
+                });
             });
     }
 
     saveSourceModel(action: SaveModelAction): MaybePromise<void> {
-        this.postModelForMonacoDisplay();
-    }
-
-    private postModelForMonacoDisplay(): void {
         // This is only for transmitting the saved model back to the client, since we need it for display outside of the iframe.
         // Outside of the integrated sandbox, this is not necessary and it therefore presents a unique situation, not supposed to be handled via GLSP protocol.
         self.postMessage({
             isUpdatedModelFile: true,
-            modelFile: JSON.stringify(this.modelSerializer.createSchema(this.modelState.root), undefined, 2)
+            modelFile: WorkflowSerializer.serializeModel(this.modelState)
         });
     }
 }
