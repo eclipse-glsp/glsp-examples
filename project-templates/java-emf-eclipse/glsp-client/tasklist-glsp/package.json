@@ -1,6 +1,6 @@
 {
   "name": "tasklist-glsp",
-  "version": "2.0.0",
+  "version": "2.2.1",
   "private": "true",
   "description": "GLSP sprotty diagrams for the EMF model TaskList DSL",
   "keywords": [
@@ -36,14 +36,9 @@
     "build": "tsc",
     "clean": "rimraf lib tsconfig.tsbuildinfo",
     "lint": "eslint --ext .ts,.tsx ./src",
-    "lint:ci": "yarn lint -o eslint.xml -f checkstyle",
-    "prepare": "yarn clean && yarn build",
     "watch": "tsc -w"
   },
   "dependencies": {
-    "@eclipse-glsp/client": "2.0.0"
-  },
-  "devDependencies": {
-    "rimraf": "^2.6.1"
+    "@eclipse-glsp/client": "2.2.1"
   }
 }

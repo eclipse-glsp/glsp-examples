@@ -1,0 +1,15 @@
+{
+  "extends": "@eclipse-glsp/ts-config",
+  "include": [],
+  "compilerOptions": {
+    "composite": true
+  },
+  "references": [
+    {
+      "path": "./tasklist-eclipse"
+    },
+    {
+      "path": "./tasklist-glsp"
+    }
+  ]
+}

@@ -1,11 +1,17 @@
 {
-  "extends": "@eclipse-glsp/ts-config/tsconfig.json",
+  "extends": "@eclipse-glsp/ts-config/",
   "compilerOptions": {
     "rootDir": "src",
     "outDir": "lib",
+    "composite": true,
     "reactNamespace": "JSX",
     "skipLibCheck": true,
     "types": []
   },
-  "include": ["src"]
+  "include": ["src"],
+  "references": [
+    {
+      "path": "../tasklist-glsp"
+    }
+  ]
 }

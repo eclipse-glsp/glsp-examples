@@ -40,7 +40,7 @@
     "server:start": "yarn --cwd tasklist-glsp-server start",
     "start": "yarn browser start",
     "start:external": "yarn browser start:external",
-    "watch": "concurrently --kill-others -n tsc,browser,server -c red,yellow,green \"tsc -b -w --preserveWatchOutput\" \"yarn -s browser watch\" \"yarn -s server watch:bundle\""
+    "watch": "concurrently --kill-others -n tsc,browser,server -c red,yellow \"tsc -b -w --preserveWatchOutput\" \"yarn -s browser watch\" \"yarn -s server watch:bundle\""
   },
   "devDependencies": {
     "@eclipse-glsp/config": "2.2.1",
