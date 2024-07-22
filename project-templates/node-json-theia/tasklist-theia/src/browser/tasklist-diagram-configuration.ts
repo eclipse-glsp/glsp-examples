@@ -14,7 +14,7 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0 OR MIT
  ********************************************************************************/
-import { ContainerConfiguration } from '@eclipse-glsp/protocol';
+import { ContainerConfiguration } from '@eclipse-glsp/client';
 import { GLSPDiagramConfiguration } from '@eclipse-glsp/theia-integration/lib/browser';
 import { Container, injectable } from '@theia/core/shared/inversify';
 import { initializeTasklistDiagramContainer } from 'tasklist-glsp-client/lib/tasklist-diagram-module';

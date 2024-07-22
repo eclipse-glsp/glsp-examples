@@ -6,8 +6,8 @@
 {
   "editor.formatOnSave": true,
   "editor.codeActionsOnSave": {
-    "source.organizeImports": true,
-    "source.fixAll.eslint": true
+    "source.organizeImports": "always",
+    "source.fixAll.eslint": "always"
   },
   "eslint.validate": ["javascript", "typescript"],
   "search.exclude": {
