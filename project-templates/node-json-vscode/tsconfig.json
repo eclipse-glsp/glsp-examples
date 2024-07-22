@@ -1,0 +1,21 @@
+{
+  "extends": "@eclipse-glsp/ts-config",
+  "include": [],
+  "compilerOptions": {
+    "composite": true
+  },
+  "references": [
+    {
+      "path": "./tasklist-glsp-client"
+    },
+    {
+      "path": "./tasklist-glsp-server"
+    },
+    {
+      "path": "./tasklist-vscode/extension"
+    },
+    {
+      "path": "./tasklist-vscode/webview"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "name": "tasklist-glsp-server",
-  "version": "2.0.0",
+  "version": "2.2.1",
   "description": "GLSP node server for Tasklist GSLP diagrams",
   "keywords": [
     "eclipse",
@@ -37,21 +37,14 @@
     "bundle": "webpack",
     "clean": "rimraf lib dist tsconfig.tsbuildinfo",
     "lint": "eslint --ext .ts,.tsx ./src",
-    "lint:ci": "yarn lint -o eslint.xml -f checkstyle",
-    "prepare": "yarn clean && yarn build",
     "start": "node --enable-source-maps lib/index.js",
-    "watch": "tsc -w"
+    "watch": "tsc -w",
+    "watch:bundle": "webpack --watch"
   },
   "devDependencies": {
-    "@eclipse-glsp/server": "2.0.0",
-    "inversify": "6.0.1",
-    "reflect-metadata": "0.1.13",
+    "@eclipse-glsp/server": "2.2.1",
     "source-map-loader": "^4.0.1",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4"
-  },
-  "engines": {
-    "node": ">=14.18.0",
-    "yarn": ">=1.7.0 <2.x.x"
   }
 }
