@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2022-2023 STMicroelectronics and others.
+ * Copyright (c) 2022-2024 STMicroelectronics and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -38,7 +38,7 @@ export class WorkflowPopupFactory implements PopupModelFactory {
         return undefined;
     }
 
-    private generateBody(task: TaskNode): string {
+    protected generateBody(task: TaskNode): string {
         return `Type: ${task.taskType} ${NL}
             Duration: ${task.duration} ${NL}
             Reference: ${task.references} ${NL}`;

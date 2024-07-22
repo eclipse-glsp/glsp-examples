@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2023 EclipseSource and others.
+ * Copyright (c) 2023-2024 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -21,7 +21,7 @@ import { ModelTypes } from './util/model-types';
 @injectable()
 export class WorkflowEdgeCreationChecker implements EdgeCreationChecker {
     isValidSource(edgeType: string, sourceElement: GModelElement): boolean {
-        return edgeType !== ModelTypes.WEIGHTED_EDGE || sourceElement.type === ModelTypes.DECISION_NODE;
+        return edgeType !== ModelTypes.WEIGHTED_EDGE && sourceElement.type === ModelTypes.DECISION_NODE;
     }
     isValidTarget(edgeType: string, sourceElement: GModelElement, targetElement: GModelElement): boolean {
         return (

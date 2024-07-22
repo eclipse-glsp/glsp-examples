@@ -14,7 +14,7 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
 import { Args, EditorContext, NavigationTarget } from '@eclipse-glsp/protocol';
-import { JsonOpenerOptions, ModelState, NavigationTargetProvider } from '@eclipse-glsp/server';
+import { GLabel, JsonOpenerOptions, ModelState, NavigationTargetProvider } from '@eclipse-glsp/server';
 import { inject, injectable } from 'inversify';
 import { TaskNode } from '../graph-extension';
 
@@ -28,7 +28,7 @@ export class NodeDocumentationNavigationTargetProvider implements NavigationTarg
     getTargets(editorContext: EditorContext): NavigationTarget[] {
         if (editorContext.selectedElementIds.length === 1) {
             const taskNode = this.modelState.index.findByClass(editorContext.selectedElementIds[0], TaskNode);
-            if (!taskNode || !(taskNode.id === 'task0')) {
+            if (!taskNode || !taskNode.children.some(child => child instanceof GLabel && child.text === 'Push')) {
                 return [];
             }
 

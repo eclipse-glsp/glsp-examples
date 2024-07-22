@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2019-2021 EclipseSource and others.
+ * Copyright (c) 2019-2024 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -17,7 +17,8 @@ import { GLSPDiagramLanguage } from '@eclipse-glsp/theia-integration/lib/common'
 
 export const WorkflowLanguage: GLSPDiagramLanguage = {
     contributionId: 'workflow',
-    label: 'Workflow Diagram',
+    label: 'Workflow Editor',
+    providerName: 'GLSP Diagram',
     diagramType: 'workflow-diagram',
     fileExtensions: ['.wf'],
     iconClass: 'codicon codicon-type-hierarchy-sub'

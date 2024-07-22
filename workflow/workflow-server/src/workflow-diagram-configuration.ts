@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2022-2023 STMicroelectronics and others.
+ * Copyright (c) 2022-2024 STMicroelectronics and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -48,33 +48,26 @@ export class WorkflowDiagramConfiguration implements DiagramConfiguration {
         return [
             createDefaultShapeTypeHint(types.MANUAL_TASK),
             createDefaultShapeTypeHint(types.AUTOMATED_TASK),
-            createDefaultShapeTypeHint(types.FORK_NODE),
-            createDefaultShapeTypeHint(types.JOIN_NODE),
+            createDefaultShapeTypeHint({ elementTypeId: types.FORK_NODE, resizable: false }),
+            createDefaultShapeTypeHint({ elementTypeId: types.JOIN_NODE, resizable: false }),
             createDefaultShapeTypeHint(types.DECISION_NODE),
             createDefaultShapeTypeHint(types.MERGE_NODE),
-            {
+            createDefaultShapeTypeHint({
                 elementTypeId: types.CATEGORY,
-                repositionable: true,
-                deletable: true,
-                resizable: true,
-                reparentable: true,
                 containableElementTypeIds: [types.TASK, types.ACTIVITY_NODE, types.CATEGORY]
-            }
+            })
         ];
     }
 
     get edgeTypeHints(): EdgeTypeHint[] {
         return [
             createDefaultEdgeTypeHint(DefaultTypes.EDGE),
-            {
+            createDefaultEdgeTypeHint({
                 elementTypeId: types.WEIGHTED_EDGE,
-                repositionable: true,
-                deletable: true,
-                routable: true,
                 dynamic: true,
                 sourceElementTypeIds: [types.ACTIVITY_NODE],
                 targetElementTypeIds: [types.TASK, types.ACTIVITY_NODE]
-            }
+            })
         ];
     }
 
@@ -83,13 +76,20 @@ export class WorkflowDiagramConfiguration implements DiagramConfiguration {
     animatedUpdate = true;
 }
 
-export function createDefaultShapeTypeHint(elementId: string): ShapeTypeHint {
-    return { elementTypeId: elementId, repositionable: true, deletable: true, resizable: true, reparentable: true };
+export function createDefaultShapeTypeHint(template: { elementTypeId: string } & Partial<ShapeTypeHint>): ShapeTypeHint;
+export function createDefaultShapeTypeHint(elementId: string): ShapeTypeHint;
+export function createDefaultShapeTypeHint(
+    elementIdOrTemplate: string | ({ elementTypeId: string } & Partial<ShapeTypeHint>)
+): ShapeTypeHint {
+    const template = typeof elementIdOrTemplate === 'string' ? { elementTypeId: elementIdOrTemplate } : elementIdOrTemplate;
+    return { repositionable: true, deletable: true, resizable: true, reparentable: true, ...template };
 }
 
-export function createDefaultEdgeTypeHint(elementId: string): EdgeTypeHint {
+export function createDefaultEdgeTypeHint(template: { elementTypeId: string } & Partial<EdgeTypeHint>): EdgeTypeHint;
+export function createDefaultEdgeTypeHint(elementId: string): EdgeTypeHint;
+export function createDefaultEdgeTypeHint(elementIdOrTemplate: string | ({ elementTypeId: string } & Partial<EdgeTypeHint>)): EdgeTypeHint {
+    const template = typeof elementIdOrTemplate === 'string' ? { elementTypeId: elementIdOrTemplate } : elementIdOrTemplate;
     return {
-        elementTypeId: elementId,
         repositionable: true,
         deletable: true,
         routable: true,
@@ -110,6 +110,7 @@ export function createDefaultEdgeTypeHint(elementId: string): EdgeTypeHint {
             types.FORK_NODE,
             types.JOIN_NODE,
             types.CATEGORY
-        ]
+        ],
+        ...template
     };
 }

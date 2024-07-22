@@ -4,7 +4,8 @@
     "rootDir": "src",
     "outDir": "lib",
     "reactNamespace": "JSX",
-    "skipLibCheck": true
+    "skipLibCheck": true,
+    "composite": true
   },
   "include": ["src"]
 }

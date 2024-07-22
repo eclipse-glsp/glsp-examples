@@ -1,6 +1,6 @@
 {
   "name": "@eclipse-glsp-examples/workflow-glsp",
-  "version": "2.0.0",
+  "version": "2.2.1",
   "description": "GLSP diagrams for the Workflow DSL",
   "keywords": [
     "glsp",
@@ -36,12 +36,10 @@
     "build": "tsc -b",
     "clean": "rimraf tsconfig.tsbuildinfo  lib",
     "lint": "eslint --ext .ts,.tsx ./src",
-    "lint:ci": "yarn lint -o eslint.xml -f checkstyle",
-    "prepare": "yarn clean && yarn build ",
     "watch": "tsc -w"
   },
   "dependencies": {
-    "@eclipse-glsp/client": "2.0.0",
+    "@eclipse-glsp/client": "2.2.1",
     "balloon-css": "^0.5.0"
   },
   "publishConfig": {
