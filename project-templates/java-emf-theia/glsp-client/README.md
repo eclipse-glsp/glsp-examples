@@ -7,6 +7,10 @@ It is based on the `TaskList` example diagram language.
 
 For more detailed instructions and information please confer to the [README](../README.md) in the parent directory.
 
+## Theia Version compatibility
+
+This project template is compatible with Theia `>=1.49.1`.
+
 ## Building
 
 To build all GLSP client packages simply execute the following in the `glsp-client` directory:
