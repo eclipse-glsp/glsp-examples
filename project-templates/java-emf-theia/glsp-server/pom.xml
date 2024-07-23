@@ -33,6 +33,33 @@
 		<tag>HEAD</tag>
 	</scm>
 
+	<pluginRepositories>
+		<pluginRepository>
+			<id>sonatype</id>
+			<name>Sonatype</name>
+			<url>https://oss.sonatype.org/content/groups/public</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<repositories>
+		<repository>
+			<id>oss.sonatype.org-snapshot</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>sonatype</id>
+			<name>Sonatype</name>
+			<url>https://oss.sonatype.org/content/groups/public</url>
+		</repository>
+	</repositories>
+
+
 	<properties>
 		<!-- General build environment plugin versions -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>

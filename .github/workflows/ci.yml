@@ -1,0 +1,96 @@
+name: CI
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+on:
+  push:
+    branches:
+      - master
+  pull_request:
+    branches:
+      - master
+  workflow_dispatch:
+
+jobs:
+  build-workflow-example:
+    name: Build workflow example
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.1.7
+      - name: Set up Node.js
+        uses: actions/setup-node@v4.0.3
+        with:
+          node-version: '18.x'
+      - name: Build
+        env:
+          NODE_OPTIONS: --max_old_space_size=4096
+        run: yarn build:workflow
+
+  build-node-json-theia:
+    name: Build node-json-theia
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.1.7
+      - name: Set up Node.js
+        uses: actions/setup-node@v4.0.3
+        with:
+          node-version: '18.x'
+      - name: Build
+        env:
+          NODE_OPTIONS: --max_old_space_size=4096
+        run: yarn build:node-json-theia
+
+  build-node-json-vscode:
+    name: Build node-json-vscode
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.1.7
+      - name: Set up Node.js
+        uses: actions/setup-node@v4.0.3
+        with:
+          node-version: '18.x'
+      - name: Build
+        run: yarn build:node-json-vscode
+
+  build-java-emf-theia:
+    name: Build java-emf-theia
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.1.7
+      - name: Set up Node.js
+        uses: actions/setup-node@v4.0.3
+      - name: Set up JDK
+        uses: actions/setup-java@v4.2.1
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Build
+        env:
+          NODE_OPTIONS: --max_old_space_size=4096
+        run: yarn build:java-emf-theia
+
+  build-java-emf-eclipse:
+    name: Build java-emf-eclipse
+    timeout-minutes: 60
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4.1.7
+      - name: Set up Node.js
+        uses: actions/setup-node@v4.0.3
+      - name: Set up JDK
+        uses: actions/setup-java@v4.2.1
+        with:
+          distribution: 'temurin'
+          java-version: '17'
+      - name: Build
+        run: yarn build:java-emf-eclipse
