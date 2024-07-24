@@ -33,6 +33,7 @@ export class WorkflowDiagramReadonlyViewContribution implements CommandContribut
     @inject(OpenerService) protected readonly openerService: OpenerService;
     @inject(SelectionService) protected readonly selectionService: SelectionService;
     registerMenus(registry: MenuModelRegistry): void {
+        // eslint-disable-next-line deprecation/deprecation
         registry.registerMenuAction(NavigatorContextMenu.OPEN_WITH, {
             commandId: OPEN_READONLY_DIAGRAM_VIEW.id,
             label: 'Workflow Diagram Readonly View',

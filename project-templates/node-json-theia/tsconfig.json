@@ -1,0 +1,18 @@
+{
+  "extends": "@eclipse-glsp/ts-config",
+  "include": [],
+  "compilerOptions": {
+    "composite": true
+  },
+  "references": [
+    {
+      "path": "./tasklist-glsp-server"
+    },
+    {
+      "path": "./tasklist-glsp-client"
+    },
+    {
+      "path": "./tasklist-theia"
+    }
+  ]
+}

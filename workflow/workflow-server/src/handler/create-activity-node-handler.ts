@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2022-2023 STMicroelectronics and others.
+ * Copyright (c) 2022-2024 STMicroelectronics and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -13,7 +13,7 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
-import { CreateNodeOperation, GNode, Point } from '@eclipse-glsp/server';
+import { CreateNodeOperation, GNode, GhostElement, Point } from '@eclipse-glsp/server';
 import { injectable } from 'inversify';
 import { ActivityNode, ActivityNodeBuilder } from '../graph-extension';
 import { ModelTypes } from '../util/model-types';
@@ -25,10 +25,11 @@ export abstract class CreateActivityNodeHandler extends CreateWorkflowNodeOperat
         return this.builder(relativeLocation).build();
     }
 
-    protected builder(point: Point | undefined): ActivityNodeBuilder {
-        return ActivityNode.builder()
-            .position(point ?? Point.ORIGIN)
-            .type(this.elementTypeIds[0])
-            .nodeType(ModelTypes.toNodeType(this.elementTypeIds[0]));
+    protected builder(point: Point = Point.ORIGIN, elementTypeId = this.elementTypeIds[0]): ActivityNodeBuilder {
+        return ActivityNode.builder().position(point).type(elementTypeId).nodeType(ModelTypes.toNodeType(elementTypeId));
+    }
+
+    override createTriggerGhostElement(elementTypeId: string): GhostElement | undefined {
+        return { template: this.serializer.createSchema(this.builder(undefined, elementTypeId).build()) };
     }
 }

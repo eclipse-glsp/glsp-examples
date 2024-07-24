@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2023 STMicroelectronics and others.
+ * Copyright (c) 2023-2024 STMicroelectronics and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -29,7 +29,6 @@ export * from './handler/create-task-handler';
 export * from './handler/create-weighted-edge-handler';
 export * from './handler/create-workflow-node-operation-handler';
 export * from './handler/grid-snapper';
-export * from './index';
 export * from './labeledit/workflow-label-edit-validator';
 export * from './layout/workflow-layout-configurator';
 export * from './marker/workflow-model-validator';
@@ -44,8 +43,8 @@ export * from './taskedit/edit-task-operation-handler';
 export * from './taskedit/task-edit-context-provider';
 export * from './taskedit/task-edit-validator';
 export * from './util/model-types';
-export * from './workflow-cli-parser';
 export * from './workflow-diagram-configuration';
 export * from './workflow-diagram-module';
+export * from './workflow-edge-creation-checker';
 export * from './workflow-glsp-server';
 export * from './workflow-popup-factory';

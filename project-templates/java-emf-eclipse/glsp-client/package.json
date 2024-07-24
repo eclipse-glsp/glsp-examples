@@ -1,6 +1,6 @@
 {
   "name": "parent",
-  "version": "2.0.0",
+  "version": "2.2.1",
   "private": true,
   "homepage": "https://www.eclipse.org/glsp/",
   "bugs": "https://github.com/eclipse-glsp/glsp/issues",
@@ -24,23 +24,23 @@
     "tasklist-eclipse"
   ],
   "scripts": {
-    "all": "yarn install && yarn lint",
-    "build": "lerna run build",
+    "all": "yarn clean && yarn install && yarn lint",
+    "build": "yarn compile && yarn eclipse bundle",
     "clean": "lerna run clean",
-    "copyClient": "copyfiles -f ./tasklist-eclipse//app/* ../glsp-server/org.eclipse.glsp.example.javaemf.editor/diagram",
-    "lint": "lerna run lint",
-    "lint:ci": "lerna run lint:ci",
-    "prepare": "lerna run prepare && yarn copyClient",
-    "watch": "lerna run --parallel watch"
-  },
-  "resolutions": {
-    "string-width": "4.2.3"
+    "compile": "tsc -b",
+    "copyClient": "copyfiles -f ./tasklist-eclipse/app/* ../glsp-server/org.eclipse.glsp.example.javaemf.editor/diagram",
+    "eclipse": "yarn --cwd tasklist-eclipse",
+    "lint": "eslint --ext .ts,.tsx .",
+    "lint:ci": "yarn lint --output-file eslint_report.json --format json",
+    "prepare": "yarn build && yarn copyClient",
+    "watch": "concurrently --kill-others -n tsc,app -c red,yellow \"tsc -b -w --preserveWatchOutput\" \"yarn -s eclipse watch:bundle\""
   },
   "devDependencies": {
-    "@eclipse-glsp/config": "2.0.0",
+    "@eclipse-glsp/config": "2.2.1",
+    "concurrently": "^8.2.2",
     "copyfiles": "^2.4.1",
-    "lerna": "^6.6.2",
-    "typescript": "^5.2.2"
+    "lerna": "8.1.7",
+    "typescript": "5.5.3"
   },
   "engines": {
     "node": ">=16.11.0",

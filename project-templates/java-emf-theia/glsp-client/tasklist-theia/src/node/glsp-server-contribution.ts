@@ -23,7 +23,7 @@ export const DEFAULT_PORT = 0;
 export const PORT_ARG_KEY = 'TASKLIST_GLSP';
 export const LOG_DIR = join(__dirname, '..', '..', 'logs');
 const JAR_FILE = resolve(
-    join(__dirname, '..', '..', '..', '..', 'glsp-server', 'target', 'org.eclipse.glsp.example.javaemf-2.0.0-glsp.jar')
+    join(__dirname, '..', '..', '..', '..', 'glsp-server', 'target', 'org.eclipse.glsp.example.javaemf-2.2.1-glsp.jar')
 );
 
 @injectable()

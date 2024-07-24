@@ -13,7 +13,7 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
-import { ArgsUtil, CreateNodeOperation, GNode, Point } from '@eclipse-glsp/server';
+import { ArgsUtil, CreateNodeOperation, GNode, GhostElement, Point } from '@eclipse-glsp/server';
 import { Category, CategoryNodeBuilder } from '../graph-extension';
 import { ModelTypes } from '../util/model-types';
 import { CreateWorkflowNodeOperationHandler } from './create-workflow-node-operation-handler';
@@ -26,12 +26,16 @@ export class CreateCategoryHandler extends CreateWorkflowNodeOperationHandler {
         return this.builder(relativeLocation).build();
     }
 
-    protected builder(point: Point | undefined): CategoryNodeBuilder {
+    protected builder(point: Point = Point.ORIGIN, elementTypeId = this.elementTypeIds[0]): CategoryNodeBuilder {
         return Category.builder()
-            .type(this.elementTypeIds[0])
-            .position(point ?? Point.ORIGIN)
+            .type(elementTypeId)
+            .position(point)
             .name(this.label.replace(' ', '') + this.modelState.index.getAllByClass(Category).length)
             .addArgs(ArgsUtil.cornerRadius(5))
             .children();
+    }
+
+    override createTriggerGhostElement(elementTypeId: string): GhostElement | undefined {
+        return { template: this.serializer.createSchema(this.builder(undefined, elementTypeId).build()), dynamic: true };
     }
 }

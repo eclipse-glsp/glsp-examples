@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2019-2022 EclipseSource and others.
+ * Copyright (c) 2019-2023 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -13,25 +13,23 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
+/** @jsx svg */
 import {
-    angleOfPoint,
-    findParentByFeature,
-    getSubType,
+    GEdge,
     Point,
     PolylineEdgeViewWithGapsOnIntersections,
     RenderingContext,
-    GEdge,
-    setAttr,
     ShapeView,
+    angleOfPoint,
+    findParentByFeature,
+    getSubType,
+    setAttr,
     svg,
     toDegrees
 } from '@eclipse-glsp/client';
 import { injectable } from 'inversify';
 import { VNode } from 'snabbdom';
 import { Icon, isTaskNode } from './model';
-
-// eslint-disable-next-line @typescript-eslint/no-unused-vars
-const JSX = { createElement: svg };
 
 @injectable()
 export class WorkflowEdgeView extends PolylineEdgeViewWithGapsOnIntersections {
@@ -44,9 +42,7 @@ export class WorkflowEdgeView extends PolylineEdgeViewWithGapsOnIntersections {
                 class-sprotty-edge={true}
                 class-arrow={true}
                 d='M 1,0 L 10,-4 L 10,4 Z'
-                transform={`rotate(${toDegrees(angleOfPoint({ x: p1.x - p2.x, y: p1.y - p2.y }))} ${p2.x} ${p2.y}) translate(${p2.x} ${
-                    p2.y
-                })`}
+                transform={`rotate(${toDegrees(angleOfPoint(Point.subtract(p1, p2)))} ${p2.x} ${p2.y}) translate(${p2.x} ${p2.y})`}
             />
         );
         additionals.push(arrow);

@@ -1,6 +1,6 @@
 {
   "name": "@eclipse-glsp-examples/workflow-server",
-  "version": "2.0.0",
+  "version": "2.2.1",
   "description": "GLSP node server for the workflow example",
   "keywords": [
     "eclipse",
@@ -36,19 +36,17 @@
     "src"
   ],
   "scripts": {
-    "build": "tsc -b && yarn bundle",
+    "build": "tsc -b",
     "bundle": "webpack",
     "clean": "rimraf lib tsconfig.tsbuildinfo bundle",
     "lint": "eslint --ext .ts,.tsx ./src",
-    "lint:ci": "yarn lint -o eslint.xml -f checkstyle",
-    "prepare": "yarn clean && yarn build",
-    "start": "ts-node src/app.ts --port 5007",
-    "watch": "tsc -w"
+    "start": "node dist/workflow-glsp-server.js --port 5007",
+    "watch": "tsc -w",
+    "watch:bundle": "webpack --watch"
   },
   "devDependencies": {
-    "@eclipse-glsp/layout-elk": "2.0.0",
-    "@eclipse-glsp/server": "2.0.0",
-    "inversify": "^6.0.1",
+    "@eclipse-glsp/layout-elk": "2.2.1",
+    "@eclipse-glsp/server": "2.2.1",
     "source-map-loader": "^4.0.1",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1"

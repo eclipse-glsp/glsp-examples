@@ -21,7 +21,7 @@ The examples has been developed using [Visual Studio Code](https://code.visualst
 
 ## Theia Version compatibility
 
-This project template is compatible with Theia `>=1.39.0`.
+This project template is compatible with Theia `>=1.49.1`.
 
 ## Building the example
 

@@ -2,7 +2,16 @@
   "extends": "@eclipse-glsp/ts-config/",
   "compilerOptions": {
     "rootDir": "src",
-    "outDir": "lib"
+    "outDir": "lib",
+    "composite": true
   },
-  "include": ["src"]
+  "include": ["src"],
+  "references": [
+    {
+      "path": "../workflow-glsp"
+    },
+    {
+      "path": "../workflow-server"
+    }
+  ]
 }

@@ -14,19 +14,19 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
 import {
-    AbstractUIExtension,
     Action,
     AutoCompleteWidget,
     DOMHelper,
     EditorContextService,
+    GLSPAbstractUIExtension,
     GLSPActionDispatcher,
+    GModelRoot,
     ILogger,
     LabeledAction,
     ModelIndexImpl,
     Operation,
     RequestContextActions,
     RequestEditValidationAction,
-    GModelRoot,
     SetContextActions,
     SetEditValidationResultAction,
     TYPES,
@@ -85,7 +85,7 @@ export namespace EditTaskOperation {
 }
 
 @injectable()
-export class TaskEditor extends AbstractUIExtension {
+export class TaskEditor extends GLSPAbstractUIExtension {
     static readonly ID = 'task-editor';
     readonly autoSuggestionSettings = {
         noSuggestionsMessage: 'No suggestions available',

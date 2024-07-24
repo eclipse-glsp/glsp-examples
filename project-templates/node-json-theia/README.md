@@ -39,7 +39,7 @@ The examples are heavily interweaved with Eclipse Theia, so please also check th
 
 ## Theia Version compatibility
 
-This project template is compatible with Theia `>=1.39.0`.
+This project template is compatible with Theia `>=1.49.1`.
 
 ## Building the example
 

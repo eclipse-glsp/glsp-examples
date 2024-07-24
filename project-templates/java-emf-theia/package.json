@@ -6,6 +6,6 @@
         "prepare":"yarn build",
         "build":"yarn build:server && yarn build:client",
         "build:client":"yarn --cwd glsp-client install",
-        "build:server":"cd glsp-server && mvn clean verify"
+        "build:server":"cd glsp-server && mvn --batch-mode clean verify"
     }
 }

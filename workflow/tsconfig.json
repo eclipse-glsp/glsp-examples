@@ -1,0 +1,18 @@
+{
+  "extends": "@eclipse-glsp/ts-config",
+  "include": [],
+  "compilerOptions": {
+    "composite": true
+  },
+  "references": [
+    {
+      "path": "./workflow-server"
+    },
+    {
+      "path": "./workflow-glsp"
+    },
+    {
+      "path": "./workflow-theia"
+    }
+  ]
+}
