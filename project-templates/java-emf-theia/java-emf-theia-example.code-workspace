@@ -13,8 +13,8 @@
         "java.configuration.updateBuildConfiguration": "automatic",
         "editor.formatOnSave": true,
         "editor.codeActionsOnSave": {
-            "source.organizeImports": "always",
-            "source.fixAll.eslint": "always"
+            "source.organizeImports": true,
+            "source.fixAll.eslint": true
         },
         "eslint.validate": ["javascript", "typescript"],
         "search.exclude": {
@@ -58,8 +58,7 @@
             "no-inline-html": {
                 "allowed_elements": ["br", "details", "summary"]
             }
-        },
-        "java.compile.nullAnalysis.mode": "disabled"
+        }
     },
     "extensions": {
         "recommendations": [

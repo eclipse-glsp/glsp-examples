@@ -1,6 +1,6 @@
 {
   "name": "tasklist-glsp-client",
-  "version": "2.2.1",
+  "version": "2.0.0",
   "private": "true",
   "description": "GLSP sprotty diagrams for the Tasklist DSL",
   "keywords": [
@@ -36,10 +36,12 @@
     "build": "tsc -b",
     "clean": "rimraf lib tsconfig.tsbuildinfo",
     "lint": "eslint --ext .ts,.tsx ./src",
+    "lint:ci": "yarn lint -o eslint.xml -f checkstyle",
+    "prepare": "yarn clean && yarn build",
     "watch": "tsc -w"
   },
   "dependencies": {
-    "@eclipse-glsp/client": "2.2.1",
+    "@eclipse-glsp/client": "2.0.0",
     "balloon-css": "^0.5.0"
   },
   "devDependencies": {

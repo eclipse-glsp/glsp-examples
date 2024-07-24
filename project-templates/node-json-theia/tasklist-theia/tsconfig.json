@@ -3,18 +3,9 @@
   "compilerOptions": {
     "rootDir": "src",
     "outDir": "lib",
-    "composite": true,
     "reactNamespace": "JSX",
     "skipLibCheck": true,
     "types": []
   },
-  "include": ["src"],
-  "references": [
-    {
-      "path": "../tasklist-glsp-client"
-    },
-    {
-      "path": "../tasklist-glsp-server"
-    }
-  ]
+  "include": ["src"]
 }

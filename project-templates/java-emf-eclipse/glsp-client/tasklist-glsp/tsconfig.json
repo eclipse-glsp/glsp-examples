@@ -4,7 +4,6 @@
     "rootDir": "src",
     "outDir": "lib",
     "reactNamespace": "JSX",
-    "composite": true,
     "skipLibCheck": true,
     "types": []
   },

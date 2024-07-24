@@ -5,7 +5,6 @@
     "outDir": "lib",
     "reactNamespace": "JSX",
     "skipLibCheck": true,
-    "composite": true,
     "types": []
   },
   "include": ["src"]

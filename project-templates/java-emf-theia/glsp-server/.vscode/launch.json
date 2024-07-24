@@ -9,7 +9,7 @@
       "name": "Launch TaskList GLSP Server",
       "request": "launch",
       "mainClass": "org.eclipse.glsp.example.javaemf.launch.TaskListServerLauncher",
-      "projectName": "org.eclipse.glsp.example.javaemf",
+      "projectName": "org.eclipse.glsp.example.javaemftheia",
       "args": ["--port", "5007"]
     }
   ]

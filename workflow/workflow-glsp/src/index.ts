@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2024 EclipseSource and others.
+ * Copyright (c) 2019-2023 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -14,9 +14,6 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
 export * from './direct-task-editing/direct-task-editor';
-export * from './direct-task-editing/task-editor-module';
 export * from './model';
 export * from './workflow-diagram-module';
-export * from './workflow-snapper';
-export * from './workflow-startup';
 export * from './workflow-views';

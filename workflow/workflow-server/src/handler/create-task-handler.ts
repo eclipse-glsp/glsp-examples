@@ -13,7 +13,7 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
-import { GhostElement, Point } from '@eclipse-glsp/protocol';
+import { Point } from '@eclipse-glsp/protocol';
 import { CreateNodeOperation, GNode } from '@eclipse-glsp/server';
 import { injectable } from 'inversify';
 import { TaskNode, TaskNodeBuilder } from '../graph-extension';
@@ -26,16 +26,12 @@ export abstract class CreateTaskHandler extends CreateWorkflowNodeOperationHandl
         return this.builder(relativeLocation).build();
     }
 
-    protected builder(point: Point = Point.ORIGIN, elementTypeId = this.elementTypeIds[0]): TaskNodeBuilder {
+    protected builder(point: Point | undefined): TaskNodeBuilder {
         return TaskNode.builder()
             .position(point ?? Point.ORIGIN)
             .name(this.label.replace(' ', '') + this.modelState.index.getAllByClass(TaskNode).length)
-            .type(elementTypeId)
-            .taskType(ModelTypes.toNodeType(elementTypeId))
+            .type(this.elementTypeIds[0])
+            .taskType(ModelTypes.toNodeType(this.elementTypeIds[0]))
             .children();
-    }
-
-    override createTriggerGhostElement(elementTypeId: string): GhostElement | undefined {
-        return { template: this.serializer.createSchema(this.builder(undefined, elementTypeId).build()), dynamic: true };
     }
 }
