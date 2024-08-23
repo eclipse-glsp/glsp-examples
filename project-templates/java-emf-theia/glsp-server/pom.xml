@@ -9,14 +9,6 @@
 	<description>Server component for the Java/EMF/Theia GLSP example</description>
 	<url>https://github.com/eclipse/glsp-examples</url>
 
-	<pluginRepositories>
-		<pluginRepository>
-			<id>sonatype</id>
-			<name>Sonatype</name>
-			<url>https://oss.sonatype.org/content/groups/public</url>
-		</pluginRepository>
-	</pluginRepositories>
-
 	<licenses>
 		<license>
 			<name>Eclipse Public License - v 2.0</name>
@@ -41,6 +33,32 @@
 		<tag>HEAD</tag>
 	</scm>
 
+	<pluginRepositories>
+		<pluginRepository>
+			<id>sonatype</id>
+			<name>Sonatype</name>
+			<url>https://oss.sonatype.org/content/groups/public</url>
+		</pluginRepository>
+	</pluginRepositories>
+
+	<repositories>
+		<repository>
+			<id>oss.sonatype.org-snapshot</id>
+			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
+			<releases>
+				<enabled>true</enabled>
+			</releases>
+			<snapshots>
+				<enabled>true</enabled>
+			</snapshots>
+		</repository>
+		<repository>
+			<id>sonatype</id>
+			<name>Sonatype</name>
+			<url>https://oss.sonatype.org/content/groups/public</url>
+		</repository>
+	</repositories>
+
 	<properties>
 		<!-- General build environment plugin versions -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -56,7 +74,7 @@
 		<maven.surefire.plugin.version>2.22.1</maven.surefire.plugin.version>
 		<versions.maven.plugin.version>2.7</versions.maven.plugin.version>
 		<!-- Dependency Versions -->
-		<glsp.version>2.1.0</glsp.version>
+		<glsp.version>2.2.1</glsp.version>
 		<emf.ecore.version>2.26.0</emf.ecore.version>
 		<emf.common.version>2.23.0</emf.common.version>
 		<emf.ecore.change.version>2.14.0</emf.ecore.change.version>
@@ -131,24 +149,6 @@
 			<version>${apache.logging.log4j.version}</version>
 		</dependency>
 	</dependencies>
-
-	<repositories>
-		<repository>
-			<id>oss.sonatype.org-snapshot</id>
-			<url>https://oss.sonatype.org/content/repositories/snapshots</url>
-			<releases>
-				<enabled>true</enabled>
-			</releases>
-			<snapshots>
-				<enabled>true</enabled>
-			</snapshots>
-		</repository>
-		<repository>
-			<id>sonatype</id>
-			<name>Sonatype</name>
-			<url>https://oss.sonatype.org/content/groups/public</url>
-		</repository>
-	</repositories>
 
 	<build>
 		<plugins>

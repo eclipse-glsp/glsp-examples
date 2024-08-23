@@ -14,12 +14,14 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0 OR MIT
  ********************************************************************************/
+import { JsonFormsPropertyViewWidget } from '@eclipse-emfcloud/jsonforms-property-view';
 import { ContainerContext, DiagramConfiguration, GLSPTheiaFrontendModule } from '@eclipse-glsp/theia-integration';
 import { PropertyDataService } from '@theia/property-view/lib/browser/property-data-service';
 import { PropertyViewWidgetProvider } from '@theia/property-view/lib/browser/property-view-widget-provider';
 import { TaskListLanguage } from '../common/tasklist-language';
 import { TaskListDiagramConfiguration } from './diagram/tasklist-diagram-configuration';
 import { GlspPropertyDataService } from './property-view/custom-data-service';
+import { CustomPropertyViewWidget } from './property-view/custom-widget';
 import { GlspPropertyViewWidgetProvider } from './property-view/custom-widget-provider';
 
 export class TaskListTheiaFrontendModule extends GLSPTheiaFrontendModule {
@@ -31,6 +33,9 @@ export class TaskListTheiaFrontendModule extends GLSPTheiaFrontendModule {
 
     override configure(context: ContainerContext): void {
         super.configure(context);
+        if (context.isBound(JsonFormsPropertyViewWidget)) {
+            context.rebind(JsonFormsPropertyViewWidget).to(CustomPropertyViewWidget);
+        }
         context.bind(PropertyDataService).to(GlspPropertyDataService).inSingletonScope();
         context.bind(PropertyViewWidgetProvider).to(GlspPropertyViewWidgetProvider).inSingletonScope();
     }
