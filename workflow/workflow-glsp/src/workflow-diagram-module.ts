@@ -51,6 +51,7 @@ import { Container } from 'inversify';
 import 'sprotty/css/edit-label.css';
 import '../css/diagram.css';
 import { taskEditorModule } from './direct-task-editing/task-editor-module';
+import { filterModule } from './filter/di.config';
 import { BranchingNode, CategoryNode, Icon, SynchronizationNode, TaskNode, WeightedEdge } from './model';
 import { WorkflowSnapper } from './workflow-snapper';
 import { WorkflowStartup } from './workflow-startup';
@@ -104,6 +105,7 @@ export function initializeWorkflowDiagramContainer(container: Container, ...cont
     return initializeDiagramContainer(
         container,
         taskEditorModule,
+        filterModule,
         helperLineModule,
         gridModule,
         debugModule,

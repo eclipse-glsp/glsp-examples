@@ -13,7 +13,13 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
-import { ContainerContext, DiagramConfiguration, GLSPClientContribution, GLSPTheiaFrontendModule } from '@eclipse-glsp/theia-integration';
+import {
+    ContainerContext,
+    DiagramConfiguration,
+    GLSPClientContribution,
+    GLSPDiagramWidget,
+    GLSPTheiaFrontendModule
+} from '@eclipse-glsp/theia-integration';
 import { CommandContribution, MenuContribution } from '@theia/core';
 import { KeybindingContext, KeybindingContribution } from '@theia/core/lib/browser';
 import { WorkflowLanguage } from '../common/workflow-language';
@@ -24,6 +30,7 @@ import { WorkflowNavigationCommandContribution, WorkflowNavigationMenuContributi
 import { WorkflowTaskEditCommandContribution, WorkflowTaskEditMenuContribution } from './diagram/workflow-task-editing-context-menu';
 import { ExampleNavigationCommandContribution } from './external-navigation-example/external-navigation-example';
 import { WorkflowGLSPClientContribution } from './workflow-glsp-client-contribution';
+import { WorkflowDiagramWidget } from './workflow-widget';
 
 export class WorkflowTheiaFrontendModule extends GLSPTheiaFrontendModule {
     protected override enableCopyPaste = true;
@@ -53,6 +60,11 @@ export class WorkflowTheiaFrontendModule extends GLSPTheiaFrontendModule {
 
     override bindGLSPClientContribution(context: ContainerContext): void {
         context.bind(GLSPClientContribution).to(WorkflowGLSPClientContribution);
+    }
+
+    override bindDiagramWidgetFactory(context: ContainerContext): void {
+        super.bindDiagramWidgetFactory(context);
+        context.rebind(GLSPDiagramWidget).to(WorkflowDiagramWidget);
     }
 }
 

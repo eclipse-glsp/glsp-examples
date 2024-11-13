@@ -23,7 +23,16 @@
     "workflow-glsp",
     "workflow-theia",
     "workflow-browser-app",
-    "workflow-server"
+    "workflow-server",
+    "workflow-ai",
+    "ai-chat",
+    "ai-chat-ui",
+    "ai-code-completion",
+    "ai-core",
+    "ai-history",
+    "ai-openai",
+    "ai-terminal",
+    "ai-workspace-agent"
   ],
   "scripts": {
     "all": "yarn clean && yarn build && yarn lint",

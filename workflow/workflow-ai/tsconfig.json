@@ -1,0 +1,22 @@
+{
+  "extends": "@eclipse-glsp/ts-config/",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "lib",
+    "composite": true
+  },
+  "include": [
+    "src"
+  ],
+  "references": [
+    {
+      "path": "../workflow-glsp"
+    },
+    {
+      "path": "../workflow-server"
+    },
+    {
+      "path": "../ai-chat"
+    }
+  ]
+}

@@ -38,7 +38,7 @@
   "scripts": {
     "build": "tsc -b",
     "bundle": "webpack",
-    "clean": "rimraf lib tsconfig.tsbuildinfo bundle",
+    "clean": "rimraf lib tsconfig.tsbuildinfo tsconfig.tsbuildinfo bundle",
     "lint": "eslint --ext .ts,.tsx ./src",
     "start": "node dist/workflow-glsp-server.js --port 5007",
     "watch": "tsc -w",

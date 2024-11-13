@@ -1,0 +1,50 @@
+.filter-ui {
+    position: absolute;
+    left: 25px;
+    bottom: 25px;
+}
+
+.filter-ui .toggle {
+    position: relative;
+    display: inline-block;
+    width: 50px;
+    height: 27px;
+    background-color: rgb(245, 145, 203);
+    border-radius: 15px;
+    border: 2px solid gray;
+}
+
+.filter-ui .toggle:after {
+    content: '';
+    position: absolute;
+    width: 25px;
+    height: 25px;
+    border-radius: 50%;
+    background-color: gray;
+    top: 1px;
+    left: 1px;
+    transition: all 0.5s;
+}
+
+.filter-ui .checkbox:checked + .toggle::after {
+    left: 24px;
+}
+
+.filter-ui .checkbox:checked + .toggle {
+    background-color: rgb(114, 200, 211);
+}
+
+.filter-ui .checkbox {
+    display: none;
+}
+
+.filter-ui .toggle p {
+    margin-left: 60px;
+    width: 150px;
+    margin-top: 5px;
+    font-size: 15px;
+}
+
+.sprotty-graph.filtered {
+    background-color: rgba(174, 206, 243, 0.459);
+}

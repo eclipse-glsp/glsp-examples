@@ -1,0 +1,7 @@
+#theia-main-content-panel {
+    /* The brand logo is shown in the editor area if no editor is opened. It should look good on both dark and light theme. */
+    background-image: url('../../../src/browser/images/logo.svg');
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 30%;
+}

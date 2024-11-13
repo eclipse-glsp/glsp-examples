@@ -1,0 +1,52 @@
+{
+  "name": "@theia/ai-history",
+  "version": "1.52.0",
+  "description": "Theia - AI communication history",
+  "keywords": [
+    "theia-extension"
+  ],
+  "homepage": "https://github.com/eclipse-theia/theia",
+  "bugs": {
+    "url": "https://github.com/eclipse-theia/theia/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eclipse-theia/theia.git"
+  },
+  "license": "EPL-2.0 OR GPL-2.0-only WITH Classpath-exception-2.0",
+  "main": "lib/common",
+  "files": [
+    "lib",
+    "src"
+  ],
+  "scripts": {
+    "_lint": "eslint --max-warnings 0 -c ../../.eslintrc.js  --ext .ts,.tsx ./src",
+    "_lint:fix": "eslint --max-warnings 0 -c ../../.eslintrc.js  --fix --ext .ts,.tsx ./src",
+    "build": "tsc",
+    "clean": "rimraf lib tsconfig.tsbuildinfo",
+    "clean:coverage": "rimraf .nyc_output coverage",
+    "prepare": "yarn build",
+    "watch": "tsc -w"
+  },
+  "nyc": {
+    "extends": "../../configs/nyc.json"
+  },
+  "dependencies": {
+    "@theia/ai-core": "1.52.0",
+    "@theia/core": "1.52.0",
+    "@theia/filesystem": "1.52.0",
+    "@theia/output": "1.52.0",
+    "@theia/workspace": "1.52.0",
+    "minimatch": "^5.1.0",
+    "tslib": "^2.6.2"
+  },
+  "devDependencies": {},
+  "publishConfig": {
+    "access": "public"
+  },
+  "theiaExtensions": [
+    {
+      "frontend": "lib/browser/ai-history-frontend-module"
+    }
+  ]
+}

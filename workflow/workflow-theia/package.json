@@ -29,7 +29,7 @@
   ],
   "scripts": {
     "build": "tsc -b",
-    "clean": "rimraf lib tsconfig.tsbuildinfo ",
+    "clean": "rimraf lib tsconfig.tsbuildinfo tsconfig.tsbuildinfo ",
     "lint": "eslint --ext .ts,.tsx ./src",
     "watch": "tsc -w"
   },

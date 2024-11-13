@@ -13,6 +13,42 @@
     },
     {
       "path": "./workflow-theia"
+    },
+    {
+      "path": "./workflow-server"
+    },
+    {
+      "path": "./workflow-glsp"
+    },
+    {
+      "path": "./workflow-theia"
+    },
+    {
+      "path": "./workflow-ai"
+    },
+    {
+      "path": "./ai-chat"
+    },
+    {
+      "path": "./ai-chat-ui"
+    },
+    {
+      "path": "./ai-code-completion"
+    },
+    {
+      "path": "./ai-core"
+    },
+    {
+      "path": "./ai-history"
+    },
+    {
+      "path": "./ai-openai"
+    },
+    {
+      "path": "./ai-terminal"
+    },
+    {
+      "path": "./ai-workspace-agent"
     }
   ]
 }

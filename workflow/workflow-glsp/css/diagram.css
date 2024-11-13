@@ -111,3 +111,26 @@
     margin-top: -3px;
     margin-left: -3px;
 }
+
+.pulse > path {
+    -webkit-animation: pulsate 1s ease-out;
+    -webkit-animation-iteration-count: infinite;
+    -moz-animation: pulsate 1s ease-out;
+    -moz-animation-iteration-count: infinite;
+    -ms-animation: pulsate 1s ease-out;
+    -ms-animation-iteration-count: infinite;
+    animation: pulsate 1s ease-out;
+    animation-iteration-count: infinite;
+}
+
+@keyframes pulsate {
+    0% {
+        filter: brightness(50%) contrast(80%) drop-shadow(0 0 10px #fff) drop-shadow(0 0 13px #e60073) drop-shadow(0 0 20px #e60073);
+    }
+    50% {
+        filter: brightness(100%) contrast(100%) drop-shadow(0 0 5px #fff) drop-shadow(0 0 7px #e60073) drop-shadow(0 0 10px #e60073);
+    }
+    100% {
+        filter: brightness(50%) contrast(80%) drop-shadow(0 0 10px #fff) drop-shadow(0 0 12px #e60073) drop-shadow(0 0 20px #e60073);
+    }
+}

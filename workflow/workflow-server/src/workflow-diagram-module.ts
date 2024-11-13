@@ -14,6 +14,7 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
 import {
+    ActionHandlerConstructor,
     BindingTarget,
     CommandPaletteActionProvider,
     ContextActionsProvider,
@@ -44,6 +45,8 @@ import { CreateJoinNodeHandler } from './handler/create-join-node-handler';
 import { CreateManualTaskHandler } from './handler/create-manual-task-handler';
 import { CreateMergeNodeHandler } from './handler/create-merge-node-handler';
 import { CreateWeightedEdgeHandler } from './handler/create-weighted-edge-handler';
+import { FilterActionHandler } from './handler/filter-action-handler';
+import { HighlightPathActionHandler } from './handler/highlight-path-action-handler';
 import { WorkflowLabelEditValidator } from './labeledit/workflow-label-edit-validator';
 import { WorkflowModelValidator } from './marker/workflow-model-validator';
 import { WorkflowNavigationTargetResolver } from './model/workflow-navigation-target-resolver';
@@ -75,6 +78,12 @@ export class WorkflowDiagramModule extends GModelDiagramModule {
 
     get diagramType(): string {
         return 'workflow-diagram';
+    }
+
+    protected override configureActionHandlers(binding: InstanceMultiBinding<ActionHandlerConstructor>): void {
+        super.configureActionHandlers(binding);
+        binding.add(HighlightPathActionHandler);
+        binding.add(FilterActionHandler);
     }
 
     protected override configureOperationHandlers(binding: InstanceMultiBinding<OperationHandlerConstructor>): void {
