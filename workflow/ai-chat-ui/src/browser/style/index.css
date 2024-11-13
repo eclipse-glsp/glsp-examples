@@ -16,7 +16,7 @@
     cursor: default;
     display: flex;
     flex-direction: column;
-    padding: 16px 20px 0 20px;
+    padding: 16px 20px 6px 20px;
     user-select: text;
     -webkit-user-select: text;
     border-bottom: 1px solid var(--theia-sideBarSectionHeader-border);
@@ -30,12 +30,13 @@ div:last-child > .theia-ChatNode {
 .theia-ChatNodeHeader {
     align-items: center;
     display: flex;
+    justify-content: space-between;
+    height: 24px;
     gap: 8px;
     width: 100%;
 }
 
 .theia-ChatNodeHeader .theia-AgentAvatar {
-    display: flex;
     pointer-events: none;
     user-select: none;
     font-size: 20px;
@@ -90,22 +91,41 @@ div:last-child > .theia-ChatNode {
     font-weight: 600;
 }
 
-.theia-ChatNode .rendered-markdown {
+.theia-ChatNode .theia-ChatNodeToolbar {
+    margin-left: auto;
+    line-height: 18px;
+}
+.theia-ChatNodeToolbar .theia-ChatNodeToolbarAction {
+    display: none;
+    align-items: center;
+    padding: 4px;
+    border-radius: 5px;
+}
+.theia-ChatNode:hover .theia-ChatNodeToolbar .theia-ChatNodeToolbarAction {
+    display: inline-block;
+}
+.theia-ChatNodeToolbar .theia-ChatNodeToolbarAction:hover {
+    cursor: pointer;
+    background-color: var(--theia-toolbar-hoverBackground);
+}
+
+.theia-ChatNode {
     line-height: 1.3rem;
 }
 
-.theia-ChatNode .rendered-markdown ul,
-.theia-ChatNode .rendered-markdown ol {
+.theia-ChatNode ul,
+.theia-ChatNode ol {
     padding-inline-start: 1rem;
 }
 
-.theia-ChatNode .rendered-markdown li > p {
+.theia-ChatNode li > p {
     margin-top: 0;
     margin-bottom: 0;
 }
 
 .theia-ChatNode .theia-CodeWrapper {
     padding: 0.5em;
+    padding-bottom: 0;
     background-color: var(--theia-editor-background);
     border-radius: 6px;
     border: var(--theia-border-width) solid var(--theia-checkbox-border);
@@ -143,6 +163,7 @@ div:last-child > .theia-ChatNode {
     display: flex;
     flex-direction: column-reverse;
     overflow: hidden;
+    transition: height 0.05s ease-in-out;
 }
 
 .theia-ChatInput-Editor:has(.monaco-editor.focused) {

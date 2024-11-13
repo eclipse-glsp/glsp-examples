@@ -17,11 +17,11 @@ import { ChatAgent, ChatAgentService, ChatModel, ChatRequestModel } from '@theia
 import { UntitledResourceResolver } from '@theia/core';
 import { ContextMenuRenderer, Message, ReactWidget } from '@theia/core/lib/browser';
 import { inject, injectable, postConstruct } from '@theia/core/shared/inversify';
-import { MonacoEditor } from '@theia/monaco/lib/browser/monaco-editor';
 import * as React from '@theia/core/shared/react';
+import { IMouseEvent } from '@theia/monaco-editor-core';
+import { MonacoEditor } from '@theia/monaco/lib/browser/monaco-editor';
 import { MonacoEditorProvider } from '@theia/monaco/lib/browser/monaco-editor-provider';
 import { CHAT_VIEW_LANGUAGE_EXTENSION } from './chat-view-language-contribution';
-import { IMouseEvent } from '@theia/monaco-editor-core';
 
 type Query = (query: string) => Promise<void>;
 type Cancel = (requestModel: ChatRequestModel) => void;
@@ -97,11 +97,10 @@ export class AIChatInputWidget extends ReactWidget {
     protected handleContextMenu(event: IMouseEvent): void {
         this.contextMenuRenderer.render({
             menuPath: AIChatInputWidget.CONTEXT_MENU,
-            anchor: { x: event.posx, y: event.posy },
+            anchor: { x: event.posx, y: event.posy }
         });
         event.preventDefault();
     }
-
 }
 
 interface ChatInputProperties {
@@ -115,7 +114,6 @@ interface ChatInputProperties {
     contextMenuCallback: (event: IMouseEvent) => void;
 }
 const ChatInput: React.FunctionComponent<ChatInputProperties> = (props: ChatInputProperties) => {
-
     const [inProgress, setInProgress] = React.useState(false);
     // eslint-disable-next-line no-null/no-null
     const editorContainerRef = React.useRef<HTMLDivElement | null>(null);
@@ -126,6 +124,9 @@ const ChatInput: React.FunctionComponent<ChatInputProperties> = (props: ChatInpu
     const lastRequest = allRequests.length === 0 ? undefined : allRequests[allRequests.length - 1];
 
     const createInputElement = async () => {
+        const paddingTop = 8;
+        const lineHeight = 20;
+        const maxHeight = 240;
         const resource = await props.untitledResourceResolver.createUntitledResource('', CHAT_VIEW_LANGUAGE_EXTENSION);
         const editor = await props.editorProvider.createInline(resource.uri, editorContainerRef.current!, {
             language: CHAT_VIEW_LANGUAGE_EXTENSION,
@@ -133,7 +134,7 @@ const ChatInput: React.FunctionComponent<ChatInputProperties> = (props: ChatInpu
             codeLens: false,
             inlayHints: { enabled: 'off' },
             hover: { enabled: false },
-            autoSizing: true,
+            autoSizing: false, // we handle the sizing ourselves
             scrollBeyondLastLine: false,
             scrollBeyondLastColumn: 0,
             minHeight: 1,
@@ -144,27 +145,40 @@ const ChatInput: React.FunctionComponent<ChatInputProperties> = (props: ChatInpu
             scrollbar: { horizontal: 'hidden' },
             automaticLayout: true,
             lineNumbers: 'off',
-            lineHeight: 20,
-            padding: { top: 8 },
+            lineHeight,
+            padding: { top: paddingTop },
             suggest: {
                 showIcons: true,
                 showSnippets: false,
                 showWords: false,
                 showStatusBar: false,
-                insertMode: 'replace',
+                insertMode: 'replace'
             },
             bracketPairColorization: { enabled: false },
             wrappingStrategy: 'advanced',
-            stickyScroll: { enabled: false },
+            stickyScroll: { enabled: false }
         });
 
-        editor.getControl().onDidChangeModelContent(() => {
-            layout();
+        if (editorContainerRef.current) {
+            editorContainerRef.current.style.height = lineHeight + 2 * paddingTop + 'px';
+        }
+
+        const updateEditorHeight = () => {
+            if (editorContainerRef.current) {
+                const contentHeight = editor.getControl().getContentHeight() + paddingTop;
+                editorContainerRef.current.style.height = `${Math.min(contentHeight, maxHeight)}px`;
+            }
+        };
+        editor.getControl().onDidChangeModelContent(updateEditorHeight);
+        const resizeObserver = new ResizeObserver(updateEditorHeight);
+        if (editorContainerRef.current) {
+            resizeObserver.observe(editorContainerRef.current);
+        }
+        editor.getControl().onDidDispose(() => {
+            resizeObserver.disconnect();
         });
 
-        editor.getControl().onContextMenu(e =>
-            props.contextMenuCallback(e.event)
-        );
+        editor.getControl().onContextMenu(e => props.contextMenuCallback(e.event));
 
         editorRef.current = editor;
     };
@@ -193,55 +207,67 @@ const ChatInput: React.FunctionComponent<ChatInputProperties> = (props: ChatInpu
         if (editorRef.current) {
             editorRef.current.document.textEditorModel.setValue('');
         }
-    };
-
-    function layout(): void {
-        if (editorRef.current === undefined) {
-            return;
-        }
-        const hiddenClass = 'hidden';
-        const editor = editorRef.current;
-        if (editor.document.textEditorModel.getValue().length > 0) {
-            placeholderRef.current?.classList.add(hiddenClass);
-        } else {
-            placeholderRef.current?.classList.remove(hiddenClass);
-        }
     }
 
-    const onKeyDown = React.useCallback((event: React.KeyboardEvent) => {
-        if (!props.isEnabled) {
-            return;
-        }
-        if (event.key === 'Enter' && !event.shiftKey) {
-            event.preventDefault();
-            submit(editorRef.current?.document.textEditorModel.getValue() || '');
-        }
-    }, [props.isEnabled]);
+    const onKeyDown = React.useCallback(
+        (event: React.KeyboardEvent) => {
+            if (!props.isEnabled) {
+                return;
+            }
+            if (event.key === 'Enter' && !event.shiftKey) {
+                event.preventDefault();
+                submit(editorRef.current?.document.textEditorModel.getValue() || '');
+            }
+        },
+        [props.isEnabled]
+    );
 
-    return <div className='theia-ChatInput'>
-        <div className='theia-ChatInput-Editor-Box'>
-            <div className='theia-ChatInput-Editor' ref={editorContainerRef} onKeyDown={onKeyDown}>
-                <div ref={placeholderRef} className='theia-ChatInput-Editor-Placeholder'>Enter your question</div>
+    const handleInputFocus = () => {
+        placeholderRef.current?.classList.add('hidden');
+    };
+
+    const handleInputBlur = () => {
+        if (!editorRef.current?.getControl().getValue()) {
+            placeholderRef.current?.classList.remove('hidden');
+        }
+    };
+
+    return (
+        <div className='theia-ChatInput'>
+            <div className='theia-ChatInput-Editor-Box'>
+                <div
+                    className='theia-ChatInput-Editor'
+                    ref={editorContainerRef}
+                    onKeyDown={onKeyDown}
+                    onFocus={handleInputFocus}
+                    onBlur={handleInputBlur}
+                >
+                    <div ref={placeholderRef} className='theia-ChatInput-Editor-Placeholder'>
+                        Ask a question
+                    </div>
+                </div>
             </div>
-        </div>
-        <div className="theia-ChatInputOptions">
-            {
-                inProgress ? <span
-                    className="codicon codicon-stop-circle option"
-                    title="Cancel (Esc)"
-                    onClick={() => {
-                        if (lastRequest) {
-                            props.onCancel(lastRequest);
-                        }
-                        setInProgress(false);
-                    }} /> :
+            <div className='theia-ChatInputOptions'>
+                {inProgress ? (
                     <span
-                        className="codicon codicon-send option"
-                        title="Send (Enter)"
+                        className='codicon codicon-stop-circle option'
+                        title='Cancel (Esc)'
+                        onClick={() => {
+                            if (lastRequest) {
+                                props.onCancel(lastRequest);
+                            }
+                            setInProgress(false);
+                        }}
+                    />
+                ) : (
+                    <span
+                        className='codicon codicon-send option'
+                        title='Send (Enter)'
                         onClick={!props.isEnabled ? undefined : () => submit(editorRef.current?.document.textEditorModel.getValue() || '')}
                         style={{ cursor: !props.isEnabled ? 'default' : 'pointer', opacity: !props.isEnabled ? 0.5 : 1 }}
                     />
-            }
+                )}
+            </div>
         </div>
-    </div>;
+    );
 };
