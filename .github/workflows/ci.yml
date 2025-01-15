@@ -16,7 +16,7 @@ jobs:
   build-workflow-example:
     name: Build workflow example
     timeout-minutes: 60
-    runs-on: ubuntu-latest
+    runs-on:  ubuntu-22.04
     steps:
       - name: Checkout code
         uses: actions/checkout@v4.1.7
@@ -32,7 +32,7 @@ jobs:
   build-node-json-theia:
     name: Build node-json-theia
     timeout-minutes: 60
-    runs-on: ubuntu-latest
+    runs-on:  ubuntu-22.04
     steps:
       - name: Checkout code
         uses: actions/checkout@v4.1.7
@@ -48,7 +48,7 @@ jobs:
   build-node-json-vscode:
     name: Build node-json-vscode
     timeout-minutes: 60
-    runs-on: ubuntu-latest
+    runs-on:  ubuntu-22.04
     steps:
       - name: Checkout code
         uses: actions/checkout@v4.1.7
@@ -62,7 +62,7 @@ jobs:
   build-java-emf-theia:
     name: Build java-emf-theia
     timeout-minutes: 60
-    runs-on: ubuntu-latest
+    runs-on:  ubuntu-22.04
     steps:
       - name: Checkout code
         uses: actions/checkout@v4.1.7
@@ -81,7 +81,7 @@ jobs:
   build-java-emf-eclipse:
     name: Build java-emf-eclipse
     timeout-minutes: 60
-    runs-on: ubuntu-latest
+    runs-on:  ubuntu-22.04
     steps:
       - name: Checkout code
         uses: actions/checkout@v4.1.7

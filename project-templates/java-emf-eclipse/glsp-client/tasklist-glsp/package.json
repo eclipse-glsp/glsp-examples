@@ -1,6 +1,6 @@
 {
   "name": "tasklist-glsp",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "private": "true",
   "description": "GLSP sprotty diagrams for the EMF model TaskList DSL",
   "keywords": [
@@ -39,6 +39,6 @@
     "watch": "tsc -w"
   },
   "dependencies": {
-    "@eclipse-glsp/client": "2.2.1"
+    "@eclipse-glsp/client": "2.3.0"
   }
 }

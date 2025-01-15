@@ -1,6 +1,6 @@
 {
   "name": "parent",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "private": true,
   "homepage": "https://www.eclipse.org/glsp/",
   "bugs": "https://github.com/eclipse-glsp/glsp/issues",
@@ -40,7 +40,7 @@
     "watch": "concurrently --kill-others -n tsc,browser -c red,yellow,green \"tsc -b -w --preserveWatchOutput\" \"yarn -s browser watch\""
   },
   "devDependencies": {
-    "@eclipse-glsp/config": "2.2.1",
+    "@eclipse-glsp/config": "2.3.0",
     "concurrently": "^8.2.2",
     "lerna": "8.1.7",
     "typescript": "^5.5.3"

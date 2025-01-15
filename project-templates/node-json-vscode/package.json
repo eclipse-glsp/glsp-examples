@@ -1,6 +1,6 @@
 {
   "name": "parent",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "private": true,
   "homepage": "https://www.eclipse.org/glsp/",
   "bugs": "https://github.com/eclipse-glsp/glsp/issues",
@@ -44,14 +44,14 @@
     "string-width": "4.2.3"
   },
   "devDependencies": {
-    "@eclipse-glsp/config": "2.2.1",
-    "@types/node": "16.x",
+    "@eclipse-glsp/config": "2.3.0",
+    "@types/node": "18.x",
     "concurrently": "^8.2.2",
     "lerna": "^8.1.7",
     "typescript": "^5.5.3"
   },
   "engines": {
-    "node": ">=16.11.0",
-    "yarn": ">=1.7.0 <2.x.x"
+    "node": ">=16.18",
+    "yarn": ">=1.7.0 <2"
   }
 }

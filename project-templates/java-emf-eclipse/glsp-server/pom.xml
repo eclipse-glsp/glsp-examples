@@ -6,7 +6,7 @@
 	<groupId>org.eclipse.glsp.example</groupId>
 	<artifactId>org.eclipse.glsp.example.javaemf.parent</artifactId>
 	<description>Java/EMF/Eclipse GLSP Example parent</description>
-	<version>2.2.1</version>
+	<version>2.3.0</version>
 	<packaging>pom</packaging>
 	<url>https://github.com/eclipse/glsp-examples</url>
 
@@ -145,7 +145,7 @@
 						<artifact>
 							<groupId>org.eclipse.glsp.example</groupId>
 							<artifactId>org.eclipse.glsp.example.javaemf.parent</artifactId>
-							<classifier>org.eclipse.glsp.example.javaemf.target/r2023-09</classifier>
+							<classifier>org.eclipse.glsp.example.javaemf.target/r2024-09</classifier>
 							<version>${project.version}</version>
 						</artifact>
 					</target>
