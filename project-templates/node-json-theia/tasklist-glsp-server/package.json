@@ -1,6 +1,6 @@
 {
   "name": "tasklist-glsp-server",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "description": "GLSP node server for Tasklist GSLP diagrams",
   "keywords": [
     "eclipse",
@@ -42,7 +42,7 @@
     "watch:bundle": "webpack --watch"
   },
   "devDependencies": {
-    "@eclipse-glsp/server": "2.2.1",
+    "@eclipse-glsp/server": "2.3.0",
     "source-map-loader": "^4.0.1",
     "webpack": "^5.88.2",
     "webpack-cli": "^5.1.4"

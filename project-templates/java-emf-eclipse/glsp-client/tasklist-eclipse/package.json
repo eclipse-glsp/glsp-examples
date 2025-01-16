@@ -1,6 +1,6 @@
 {
   "name": "tasklist-eclipse",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "private": "true",
   "description": "GLSP-frontend code for the EMF model TaskList Eclipse integration",
   "keywords": [
@@ -40,8 +40,8 @@
     "watch:bundle": "webpack --watch"
   },
   "dependencies": {
-    "@eclipse-glsp/ide": "2.2.1",
-    "tasklist-glsp": "2.2.1"
+    "@eclipse-glsp/ide": "2.3.0",
+    "tasklist-glsp": "2.3.0"
   },
   "devDependencies": {
     "@vscode/codicons": "^0.0.25",

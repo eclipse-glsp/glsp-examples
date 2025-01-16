@@ -1,6 +1,6 @@
 {
   "name": "tasklist-theia",
-  "version": "2.2.1",
+  "version": "2.3.0",
   "private": "true",
   "description": "Theia extension for Tasklist diagrams",
   "keywords": [
@@ -34,9 +34,9 @@
     "watch": "tsc -w"
   },
   "dependencies": {
-    "@eclipse-glsp/theia-integration": "2.2.1",
-    "tasklist-glsp-client": "2.2.1",
-    "tasklist-glsp-server": "2.2.1"
+    "@eclipse-glsp/theia-integration": "2.3.0",
+    "tasklist-glsp-client": "2.3.0",
+    "tasklist-glsp-server": "2.3.0"
   },
   "theiaExtensions": [
     {

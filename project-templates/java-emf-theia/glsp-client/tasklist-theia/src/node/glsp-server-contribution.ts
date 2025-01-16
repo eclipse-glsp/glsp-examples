@@ -23,7 +23,7 @@ export const DEFAULT_PORT = 0;
 export const PORT_ARG_KEY = 'TASKLIST_GLSP';
 export const LOG_DIR = join(__dirname, '..', '..', 'logs');
 const JAR_FILE = resolve(
-    join(__dirname, '..', '..', '..', '..', 'glsp-server', 'target', 'org.eclipse.glsp.example.javaemf-2.2.1-glsp.jar')
+    join(__dirname, '..', '..', '..', '..', 'glsp-server', 'target', 'org.eclipse.glsp.example.javaemf-2.3.0-glsp.jar')
 );
 
 @injectable()
@@ -33,10 +33,15 @@ export class TaskListGLSPServerContribution extends GLSPSocketServerContribution
     createContributionOptions(): Partial<GLSPSocketServerContributionOptions> {
         return {
             executable: JAR_FILE,
-            additionalArgs: ['--consoleLog', 'false', '--fileLog', 'true', '--logDir', LOG_DIR],
+            additionalArgs: ['--consoleLog', 'true', '--fileLog', 'true', '--logDir', LOG_DIR],
             socketConnectionOptions: {
                 port: getPort(PORT_ARG_KEY, DEFAULT_PORT)
             }
         };
+    }
+
+    protected override processLogInfo(line: string): void {
+        super.processLogInfo(line);
+        console.info(`${this.id}: ${line}`);
     }
 }

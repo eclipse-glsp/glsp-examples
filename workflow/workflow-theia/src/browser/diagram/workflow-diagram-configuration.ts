@@ -14,7 +14,7 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
 
-import { initializeWorkflowDiagramContainer } from '@eclipse-glsp-examples/workflow-glsp';
+import { initializeWorkflowDiagramContainer } from '@eclipse-glsp-examples/workflow-glsp/lib';
 import { ContainerConfiguration } from '@eclipse-glsp/client';
 import { GLSPDiagramConfiguration } from '@eclipse-glsp/theia-integration';
 import { Container, injectable } from '@theia/core/shared/inversify';

@@ -33,8 +33,8 @@ The most important entry points are:
 
 The following libraries/frameworks need to be installed on your system:
 
--   [Node.js](https://nodejs.org/en/) `>=16.11.0`
--   [Yarn](https://classic.yarnpkg.com/en/docs/install#debian-stable) `>=1.7.0 <2.x.x`
+-   [Node.js](https://nodejs.org/en/) `>=18`
+-   [Yarn](https://classic.yarnpkg.com/en/docs/install#debian-stable) `>=1.7.0 <2`
 
 ## VS Code Extension
 
