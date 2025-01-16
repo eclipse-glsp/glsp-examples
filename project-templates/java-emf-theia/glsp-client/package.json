@@ -25,7 +25,7 @@
     "tasklist-browser-app"
   ],
   "scripts": {
-    "all": "yyarn clean && yarn install && yarn lint",
+    "all": "yarn clean && yarn install && yarn lint",
     "browser": " yarn --cwd tasklist-browser-app",
     "build": "yarn compile && yarn browser bundle",
     "check:theia-version": "theia check:theia-version",
