@@ -2,69 +2,41 @@
   "id": "d63b4a87-ca5e-41f8-b800-83ff4947a1ce",
   "tasks": [
     {
-      "id": "6b068132-c0a9-4a9e-ac60-7cadce23079a",
-      "name": "First Task",
+      "id": "140a6ada-a6ab-497c-acd1-e019b259dedb",
+      "name": "NewTaskNode0",
       "position": {
-        "x": 215.26822788729396,
-        "y": 78
+        "x": 772.6892057179941,
+        "y": 243
       },
       "size": {
-        "width": 56.06452941894531,
-        "height": 22.5
+        "width": 250,
+        "height": 100
       }
     },
     {
-      "id": "ad877ad8-b849-4dc4-b4ca-a5f55413864c",
-      "name": "Second Task",
+      "id": "599a1296-1ffb-4138-9cee-49a017f6fbab",
+      "name": "NewTaskNode1",
       "position": {
-        "x": 119,
-        "y": 152
+        "x": 1201.6870087604273,
+        "y": 315.26113534928186
       },
       "size": {
-        "width": 71.49215698242188,
-        "height": 22.5
+        "width": 250,
+        "height": 100
       }
     },
     {
-      "id": "3564ed38-4b63-485d-a7f0-75461a5ef50f",
-      "name": "Third Task",
+      "id": "ebfcfb7d-7b59-42ed-a1d0-b4446ab04b1c",
+      "name": "NewTaskNode2",
       "position": {
-        "x": 278,
-        "y": 152
+        "x": 828.7670271826023,
+        "y": 469.83577455347324
       },
       "size": {
-        "width": 59.628753662109375,
-        "height": 22.5
-      }
-    },
-    {
-      "id": "51788706-0e25-49a7-86e9-ed93389ffd45",
-      "name": "Fourth Task",
-      "position": {
-        "x": 575.2262814761611,
-        "y": 339.8715377713934
-      },
-      "size": {
-        "width": 66.14842224121094,
-        "height": 22.5
+        "width": 250,
+        "height": 100
       }
     }
   ],
-  "transitions": [
-    {
-      "id": "99e90f3b-65d4-4d14-9ce5-ee3e54d8a4a8",
-      "sourceTaskId": "3564ed38-4b63-485d-a7f0-75461a5ef50f",
-      "targetTaskId": "51788706-0e25-49a7-86e9-ed93389ffd45"
-    },
-    {
-      "id": "33c11dbe-7aa3-4819-a2fa-b799b61b5e3e",
-      "sourceTaskId": "6b068132-c0a9-4a9e-ac60-7cadce23079a",
-      "targetTaskId": "ad877ad8-b849-4dc4-b4ca-a5f55413864c"
-    },
-    {
-      "id": "e3f30b31-0736-40b5-872e-6749ee6323f2",
-      "sourceTaskId": "ad877ad8-b849-4dc4-b4ca-a5f55413864c",
-      "targetTaskId": "3564ed38-4b63-485d-a7f0-75461a5ef50f"
-    }
-  ]
+  "transitions": []
 }

@@ -35,6 +35,7 @@ import { DeleteElementHandler } from '../handler/delete-element-handler';
 import { TaskListApplyLabelEditHandler } from '../handler/tasklist-apply-label-edit-handler';
 import { TaskListChangeBoundsHandler } from '../handler/tasklist-change-bounds-handler';
 import { TaskListLabelEditValidator } from '../handler/tasklist-label-edit-validator';
+import { UpdateLodActionHandler } from '../level-of-detail/update-lod-action-handler';
 import { TaskListGModelFactory } from '../model/tasklist-gmodel-factory';
 import { TaskListModelIndex } from '../model/tasklist-model-index';
 import { TaskListModelState } from '../model/tasklist-model-state';
@@ -64,6 +65,7 @@ export class TaskListDiagramModule extends DiagramModule {
     protected override configureActionHandlers(binding: InstanceMultiBinding<ActionHandlerConstructor>): void {
         super.configureActionHandlers(binding);
         binding.add(ComputedBoundsActionHandler);
+        binding.add(UpdateLodActionHandler);
     }
 
     protected override configureOperationHandlers(binding: InstanceMultiBinding<OperationHandlerConstructor>): void {

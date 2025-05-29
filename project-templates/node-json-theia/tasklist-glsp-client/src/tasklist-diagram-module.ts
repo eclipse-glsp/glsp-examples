@@ -19,26 +19,35 @@ import {
     configureModelElement,
     ConsoleLogger,
     ContainerConfiguration,
+    debugModule,
     DefaultTypes,
     editLabelFeature,
+    GGraphView,
     GLabel,
     GLabelView,
+    GNode,
     initializeDiagramContainer,
     LogLevel,
+    overrideModelElement,
+    RoundedCornerNodeView,
     TYPES
 } from '@eclipse-glsp/client';
 import 'balloon-css/balloon.min.css';
 import { Container, ContainerModule } from 'inversify';
 import '../css/diagram.css';
+import { LodGGraph } from './level-of-detail/lod-model';
+import { levelOfDetailModule } from './level-of-detail/lod-module';
 
 const taskListDiagramModule = new ContainerModule((bind, unbind, isBound, rebind) => {
     rebind(TYPES.ILogger).to(ConsoleLogger).inSingletonScope();
     rebind(TYPES.LogLevel).toConstantValue(LogLevel.warn);
     const context = { bind, unbind, isBound, rebind };
     configureDefaultModelElements(context);
-    configureModelElement(context, DefaultTypes.LABEL, GLabel, GLabelView, { enable: [editLabelFeature] });
+    configureModelElement(context, 'label:editable', GLabel, GLabelView, { enable: [editLabelFeature] });
+    overrideModelElement(context, DefaultTypes.NODE, GNode, RoundedCornerNodeView);
+    overrideModelElement(context, DefaultTypes.GRAPH, LodGGraph, GGraphView);
 });
 
 export function initializeTasklistDiagramContainer(container: Container, ...containerConfiguration: ContainerConfiguration): Container {
-    return initializeDiagramContainer(container, taskListDiagramModule, ...containerConfiguration);
+    return initializeDiagramContainer(container, taskListDiagramModule, levelOfDetailModule, debugModule, ...containerConfiguration);
 }

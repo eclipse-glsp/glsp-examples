@@ -25,6 +25,7 @@ import {
     ShapeTypeHint
 } from '@eclipse-glsp/server';
 import { injectable } from 'inversify';
+import { LodCompartment, LodGraph } from '../level-of-detail/model';
 
 @injectable()
 export class TaskListDiagramConfiguration implements DiagramConfiguration {
@@ -33,7 +34,10 @@ export class TaskListDiagramConfiguration implements DiagramConfiguration {
     animatedUpdate = true;
 
     get typeMapping(): Map<string, GModelElementConstructor<GModelElement>> {
-        return getDefaultMapping();
+        const mapping = getDefaultMapping();
+        mapping.set(LodCompartment.TYPE, LodCompartment);
+        mapping.set(DefaultTypes.GRAPH, LodGraph);
+        return mapping;
     }
 
     get shapeTypeHints(): ShapeTypeHint[] {

@@ -49,7 +49,8 @@ export class CreateTaskHandler extends JsonCreateNodeOperationHandler {
         return {
             id: uuid.v4(),
             name: `NewTaskNode${nodeCounter}`,
-            position
+            position,
+            size: { width: 250, height: 100 }
         };
     }
 

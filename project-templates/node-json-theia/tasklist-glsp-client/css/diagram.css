@@ -15,10 +15,11 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0 OR MIT
  ********************************************************************************/
 
-svg {
+.sprotty svg {
     border-style: solid;
     border-width: 1px;
     border-color: #bbb;
+    user-select: none;
 }
 
 .sprotty-node {
@@ -27,4 +28,13 @@ svg {
 
 .tasklist-node > .sprotty-node {
     fill: #f1bd6c;
+}
+
+.lod-default text.sprotty-label {
+    font-size: 20pt;
+}
+
+.lod-overview text.sprotty-label {
+    font-size: 24pt;
+    font-weight: bold;
 }

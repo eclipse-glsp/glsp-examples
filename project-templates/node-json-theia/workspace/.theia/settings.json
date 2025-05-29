@@ -1,4 +1,18 @@
 {
     "files.autoSave": "off",
-    "workbench.iconTheme": "theia-file-icons"
+    "workbench.iconTheme": "theia-file-icons",
+    "files.exclude": {
+        "**/.git": true,
+        "**/.svn": true,
+        "**/.hg": true,
+        "**/CVS": true,
+        "**/.DS_Store": true,
+        "**/.theia": true,
+        "**/\\.*": true,
+        "**/libraries.libref": false,
+        "**/oem-data": true,
+        "**/.settings": true,
+        "**/src-gen": true,
+        "**/target": true
+    }
 }
