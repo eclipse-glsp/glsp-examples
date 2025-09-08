@@ -9,7 +9,7 @@ For more detailed instructions and information please confer to the [README](../
 
 ## Theia Version compatibility
 
-This project template is compatible with Theia `>=1.56.0`.
+This project template is compatible with Theia `>=1.64.0`.
 
 ## Building
 

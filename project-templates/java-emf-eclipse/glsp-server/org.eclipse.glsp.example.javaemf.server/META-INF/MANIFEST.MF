@@ -2,7 +2,7 @@ Manifest-Version: 1.0
 Bundle-ManifestVersion: 2
 Bundle-Name: GLSP Tasklist Example Server
 Bundle-SymbolicName: org.eclipse.glsp.example.javaemf.server
-Bundle-Version: 2.3.0
+Bundle-Version: 2.5.0
 Bundle-RequiredExecutionEnvironment: JavaSE-17
 Automatic-Module-Name: org.eclipse.glsp.example.javaemf.server
 Export-Package: org.eclipse.glsp.example.javaemf.server,

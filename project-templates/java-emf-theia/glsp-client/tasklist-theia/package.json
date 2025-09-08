@@ -1,6 +1,6 @@
 {
   "name": "tasklist-theia",
-  "version": "2.3.0",
+  "version": "2.5.0",
   "private": "true",
   "description": "Theia extension for the TaskList GLSP example",
   "keywords": [
@@ -34,8 +34,8 @@
     "watch": "tsc -w"
   },
   "dependencies": {
-    "@eclipse-glsp/theia-integration": "2.3.0",
-    "tasklist-glsp": "2.3.0"
+    "@eclipse-glsp/theia-integration": "2.5.0",
+    "tasklist-glsp": "2.5.0"
   },
   "theiaExtensions": [
     {

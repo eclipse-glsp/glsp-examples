@@ -1,6 +1,6 @@
 {
   "name": "parent",
-  "version": "2.3.0",
+  "version": "2.5.0",
   "private": true,
   "homepage": "https://www.eclipse.org/glsp/",
   "bugs": "https://github.com/eclipse-glsp/glsp/issues",
@@ -40,18 +40,15 @@
     "watch": "concurrently --kill-others -n tsc,ext,server -c red,yellow,green \"tsc -b -w --preserveWatchOutput\" \"yarn -s extension watch:bundle\" \"yarn -s server watch:bundle\"",
     "webview": "yarn --cwd tasklist-vscode/webview"
   },
-  "resolutions": {
-    "string-width": "4.2.3"
-  },
   "devDependencies": {
-    "@eclipse-glsp/config": "2.3.0",
-    "@types/node": "18.x",
+    "@eclipse-glsp/config": "2.5.0",
+    "@types/node": "20.x",
     "concurrently": "^8.2.2",
     "lerna": "^8.1.7",
     "typescript": "^5.5.3"
   },
   "engines": {
-    "node": ">=16.18",
+    "node": ">=20",
     "yarn": ">=1.7.0 <2"
   }
 }
