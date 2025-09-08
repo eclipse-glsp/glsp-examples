@@ -32,14 +32,14 @@ The most important entry points are:
 
 The following libraries/frameworks need to be installed on your system:
 
--   [Node.js](https://nodejs.org/en/) `>=18`
+-   [Node.js](https://nodejs.org/en/) `>=20`
 -   [Yarn](https://classic.yarnpkg.com/en/docs/install#debian-stable) `>=1.7.0 <2.x.x"`
 
 The examples are heavily interweaved with Eclipse Theia, so please also check the [prerequisites of Theia](https://github.com/eclipse-theia/theia/blob/master/doc/Developing.md#prerequisites).
 
 ## Theia Version compatibility
 
-This project template is compatible with Theia `>=1.56.1`.
+This project template is compatible with Theia `>=1.64.0`.
 
 ## Building the example
 
