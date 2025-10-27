@@ -1,0 +1,66 @@
+{
+  "name": "glsp-browser-standalone-integration",
+  "version": "1.0.0",
+  "private": true,
+  "description": "Integrates both server and client in a standalone static bundle usable in browsers",
+  "homepage": "https://github.com/Sakrafux/glsp-browser-standalone-integration#readme",
+  "bugs": {
+    "url": "https://github.com/Sakrafux/glsp-browser-standalone-integration/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Sakrafux/glsp-browser-standalone-integration.git"
+  },
+  "license": "(EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0)",
+  "author": {
+    "name": "Eclipse GLSP"
+  },
+  "main": "lib",
+  "types": "lib",
+  "files": [
+    "lib",
+    "src",
+    "css"
+  ],
+  "workspaces": [
+    "examples/*"
+  ],
+  "scripts": {
+    "build": "yarn compile && yarn bundle",
+    "build:all": "yarn clean && yarn build && yarn build:examples",
+    "build:examples": "node scripts/buildExamples.js",
+    "bundle": "webpack",
+    "clean": "rimraf lib tsconfig.tsbuildinfo app",
+    "compile": "tsc -b",
+    "lint": "eslint --ext .ts,.tsx ./src",
+    "watch": "tsc -w && yarn watch:bundle",
+    "watch:bundle": "webpack -w"
+  },
+  "dependencies": {
+    "@eclipse-glsp/client": "2.2.0-next.341",
+    "@eclipse-glsp/layout-elk": "2.2.0-next.92",
+    "@eclipse-glsp/server": "2.2.0-next.92",
+    "balloon-css": "^0.5.0",
+    "inversify": "^6.0.2",
+    "inversify-logger-middleware": "^3.1.0",
+    "lodash": "^4.17.21",
+    "monaco-editor": "^0.47.0",
+    "monaco-editor-webpack-plugin": "^7.1.0"
+  },
+  "devDependencies": {
+    "@eclipse-glsp/config": "2.0.0",
+    "@eclipse-glsp/dev": "2.0.0",
+    "@types/lodash": "^4.17.0",
+    "@vscode/codicons": "^0.0.25",
+    "circular-dependency-plugin": "^5.2.2",
+    "copy-webpack-plugin": "^12.0.2",
+    "css-loader": "^7.0.0",
+    "dotenv": "^16.4.5",
+    "path-browserify": "^1.0.1",
+    "source-map-loader": "^5.0.0",
+    "style-loader": "^3.3.4",
+    "typescript": "^5.4.4",
+    "webpack": "^5.91.0",
+    "webpack-cli": "^5.1.4"
+  }
+}

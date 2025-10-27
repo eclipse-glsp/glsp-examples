@@ -1,0 +1,76 @@
+<!doctype html>
+<html>
+    <head>
+        <meta charset="utf-8" />
+        <link href="https://cdn.jsdelivr.net/npm/@vscode/codicons@0.0.25/dist/codicon.css " rel="stylesheet" />
+        <style>
+            html,
+            body {
+                width: 100%;
+                height: 100%;
+                overflow: hidden;
+                font-family: Verdana, Geneva, Tahoma, sans-serif;
+                margin: 0;
+            }
+
+            #sprotty {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+            }
+
+            #error-boundary {
+                position: absolute;
+                top: 0;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                display: none;
+                border: 1px solid #bbb;
+                padding: 1em;
+            }
+
+            #error-boundary h1 {
+                margin: 0;
+                margin-bottom: 1em;
+            }
+
+            #error-message {
+                margin-bottom: 1em;
+                color: red;
+            }
+
+            svg {
+                width: 100%;
+                height: 100%;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div id="sprotty"></div>
+        <div id="error-boundary">
+            <h1>Error during compilation</h1>
+            <div id="error-message"></div>
+            <div>Further details are displayed in the console.</div>
+        </div>
+        <script>
+            window.CLIENT_URL = /** OVERWRITE CLIENT URL START **/ `${process.env.HOST_PATH}/workflow-glsp-client.js` /** OVERWRITE CLIENT URL END **/;
+            window.SERVER_URL = /** OVERWRITE SERVER URL START **/ `${process.env.HOST_PATH}/workflow-glsp-server.js` /** OVERWRITE SERVER URL END **/;
+            window.DATA_URL = /** OVERWRITE DATA URL START **/ `${process.env.HOST_PATH}/example.wf` /** OVERWRITE DATA URL END **/;
+            const loadClientScript = document.createElement('script');
+            loadClientScript.src = window.CLIENT_URL;
+            document.getElementsByTagName('body')[0].appendChild(loadClientScript);
+
+            window.onerror = error => {
+                document.getElementById('sprotty').style.display = 'none';
+                document.getElementById('error-boundary').style.display = 'block';
+                document.getElementById('error-message').innerText = error;
+            };
+
+            window.process = { env: {} };
+        </script>
+    </body>
+</html>

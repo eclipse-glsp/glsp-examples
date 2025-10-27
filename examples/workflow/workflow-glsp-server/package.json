@@ -1,0 +1,71 @@
+{
+  "name": "@eclipse-glsp-examples/workflow-server",
+  "version": "2.2.0-next",
+  "description": "GLSP node server for the workflow example",
+  "keywords": [
+    "eclipse",
+    "graphics",
+    "diagram",
+    "modeling",
+    "visualization",
+    "glsp",
+    "diagram editor"
+  ],
+  "homepage": "https://www.eclipse.org/glsp/",
+  "bugs": "https://github.com/eclipse-glsp/glsp/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eclipse-glsp/glsp-server-node.git"
+  },
+  "license": "(EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0)",
+  "author": {
+    "name": "Eclipse GLSP"
+  },
+  "contributors": [
+    {
+      "name": "STMicroelectronics",
+      "url": "https://www.st.com/"
+    },
+    {
+      "name": "Eclipse GLSP Project",
+      "email": "glsp-dev@eclipse.org",
+      "url": "https://projects.eclipse.org/projects/ecd.glsp"
+    }
+  ],
+  "main": "./lib/node/index.js",
+  "browser": {
+    "./lib/node/index.js": "./lib/browser/index.js"
+  },
+  "types": "lib/index",
+  "files": [
+    "lib",
+    "src",
+    "node.js",
+    "node.d.ts",
+    "browser.d.ts",
+    "browser.js"
+  ],
+  "scripts": {
+    "build": "tsc -b && yarn bundle",
+    "bundle": "webpack",
+    "bundle:browser": "webpack --env target=webworker ",
+    "clean": "rimraf lib tsconfig.tsbuildinfo",
+    "generate:index": "glsp generateIndex src/browser src/common src/node -s -f",
+    "lint": "eslint --ext .ts,.tsx ./src",
+    "watch": "tsc -w",
+    "watch:bundle": "webpack -w"
+  },
+  "dependencies": {
+    "@eclipse-glsp/layout-elk": "2.2.0-next",
+    "@eclipse-glsp/server": "2.2.0-next",
+    "inversify": "^6.0.1"
+  },
+  "devDependencies": {
+    "source-map-loader": "^4.0.1",
+    "webpack": "^5.75.0",
+    "webpack-cli": "^5.0.1"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

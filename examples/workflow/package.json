@@ -1,0 +1,43 @@
+{
+  "name": "workflow",
+  "version": "2.0.0",
+  "private": true,
+  "homepage": "https://www.eclipse.org/glsp/",
+  "bugs": "https://github.com/eclipse-glsp/glsp/issues",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/eclipse-glsp/glsp-examples.git"
+  },
+  "license": "(EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0 OR MIT)",
+  "author": {
+    "name": "Eclipse GLSP"
+  },
+  "contributors": [
+    {
+      "name": "Eclipse GLSP Project",
+      "email": "glsp-dev@eclipse.org",
+      "url": "https://projects.eclipse.org/projects/ecd.glsp"
+    }
+  ],
+  "workspaces": [
+    "workflow-glsp-server",
+    "workflow-glsp-client"
+  ],
+  "scripts": {
+    "all": "yarn install && yarn lint",
+    "build": "yarn clean && yarn --cwd workflow-glsp-server build && yarn --cwd workflow-glsp-client build && yarn copy:static",
+    "clean": "yarn --cwd workflow-glsp-server clean && yarn --cwd workflow-glsp-client clean && rimraf app",
+    "copy:static": "cp -f workspace/diagram.html app/diagram.html && cp -f workspace/example.wf app/example.wf"
+  },
+  "resolutions": {
+    "string-width": "4.2.3"
+  },
+  "devDependencies": {
+    "@eclipse-glsp/config": "2.0.0",
+    "typescript": "^5.2.2"
+  },
+  "engines": {
+    "node": ">=16.11.0",
+    "yarn": ">=1.7.0 <2.x.x"
+  }
+}
