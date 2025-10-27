@@ -1,0 +1,9 @@
+{
+  "files": [
+    ["workflow-model.ts"],
+    ["workflow-diagram-module.ts"],
+    ["workflow-snapper.ts"],
+    ["workflow-startup.ts"],
+    ["workflow-views.tsx"]
+  ]
+}

@@ -1,0 +1,23 @@
+.tabs {
+    display: flex;
+}
+
+.tab {
+    flex-shrink: 0;
+    padding: 10px;
+    border-right: 1px solid #bbb;
+    cursor: pointer;
+    user-select: none;
+}
+
+.tab[selected] {
+    background-color: #bbb;
+}
+
+.tab:hover {
+    background-color: #999;
+}
+
+.tab:active {
+    background-color: #666;
+}

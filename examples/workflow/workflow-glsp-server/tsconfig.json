@@ -1,0 +1,11 @@
+{
+  "extends": "@eclipse-glsp/ts-config/",
+  "compilerOptions": {
+    "rootDir": "src",
+    "outDir": "lib",
+    "composite": true,
+    "esModuleInterop": true,
+    "resolveJsonModule": true
+  },
+  "include": ["src", "src/**/*.json"]
+}
