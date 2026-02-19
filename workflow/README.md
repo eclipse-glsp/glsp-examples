@@ -12,8 +12,6 @@ The following libraries/frameworks need to be installed on your system:
 
 -   [Node.js](https://nodejs.org/en/) `>=20`
 -   [Yarn](https://classic.yarnpkg.com/en/docs/install#debian-stable) `>=1.7.0<2.x.x`
--   [Java](https://www.oracle.com/java/technologies/javase-jdk11-downloads.html) `>=17`
--   [Maven](https://maven.apache.org/) `>=3.6.0`
 
 The examples are heavily interweaved with Eclipse Theia, so please also check the [prerequisites of Theia](https://github.com/eclipse-theia/theia/blob/master/doc/Developing.md#prerequisites).
 

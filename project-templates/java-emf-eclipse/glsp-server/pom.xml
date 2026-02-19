@@ -6,7 +6,7 @@
 	<groupId>org.eclipse.glsp.example</groupId>
 	<artifactId>org.eclipse.glsp.example.javaemf.parent</artifactId>
 	<description>Java/EMF/Eclipse GLSP Example parent</description>
-	<version>2.5.0</version>
+	<version>2.6.0</version>
 	<packaging>pom</packaging>
 	<url>https://github.com/eclipse/glsp-examples</url>
 
@@ -129,7 +129,6 @@
 				<groupId>org.eclipse.tycho</groupId>
 				<artifactId>target-platform-configuration</artifactId>
 				<configuration>
-					<includePackedArtifacts>true</includePackedArtifacts>
 					<targetDefinitionIncludeSource>honor</targetDefinitionIncludeSource>
 					<environments>
 						<environment>
@@ -152,7 +151,7 @@
 						<artifact>
 							<groupId>org.eclipse.glsp.example</groupId>
 							<artifactId>org.eclipse.glsp.example.javaemf.parent</artifactId>
-							<classifier>org.eclipse.glsp.example.javaemf.target/r2024-09</classifier>
+							<classifier>org.eclipse.glsp.example.javaemf.target/r2025-12</classifier>
 							<version>${project.version}</version>
 						</artifact>
 					</target>

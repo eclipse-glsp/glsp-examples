@@ -1,6 +1,6 @@
-target "2024-09 - Release" with source requirements
+target "2025-12 - Release" with source requirements
 
-location "http://download.eclipse.org/releases/2024-09" {
+location "http://download.eclipse.org/releases/2025-12" {
 	org.eclipse.platform.feature.group
 	org.eclipse.emf.sdk.feature.group 
 	org.eclipse.emf.transaction.feature.group
@@ -9,7 +9,7 @@ location "http://download.eclipse.org/releases/2024-09" {
 }
 
 
-location "https://download.eclipse.org/glsp/server/p2/releases/2.5.0"{
+location "https://download.eclipse.org/glsp/server/p2/releases/2.6.0"{
 	org.eclipse.glsp.feature.feature.group lazy
 	org.eclipse.glsp.server.websocket lazy
 	org.eclipse.glsp.layout lazy
@@ -17,23 +17,23 @@ location "https://download.eclipse.org/glsp/server/p2/releases/2.5.0"{
 	org.eclipse.glsp.example.workflow lazy
 }
 
-location "https://download.eclipse.org/glsp/ide/p2/releases/2.5.0/"{
+location "https://download.eclipse.org/glsp/ide/p2/releases/2.6.0/"{
 	org.eclipse.glsp.ide.feature.feature.group lazy
 }
 
-location "https://download.eclipse.org/tools/orbit/simrel/maven-jetty/release/12.0.12" {
+location "https://download.eclipse.org/tools/orbit/simrel/maven-jetty/release/12.1.4" {
 	org.eclipse.jetty.ee10.websocket.jakarta.server
 	org.eclipse.jetty.ee10.websocket.server
 	org.eclipse.jetty.websocket.api	
 }
 
-location "https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2024-09" {
+location "https://download.eclipse.org/tools/orbit/simrel/orbit-aggregation/2025-12" {
 	jakarta.websocket-api [2.2.0,3.0.0)
 	jakarta.inject.jakarta.inject-api [2.0.1,3.0.0)
 	jakarta.servlet-api [6.1.0,7.0.0)
 }
 
-location "https://download.eclipse.org/elk/updates/releases/0.9.1/" {
+location "https://download.eclipse.org/elk/updates/releases/0.11.0/" {
 	org.eclipse.elk.core
 	org.eclipse.elk.graph
 	org.eclipse.elk.graph.text

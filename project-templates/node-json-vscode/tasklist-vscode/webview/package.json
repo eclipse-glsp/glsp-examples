@@ -1,6 +1,6 @@
 {
   "name": "tasklist-webview",
-  "version": "2.5.0",
+  "version": "2.6.0",
   "private": "true",
   "description": "Tasklist GLSP diagrams in a VS Code extensions (WebView part)",
   "keywords": [
@@ -37,7 +37,7 @@
     "watch:bundle": "webpack --watch"
   },
   "devDependencies": {
-    "@eclipse-glsp/vscode-integration-webview": "2.5.0",
+    "@eclipse-glsp/vscode-integration-webview": "2.6.0",
     "@vscode/codicons": "^0.0.25",
     "circular-dependency-plugin": "^5.2.2",
     "css-loader": "^6.7.1",
@@ -45,7 +45,7 @@
     "reflect-metadata": "^0.1.13",
     "source-map-loader": "^4.0.1",
     "style-loader": "^3.3.1",
-    "tasklist-glsp-client": "2.5.0",
+    "tasklist-glsp-client": "2.6.0",
     "ts-loader": "^9.4.2",
     "webpack": "^5.75.0",
     "webpack-cli": "^5.0.1",

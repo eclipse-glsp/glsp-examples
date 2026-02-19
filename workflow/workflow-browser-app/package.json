@@ -1,6 +1,6 @@
 {
   "name": "workflow-browser-app",
-  "version": "2.5.0",
+  "version": "2.6.0",
   "private": true,
   "scripts": {
     "bundle": "theia build --mode development",
@@ -9,7 +9,7 @@
     "watch": "theia build --watch --mode development"
   },
   "dependencies": {
-    "@eclipse-glsp-examples/workflow-theia": "2.5.0",
+    "@eclipse-glsp-examples/workflow-theia": "2.6.0",
     "@theia/core": "~1.64.0",
     "@theia/editor": "~1.64.0",
     "@theia/filesystem": "~1.64.0",
