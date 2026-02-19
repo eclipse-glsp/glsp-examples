@@ -1,6 +1,6 @@
 {
   "name": "parent",
-  "version": "2.5.0",
+  "version": "2.6.0",
   "private": true,
   "homepage": "https://www.eclipse.org/glsp/",
   "bugs": "https://github.com/eclipse-glsp/glsp/issues",
@@ -36,7 +36,7 @@
     "watch": "concurrently --kill-others -n tsc,app -c red,yellow \"tsc -b -w --preserveWatchOutput\" \"yarn -s eclipse watch:bundle\""
   },
   "devDependencies": {
-    "@eclipse-glsp/config": "2.5.0",
+    "@eclipse-glsp/config": "2.6.0",
     "concurrently": "^8.2.2",
     "copyfiles": "^2.4.1",
     "lerna": "8.1.7",

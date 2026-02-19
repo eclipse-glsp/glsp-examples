@@ -1,6 +1,6 @@
 {
   "name": "parent",
-  "version": "2.5.0",
+  "version": "2.6.0",
   "private": true,
   "homepage": "https://www.eclipse.org/glsp/",
   "bugs": "https://github.com/eclipse-glsp/glsp/issues",
@@ -37,11 +37,12 @@
     "package": "yarn extension package",
     "prepare": "yarn build",
     "server": "yarn --cwd tasklist-glsp-server",
+    "server:start": "yarn server start --port 5007",
     "watch": "concurrently --kill-others -n tsc,ext,server -c red,yellow,green \"tsc -b -w --preserveWatchOutput\" \"yarn -s extension watch:bundle\" \"yarn -s server watch:bundle\"",
     "webview": "yarn --cwd tasklist-vscode/webview"
   },
   "devDependencies": {
-    "@eclipse-glsp/config": "2.5.0",
+    "@eclipse-glsp/config": "2.6.0",
     "@types/node": "20.x",
     "concurrently": "^8.2.2",
     "lerna": "^8.1.7",

@@ -1,7 +1,7 @@
 {
   "name": "tasklist-vscode",
   "displayName": "Tasklist GLSP Diagram Editor",
-  "version": "2.5.0",
+  "version": "2.6.0",
   "private": "true",
   "description": "Extension for Tasklist GLSP diagrams",
   "categories": [
@@ -159,7 +159,7 @@
     "@vscode/codicons": "^0.0.25"
   },
   "devDependencies": {
-    "@eclipse-glsp/vscode-integration": "2.5.0",
+    "@eclipse-glsp/vscode-integration": "2.6.0",
     "@types/node": "20.x",
     "@types/vscode": "^1.54.0",
     "@vscode/vsce": "^2.24.0",
@@ -167,7 +167,7 @@
     "path": "^0.12.7",
     "reflect-metadata": "^0.1.13",
     "rimraf": "^2.6.3",
-    "tasklist-webview": "2.5.0",
+    "tasklist-webview": "2.6.0",
     "ts-loader": "^6.2.1",
     "ts-node": "^9.1.1",
     "webpack-merge": "^5.9.0"
