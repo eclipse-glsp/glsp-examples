@@ -1060,6 +1060,11 @@
   resolved "https://registry.yarnpkg.com/@vscode/codicons/-/codicons-0.0.25.tgz#4ebc3e2c9e707ac46aea0becceda79f7738c647c"
   integrity sha512-uqPhTdADjwoCh5Ufbv0M6TZiiP2mqbfJVB4grhVx1k+YeP03LDMOHBWPsNwGKn4/0S5Mq9o1w1GeftvR031Gzg==
 
+"@vscode/codicons@^0.0.44":
+  version "0.0.44"
+  resolved "https://registry.yarnpkg.com/@vscode/codicons/-/codicons-0.0.44.tgz#c1b6bebc5ae318314894df0e4dc154bd26946c6c"
+  integrity sha512-F7qPRumUK3EHjNdopfICLGRf3iNPoZQt+McTHAn4AlOWPB3W2kL4H0S7uqEqbyZ6rCxaeDjpAn3MCUnwTu/VJQ==
+
 "@vscode/vsce@^2.24.0":
   version "2.24.0"
   resolved "https://registry.yarnpkg.com/@vscode/vsce/-/vsce-2.24.0.tgz#7f835b9fdd5bfedcecd62a6c4d684841a74974d4"
