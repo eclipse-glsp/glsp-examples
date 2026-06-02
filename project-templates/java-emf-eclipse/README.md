@@ -39,7 +39,7 @@ The most important entry points are:
 
 The following libraries/frameworks need to be installed on your system:
 
--   [Node.js](https://nodejs.org/en/) `>=20`
+-   [Node.js](https://nodejs.org/en/) `>=22`
 -   [Yarn](https://classic.yarnpkg.com/en/docs/install#debian-stable) `>=1.7.0 < 2`
 -   [Java](https://adoptium.net/temurin/releases) `>=21`
 -   [Maven](https://maven.apache.org/) `>=3.6.0`

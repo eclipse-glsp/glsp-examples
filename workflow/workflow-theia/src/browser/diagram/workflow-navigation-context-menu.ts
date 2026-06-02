@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2020-2024 EclipseSource and others.
+ * Copyright (c) 2020-2026 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -74,11 +74,9 @@ export class WorkflowNavigationCommandContribution implements CommandContributio
                     validateInput: input => Promise.resolve(Number.parseInt(input, 10) === undefined ? 'not an integer' : undefined)
                 });
                 if (timeoutString) {
-                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
                     (this.connectionProvider as any).socket.disconnect();
                     setTimeout(
                         () => {
-                            // eslint-disable-next-line @typescript-eslint/no-explicit-any
                             (this.connectionProvider as any).socket.connect();
                         },
                         Number.parseInt(timeoutString, 10)

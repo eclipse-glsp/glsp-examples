@@ -10,7 +10,7 @@ The `Workflow Example` is the main example used for development and integrates a
 
 The following libraries/frameworks need to be installed on your system:
 
--   [Node.js](https://nodejs.org/en/) `>=20`
+-   [Node.js](https://nodejs.org/en/) `>=22`
 -   [Yarn](https://classic.yarnpkg.com/en/docs/install#debian-stable) `>=1.7.0<2.x.x`
 
 The examples are heavily interweaved with Eclipse Theia, so please also check the [prerequisites of Theia](https://github.com/eclipse-theia/theia/blob/master/doc/Developing.md#prerequisites).
@@ -19,7 +19,7 @@ The examples has been developed using [Visual Studio Code](https://code.visualst
 
 ## Theia Version compatibility
 
-This project template is compatible with Theia `>=1.64.0`.
+This project template is compatible with Theia `>=1.66.0`.
 
 ## Building the example
 

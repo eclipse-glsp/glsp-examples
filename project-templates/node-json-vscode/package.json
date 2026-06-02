@@ -1,6 +1,6 @@
 {
   "name": "parent",
-  "version": "2.6.0",
+  "version": "2.7.0",
   "private": true,
   "homepage": "https://www.eclipse.org/glsp/",
   "bugs": "https://github.com/eclipse-glsp/glsp/issues",
@@ -42,14 +42,14 @@
     "webview": "yarn --cwd tasklist-vscode/webview"
   },
   "devDependencies": {
-    "@eclipse-glsp/config": "2.6.0",
-    "@types/node": "20.x",
+    "@eclipse-glsp/config": "2.7.0",
+    "@types/node": "22.x",
     "concurrently": "^8.2.2",
     "lerna": "^8.1.7",
     "typescript": "^5.5.3"
   },
   "engines": {
-    "node": ">=20",
+    "node": ">=22",
     "yarn": ">=1.7.0 <2"
   }
 }
