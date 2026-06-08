@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2022-2023 STMicroelectronics and others.
+ * Copyright (c) 2022-2026 STMicroelectronics and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -21,7 +21,7 @@ import {
     ContextMenuItemProvider,
     DiagramConfiguration,
     EdgeCreationChecker,
-    GLSPServer,
+    GLSPServerInitializer,
     GModelDiagramModule,
     InstanceMultiBinding,
     LabelEditValidator,
@@ -57,13 +57,13 @@ import { TaskEditContextActionProvider } from './taskedit/task-edit-context-prov
 import { TaskEditValidator } from './taskedit/task-edit-validator';
 import { WorkflowDiagramConfiguration } from './workflow-diagram-configuration';
 import { WorkflowEdgeCreationChecker } from './workflow-edge-creation-checker';
-import { WorkflowGLSPServer } from './workflow-glsp-server';
+import { CustomArgsInitContribution } from './workflow-glsp-server';
 import { WorkflowPopupFactory } from './workflow-popup-factory';
 
 @injectable()
 export class WorkflowServerModule extends ServerModule {
-    protected override bindGLSPServer(): BindingTarget<GLSPServer> {
-        return WorkflowGLSPServer;
+    protected override configureGLSPServerInitializers(binding: MultiBinding<GLSPServerInitializer>): void {
+        binding.add(CustomArgsInitContribution);
     }
 }
 

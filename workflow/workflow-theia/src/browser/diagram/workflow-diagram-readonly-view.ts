@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2020-2024 EclipseSource and others.
+ * Copyright (c) 2020-2026 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -15,9 +15,8 @@
  ********************************************************************************/
 import { codiconCSSString, EditMode } from '@eclipse-glsp/client';
 import { GLSPWidgetOpenerOptions } from '@eclipse-glsp/theia-integration';
-import { Command, CommandContribution, CommandRegistry, MenuContribution, MenuModelRegistry, SelectionService } from '@theia/core';
+import { Command, CommandContribution, CommandRegistry, MenuContribution, MenuModelRegistry, SelectionService, URI } from '@theia/core';
 import { OpenerService } from '@theia/core/lib/browser';
-import URI from '@theia/core/lib/common/uri';
 import { UriAwareCommandHandler } from '@theia/core/lib/common/uri-command-handler';
 import { inject, injectable } from '@theia/core/shared/inversify';
 import { NavigatorContextMenu } from '@theia/navigator/lib/browser/navigator-contribution';
@@ -33,7 +32,7 @@ export class WorkflowDiagramReadonlyViewContribution implements CommandContribut
     @inject(OpenerService) protected readonly openerService: OpenerService;
     @inject(SelectionService) protected readonly selectionService: SelectionService;
     registerMenus(registry: MenuModelRegistry): void {
-        // eslint-disable-next-line deprecation/deprecation
+        // eslint-disable-next-line @typescript-eslint/no-deprecated
         registry.registerMenuAction(NavigatorContextMenu.OPEN_WITH, {
             commandId: OPEN_READONLY_DIAGRAM_VIEW.id,
             label: 'Workflow Diagram Readonly View',
