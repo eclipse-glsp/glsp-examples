@@ -1,6 +1,6 @@
 {
   "name": "tasklist-theia",
-  "version": "2.7.0",
+  "version": "2.8.0",
   "private": "true",
   "description": "Theia extension for Tasklist diagrams",
   "keywords": [
@@ -30,13 +30,13 @@
   "scripts": {
     "build": "tsc -b",
     "clean": "rimraf lib tsconfig.tsbuildinfo",
-    "lint": "eslint --ext .ts,.tsx ./src",
+    "lint": "eslint ./src",
     "watch": "tsc -w"
   },
   "dependencies": {
-    "@eclipse-glsp/theia-integration": "2.7.0",
-    "tasklist-glsp-client": "2.7.0",
-    "tasklist-glsp-server": "2.7.0"
+    "@eclipse-glsp/theia-integration": "2.8.0",
+    "tasklist-glsp-client": "2.8.0",
+    "tasklist-glsp-server": "2.8.0"
   },
   "theiaExtensions": [
     {

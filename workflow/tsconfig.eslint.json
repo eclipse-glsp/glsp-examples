@@ -4,6 +4,6 @@
   "compilerOptions": {
     "noEmit": true
   },
-  "exclude": ["**/node_modules", "**/.eslintrc.js", "**/webpack.config.js"],
+  "exclude": ["**/node_modules", "**/eslint.config.mjs"],
   "include": ["workflow-glsp/src", "workflow-theia/src", "workflow-server/src"]
 }

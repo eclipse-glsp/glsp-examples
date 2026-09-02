@@ -17,10 +17,7 @@
         "${workspaceFolder}/tasklist-vscode/extension/dist/*.js",
         "${workspaceFolder}/node_modules/@eclipse-glsp/**/*.js"
       ],
-      "sourceMaps": true,
-      "sourceMapPathOverrides": {
-        "webpack://tasklist-vscode/(.+)": "${workspaceFolder}/tasklist-vscode/extension/$1"
-      }
+      "sourceMaps": true
     },
     {
       "name": "Launch TaskList Diagram Extension (External GLSP Server)",
@@ -36,9 +33,6 @@
         "${workspaceFolder}/node_modules/@eclipse-glsp/**/*.js"
       ],
       "sourceMaps": true,
-      "sourceMapPathOverrides": {
-        "webpack://tasklist-vscode/(.+)": "${workspaceFolder}/tasklist-vscode/extension/$1"
-      },
       "env": {
         "TASKLIST_SERVER_DEBUG": "true",
         "TASKLIST_SERVER_PORT": "5007"

@@ -41,7 +41,7 @@ export class WorkflowEdgeView extends PolylineEdgeViewWithGapsOnIntersections {
             <path
                 class-sprotty-edge={true}
                 class-arrow={true}
-                d='M 1,0 L 10,-4 L 10,4 Z'
+                d='M 0,0 L 9,-3.5 L 9,3.5 Z'
                 transform={`rotate(${toDegrees(angleOfPoint(Point.subtract(p1, p2)))} ${p2.x} ${p2.y}) translate(${p2.x} ${p2.y})`}
             />
         );
@@ -77,7 +77,7 @@ export class IconView extends ShapeView {
 
                     d={icon}
                 />
-                <rect class-icon-background x={0} y={0} width={25} height={20} />
+                <rect class-icon-background x={0} y={0} width={25} height={20} rx={4} ry={4} />
                 {context.renderChildren(element)}
             </g>
         );

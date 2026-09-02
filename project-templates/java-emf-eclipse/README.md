@@ -33,7 +33,7 @@ The most important entry points are:
 -   [`glsp-server/org.eclipse.glsp.example.javaemf.editor/src/org/eclipse/glsp/example/javaemf/editor/TaskListEclipseDiagramModule.java`](glsp-server/org.eclipse.glsp.example.javaemf.editor/src/org/eclipse/glsp/example/javaemf/editor/TaskListEclipseDiagramModule.java): dependency injection module of the Eclipse ide integration
 -   [`glsp-server/org.eclipse.glsp.example.javaemf.editor/src/org/eclipse/glsp/example/javaemf/editor/TaskListServerManager.java`](glsp-server/org.eclipse.glsp.example.javaemf.editor/src/org/eclipse/glsp/example/javaemf/editor/TaskListServerManager.java): the server manager counterpart for the Tasklist editor
 -   [`glsp-server/org.eclipse.glsp.example.javaemf.editor/plugin.xml`](glsp-server/org.eclipse.glsp.example.javaemf.editor/plugin.xml): plugin definition declaring the diagram editor extensions.
--   [`glsp-server/org.eclipse.glsp.example.javaemf.target/r2021-03.targe`](glsp-server/org.eclipse.glsp.example.javaemf.target/r2021-03.target): the target platform definition
+-   [`glsp-server/org.eclipse.glsp.example.javaemf.target/r2025-12.target`](glsp-server/org.eclipse.glsp.example.javaemf.target/r2025-12.target): the target platform definition
 
 ## Prerequisites
 
@@ -65,7 +65,7 @@ projects are selected and click finish.
 
 To resolve all compilation errors you have to set the correct target platform.
 Got to the preferences (`Window -> Preferences`) and navigate to the target platform options (`Plug-in Development -> Target Platform`)-
-Selected the `2023-09-Release` target definition and click `Apply`.
+Selected the `2025-12 - Release` target definition and click `Apply`.
 Once the target platform has been resolved there should be no more compilation errors.
 
 ## Building the example

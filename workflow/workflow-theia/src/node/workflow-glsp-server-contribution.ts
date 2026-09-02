@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2019-2023 EclipseSource and others.
+ * Copyright (c) 2019-2026 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -15,6 +15,7 @@
  ********************************************************************************/
 import { getPort, GLSPSocketServerContribution, GLSPSocketServerContributionOptions } from '@eclipse-glsp/theia-integration/lib/node';
 import { injectable } from '@theia/core/shared/inversify';
+import { createRequire } from 'node:module';
 import * as path from 'path';
 import { WorkflowLanguage } from '../common/workflow-language';
 
@@ -22,7 +23,10 @@ export const DEFAULT_PORT = 0;
 export const PORT_ARG_KEY = 'WF_GLSP';
 
 export const LOG_DIR = path.join(__dirname, '..', '..', 'logs');
-const MODULE_PATH = require.resolve('@eclipse-glsp-examples/workflow-server');
+// Resolve via `createRequire` instead of a literal `require.resolve` so the bundler keeps this a
+// runtime lookup against the real node_modules layout rather than inlining the server into the
+// Theia backend bundle.
+const MODULE_PATH = createRequire(__filename).resolve('@eclipse-glsp-examples/workflow-server');
 @injectable()
 export class WorkflowGLSPSocketServerContribution extends GLSPSocketServerContribution {
     readonly id = WorkflowLanguage.contributionId;
@@ -30,7 +34,7 @@ export class WorkflowGLSPSocketServerContribution extends GLSPSocketServerContri
     createContributionOptions(): Partial<GLSPSocketServerContributionOptions> {
         return {
             executable: MODULE_PATH,
-            additionalArgs: ['--no-consoleLog', '--fileLog', 'true', '--logDir', LOG_DIR],
+            additionalArgs: ['--no-consoleLog', '--fileLog', '--logDir', LOG_DIR],
             socketConnectionOptions: {
                 port: getPort(PORT_ARG_KEY, DEFAULT_PORT)
             }

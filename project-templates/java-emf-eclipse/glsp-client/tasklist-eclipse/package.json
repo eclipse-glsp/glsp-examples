@@ -1,6 +1,6 @@
 {
   "name": "tasklist-eclipse",
-  "version": "2.7.0",
+  "version": "2.8.0",
   "private": "true",
   "description": "GLSP-frontend code for the EMF model TaskList Eclipse integration",
   "keywords": [
@@ -32,27 +32,21 @@
     "src"
   ],
   "scripts": {
-    "build": "tsc- b && yarn bundle",
-    "bundle": "webpack",
-    "clean": "rimraf lib tsconfig.tsbuildinfo app/bundle.js app/bundle.js.map",
-    "lint": "eslint --ext .ts,.tsx ./src",
+    "build": "tsc -b && yarn bundle",
+    "bundle": "node ./esbuild.js",
+    "clean": "rimraf lib tsconfig.tsbuildinfo app/bundle.js app/bundle.js.map app/bundle.css app/bundle.css.map app/*.ttf",
+    "lint": "eslint ./src",
     "watch": "tsc -w",
-    "watch:bundle": "webpack --watch"
+    "watch:bundle": "node ./esbuild.js --watch"
   },
   "dependencies": {
-    "@eclipse-glsp/ide": "2.7.0",
-    "tasklist-glsp": "2.7.0"
+    "@eclipse-glsp/ide": "2.8.0",
+    "tasklist-glsp": "2.8.0"
   },
   "devDependencies": {
     "@vscode/codicons": "^0.0.25",
-    "css-loader": "^6.7.3",
-    "file-loader": "^6.2.0",
+    "esbuild": "^0.25.0",
     "reflect-metadata": "^0.1.13",
-    "rimraf": "^3.0.2",
-    "source-map-loader": "^4.0.1",
-    "style-loader": "^3.3.1",
-    "ts-loader": "^9.4.2",
-    "webpack": "^5.75.0",
-    "webpack-cli": "^5.0.1"
+    "rimraf": "^3.0.2"
   }
 }

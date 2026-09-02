@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2022-2024 STMicroelectronics and others.
+ * Copyright (c) 2022-2026 STMicroelectronics and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -13,8 +13,15 @@
  *
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
-import { Args, EditorContext, NavigationTarget } from '@eclipse-glsp/protocol';
-import { GLabel, JsonOpenerOptions, ModelState, NavigationTargetProvider } from '@eclipse-glsp/server';
+import {
+    Args,
+    EditorContext,
+    GLabel,
+    JsonOpenerOptions,
+    ModelState,
+    NavigationTarget,
+    NavigationTargetProvider
+} from '@eclipse-glsp/server';
 import { inject, injectable } from 'inversify';
 import { TaskNode } from '../graph-extension';
 

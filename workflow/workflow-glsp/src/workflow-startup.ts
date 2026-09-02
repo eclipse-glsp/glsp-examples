@@ -1,5 +1,5 @@
 /********************************************************************************
- * Copyright (c) 2024 EclipseSource and others.
+ * Copyright (c) 2024-2026 EclipseSource and others.
  *
  * This program and the accompanying materials are made available under the
  * terms of the Eclipse Public License v. 2.0 which is available at
@@ -14,17 +14,25 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0
  ********************************************************************************/
 
-import { GridManager, IDiagramStartup } from '@eclipse-glsp/client';
-import { MaybePromise } from '@eclipse-glsp/sprotty';
+import { IDiagramStartup, IGridManager, MaybePromise, TYPES } from '@eclipse-glsp/client';
 import { inject, injectable, optional } from 'inversify';
+
+/**
+ * Injection symbol for the initial grid visibility applied by the {@link WorkflowStartup}.
+ * Defaults to `true` (grid shown); rebind to override (e.g. the standalone app derives it from a url
+ * parameter).
+ */
+export const GridDefaultVisible = Symbol('GridDefaultVisible');
 
 @injectable()
 export class WorkflowStartup implements IDiagramStartup {
     rank = -1;
 
-    @inject(GridManager) @optional() protected gridManager?: GridManager;
+    @inject(TYPES.IGridManager) @optional() protected gridManager?: IGridManager;
+
+    @inject(GridDefaultVisible) @optional() protected gridDefaultVisible?: boolean;
 
     preRequestModel(): MaybePromise<void> {
-        this.gridManager?.setGridVisible(true);
+        this.gridManager?.setGridVisible(this.gridDefaultVisible ?? true);
     }
 }

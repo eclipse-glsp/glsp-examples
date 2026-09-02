@@ -4,6 +4,6 @@
   "compilerOptions": {
     "noEmit": true
   },
-  "exclude": ["**/node_modules", "**/.eslintrc.js"],
+  "exclude": ["**/node_modules", "**/eslint.config.mjs"],
   "include": ["tasklist-glsp-client/src", "tasklist-glsp-server/src", "tasklist-theia/src"]
 }

@@ -16,13 +16,17 @@
  ********************************************************************************/
 import { GLSPSocketServerContribution, GLSPSocketServerContributionOptions } from '@eclipse-glsp/theia-integration/lib/node';
 import { injectable } from 'inversify';
+import { createRequire } from 'node:module';
 import * as path from 'path';
 import { TaskListLanguage } from '../common/tasklist-language';
 
 const DEFAULT_PORT = 0;
 const PORT_ARG_KEY = 'TASKLIST_GLSP';
 export const LOG_DIR = path.join(__dirname, '..', '..', 'logs');
-const MODULE_PATH = require.resolve('tasklist-glsp-server');
+// Resolve via `createRequire` instead of a literal `require.resolve` so the bundler keeps this a
+// runtime lookup against the real node_modules layout rather than inlining the server into the
+// Theia backend bundle.
+const MODULE_PATH = createRequire(__filename).resolve('tasklist-glsp-server');
 
 @injectable()
 export class TaskListServerContribution extends GLSPSocketServerContribution {

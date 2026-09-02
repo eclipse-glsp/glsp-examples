@@ -18,13 +18,13 @@ import {
     Command,
     CreateNodeOperation,
     DefaultTypes,
+    generateUuid,
     GNode,
     JsonCreateNodeOperationHandler,
     MaybePromise,
     Point
 } from '@eclipse-glsp/server';
 import { inject, injectable } from 'inversify';
-import * as uuid from 'uuid';
 import { Task } from '../model/tasklist-model';
 import { TaskListModelState } from '../model/tasklist-model-state';
 
@@ -47,7 +47,7 @@ export class CreateTaskHandler extends JsonCreateNodeOperationHandler {
     protected createTask(position: Point): Task {
         const nodeCounter = this.modelState.index.getAllByClass(GNode).length;
         return {
-            id: uuid.v4(),
+            id: generateUuid(),
             name: `NewTaskNode${nodeCounter}`,
             position
         };
