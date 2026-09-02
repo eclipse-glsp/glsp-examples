@@ -35,9 +35,7 @@ export default class TaskListEditorProvider extends GlspEditorProvider {
         const webview = webviewPanel.webview;
         const extensionUri = this.extensionContext.extensionUri;
         const webviewScriptSourceUri = webview.asWebviewUri(vscode.Uri.joinPath(extensionUri, 'dist', 'webview.js'));
-        const codiconsUri = webview.asWebviewUri(
-            vscode.Uri.joinPath(extensionUri, 'node_modules', '@vscode/codicons', 'dist', 'codicon.css')
-        );
+        const webviewStyleSourceUri = webview.asWebviewUri(vscode.Uri.joinPath(extensionUri, 'dist', 'webview.css'));
 
         webviewPanel.webview.options = {
             enableScripts: true
@@ -51,9 +49,9 @@ export default class TaskListEditorProvider extends GlspEditorProvider {
                      <meta name="viewport" content="width=device-width, height=device-height">
                      <meta http-equiv="Content-Security-Policy" content="
                  default-src http://*.fontawesome.com  ${webview.cspSource} 'unsafe-inline' 'unsafe-eval';
+                 img-src ${webview.cspSource} blob:;
                  ">
-                 <link href="${codiconsUri}" rel="stylesheet" />
- 
+                 <link rel="stylesheet" href="${webviewStyleSourceUri}" />
                  </head>
                  <body>
                      <div id="${clientId}_container" style="height: 100%;"></div>

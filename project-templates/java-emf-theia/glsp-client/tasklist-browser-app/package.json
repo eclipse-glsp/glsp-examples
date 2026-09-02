@@ -1,6 +1,6 @@
 {
   "name": "tasklist-browser-app",
-  "version": "2.7.0",
+  "version": "2.8.0",
   "private": true,
   "scripts": {
     "bundle": "theia build --mode development",
@@ -9,22 +9,24 @@
     "watch": "theia build --watch --mode development"
   },
   "dependencies": {
-    "@theia/core": "~1.71.0",
-    "@theia/editor": "~1.71.0",
-    "@theia/filesystem": "~1.71.0",
-    "@theia/markers": "~1.71.0",
-    "@theia/messages": "~1.71.0",
-    "@theia/monaco": "~1.71.0",
-    "@theia/navigator": "~1.71.0",
-    "@theia/output": "~1.71.0",
-    "@theia/preferences": "~1.71.0",
-    "@theia/process": "~1.71.0",
-    "@theia/terminal": "~1.71.0",
-    "@theia/workspace": "~1.71.0",
-    "tasklist-theia": "2.7.0"
+    "@theia/core": "~1.74.1",
+    "@theia/editor": "~1.74.1",
+    "@theia/filesystem": "~1.74.1",
+    "@theia/markers": "~1.74.1",
+    "@theia/messages": "~1.74.1",
+    "@theia/monaco": "~1.74.1",
+    "@theia/navigator": "~1.74.1",
+    "@theia/output": "~1.74.1",
+    "@theia/preferences": "~1.74.1",
+    "@theia/process": "~1.74.1",
+    "@theia/terminal": "~1.74.1",
+    "@theia/workspace": "~1.74.1",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
+    "tasklist-theia": "2.8.0"
   },
   "devDependencies": {
-    "@theia/cli": "~1.71.0"
+    "@theia/cli": "~1.74.1"
   },
   "theia": {
     "target": "browser"

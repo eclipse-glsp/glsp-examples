@@ -1,6 +1,6 @@
 {
   "name": "tasklist-glsp",
-  "version": "2.7.0",
+  "version": "2.8.0",
   "private": "true",
   "description": "GLSP sprotty diagrams for the EMF model TaskList DSL",
   "keywords": [
@@ -35,10 +35,10 @@
   "scripts": {
     "build": "tsc",
     "clean": "rimraf lib tsconfig.tsbuildinfo",
-    "lint": "eslint --ext .ts,.tsx ./src",
+    "lint": "eslint ./src",
     "watch": "tsc -w"
   },
   "dependencies": {
-    "@eclipse-glsp/client": "2.7.0"
+    "@eclipse-glsp/client": "2.8.0"
   }
 }

@@ -1,6 +1,6 @@
 {
   "name": "parent",
-  "version": "2.7.0",
+  "version": "2.8.0",
   "private": true,
   "homepage": "https://www.eclipse.org/glsp/",
   "bugs": "https://github.com/eclipse-glsp/glsp/issues",
@@ -30,13 +30,13 @@
     "compile": "tsc -b",
     "copyClient": "copyfiles -f ./tasklist-eclipse/app/* ../glsp-server/org.eclipse.glsp.example.javaemf.editor/diagram",
     "eclipse": "yarn --cwd tasklist-eclipse",
-    "lint": "eslint --ext .ts,.tsx .",
+    "lint": "eslint .",
     "lint:ci": "yarn lint --output-file eslint_report.json --format json",
     "prepare": "yarn build && yarn copyClient",
     "watch": "concurrently --kill-others -n tsc,app -c red,yellow \"tsc -b -w --preserveWatchOutput\" \"yarn -s eclipse watch:bundle\""
   },
   "devDependencies": {
-    "@eclipse-glsp/config": "2.7.0",
+    "@eclipse-glsp/config": "2.8.0",
     "concurrently": "^8.2.2",
     "copyfiles": "^2.4.1",
     "lerna": "8.1.7",

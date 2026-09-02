@@ -15,9 +15,8 @@
  * SPDX-License-Identifier: EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0 OR MIT
  ********************************************************************************/
 
-import { AbstractJsonModelStorage, MaybePromise, RequestModelAction, SaveModelAction } from '@eclipse-glsp/server/node';
+import { AbstractJsonModelStorage, generateUuid, MaybePromise, RequestModelAction, SaveModelAction } from '@eclipse-glsp/server/node';
 import { inject, injectable } from 'inversify';
-import * as uuid from 'uuid';
 import { TaskList } from './tasklist-model';
 import { TaskListModelState } from './tasklist-model-state';
 
@@ -39,7 +38,7 @@ export class TaskListStorage extends AbstractJsonModelStorage {
 
     protected override createModelForEmptyFile(path: string): TaskList {
         return {
-            id: uuid.v4(),
+            id: generateUuid(),
             tasks: [],
             transitions: []
         };

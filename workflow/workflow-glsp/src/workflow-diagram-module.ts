@@ -53,7 +53,7 @@ import '../css/diagram.css';
 import { taskEditorModule } from './direct-task-editing/task-editor-module';
 import { BranchingNode, CategoryNode, Icon, SynchronizationNode, TaskNode, WeightedEdge } from './model';
 import { WorkflowSnapper } from './workflow-snapper';
-import { WorkflowStartup } from './workflow-startup';
+import { GridDefaultVisible, WorkflowStartup } from './workflow-startup';
 import { IconView, WorkflowEdgeView } from './workflow-views';
 
 export const workflowDiagramModule = new FeatureModule(
@@ -91,6 +91,8 @@ export const workflowDiagramModule = new FeatureModule(
         });
 
         bindAsService(context, TYPES.IDiagramStartup, WorkflowStartup);
+        bind(GridDefaultVisible).toConstantValue(true);
+
         bindOrRebind(context, TYPES.ISnapper).to(WorkflowSnapper);
     },
     { featureId: Symbol('workflowDiagram') }
