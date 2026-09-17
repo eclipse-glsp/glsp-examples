@@ -28,9 +28,10 @@ target→upstream mapping, per-target filtering rules, and dependency order.
    (`https://api.github.com/repos/eclipse-glsp/glsp/releases/latest` → `tag_name`,
    strip leading `v`). Also note the umbrella **release body** changelog links —
    used as a secondary reference (below).
-2. **Shallow-clone the 3 upstream repos** at the release tag into a temp dir
-   (`/tmp/glsp-update-<version>/`): `glsp-client`, `glsp-server-node`,
-   `glsp-theia-integration`. Also fetch the **previous** release tag in each (needed
+2. **Shallow-clone the 2 upstream repos** at the release tag into a temp dir
+   (`/tmp/glsp-update-<version>/`): `glsp-core` — the consolidated monorepo that
+   provides **both** the client and the Node-server dev examples (under `examples/`) —
+   and `glsp-theia-integration`. Also fetch the **previous** release tag in each (needed
    for the delta). Tag convention is `v<version>`; list tags and fall back to bare
    `<version>` if needed. Clean up the temp dir on success; leave it on failure.
 

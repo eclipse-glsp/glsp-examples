@@ -23,7 +23,7 @@ Please create new issues only in the [GLSP umbrella project](https://github.com/
 
 ## How to Contribute
 
-In order to contribute, please first open an issue in this project, irrespectively whether this bug or feature concerns the glsp-client, glsp-server, or one of the platform integrations.
+In order to contribute, please first open an issue in this project, irrespectively whether this bug or feature concerns the glsp-core, glsp-server, or one of the platform integrations.
 This issue should describe the bug you intend to fix or the feature you would like to add.
 Once you have your code ready for review, please open a pull request in the respective repository.
 A [committer of the GLSP project](https://projects.eclipse.org/projects/ecd.glsp/who) will then review your contribution and help to get it merged.
@@ -40,7 +40,7 @@ The branch name should be in the form `issues/{issue_number}`, e.g. `issues/123`
 All branches with this naming schema will be deleted after they are merged.
 
 In the commit message you should also reference the corresponding issue, e.g. using `closes https://github.com/eclipse-glsp/glsp/issues/241`, thus allowing [auto close of issues](https://help.github.com/en/github/managing-your-work-on-github/closing-issues-using-keywords).
-Please use the absolute URL of the issue instead of just `#241`, as all issues are kept in <https://github.com/eclipse-glsp/glsp>, whereas the pull requests are opened against the respective repositories, such as <https://github.com/eclipse-glsp/glsp-client>.
+Please use the absolute URL of the issue instead of just `#241`, as all issues are kept in <https://github.com/eclipse-glsp/glsp>, whereas the pull requests are opened against the respective repositories, such as <https://github.com/eclipse-glsp/glsp-core>.
 Using the absolute URL will still allow to correctly reference issues irrespectively where you open the pull request.
 
 Please make sure you read the [guide for a good commit message](https://chris.beams.io/posts/git-commit/).

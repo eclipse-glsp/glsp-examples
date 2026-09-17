@@ -1,9 +1,10 @@
 # Eclipse GLSP Examples [![CI](https://github.com/eclipse-glsp/glsp-examples/actions/workflows/ci.yml/badge.svg)](https://github.com/eclipse-glsp/glsp-examples/actions/workflows/ci.yml)
 
 This repository contains code examples that demonstrate how to build diagram editors with the [Graphical Language Server Platform (GLSP)](https://github.com/eclipse-glsp/glsp).
-The examples are focused on the integration of GLSP editors with the cloud-based [Eclipse Theia IDE](https://github.com/theia-ide/theia) using the [GLSP Theia integration](https://github.com/eclipse-glsp/glsp-theia-integration) and the Java based [GLSP Server Framework](https://github.com/eclipse-glsp/glsp-server).
+They are built on top of the [GLSP client framework](https://github.com/eclipse-glsp/glsp-core/tree/main/packages/client) and the [Node-based GLSP server framework](https://github.com/eclipse-glsp/glsp-core/tree/main/packages/server), which both live in the consolidated [`glsp-core`](https://github.com/eclipse-glsp/glsp-core) monorepo, as well as the Java based [GLSP Server Framework](https://github.com/eclipse-glsp/glsp-server).
+Many of the examples are focused on the integration of GLSP editors with the cloud-based [Eclipse Theia IDE](https://github.com/theia-ide/theia) using the [GLSP Theia integration](https://github.com/eclipse-glsp/glsp-theia-integration).
 
-Each example is self-contained and provides both, an example diagram client (`glsp-client` directory) and its corresponding GLSP server (`glsp-server` directory).
+Each example is self-contained and provides both, an example diagram client (the `glsp-client` folder of each example) and its corresponding GLSP server (the `glsp-server` folder).
 
 ## Prerequisites
 

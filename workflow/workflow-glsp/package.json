@@ -12,7 +12,7 @@
   "bugs": "https://github.com/eclipse-glsp/glsp/issues",
   "repository": {
     "type": "git",
-    "url": "https://github.com/eclipse-glsp/glsp-client.git"
+    "url": "https://github.com/eclipse-glsp/glsp-examples.git"
   },
   "license": "(EPL-2.0 OR GPL-2.0 WITH Classpath-exception-2.0)",
   "author": {
