@@ -3,7 +3,7 @@
 This folder contains a simple _project template_ to get you started quickly for your diagram editor implementation based on [GLSP](https://github.com/eclipse-glsp/glsp).
 It provides the initial setup of the package architecture and environment for a GLSP diagram editor that uses ...
 
--   🖥️ The [Node-based GLSP server framework](https://github.com/eclipse-glsp/glsp-server-node)
+-   🖥️ The [Node-based GLSP server framework](https://github.com/eclipse-glsp/glsp-core/tree/main/packages/server)
 -   🗂️ A custom JSON format as source model
 -   🖼️ The [VS Code integration](https://github.com/eclipse-glsp/glsp-vscode-integration) to make your editor available in VS Code
 

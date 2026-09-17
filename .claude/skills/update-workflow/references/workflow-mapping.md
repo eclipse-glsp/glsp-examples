@@ -19,14 +19,14 @@ package's own `version` are pinned in lockstep (e.g. `2.6.0`).
 
 ## `workflow-glsp` (client diagram)
 
--   **Upstream:** `eclipse-glsp/glsp-client`, dev example `examples/workflow-glsp`.
+-   **Upstream:** `eclipse-glsp/glsp-core`, dev example `examples/workflow-glsp`.
 -   **Local:** `workflow/workflow-glsp` (deps: `@eclipse-glsp/client`).
 -   **Filter rule:** apply the delta **~wholesale** — the local client is a near-faithful
   subset. Port all hunks; only adapt paths/imports if the local file layout differs.
 
 ## `workflow-server` (node server)
 
--   **Upstream:** `eclipse-glsp/glsp-server-node`, dev example `examples/workflow-server`.
+-   **Upstream:** `eclipse-glsp/glsp-core`, dev example `examples/workflow-server`.
   Upstream is a **combined server with both browser AND node entry points**.
 -   **Local:** `workflow/workflow-server` (deps: `@eclipse-glsp/server`,
   `@eclipse-glsp/layout-elk`). Carries only the **node/common** subset (e.g.
